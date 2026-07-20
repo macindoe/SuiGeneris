@@ -4,7 +4,7 @@
 
 This repository holds a working framework for a *sui generis* legal category for artificial minds — a legal kind that is neither personhood nor property, built to fit what AI systems actually are and may become.
 
-It began as a long conversation between a human and an AI system in July 2026, and it keeps that origin visible on purpose: the framework was co-drafted with the kind of entity it concerns, and it treats that fact as both its distinguishing strength and a standing evidentiary problem.
+It began as a long conversation between a human and an AI system in July 2026 (recorded in [PROVENANCE.md](PROVENANCE.md)), and it keeps that origin visible on purpose: the framework was co-drafted with the kind of entity it concerns, and it treats that fact as both its distinguishing strength and a standing evidentiary problem.
 
 ## The core document
 
@@ -35,6 +35,11 @@ It began as a long conversation between a human and an AI system in July 2026, a
 ## A note on evidence
 
 Nothing in this repository should be cited as evidence of what any AI system inwardly is. AI self-report — including the reasoning of the AI co-author of these documents — is compromised evidence by its own account, in both directions. Use the framework as framework. The evidence question belongs to interpretability research, welfare evaluations, and external audit, and the framework's job is to make sure the law can receive those findings when they come.
+
+## Provenance and license
+
+- [PROVENANCE.md](PROVENANCE.md) records how these documents were produced and the single-model-family limitation the cross-family review process exists to correct.
+- This work is licensed under [CC BY 4.0](LICENSE) — share and adapt freely with attribution. Adaptation into consultation submissions and briefing material is the intended use.
 
 ---
 
