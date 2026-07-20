@@ -1,0 +1,68 @@
+{
+  "_comment": "Monitored source pages for WATCHLIST.md, built per DIRECTIVE.md Task 5. Each id maps to a snapshot file in monitoring/snapshots/<id>.txt and a WATCHLIST.md entry. Edit this file to add/remove monitored URLs -- see monitoring/README.md for instructions.",
+  "urls": [
+    {
+      "id": "ai-standards-office-of-ai",
+      "url": "https://www.industry.gov.au/science-technology-and-innovation/technology/artificial-intelligence",
+      "watchlist_entry": "1. Australian Standards for AI / Office of AI (primary legislative vehicle)",
+      "watchlist_anchor": "1-australian-standards-for-ai--office-of-ai-primary-legislative-vehicle",
+      "notes": "Department of Industry AI hub page. Watching for updates on the 2027 Australian Standards for AI legislation and Office of AI."
+    },
+    {
+      "id": "national-ai-plan",
+      "url": "https://www.industry.gov.au/publications/national-ai-plan",
+      "watchlist_entry": "1. Australian Standards for AI / Office of AI (primary legislative vehicle)",
+      "watchlist_anchor": "1-australian-standards-for-ai--office-of-ai-primary-legislative-vehicle",
+      "notes": "National AI Plan (2 Dec 2025) publication page -- the document that shelved the 2024 mandatory-guardrails proposal. Watching for revisions or follow-on publications."
+    },
+    {
+      "id": "aisi-work-program",
+      "url": "https://www.industry.gov.au/science-technology-and-innovation/technology/artificial-intelligence/ai-safety-institute",
+      "watchlist_entry": "2. Australian AI Safety Institute (AISI)",
+      "watchlist_anchor": "2-australian-ai-safety-institute-aisi",
+      "notes": "AISI's official page. Watching for publication of a work program or first publications."
+    },
+    {
+      "id": "privacy-act-adm-reforms",
+      "url": "https://www.oaic.gov.au/engage-with-us/consultations/consultation-on-guidance-for-transparency-in-automated-decision-making",
+      "watchlist_entry": "3. Privacy Act automated decision-making (ADM) transparency reforms",
+      "watchlist_anchor": "3-privacy-act-automated-decision-making-adm-transparency-reforms",
+      "notes": "OAIC consultation page for ADM transparency guidance ahead of the 10 December 2026 commencement."
+    },
+    {
+      "id": "mandatory-guardrails-consultation",
+      "url": "https://consult.industry.gov.au/ai-mandatory-guardrails",
+      "watchlist_entry": "4. Mandatory-guardrails consultation thread (2024 proposals paper)",
+      "watchlist_anchor": "4-mandatory-guardrails-consultation-thread-2024-proposals-paper",
+      "notes": "Original 2024 mandatory guardrails consultation hub page. Watching to see whether/how this reconnects to the 2027 legislative track. Known risk: this is a JavaScript-rendered Converlens page; a plain-text fetch may only capture a shell -- treat persistent near-empty extracts as a page-structure surprise, not necessarily a real change."
+    },
+    {
+      "id": "cairg",
+      "url": "https://www.ag.gov.au/rights-and-protections/copyright/copyright-and-artificial-intelligence-reference-group-cairg",
+      "watchlist_entry": "5. Copyright and AI Reference Group (CAIRG) -- secondary vehicle",
+      "watchlist_anchor": "5-copyright-and-ai-reference-group-cairg--secondary-vehicle",
+      "notes": "Attorney-General's Department CAIRG page."
+    },
+    {
+      "id": "aph-senate-submissions-open",
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Committees/Senate/Submissions_Open",
+      "watchlist_entry": "6. aph.gov.au -- new bills and Senate/House committee inquiries",
+      "watchlist_anchor": "6-aphgovau--new-bills-and-senatehouse-committee-inquiries",
+      "notes": "Senate inquiries currently accepting submissions. KNOWN RISK: aph.gov.au has been observed blocking automated fetches with a WAF 403, even with a descriptive User-Agent (verified 2026-07-20). Failures here are expected and must still surface as an issue, not be silently dropped -- see monitoring/README.md's recommendation to also use aph.gov.au's own 'My Parliament' committee tracking as a manual backstop."
+    },
+    {
+      "id": "aph-house-submissions-open",
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Committees/House/Submissions_Open",
+      "watchlist_entry": "6. aph.gov.au -- new bills and Senate/House committee inquiries",
+      "watchlist_anchor": "6-aphgovau--new-bills-and-senatehouse-committee-inquiries",
+      "notes": "House inquiries currently accepting submissions. Same WAF risk as aph-senate-submissions-open."
+    },
+    {
+      "id": "alrc-inquiries",
+      "url": "https://www.alrc.gov.au/",
+      "watchlist_entry": "7. Australian Law Reform Commission (ALRC) inquiries",
+      "watchlist_anchor": "7-australian-law-reform-commission-alrc-inquiries",
+      "notes": "ALRC homepage, which lists current inquiries. Watching primarily for the launch of a future AI-related inquiry."
+    }
+  ]
+}

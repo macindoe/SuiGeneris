@@ -1,0 +1,84 @@
+name: Watchlist monitor
+
+# Weekly, polite check of the source pages behind WATCHLIST.md. See
+# monitoring/README.md for the full explanation, and DIRECTIVE.md Task 5
+# for the requirements this implements.
+#
+# - One fetch per URL per run (scripts/watchlist_monitor.py), weekly
+#   cadence, short timeouts, at most one retry.
+# - Respects robots.txt.
+# - On change: opens (or comments on) a repo issue with a diff summary and
+#   a link to the relevant WATCHLIST.md entry.
+# - On fetch failure or a page-structure surprise: ALSO opens an issue.
+#   Failures are never silent.
+# - Updated snapshots are committed back to the repo by this workflow
+#   (not by the script itself).
+#
+# No secrets beyond the automatically-provided GITHUB_TOKEN are required.
+
+on:
+  schedule:
+    # 03:17 UTC every Monday -- off-peak for both Australian government
+    # sites (early evening AEST Monday / already past business hours) and
+    # GitHub Actions' scheduling load (avoids the top-of-hour pile-up).
+    - cron: "17 3 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: watchlist-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run watchlist monitor
+        id: run_monitor
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          WATCHLIST_MONITOR_BRANCH: ${{ github.event.repository.default_branch }}
+        run: python3 scripts/watchlist_monitor.py
+
+      - name: Commit updated snapshots
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          git config user.name "watchlist-monitor[bot]"
+          git config user.email "actions@users.noreply.github.com"
+          git add monitoring/snapshots/
+          if git diff --cached --quiet; then
+            echo "No snapshot changes to commit."
+          else
+            git commit -m "Update watchlist monitor snapshots ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+
+      - name: Surface a failure loudly if the job itself errored
+        if: failure()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh issue create \
+            --repo "${{ github.repository }}" \
+            --title "[watchlist-monitor] Workflow run failed" \
+            --label watchlist-monitor \
+            --body "The watchlist-monitor workflow itself failed (not an individual URL fetch -- see scripts/watchlist_monitor.py's own per-URL issue handling for that). Check the run log: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            || echo "Could not open failure issue (label may be missing or gh call failed); check the Actions log directly."
