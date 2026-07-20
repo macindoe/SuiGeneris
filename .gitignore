@@ -1,0 +1,3 @@
+.env
+# Saved-page asset folders (page text is preserved in the .html itself)
+archive/*_files/
