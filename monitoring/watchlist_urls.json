@@ -63,6 +63,13 @@
       "watchlist_entry": "7. Australian Law Reform Commission (ALRC) inquiries",
       "watchlist_anchor": "7-australian-law-reform-commission-alrc-inquiries",
       "notes": "ALRC homepage, which lists current inquiries. Watching primarily for the launch of a future AI-related inquiry."
+    },
+    {
+      "id": "naic-best-practice-program",
+      "url": "https://www.ai.gov.au/ai-best-practice-and-guidance-program",
+      "watchlist_entry": "8. NAIC AI best practice and guidance program",
+      "watchlist_anchor": "8-naic-ai-best-practice-and-guidance-program",
+      "notes": "NAIC engagement program page: current topics of focus (risk assessment, agentic AI as of Jul-Sep 2026), session announcements, EOI link. KNOWN RISK: ai.gov.au times out on automated fetches (observed 2026-08-12 via WebFetch); failures must surface as issues, and Ben's NAIC newsletter subscription is the manual backstop."
     }
   ]
 }

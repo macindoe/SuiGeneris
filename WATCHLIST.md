@@ -111,4 +111,19 @@ This document should be re-verified periodically — that is what the monitoring
 
 ---
 
+## 8. NAIC AI best practice and guidance program
+
+| Field | Detail |
+|---|---|
+| Vehicle | The National AI Centre's "AI best practice and guidance program" — targeted, time-bound engagements with organisations and experts that "inform our guidance and are shared across government." Current topics of focus (both **July–September 2026**): (a) **Risk assessment** — how organisations identify and manage AI risks (impact assessment, risk levels, safeguards); (b) **Agentic AI** — "emerging risks and governance approaches for agentic AI systems that can act with increasing autonomy. This includes accountability, oversight, and decision-making boundaries." |
+| Engagement mechanics | Methods: best-practice sprints (incl. one-on-one interviews with governance experts), engagement sessions, focus groups, surveys. Participants: large enterprises, SMEs, not-for-profits, and "experts, research and technical organisations." **Upcoming engagement sessions commence the week of 24 August 2026** (announced to subscribers by email 11 Aug 2026): a Risk assessment session (international best practice, key components, practical advice) and an **Agentic AI session** ("emerging consensus on what agentic AI is, how it can be used, what risks it poses and practical steps organisations are taking… Engagement is sought from participants on opportunities for NAIC to issue future advice and resources on this topic"). EOI via ai.gov.au/expression-interest — a short webform (category dropdown incl. "Researcher"; name; organisation; role; email; phone optional; privacy consent; CAPTCHA), no free-text pitch and no stated deadline; "register your interest and a member of our team will be in touch." |
+| Responsible body | National AI Centre (DISR), via ai.gov.au. |
+| Expected window | Sessions from week of 24 Aug 2026; topic cycle runs to September 2026; the program is standing, so new topic cycles should be expected. |
+| Relevant North Star sections | §7.4 (oversight machinery engaged, not bypassed), §8 (consultation entry points — NAIC guidance is the voluntary-first layer the National AI Plan chose; input here shapes what the 2027 statutory layer inherits) |
+| Status | Confirmed by direct page content (browser-rendered saves of ai.gov.au homepage, program page, and EOI form supplied by Ben 2026-08-12; automated WebFetch of ai.gov.au times out, same pattern as the rest of the gov estate). The Agentic AI session's stated scope — accountability, oversight, decision-making boundaries for increasingly autonomous systems — directly overlaps the recording/audit perspective in the project's Senate submission (`submissions/2026-08-12-senate-ai-data-centres.md`). Ben to decide and submit the EOI himself (the form is CAPTCHA-gated; consistent with the no-autonomous-outreach rule). |
+| As-of | 2026-08-12 |
+| Source | https://www.ai.gov.au/ai-best-practice-and-guidance-program ; https://www.ai.gov.au/expression-interest ; https://www.ai.gov.au/ (all browser-rendered page content supplied by Ben 2026-08-12) |
+
+---
+
 *Maintained per `DIRECTIVE.md` Task 4. Re-verify against live sources before relying on any date or status above for drafting; the monitoring workflow (Task 5) exists to flag changes, not to replace periodic human re-reading of the primary sources.*
