@@ -60,7 +60,9 @@ function buildSubmissionPrompt() {
   const brief = readDoc("reviews/2026-08-12-submission-review-brief.md");
   const agents = readDoc("AGENTS.md");
   const readme = readDoc("README.md");
-  const submission = readDoc("submissions/DRAFT-2026-senate-ai-data-centres.md");
+  // v1 draft as reviewed in the 2026-08-12 round; moved to archive/ after the
+  // round concluded. Point this at the current draft if a future round runs.
+  const submission = readDoc("archive/submissions/2026-08-11-DRAFT-senate-ai-data-centres-v1.md");
 
   return `Hi. I'd like an adversarial review of a draft Senate submission from your model family, per the brief below, before the human maintainer decides whether to lodge it.
 
