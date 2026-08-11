@@ -20,6 +20,14 @@ const path = require("path");
 const REPO_ROOT = path.resolve(__dirname, "..");
 const OUT_DIR = path.join(REPO_ROOT, "reviews", "raw");
 
+// Completion budget; reasoning models can burn most of it on thought tokens
+// (kimi-k3 spent 14397/15000 on reasoning in the 2026-08-12 round and truncated).
+// Override per-run with --max-tokens=N.
+const MAX_TOKENS = (() => {
+  const arg = process.argv.find((a) => a.startsWith("--max-tokens="));
+  return arg ? parseInt(arg.slice("--max-tokens=".length), 10) : 15000;
+})();
+
 // Default lineup: confirmed against OpenRouter's live catalog on 2026-07-20.
 // Edit freely — this list is deliberately not the whole catalog.
 const DEFAULT_MODELS = [
@@ -110,7 +118,7 @@ async function callModel(apiKey, modelId, prompt) {
     body: JSON.stringify({
       model: modelId,
       messages: [{ role: "user", content: prompt }],
-      max_tokens: 15000,
+      max_tokens: MAX_TOKENS,
     }),
   });
 
