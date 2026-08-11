@@ -1,4 +1,4 @@
-> **DRAFT — NOT YET FILED.** Prepared 2026-08-11 for Ben's review. Nothing in this file has been submitted. Per `DIRECTIVE.md` ("No autonomous outreach") and `AGENTS.md` rule 3, Ben reviews, decides the open items (marked `[BEN: ...]`), converts to PDF, and lodges. After filing, rename per `submissions/README.md` convention (`YYYY-MM-DD-senate-ai-data-centres.md`, date = filing date) and record the outcome.
+> **SUPERSEDED DRAFT — NOT FILED, NOT FOR LODGEMENT.** This v1 draft (prepared 2026-08-11) was put through a cross-family adversarial review round on 2026-08-12 (`reviews/raw/`, eight reviewers) and substantially revised in response. The revised lodgement version is developed **outside the public repo** (see `.gitignore`, `submissions/LODGEMENT-*`) per Senate submission guidance: a received submission is a committee document, and prior independent publication does not attract parliamentary privilege. This file is retained as the historical record of what the reviewers reviewed. The as-lodged text will be committed only after the committee authorises publication.
 >
 > **Modules adapted:** `novel-harms-vocabulary.md` (recorded-intervention definitions, thresholds), `welfare-evaluation-mandate.md` (¶1(c) standards function only, advocated separately on audit grounds as that module provides), `anti-foreclosure-definitions.md` (review-trigger discipline, compressed). Source mapping: `aisi-multi-agent-report-crosswalk.md`. All jurisdictional claims verified 2026-08-11 (WATCHLIST.md; archive/ primary sources).
 
@@ -12,7 +12,7 @@
 
 **Submitted by:** Benjamin James Macindoe, private individual
 
-**Contact:** macindoebenjamin@gmail.com
+**Contact:** `[removed from public copy; provided via lodgement process]`
 
 **Publication:** The submitter consents to publication. This submission is made in a personal capacity and represents no view of any employer or other organisation.
 
