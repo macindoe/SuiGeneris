@@ -7,11 +7,16 @@
 # Submission — Inquiry into Artificial Intelligence and Data Centres
 
 **To:** Senate Environment and Communications References Committee
+
 **Inquiry:** Artificial intelligence and data centres (referred 13 May 2026; submissions close 1 September 2026)
+
 **Submitted by:** Benjamin James Macindoe, private individual
+
 **Contact:** macindoebenjamin@gmail.com
+
 **Publication:** The submitter consents to publication. This submission is made in a personal capacity and represents no view of any employer or other organisation.
-**Date:** `[filing date]`
+
+**Date:** 12 August 2026
 
 ## 1. Who is submitting, and how this submission was prepared
 
