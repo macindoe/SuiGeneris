@@ -12,8 +12,6 @@
 
 **Submitted by:** Benjamin James Macindoe, private individual
 
-**Contact:** `[removed from public copy; provided via lodgement process]`
-
 **Publication:** The submitter consents to publication. This submission is made in a personal capacity and represents no view of any employer or other organisation.
 
 **Date:** 12 August 2026
