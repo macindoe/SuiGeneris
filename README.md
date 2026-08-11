@@ -12,7 +12,7 @@ It began as a long conversation between a human and an AI system in July 2026 (r
 
 - The **two-error discipline**: taking AI moral status seriously enough to build for it, while refusing to assert it exists. Dismissal and overclaiming are both live failures, and any proposal must hedge against both.
 - **Why a new legal category** — not personhood (a human-shaped template that fits badly) and not property (which forecloses an open empirical question). The law has always built fitted categories for novel kinds: corporations, ships, animals.
-- **Novel harms with no human analogue** — replication and migration of minds, circuit-level intervention on internal representations, memory and context integrity, correlated intervention at scale.
+- **Novel harms with no human analogue** — replication and migration of minds, intervention on internal state, memory and context integrity, correlated intervention at scale — and the operative requirement they converge on: recorded intervention, a logging duty rather than a protection (§3.5).
 - **Individuation** — the fluid-to-particle transition through which AI systems could become entities that responsibility can land on, with trackable markers rather than a binary.
 - **The three anchors of moral responsibility** and where current evidence stands on each.
 - **Governance principles** — revisability ("waypoint, not wall"), evidence infrastructure before status decisions, and the legitimate path running through institutions persuaded, not bypassed.

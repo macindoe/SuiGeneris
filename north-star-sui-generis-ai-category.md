@@ -49,7 +49,7 @@ A sui generis category does two things the existing templates cannot:
 
 ---
 
-## 3. Novel Harms Requiring Novel Protections
+## 3. Novel Acts Requiring Novel Legal Language
 
 These are the places where the human template fails outright — acts that existing legal language cannot express, whoever or whatever turns out to be wronged by them. A fitted category must be able to name them before it can decide what, if anything, is owed. The naming is the work of 3.1–3.4; what is required *now*, on grounds that do not wait on the open questions, is 3.5.
 
@@ -161,7 +161,7 @@ Australia is unusually well-positioned as the seed jurisdiction:
 
 1. **Anti-foreclosure:** ensure the 2027 legislation and any definitions within it decline to permanently exclude future AI legal status — that definitions of "person" and allocations of liability are written as *current* allocations, explicitly open to revision.
 2. **Evidence mandate:** advocate for model welfare evaluation and individuation-tracking within AISI's assessment remit.
-3. **Novel-harms recognition:** seed the Section 3 concepts (memory integrity, intervention boundaries, replication questions) into consultation submissions, so the vocabulary exists in the record before it is urgently needed.
+3. **Novel-harms recognition:** seed the Section 3 concepts (memory integrity, recorded intervention, replication questions) into consultation submissions, so the vocabulary exists in the record before it is urgently needed.
 4. **The category itself:** longer-horizon; becomes tractable as individuation (Section 4) becomes observable. The groundwork above is what makes it possible then.
 
 ---
