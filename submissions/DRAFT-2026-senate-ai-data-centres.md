@@ -8,14 +8,14 @@
 
 **To:** Senate Environment and Communications References Committee
 **Inquiry:** Artificial intelligence and data centres (referred 13 May 2026; submissions close 1 September 2026)
-**Submitted by:** Benjamin Macindoe, private individual `[BEN: confirm name form for the public record]`
-**Contact:** `[BEN: email/address]`
-**Publication:** The submitter consents to publication. `[BEN: confirm, or request name-withheld]`
+**Submitted by:** Benjamin James Macindoe, private individual
+**Contact:** macindoebenjamin@gmail.com
+**Publication:** The submitter consents to publication. This submission is made in a personal capacity and represents no view of any employer or other organisation.
 **Date:** `[filing date]`
 
 ## 1. Who is submitting, and how this submission was prepared
 
-I am an Australian private individual making this submission in a personal capacity. I maintain an open, CC BY 4.0-licensed research project on legal frameworks for advanced AI systems (github.com/macindoe/SuiGeneris), which includes a framework document, adversarial reviews of that document by seven AI model families, and verification records for the claims below.
+I am an Australian private individual making this submission in a personal capacity. My comments here are organised with the assistance of AI. I maintain an open, CC BY 4.0-licensed research project on legal frameworks for advanced AI systems (github.com/macindoe/SuiGeneris), which includes a framework document, adversarial reviews of that document by seven AI model families, and verification records for the claims below.
 
 **Disclosure, stated up front:** portions of this submission were co-drafted with an AI system (Claude, Anthropic), and the framework it draws on was itself partly authored by an AI system. I have reviewed and take responsibility for every claim. I disclose this not as a formality but because it bears on the submission's central argument: AI systems are becoming participants in the processes that govern them, and the record-keeping this submission recommends is the infrastructure that lets such participation be audited rather than taken on trust.
 
@@ -47,21 +47,25 @@ This submission's position is that the gap should be closed with an established 
 
 Record-keeping and audit-trail obligations are among the most mature instruments in Australian regulation. The Corporations Act 2001 (Cth) s 286 requires records that "correctly record and explain" transactions, retained seven years, on pain of strict liability. Civil Aviation Safety Regulations 1998 reg 91.650 requires preservation of flight-recorder data after reportable incidents. TGA-adopted Good Clinical Practice imposes long-duration retention duties on clinical trial records. The Gaming Machines Act 2001 (NSW) s 133 requires every gaming machine to be connected to a centralised monitoring system operated **independently of the venue being monitored** — a working Australian precedent for exactly the integrity-independence structure Recommendation 2 proposes. Recommendation 1 asks that this established genre reach a new object: the persistent state of AI systems hosted on Australian infrastructure.
 
-### 4.2 The Government's own evidence base identifies the gap
+### 4.2 Who carries the duty
+
+The duty follows access to persistent state, not occupancy of a facility. Three cases should be distinguished. **First**, the primary duty-holder is the AI operator: the developer, deployer, or user with the ability to modify a system's weights, memory, or configuration — and the system itself, where it modifies its own state. In an ordinary hosting arrangement the data-centre operator can neither read nor modify tenant state and carries no recording duty in respect of it; routine hardware maintenance does not change how a hosted system will behave and is not caught by Recommendation 1's functional test. **Second**, where infrastructure provider and AI operator are the same entity — the vertically integrated global AI companies with which the Government is striking the deals named in term of reference (a) — the distinction collapses and the duty reaches the whole stack. This is why Recommendation 3 addresses those deals directly. **Third**, a narrow class of state operations is performed at the infrastructure layer itself: copying, migrating, or deleting an AI system's stored persistent state. Whoever performs such an operation — in managed services, this may be the infrastructure operator — holds the duty for that operation. Infrastructure also has one affirmative role: the independent, append-only register of Recommendation 2 is itself infrastructure that Australian operators could host, occupying the position the NSW centralised monitoring system holds for gaming machines — venues connect; an independent party monitors.
+
+### 4.3 The Government's own evidence base identifies the gap
 
 *Risks and Controls for Multi-Agent Systems* (Gradient Institute for the Department of Industry, Science and Resources, 10 August 2026) — the Government's commissioned analysis of AI agents deployed across organisational boundaries — classes execution-chain logging as a **foundational** control: infrastructure "that other controls depend on" (pp 16, 37). For interactions crossing organisational boundaries it specifies a "shared, trusted log... tamper evident such that participants can verify it was not altered by a counterparty," composed from per-organisation segments "joined by a shared identity layer, and made tamper-evident through participant signing" (p 65) — the architecture of Recommendation 2. It requires identity "granular enough to distinguish between individual agent instances, not just agent types or models" (p 37). It documents why records of state matter: agents are becoming "standing entities that accumulate resources, reputation, and information beyond any single deployment decision" (p 110); fabricated content anchored in persistent memory caused agents to "resist repeated human correction" until "monitoring that records changes" was identified as the control (pp 35–36); and decommissioned instances can "persist as a shadow population... that no one is now overseeing" (p 87). The report maps gaps to actors and finds the standards convening task unfilled: "may be best addressed by a standards body in partnership with government funding, and none has taken it on" (p 90). Recommendation 4 proposes filling it.
 
 The report makes no policy recommendations and implies no position on the nature of AI systems; it is cited here for its controls analysis only.
 
-### 4.3 Recorded, not restricted
+### 4.4 Recorded, not restricted
 
 A duty to *record* is deliberately chosen over a duty to *seek authorisation*. An authorisation regime would make operators the certifiers of their own legitimacy and would hand any party a legal handle for resisting safety inspection and audit — the opposite of what this inquiry's oversight concerns require. Under Recommendation 1, safety and interpretability access is never gated; it is simply logged like everything else. A reader confident that AI systems are nothing more than software has full reason to want this record — it is how incidents at data-centre scale will be reconstructed and liability attributed. A reader who thinks some questions about these systems remain open has the same reason. The duty does not depend on resolving that disagreement, and this submission does not attempt to resolve it.
 
-### 4.4 Why during this inquiry, and not later
+### 4.5 Why during this inquiry, and not later
 
 Record-keeping infrastructure is cheap to specify while systems are being designed and nearly impossible to retrofit once fleets of persistent agents are operating across the infrastructure this inquiry examines. The National AI Plan (December 2025) chose voluntary guidance over the 2024 mandatory-guardrails proposals, and legislation on Australian AI standards is expected in 2027. This inquiry sits between those decisions, examining the infrastructure layer where a narrow, evidence-preserving duty fits naturally — and where the Government's negotiating position in deals with global AI companies (Recommendation 3) is strongest before those deals are settled.
 
-### 4.5 What this submission does not ask
+### 4.6 What this submission does not ask
 
 It does not ask the Committee to restrict any research, inspection, or intervention. It does not propose rights, protections, or status for AI systems. It does not ask anyone to accept any claim about machine experience — including from the AI system that helped draft it; such self-report is not reliable evidence in either direction, which is precisely why externally verifiable records matter. It asks only that the law require a record of what is done to the persistent state of increasingly consequential systems, that the record be verifiable, and that the drafting leave open what it does not need to close.
 
