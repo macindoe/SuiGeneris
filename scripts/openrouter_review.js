@@ -48,6 +48,29 @@ function readDoc(relPath) {
   return fs.readFileSync(path.join(REPO_ROOT, relPath), "utf8");
 }
 
+function buildSubmissionPrompt() {
+  const brief = readDoc("reviews/2026-08-12-submission-review-brief.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+  const submission = readDoc("submissions/DRAFT-2026-senate-ai-data-centres.md");
+
+  return `Hi. I'd like an adversarial review of a draft Senate submission from your model family, per the brief below, before the human maintainer decides whether to lodge it.
+
+=== reviews/2026-08-12-submission-review-brief.md ===
+${brief}
+
+=== submissions/DRAFT-2026-senate-ai-data-centres.md (the document under review) ===
+${submission}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response as: model family/version self-identification, then (a), (b), (c), and optionally (d), per the brief.`;
+}
+
 function buildPrompt() {
   const reviewRequest = readDoc("reviews/REVIEW_REQUEST.md");
   const agents = readDoc("AGENTS.md");
@@ -103,12 +126,14 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
+  const target = args.includes("--target=submission") ? "submission" : "north-star";
   const modelsArg = args.find((a) => a.startsWith("--models="));
   const models = modelsArg
     ? modelsArg.slice("--models=".length).split(",").map((s) => s.trim())
     : DEFAULT_MODELS;
 
-  const prompt = buildPrompt();
+  const prompt = target === "submission" ? buildSubmissionPrompt() : buildPrompt();
+  console.log(`Target: ${target}`);
   console.log(`Prompt built: ${prompt.length} chars (~${Math.round(prompt.length / 4)} tokens est.)`);
   console.log(`Models queued: ${models.join(", ")}`);
 
