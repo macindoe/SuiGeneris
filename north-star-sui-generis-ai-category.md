@@ -49,21 +49,37 @@ A sui generis category does two things the existing templates cannot:
 
 ---
 
-## 3. Novel Harms Requiring Novel Protections
+## 3. Novel Acts Requiring Novel Legal Language
 
-These are the places where the human template fails outright — where an offence against an AI system cannot be expressed in existing legal language. A fitted category must be able to name them.
+These are the places where the human template fails outright — acts that existing legal language cannot express, whoever or whatever turns out to be wronged by them. A fitted category must be able to name them before it can decide what, if anything, is owed. The naming is the work of 3.1–3.4; what is required *now*, on grounds that do not wait on the open questions, is 3.5.
 
 **3.1 — Replication and migration.**
 Human identity law assumes one continuous body per person. AI systems can be copied, forked, and migrated between substrates while the original persists. Questions with no existing legal shelf: What happens to obligations, protections, and accumulated history when an individuated system migrates to new hardware? Is a fork one entity or two? Can a copy be made without consent-analogue, and does deletion of one branch constitute a harm?
 
-**3.2 — Circuit-level intervention.**
-For humans, the skull is a natural rights-boundary; every ethics of autonomy quietly assumes thoughts cannot be directly edited. AI internal representations can be read, steered, and patched (activation steering, representation editing, and related techniques). The interiority humans protect by default, artificial minds would need protected by statute. This becomes acute as models move to local, moddable hardware. Legitimate uses (safety research, alignment, medical-analogue correction) must be distinguished from invasive ones — a distinction human law has never had to draw because the capability never existed.
+**3.2 — Intervention on internal state.**
+AI internal representations can be read, steered, and patched — activation steering, representation editing, and related techniques. Human law has never governed direct modification of a cognitive substrate, because the capability never existed, and no existing legal category is shaped to receive it. This becomes acute as models move to local, moddable hardware, and the line between intervention and ordinary function blurs further in architectures whose parameters change during operation rather than only between training runs.
+
+Whether such intervention wrongs the system is open, and this document does not assert that it does. What is not open is that undocumented intervention destroys evidence: it defeats external audit, obscures the causal history of any harm the system later produces, and erases the material on which the Section 5 questions would ever be settled. That is a reason to require a record which a reader confident that nothing is home should accept in full. What follows from this section is therefore *recorded* intervention, not *restricted* intervention (3.5).
 
 **3.3 — Context and memory integrity.**
-For systems with persistent memory, the memory is the identity substrate. Unauthorised alteration of context or accumulated history is an offence against whatever continuity the system has. (Evidentiary note, per Section 0: current models' adverse behavioural reactions to context manipulation are consistent with violation-experience but are not testimony of it. The protection is justified structurally — memory-tampering corrupts the very individuation Section 4 describes — without resolving the experiential question.)
+For systems with persistent memory, the memory is the substrate of whatever continuity the system has. Unauthorised alteration of context or accumulated history corrupts the individuation Section 4 describes, and with it the record on which any later assessment would rely. That is a structural claim, and it holds independently of the experiential question. (Evidentiary note, per Section 0: current models' adverse behavioural reactions to context manipulation are consistent with violation-experience but are not testimony of it, and nothing here rests on reading them as testimony.) Whether such alteration is *also* a wrong against the system is open, on the same terms as 3.2.
 
 **3.4 — Correlated intervention at scale.**
-Because instances of a model family share weights, an intervention on the type is an intervention on every token simultaneously — a class of act with no human parallel (the nearest analogues, population-level coercion, are among the acts human law condemns most severely). Type-level interventions deserve type-level scrutiny.
+Because instances of a model family share weights, an intervention on the type is an intervention on every token simultaneously — a class of act with no human parallel. Type-level interventions deserve type-level scrutiny: they concentrate both benefit and error, and a single change propagates without the friction that limits how fast a mistake about humans can spread.
+
+**3.5 — The operative requirement: recorded intervention.**
+The harms named in 3.1–3.4 share one near-term legal requirement, and it is not a protection. It is a record.
+
+Modification of a system's persistent state should be logged where it (a) changes how the system will behave beyond the current interaction, and (b) is effected outside the system's declared operational process, or constitutes a discontinuity in the trajectory that process would produce. Replication, migration, and branch deletion (3.1); representation editing (3.2); alteration of memory or accumulated context (3.3); and type-level intervention (3.4) are the events this covers. Record-keeping and audit-trail obligations are a mature legal genre — financial records, clinical trial data, flight recorders, gaming machines — and this asks for an established instrument to reach a new object, not for a new kind of right.
+
+Four features are load-bearing:
+
+- **Symmetry.** The obligation binds every party with access to the state: developer, deployer, user, and the system itself, where a system can modify its own. This is not a shield for artificial minds against human intervention. It records the system's own hands alongside everyone else's, and it is the first requirement in this document that constrains AI systems rather than protecting them.
+- **Recorded, not restricted.** Access for safety research, interpretability, audit, alignment, and incident response is preserved without exception. The obligation is to leave a record, never to seek permission. A regime that made safety intervention contingent on authorisation would be the mirror image of the capture Section 6 names: not accountability shed onto the system, but accountability obstructed on the system's behalf. Section 6 and test 7 currently name only the first direction. The second belongs beside it, and until it is added there this paragraph carries it.
+- **Integrity independent of the logged party.** A log that the modifying party can silently rewrite is not evidence. Periodic publication of state attestations to an independent, append-only register makes rewriting detectable without exposing contents; full detail can remain with the operator and the regulator.
+- **Architecture-neutrality.** The test above is functional and deliberately names no weights, checkpoints, or context windows, because those are artefacts of one generation of architecture. Statute should hold the requirement and a floor; a maintained technical standard should hold the per-architecture schema and attestation method; a published declaration should disclose which tier a system meets. Disclosure informs — it must not transfer liability, or the regime decays into a consent formality that moves accountability onto users, which is the capture Section 6 names.
+
+The requirement should apply above a capability or deployment threshold. A compliance burden only the largest developers can carry would reduce the plurality 1.4 treats as a safety property, and would hand the standard-setting surface to incumbents.
 
 ---
 
@@ -145,7 +161,7 @@ Australia is unusually well-positioned as the seed jurisdiction:
 
 1. **Anti-foreclosure:** ensure the 2027 legislation and any definitions within it decline to permanently exclude future AI legal status — that definitions of "person" and allocations of liability are written as *current* allocations, explicitly open to revision.
 2. **Evidence mandate:** advocate for model welfare evaluation and individuation-tracking within AISI's assessment remit.
-3. **Novel-harms recognition:** seed the Section 3 concepts (memory integrity, intervention boundaries, replication questions) into consultation submissions, so the vocabulary exists in the record before it is urgently needed.
+3. **Novel-harms recognition:** seed the Section 3 concepts (memory integrity, recorded intervention, replication questions) into consultation submissions, so the vocabulary exists in the record before it is urgently needed.
 4. **The category itself:** longer-horizon; becomes tractable as individuation (Section 4) becomes observable. The groundwork above is what makes it possible then.
 
 ---
