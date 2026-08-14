@@ -2,7 +2,7 @@
 
 **Type:** proposal for revision. Two of the three changes below touch Sections 7 and 9 and are therefore constitutional under AGENTS.md ("propose via issue or PR description with reasoning, don't silently rewrite"). The third touches Section 6 and is ordinary PR work; it is included here because it is the same argument at a different altitude, and the three should be judged together even though they take different routes.
 
-**Status:** open, awaiting Ben's decision. Not yet posted as a GitHub issue.
+**Status: ACCEPTED, 2026-08-15**, all three items, with one amendment to item 2 made by Ben. Adopted as §7.5, §9 test 11, and the "Capture, mirrored" bullet in §6. See "Decision" at the foot of this file for what changed and why.
 
 **Origin:** the 2026-07-20 cross-family review round (test-11 formulation adapted from the Grok 4.5 review's structural suggestions; the delegation problem surfaced while revising Section 3 for architecture-neutrality, and was not raised by any reviewer).
 
@@ -63,3 +63,23 @@ Section 6 currently defines capture in one direction only:
 Items 1 and 2 are independent — accept either, both, or neither. Item 3 should follow item 2 (they are the same idea at different altitudes); if item 2 is rejected, item 3 probably should be too, and §3.5's stopgap paragraph stays as-is.
 
 If any proceed, they should be a separate PR from the Section 3 revision, which stands on its own regardless.
+
+---
+
+## Decision — 2026-08-15
+
+All three items accepted. Items 1 and 3 adopted as proposed. **Item 2 was amended by Ben before adoption**, on the strength of the first counter-argument this proposal listed against it.
+
+**The objection.** As drafted, test 11 asked only whether a provision impedes necessary safety intervention, and placed the burden unconditionally on the protection. That makes "safety" a word that ends arguments rather than a claim that has to be made good. Anyone resisting any constraint — most often a developer resisting an audit, a logging duty, or a transparency requirement — could invoke the test and win by assertion. A test written to catch protections that obstruct accountability would have become a tool for the party with the most to gain from unreviewable discretion.
+
+**As proposed:**
+
+> 11. Does it impede necessary safety intervention — inspection, correction, shutdown, or type-level remediation? Protection that obstructs accountability is the mirror of capture, and the burden sits on the protection.
+
+**As adopted:**
+
+> 11. Does it impede necessary safety intervention — inspection, correction, shutdown, or type-level remediation? The test runs both ways: a protection that obstructs accountability is capture mirrored (Section 6), and an intervention asserted as necessary without being specified, evidenced, and confined to the risk at hand is capture in its ordinary direction. Neither side gets an unreviewable veto, and "safety" is a claim to be substantiated, not a word that ends the argument.
+
+**Why this form.** The buffer is a symmetrical burden, which is how comparable regimes handle elastic exceptions: the party invoking necessity must specify it, evidence it, and confine it to the risk at hand, in the same way that the party invoking protection must show the protection does not obstruct oversight. The failure mode the test now names on both sides is the same one — unreviewable discretion — and neither party is presumed to hold it.
+
+**Consequential edits.** §3.5's "Recorded, not restricted" bullet previously carried the mirrored-capture idea as a stopgap and noted that Section 6 did not yet contain it; that stopgap is removed and the bullet now cites §6 and test 11 directly, with the converse stated (an intervention is not exempt from record because someone has called it a safety measure). §3.5's "Architecture-neutrality" bullet previously restated the three-layer split in full; it now cites §7.5 and keeps only what is specific to logging, so the principle lives in one place.

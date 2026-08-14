@@ -13,4 +13,7 @@ Proposals may also be posted as GitHub issues for discussion; the file is the du
 ## Open
 
 - [architecture-neutrality-sections-4-5.md](architecture-neutrality-sections-4-5.md) — Sections 4 and 5 state architectural facts as ontological ones; Anchor 3's "nothing carries the debt" would be falsified by continual-learning architectures rather than by philosophy.
-- [capture-symmetry-and-delegation.md](capture-symmetry-and-delegation.md) — three related changes: a new §7.5 on delegating technical detail to maintained standards, a new §9 test 11 on protections that impede safety intervention, and a mirrored definition of capture in §6.
+
+## Accepted
+
+- [capture-symmetry-and-delegation.md](capture-symmetry-and-delegation.md) — *accepted 2026-08-15.* Adopted as §7.5 (legislate the function, delegate the mechanism), §9 test 11 (the control test), and "Capture, mirrored" in §6. Test 11 was amended before adoption to cut in both directions, so that an unsubstantiated appeal to "safety" cannot defeat a protection by assertion.
