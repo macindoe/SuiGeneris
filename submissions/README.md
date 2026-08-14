@@ -17,6 +17,10 @@ YYYY-MM-DD-<consultation-name>.md
 
 using the date the submission was filed. This builds the public record of a consistent, moderate presence across the consultation processes feeding the 2027 legislation (see `WATCHLIST.md` for the tracked vehicles) — the project's credibility rests on that consistency being real and checkable, not asserted.
 
+**But not immediately.** Australian parliamentary committees decide for themselves whether and when to publish the submissions they receive, and publishing our copy first would pre-empt that decision. A submission that has been filed but not yet published by the receiving body goes in `submissions/pending/`, which is gitignored and therefore never pushed. When the committee publishes, move the file up into `submissions/` and commit it then.
+
+This is a courtesy that also happens to be strategy: a project whose entire argument is that the legitimate path runs through institutions persuaded rather than bypassed (North Star §7.4) should not be the party that jumps a committee's own publication process.
+
 ## What this directory is not
 
 Nothing here is filed autonomously. Drafting scaffolding and modules can be built and refined here at any time; deciding whether, when, and in what final form to submit something to an actual government consultation is Ben's decision alone, and filing is an action only Ben takes (DIRECTIVE.md, "No autonomous outreach"; North Star §7.4). Treat everything in `modules/` and any in-progress draft as raw material a human has not yet reviewed, adapted, or approved — regardless of how finished it reads.

@@ -7,3 +7,9 @@ archive/*_files/
 # guidance: a received submission is a committee document; prior independent
 # publication does not attract privilege). Commit only after authorisation.
 submissions/LODGEMENT-*
+
+# Filed submissions awaiting the receiving body's own publication decision.
+# Australian parliamentary committees publish submissions on their schedule;
+# publishing ours first would pre-empt that. Move a file up into submissions/
+# and commit it once the committee has published.
+submissions/pending/
