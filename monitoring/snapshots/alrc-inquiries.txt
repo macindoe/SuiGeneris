@@ -153,7 +153,7 @@ Download the Data
 Contact
 Further Help
 Close
-PhoneThis field is for validation purposes and should be left unchanged.Stay informed with all of the latest news from the ALRC. Sign up to receive email updates.First Name*Surname*OrganisationEmail*
+CompanyThis field is for validation purposes and should be left unchanged.Stay informed with all of the latest news from the ALRC. Sign up to receive email updates.First Name*Surname*OrganisationEmail*
 Subscriptions
 All news
 General ALRC updates
