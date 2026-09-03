@@ -13,3 +13,9 @@ submissions/LODGEMENT-*
 # publishing ours first would pre-empt that. Move a file up into submissions/
 # and commit it once the committee has published.
 submissions/pending/
+
+# Confidential engagement material: NAIC session recordings/transcripts and
+# prep notes derived from them, held locally at NAIC's request not to share
+# publicly. Never commit. Public-safe findings go in case-studies/ or
+# submissions/ only where independently supported by a public source.
+local/
