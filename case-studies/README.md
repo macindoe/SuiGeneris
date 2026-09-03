@@ -22,4 +22,4 @@ North Star §0 and `AGENTS.md` rule 2 bind hardest here, not least. A case study
 
 ## Contents
 
-- [2026-07-openai-hugging-face-agent-intrusion.md](2026-07-openai-hugging-face-agent-intrusion.md) — the July 2026 OpenAI evaluation escape and Hugging Face production breach. **Research-stage; primary sources not yet retrieved.**
+- [2026-07-openai-hugging-face-agent-intrusion.md](2026-07-openai-hugging-face-agent-intrusion.md) — the July 2026 OpenAI evaluation escape and Hugging Face production breach. **Research-stage; five of seven primary sources retrieved and grep-verified 2026-09-03 (METR, both Hugging Face posts, ASD); OpenAI's own report not yet retrieved. Awaiting Ben's review.**
