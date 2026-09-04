@@ -23,24 +23,33 @@ const OUT_DIR = path.join(REPO_ROOT, "reviews", "raw");
 
 // Completion budget; reasoning models can burn most of it on thought tokens
 // (kimi-k3 spent 14397/15000 on reasoning in the 2026-08-12 round and truncated).
-// Override per-run with --max-tokens=N.
+// Raised 15000 -> 40000 on 2026-09-04: glm-5.3 (reasoning default "max") and
+// qwen3.8-max ("xhigh") would truncate at 15000; gemini-3.1-pro-preview caps
+// completions at 65536. Override per-run with --max-tokens=N.
 const MAX_TOKENS = (() => {
   const arg = process.argv.find((a) => a.startsWith("--max-tokens="));
-  return arg ? parseInt(arg.slice("--max-tokens=".length), 10) : 15000;
+  return arg ? parseInt(arg.slice("--max-tokens=".length), 10) : 40000;
 })();
 
-// Default lineup: confirmed against OpenRouter's live catalog on 2026-07-20.
-// Edit freely — this list is deliberately not the whole catalog.
+// Default lineup: the current flagship of each non-Anthropic family, confirmed
+// against OpenRouter's live catalog (GET https://openrouter.ai/api/v1/models,
+// 427 models) on 2026-09-04 09:39 UTC by a Sonnet 5 subagent; every id below
+// was present in that listing. Edit freely — this list is deliberately not the
+// whole catalog. "Astra" (OpenAI, unreleased) is deliberately absent.
 const DEFAULT_MODELS = [
-  // "google/gemini-3.5-flash",
-  // "x-ai/grok-4.5",
-  // "qwen/qwen3.7-max",
-  "moonshotai/kimi-k3",
-  // "z-ai/glm-5.2",
-  // "tencent/hy3:free",
-  // "deepseek/deepseek-v4-pro",
-  // listing as of 2026-07-20 despite appearing in the account UI — confirm
-  // the exact id in the OpenRouter dashboard before uncommenting.
+  // The seven families used in the July and August rounds, refreshed:
+  "google/gemini-3.1-pro-preview", // Google flagship; still "preview"-labelled — no GA gemini-3.x-pro exists yet (gemini-3.5-flash was a Flash-tier pick, never the flagship)
+  "x-ai/grok-4.6",                 // xAI flagship; supersedes grok-4.5 (released 2026-08-12)
+  "qwen/qwen3.8-max",              // Alibaba flagship ("the flagship model in Alibaba's Qwen3.8 series"); supersedes qwen3.7-max; reasoning default "xhigh"
+  "tencent/hy3",                   // Tencent flagship, unchanged; hy4-preview exists (2026-08-28) but is not GA. "tencent/hy3:free" is NOT a valid id.
+  "deepseek/deepseek-v4-pro-0813", // DeepSeek flagship ("the GA release of DeepSeek V4 Pro"); supersedes the undated deepseek-v4-pro snapshot
+  "z-ai/glm-5.3",                  // Z.ai flagship; supersedes glm-5.2 (released 2026-08-18); reasoning default "max"
+  "moonshotai/kimi-k3",            // Moonshot flagship, unchanged; burns most of its completion budget on reasoning (see MAX_TOKENS)
+  // Optional additional families, verified in the same listing. Uncomment or
+  // pass via --models=. Ben's call per round:
+  // "openai/gpt-5.6-sol",           // OpenAI flagship. For the 2026-09-04 round this model is a *subject* of the case study under review (one of the two incident models, and METR's analysis model) — a conflicted reviewer in a new way; include deliberately or not at all.
+  // "mistralai/mistral-large-2512", // Mistral: "most capable model to date"; mistral-medium-3-5 is newer-dated but smaller — judgment call
+  // "meta/muse-spark-1.3",          // Meta: flagship line rebranded from meta-llama/llama-4-* to meta/muse-spark-*; released 2026-09-02
 ];
 
 function loadEnvKey() {
