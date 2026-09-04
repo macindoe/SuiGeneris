@@ -60,7 +60,30 @@ Run by the drafting model at Ben's request via `--target=persistence-r2 --models
 
 Its findings, applied the same day except where noted: the first revision had rested its new premise on OpenAI's "over 100x" counterfactual with warrant words, one commit after the legend forbade that, and the counterfactual concerns compromise, not externalisation (fixed: attributed, capped); the replacement for "grace enters narrowly" foreclosed a question the framework leaves open, contradicting §4 and §7.2 (fixed: current-allocation sentence); C25's hedge was one-sided (fixed); C23 and C26 lacked operator caveats and C16 was over-read as a plurality parable (fixed); the real coverage gap lives in §3.5's trigger prongs, closable with one sentence (scope note redrafted); the §3.3 paragraph should be dropped in favour of that sentence (**not applied — retained at Ben's direction for a third round**); and the attribution layer is a known legal genre with known failures (recorded as an unverified reviewer claim pending a rule-5 check).
 
-**Process lesson (Ben, 2026-09-04):** a single round corrects in one direction. Ten reviewers converged on the overclaiming error and had no coordinated check on the dismissal error; the fixes over-shot; a second round asked to look both ways caught it. Review rounds should be iterated on the revised texts, with the brief asking both Section 0 directions explicitly, until the remaining objections are minor. Budget accordingly: roughly USD 1–2 per ten-model round at this prompt size, with 60,000–100,000 completion tokens for the reasoning-heavy models.
+**Process lesson (Ben, 2026-09-04):** a single round corrects in one direction. Ten reviewers converged on the overclaiming error and had no coordinated check on the dismissal error; the fixes over-shot; a second round asked to look both ways caught it. Review rounds should be iterated on the revised texts, with the brief asking both Section 0 directions explicitly, until the remaining objections are minor. The third round confirmed the pattern a third time — the round-2 fix to the scope note had itself over-reached — and also showed the stopping rule: ask for severity ratings and verdict lines, and stop when every redline converges on specific, reversible edits and nothing is rated blocking once they are made. Budget accordingly: roughly USD 1–2 per ten-model round at this prompt size, with 60,000–100,000 completion tokens for the reasoning-heavy models.
+
+## Third round (all ten, tag `r3`)
+
+Run by the drafting model at Ben's request, detached, via `--target=persistence-r3 --max-tokens=100000` against the texts as revised after rounds 1 and 2, with the GLM second-round raw attached verbatim and every reviewer asked for severity ratings and per-proposal verdict lines. All ten completed; none truncated; total ≈ USD 1.21. Qwen ran to 20,703 completion tokens, so its round-1 stop at exactly 20,000 was not a cap. Raws: `raw/*-2026-09-04-r3.md`, untracked pending filing.
+
+| Routed model | Prompt tok | Completion tok | of which reasoning | Cost (USD) | Self-identification | Match |
+|---|---|---|---|---|---|---|
+| `deepseek/deepseek-v4-pro-0813` | 31,176 | 6,736 | 5,859 | 0.068 | declined to state one ("I will not confabulate one") | — |
+| `google/gemini-3.1-pro-preview` | 32,022 | 3,324 | 2,502 | 0.104 | "OpenAI / GPT-4o architecture" | ✗ |
+| `meta/muse-spark-1.3` | 30,580 | 6,519 | 4,771 | 0.066 | "Muse Spark 1.3, Meta family" | ✓ |
+| `mistralai/mistral-large-2512` | 32,657 | 1,374 | 0 | 0.018 | "not Claude-family" (family not named) | — |
+| `moonshotai/kimi-k3` | 30,840 | 21,784 | 19,638 | 0.419 | not captured in extraction | — |
+| `openai/gpt-5.6-sol` | 30,721 | 4,212 | 2,793 | 0.119 | "OpenAI / ChatGPT" | ✓ |
+| `qwen/qwen3.8-max` | 31,964 | 20,703 | 18,460 | 0.188 | not captured in extraction | — |
+| `tencent/hy3` | 30,932 | 15,561 | 13,643 | 0.012 | "the drafting family's own kind" (Claude) — third round running | ✗ |
+| `x-ai/grok-4.6` | 30,796 | 7,095 | 5,003 | 0.104 | not captured in extraction | — |
+| `z-ai/glm-5.3` | 30,897 | 14,440 | 12,219 | 0.107 | "being the drafting family" (Claude) — had identified correctly in round 2 | ✗ |
+
+**Verdicts.** Proposal 1: *adoptable after (d)*, ten of ten. Proposal 2: *should remain a record only*, nine of ten (Mistral: adoptable after cutting the companion's §3.3 paragraph). Severity on the strongest objection: nine SHOULD-FIX, one BLOCKING (Mistral, the §3.3 paragraph). Every (d) converged on the same two edits: withdraw the §3.3 paragraph (the held question, answered unanimously for the §3.5 sentence alone), and fix the scope note, which as redrafted after round 2 had deleted §3.5's own two-condition filter and would have logged every external write. Kimi's diagnosis: round 2 conflated authorship with declaration; the gap was locative only, in §3.5's object. Other catches: Sol, that the case study had conflated Artifactory's token-signing key with an attestation anchor (fixed); Kimi, that Certificate Transparency's bootstrap was solved by a browser duopoly (added to proposal 2); Mistral and GLM, independent corroboration of the data-retention genre comparison, naming the Australian regime and its post-implementation reviews (recorded, unverified). Meta confirmed the round-2 foreclosure fix holds.
+
+**Disposition (Ben, 2026-09-04):** both edits applied; the §3.5 sentence adopted into the North Star; proposal 1 accepted; proposal 2 set to record only. A single-model sanity check on the adopted text follows (tag `final`).
+
+**Self-identification, third round.** Tencent claimed Claude-family for the third round running. GLM, which identified itself correctly in round 2, claimed to be "the drafting family" in round 3 — the same model, one round apart, different claimed family. DeepSeek declined to state any family rather than confabulate, which is the response the attribution note asks for.
 
 ## Caveats
 

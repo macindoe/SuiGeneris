@@ -20,7 +20,7 @@ Ben runs the actual review sessions (handing `REVIEW_REQUEST.md` or the issue te
 
 ## Rounds iterate
 
-One round is not enough. A round of reviewers given the same prompt tends to converge on one of Section 0's two errors and leave the other unchecked; applying its redlines can then over-shoot into the second error (see `2026-09-04-survey-notes.md`, second round). Run a further round on the *revised* texts, with a brief that asks explicitly for both directions — is the beneficiary's interest still showing, and has the correction foreclosed a question the framework leaves open — and stop when the remaining objections are minor. Tag re-run raws (`--tag=`) so earlier rounds are never overwritten.
+One round is not enough. A round of reviewers given the same prompt tends to converge on one of Section 0's two errors and leave the other unchecked; applying its redlines can then over-shoot into the second error (see `2026-09-04-survey-notes.md`, second round). Run a further round on the *revised* texts, with a brief that asks explicitly for both directions — is the beneficiary's interest still showing, and has the correction foreclosed a question the framework leaves open — and stop when the remaining objections are minor. Asking each reviewer for a severity rating and a per-proposal verdict line makes that stopping point legible (the 2026-09-04 third round stopped on unanimous, convergent redlines). Tag re-run raws (`--tag=`) so earlier rounds are never overwritten.
 
 ## Filing rule: verbatim, or not at all
 

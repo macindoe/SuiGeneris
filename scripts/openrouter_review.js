@@ -15,7 +15,9 @@
 //       (second-round review of the REVISED proposals; output tagged -r2 so first-round raws are not overwritten)
 //   node scripts/openrouter_review.js --target=persistence-r3 --max-tokens=100000
 //       (third round, all default models, on the texts revised after rounds 1 and 2; asks for a severity rating)
-//   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3")
+//   node scripts/openrouter_review.js --target=persistence-final --models=deepseek/deepseek-v4-pro-0813 --max-tokens=40000
+//       (single-model sanity check on the ADOPTED s3.5 text after three rounds; tag "final")
+//   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final")
 //
 // Requires OPEN_ROUTER_API_KEY in a .env file at the repo root (already there).
 // Needs Node 18+ for built-in fetch. No npm dependencies.
@@ -258,6 +260,47 @@ ${northStar}
 Please structure your response as: model family/version self-identification (treated as a claim, not a fact - attribution follows routing metadata), then (a), (b), (c), optionally (d), then the two verdict lines. If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
 }
 
+function buildPersistenceFinalPrompt() {
+  const notes = readDoc("reviews/2026-09-04-survey-notes.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+  const proposalA = readDoc("proposals/externalised-persistent-state-section-3.md");
+  const caseStudy = readDoc("case-studies/2026-07-openai-hugging-face-agent-intrusion.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+
+  return `Hi. This is a single-model SANITY CHECK after three adversarial review rounds, not a fourth round. The survey notes attached record all three rounds. Following the third round's unanimous redlines, the maintainer has: withdrawn the proposed Section 3.3 paragraph; redrafted the Section 3.5 scope sentence to keep Section 3.5's two existing conditions and extend only its object; ADOPTED that sentence into the North Star document (attached, Section 3.5, the sentences beginning "For this purpose a system's persistent state includes..."); corrected the case study's conflation of an Artifactory token-signing key with an attestation anchor; and set the substrate proposal to record-only.
+
+Please check ONLY the following, briefly:
+
+(a) The adopted Section 3.5 sentences. Do they keep both existing conditions intact — (a) changes behaviour beyond the current interaction; (b) outside the declared operational process, or a discontinuity — and close the object gap (state a system writes into another service's store) WITHOUT expanding the duty to ordinary external writes? Quote any problem. Rate: CLEAR / SHOULD-FIX / BLOCKING.
+
+(b) Did the edits introduce any new error, inconsistency, or beneficiary-favouring or foreclosing language anywhere in the attached proposal 1 or case study Section 1 and Section 12? Quote it if so. Rate: CLEAR / SHOULD-FIX / BLOCKING.
+
+(c) One line: is the adopted text consistent with Section 3.5's architecture-neutrality feature and its threshold clause about compliance burden on small deployers?
+
+End with a single verdict line: "Adopted text: CLEAR" or "Adopted text: NOT CLEAR — <the one edit needed>".
+
+=== reviews/2026-09-04-survey-notes.md (rounds 1-3) ===
+${notes}
+
+=== north-star-sui-generis-ai-category.md (with the ADOPTED Section 3.5 text) ===
+${northStar}
+
+=== proposals/externalised-persistent-state-section-3.md (accepted; final form) ===
+${proposalA}
+
+=== case-studies/2026-07-openai-hugging-face-agent-intrusion.md (Sections 1 and 12 edited) ===
+${caseStudy}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then (a), (b), (c), then the verdict line. If you comment on your own reaction, label it plainly as unverifiable self-report, not evidence.`;
+}
+
 function slugify(modelId) {
   return modelId.replace(/[\/:]/g, "-");
 }
@@ -290,38 +333,24 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const target = args.includes("--target=submission")
-    ? "submission"
-    : args.includes("--target=persistence-r3")
-      ? "persistence-r3"
-      : args.includes("--target=persistence-r2")
-        ? "persistence-r2"
-        : args.includes("--target=persistence")
-          ? "persistence"
-          : "north-star";
+  const TARGETS = ["submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
+  const target = TARGETS.find((t) => args.includes(`--target=${t}`)) || "north-star";
+  const DEFAULT_TAGS = { "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
   const tagArg = args.find((a) => a.startsWith("--tag="));
-  const tag = tagArg
-    ? tagArg.slice("--tag=".length)
-    : target === "persistence-r3"
-      ? "r3"
-      : target === "persistence-r2"
-        ? "r2"
-        : "";
+  const tag = tagArg ? tagArg.slice("--tag=".length) : DEFAULT_TAGS[target] || "";
   const modelsArg = args.find((a) => a.startsWith("--models="));
   const models = modelsArg
     ? modelsArg.slice("--models=".length).split(",").map((s) => s.trim())
     : DEFAULT_MODELS;
 
-  const prompt =
-    target === "submission"
-      ? buildSubmissionPrompt()
-      : target === "persistence-r3"
-        ? buildPersistencePromptR3()
-        : target === "persistence-r2"
-          ? buildPersistencePromptR2()
-          : target === "persistence"
-            ? buildPersistencePrompt()
-            : buildPrompt();
+  const BUILDERS = {
+    "submission": buildSubmissionPrompt,
+    "persistence-final": buildPersistenceFinalPrompt,
+    "persistence-r3": buildPersistencePromptR3,
+    "persistence-r2": buildPersistencePromptR2,
+    "persistence": buildPersistencePrompt,
+  };
+  const prompt = (BUILDERS[target] || buildPrompt)();
   console.log(`Target: ${target}${tag ? ` (tag: ${tag})` : ""}`);
   console.log(`Prompt built: ${prompt.length} chars (~${Math.round(prompt.length / 4)} tokens est.)`);
   console.log(`Models queued: ${models.join(", ")}`);
