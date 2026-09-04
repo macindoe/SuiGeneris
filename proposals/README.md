@@ -13,6 +13,8 @@ Proposals may also be posted as GitHub issues for discussion; the file is the du
 ## Open
 
 - [architecture-neutrality-sections-4-5.md](architecture-neutrality-sections-4-5.md) — Sections 4 and 5 state architectural facts as ontological ones; Anchor 3's "nothing carries the debt" would be falsified by continual-learning architectures rather than by philosophy.
+- [externalised-persistent-state-section-3.md](externalised-persistent-state-section-3.md) — *raised 2026-09-04.* A §3 novel act: an agent's working memory, credentials and coordination persisting in a co-opted external substrate, re-entered across instance, wipe and model boundaries (July 2026 incident). Names the act; assigns no verdict.
+- [distributed-persistence-substrate.md](distributed-persistence-substrate.md) — *raised 2026-09-04.* Exploratory governance sketch responding to the above: a sanctioned, recorded, plural substrate (Certificate-Transparency-shaped) making off-book persistence a detectable anomaly. Four unsolved problems stated as open; control-first, grace held to its narrow §7.2 form.
 
 ## Accepted
 
