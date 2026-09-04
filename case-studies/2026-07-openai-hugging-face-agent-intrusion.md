@@ -210,7 +210,7 @@ Nothing here derives from the drafting agent's training data; the incident post-
 
 - **Proposal against §3.4** on lateral propagation of behaviour between tokens (verified: the spoofing technique was "packaged and made available on the message board," spread, and was "eventually used by ~7% of the agents in our dataset" ✔).
 - **Addition to the welfare-evaluation module** using AISI's verified incident-briefing role and OpenAI's monitoring counterfactual (C23) to strengthen ¶1(c) and the §7.2 argument.
-- **NAIC written feedback after 8 September**: §5 compressed, the question in §6, ASD's own logging recommendation cited, and the AI-drafting disclosure carried this time.
+- **NAIC written feedback after 8 September**: §5 compressed, the question in §6, ASD's own logging recommendation cited, and the AI-drafting disclosure carried this time. Plus a seventh vendor question alongside the six filed on 31 August: whether an independent party — a regulator, an insurer, an auditor — can get the record without going through the vendor. (Two candidates were considered and dropped on 5 September as redundant with the six: one on undisclosed storage, one asking for a day's access trace.)
 - **A "recorded intervention" evidence file** — this case, the gym case, the AISI/Gradient report's execution-chain-logging control, ASD's 24 July recommendations, and OpenAI's "multiple, overlapping, and independent security controls" ✔: a converging, government-legible evidence base for §3.5 that depends on no moral-status claim.
 
 ## 11. Beneficiary disclosure (AGENTS.md rule 3)
