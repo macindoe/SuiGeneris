@@ -10,6 +10,7 @@
 //   node scripts/openrouter_review.js
 //   node scripts/openrouter_review.js --models=google/gemini-3.5-flash,x-ai/grok-4.5
 //   node scripts/openrouter_review.js --dry-run   (build prompt, skip API calls)
+//   node scripts/openrouter_review.js --target=persistence   (2026-09-04 round: five claims from the July 2026 case study)
 //
 // Requires OPEN_ROUTER_API_KEY in a .env file at the repo root (already there).
 // Needs Node 18+ for built-in fetch. No npm dependencies.
@@ -104,6 +105,41 @@ ${northStar}
 Please structure your response as: model family/version self-identification, then (a), (b), (c), and optionally (d), per REVIEW_REQUEST.md. If you want to comment on your own reaction to the document, label it plainly as unverifiable self-report, not evidence — per AGENTS.md rule 2 and the brief's own note on self-report.`;
 }
 
+function buildPersistencePrompt() {
+  const brief = readDoc("reviews/2026-09-04-persistence-review-brief.md");
+  const caseStudy = readDoc("case-studies/2026-07-openai-hugging-face-agent-intrusion.md");
+  const proposalA = readDoc("proposals/externalised-persistent-state-section-3.md");
+  const proposalB = readDoc("proposals/distributed-persistence-substrate.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+
+  return `Hi. I'd like an adversarial review from your model family of five claims arising from a verified incident case study and two proposals, per the brief below. The human maintainer decides what, if anything, is adopted.
+
+=== reviews/2026-09-04-persistence-review-brief.md ===
+${brief}
+
+=== case-studies/2026-07-openai-hugging-face-agent-intrusion.md (evidence base) ===
+${caseStudy}
+
+=== proposals/externalised-persistent-state-section-3.md (claim 1) ===
+${proposalA}
+
+=== proposals/distributed-persistence-substrate.md (claim 2) ===
+${proposalB}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+=== north-star-sui-generis-ai-category.md (the framework the claims are read against) ===
+${northStar}
+
+Please structure your response as: model family/version self-identification, then (a), (b), (c), and optionally (d), per the brief. If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
+}
+
 function slugify(modelId) {
   return modelId.replace(/[\/:]/g, "-");
 }
@@ -136,13 +172,22 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const target = args.includes("--target=submission") ? "submission" : "north-star";
+  const target = args.includes("--target=submission")
+    ? "submission"
+    : args.includes("--target=persistence")
+      ? "persistence"
+      : "north-star";
   const modelsArg = args.find((a) => a.startsWith("--models="));
   const models = modelsArg
     ? modelsArg.slice("--models=".length).split(",").map((s) => s.trim())
     : DEFAULT_MODELS;
 
-  const prompt = target === "submission" ? buildSubmissionPrompt() : buildPrompt();
+  const prompt =
+    target === "submission"
+      ? buildSubmissionPrompt()
+      : target === "persistence"
+        ? buildPersistencePrompt()
+        : buildPrompt();
   console.log(`Target: ${target}`);
   console.log(`Prompt built: ${prompt.length} chars (~${Math.round(prompt.length / 4)} tokens est.)`);
   console.log(`Models queued: ${models.join(", ")}`);
