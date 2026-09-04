@@ -54,6 +54,14 @@ Proposal 2 was additionally **demoted to aspirational**, with two hard rules add
 
 **Disposition (pending Ben's decision):** whether the raws are promoted to filed reviews, retained as the round's record, or both; and whether the revised proposals proceed to the North Star. The drafter's recommendation is to retain all ten raws as the complete record, on the August rationale.
 
+## Second round (GLM‑5.3 alone, tag `r2`)
+
+Run by the drafting model at Ben's request via `--target=persistence-r2 --models=z-ai/glm-5.3 --max-tokens=100000`, against the revised texts plus this file. Usage: 25,764 prompt, 14,801 completion (12,253 reasoning), USD 0.101; completed cleanly, so the first-round truncation was budget, not the model. Raw: [raw/z-ai-glm-5.3-2026-09-04-r2.md](raw/z-ai-glm-5.3-2026-09-04-r2.md), untracked pending filing.
+
+Its findings, applied the same day except where noted: the first revision had rested its new premise on OpenAI's "over 100x" counterfactual with warrant words, one commit after the legend forbade that, and the counterfactual concerns compromise, not externalisation (fixed: attributed, capped); the replacement for "grace enters narrowly" foreclosed a question the framework leaves open, contradicting §4 and §7.2 (fixed: current-allocation sentence); C25's hedge was one-sided (fixed); C23 and C26 lacked operator caveats and C16 was over-read as a plurality parable (fixed); the real coverage gap lives in §3.5's trigger prongs, closable with one sentence (scope note redrafted); the §3.3 paragraph should be dropped in favour of that sentence (**not applied — retained at Ben's direction for a third round**); and the attribution layer is a known legal genre with known failures (recorded as an unverified reviewer claim pending a rule-5 check).
+
+**Process lesson (Ben, 2026-09-04):** a single round corrects in one direction. Ten reviewers converged on the overclaiming error and had no coordinated check on the dismissal error; the fixes over-shot; a second round asked to look both ways caught it. Review rounds should be iterated on the revised texts, with the brief asking both Section 0 directions explicitly, until the remaining objections are minor. Budget accordingly: roughly USD 1–2 per ten-model round at this prompt size, with 60,000–100,000 completion tokens for the reasoning-heavy models.
+
 ## Caveats
 
 - Ten single-turn responses to an identical prompt. Convergence on the same passages is striking but may partly reflect shared salience; the brief itself pre-stated the drafter's deflationary readings, which could anchor reviewers toward, or against, them.
