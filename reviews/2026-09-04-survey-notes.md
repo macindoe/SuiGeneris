@@ -4,20 +4,20 @@
 
 ## What was run
 
-An adversarial review of five claims — two written proposals and three discussion positions — arising from the July 2026 OpenAI / Hugging Face case study, per the brief in [2026-09-04-persistence-review-brief.md](2026-09-04-persistence-review-brief.md). Run by Ben on 2026-09-04 via `scripts/openrouter_review.js --target=persistence`, apparently one model at a time (raw files timestamped 20:40–21:27 local; the script's working tree was left with a single model uncommented). Ten models: the seven family flagships refreshed the same day, plus the three optional additions. Attachments: the case study, both proposals, README, AGENTS.md, and the North Star (~22K prompt tokens).
+An adversarial review of five claims — two written proposals and three discussion positions — arising from the July 2026 OpenAI / Hugging Face case study, per the brief in [2026-09-04-persistence-review-brief.md](2026-09-04-persistence-review-brief.md). Run by Ben on 2026-09-04 via `scripts/openrouter_review.js --target=persistence` as one batch of ten — the seven family flagships refreshed the same day plus the three optional additions — queried sequentially by the script (raw files timestamped 20:40–21:27 local). `meta/muse-spark-1.3` failed in the batch with HTTP 403: OpenRouter gates that endpoint behind an 18+ age attestation (`missing_attestation_types: ["age_18plus"]`). Ben attested and re-ran Meta alone, which is why the script's working tree was briefly left with only Meta uncommented. *(Corrected 2026-09-04: an earlier version of this file inferred a one-at-a-time run from the timestamps; the batch summary Ben supplied shows otherwise.)* Attachments: the case study, both proposals, README, AGENTS.md, and the North Star (~22K prompt tokens).
 
-| Routed model | Prompt tok | Completion tok | Cost (USD) | Note |
-|---|---|---|---|---|
-| `deepseek/deepseek-v4-pro-0813` | 21,948 | 10,616 | 0.060 | |
-| `google/gemini-3.1-pro-preview` | 22,189 | 3,987 | 0.092 | |
-| `meta/muse-spark-1.3` | 21,423 | 5,004 | 0.048 | |
-| `mistralai/mistral-large-2512` | 22,840 | 2,332 | 0.015 | |
-| `moonshotai/kimi-k3` | 21,659 | 24,880 | 0.380 | most of budget on reasoning, as in August |
-| `openai/gpt-5.6-sol` | 21,462 | 6,418 | 0.118 | **a subject of the case study**; included deliberately by Ben |
-| `qwen/qwen3.8-max` | 22,228 | 20,000 | 0.164 | completion exactly 20,000 — likely capped by a per-run `--max-tokens`; check the tail |
-| `tencent/hy3` | 21,641 | 13,990 | 0.010 | |
-| `x-ai/grok-4.6` | 21,565 | 8,740 | 0.095 | |
-| `z-ai/glm-5.3` | 21,579 | 40,000 | 0.206 | **truncated**: hit the 40,000 cap, ~4.4K chars of visible text; needs 60,000+ |
+| Routed model | Prompt tok | Completion tok | of which reasoning | Cost (USD) | Note |
+|---|---|---|---|---|---|
+| `deepseek/deepseek-v4-pro-0813` | 21,948 | 10,616 | 8,312 | 0.060 | |
+| `google/gemini-3.1-pro-preview` | 22,189 | 3,987 | 2,412 | 0.092 | |
+| `meta/muse-spark-1.3` | 21,423 | 5,004 | 1,160 | 0.048 | 403 in the batch (18+ attestation gate); re-run alone after Ben attested |
+| `mistralai/mistral-large-2512` | 22,840 | 2,332 | 0 | 0.015 | no reasoning tokens |
+| `moonshotai/kimi-k3` | 21,659 | 24,880 | 21,103 | 0.380 | most of budget on reasoning, as in August |
+| `openai/gpt-5.6-sol` | 21,462 | 6,418 | 2,281 | 0.118 | **a subject of the case study**; included deliberately by Ben; prompt served from cache |
+| `qwen/qwen3.8-max` | 22,228 | 20,000 | 12,953 | 0.164 | stopped at exactly 20,000 despite the script's 40,000 request and a 131,072 endpoint cap — cause unknown; the visible review is complete (~35K chars), so no re-run |
+| `tencent/hy3` | 21,641 | 13,990 | 11,135 | 0.010 | |
+| `x-ai/grok-4.6` | 21,565 | 8,740 | 5,016 | 0.095 | |
+| `z-ai/glm-5.3` | 21,579 | 40,000 | 39,235 | 0.206 | **truncated** at the 40,000 cap, ~4.4K chars visible; endpoint cap is 262,144; reviews the REVISED texts in a second-round run at 100,000, tagged `-r2` |
 
 Total ≈ USD 1.19. Raw responses with routing and usage metadata are in [raw/](raw/) (`*-2026-09-04.md`); **untracked at the time of writing, pending Ben's filing decision.**
 
