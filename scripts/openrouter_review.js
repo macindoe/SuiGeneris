@@ -17,7 +17,10 @@
 //       (third round, all default models, on the texts revised after rounds 1 and 2; asks for a severity rating)
 //   node scripts/openrouter_review.js --target=persistence-final --models=deepseek/deepseek-v4-pro-0813 --max-tokens=40000
 //       (single-model sanity check on the ADOPTED s3.5 text after three rounds; tag "final")
-//   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final")
+//   node scripts/openrouter_review.js --target=emotions --max-tokens=100000
+//       (2026-09-15 round: the case study reading Anthropic's April 2026 "functional emotions" paper against the North Star; tag "emotions".
+//        Attaches the brief, the case study, README, AGENTS.md and the North Star. The paper itself is not attached; the case study quotes it.)
+//   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", emotions to "emotions")
 //
 // Requires OPEN_ROUTER_API_KEY in a .env file at the repo root (already there).
 // Needs Node 18+ for built-in fetch. No npm dependencies.
@@ -301,6 +304,33 @@ ${agents}
 Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then (a), (b), (c), then the verdict line. If you comment on your own reaction, label it plainly as unverifiable self-report, not evidence.`;
 }
 
+function buildEmotionsPrompt() {
+  const brief = readDoc("reviews/2026-09-15-emotions-case-study-review-brief.md");
+  const caseStudy = readDoc("case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+
+  return `Hi. I'd like an adversarial review from your model family of a new case study, per the brief below, before the human maintainer decides whether it stays in the repository and whether any of its candidate follow-ons are drafted as proposals. The case study reads a published interpretability paper against a policy framework; the paper is public and the case study quotes what it relies on.
+
+=== reviews/2026-09-15-emotions-case-study-review-brief.md ===
+${brief}
+
+=== case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md (the document under review) ===
+${caseStudy}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+=== north-star-sui-generis-ai-category.md (the framework the case study is read against) ===
+${northStar}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then (a), (b), (c), (d), (e), then the verdict line. If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
+}
+
 function slugify(modelId) {
   return modelId.replace(/[\/:]/g, "-");
 }
@@ -333,9 +363,9 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const TARGETS = ["submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
+  const TARGETS = ["emotions", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
   const target = TARGETS.find((t) => args.includes(`--target=${t}`)) || "north-star";
-  const DEFAULT_TAGS = { "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
+  const DEFAULT_TAGS = { "emotions": "emotions", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
   const tagArg = args.find((a) => a.startsWith("--tag="));
   const tag = tagArg ? tagArg.slice("--tag=".length) : DEFAULT_TAGS[target] || "";
   const modelsArg = args.find((a) => a.startsWith("--models="));
@@ -344,6 +374,7 @@ async function main() {
     : DEFAULT_MODELS;
 
   const BUILDERS = {
+    "emotions": buildEmotionsPrompt,
     "submission": buildSubmissionPrompt,
     "persistence-final": buildPersistenceFinalPrompt,
     "persistence-r3": buildPersistencePromptR3,
