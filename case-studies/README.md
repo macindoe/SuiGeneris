@@ -14,9 +14,9 @@ Incidents involving AI systems behaving in ways that *look* like intention, loya
 
 North Star §0 and `AGENTS.md` rule 2 bind hardest here, not least. A case study in this directory must state, explicitly and near the top, what the incident **is not evidence of**. If it cannot do that convincingly, it is not ready to leave the repository.
 
-## Research-finding case studies (draft class, pending Ben's confirmation)
+## Research-finding case studies
 
-Added 2026-09-15 by the drafting agent after the ten-model round on the first non-incident case study asked that this class be admitted explicitly, with criteria, rather than by precedent, and said the amendment is the maintainer's to make. Until Ben confirms or strikes this section, the April 2026 emotions paper study below is a pilot.
+Added 2026-09-15 by the drafting agent after the ten-model round on the first non-incident case study asked that this class be admitted explicitly, with criteria, rather than by precedent, and said the amendment is the maintainer's to make. Confirmed by Ben the same day.
 
 A published research finding may be treated as a case study when all of the following hold:
 
@@ -28,6 +28,8 @@ A published research finding may be treated as a case study when all of the foll
 
 A research finding cannot supply what an incident supplies, an event the government's own agencies have already commented on, and should not be cited in a submission as though it did.
 
+**Backlog (Ben, 2026-09-15):** widen the project's sourcing to research that arrives independently of the major AI labs (academic groups, open-weight replications, government institutes), so that the research-finding class does not consist only of developers writing about their own models. Not scheduled; the watchlist monitor covers government sources only.
+
 ## Conventions
 
 - File naming: `YYYY-MM-<short-slug>.md`, dated to the incident, not the write-up.
@@ -36,5 +38,5 @@ A research finding cannot supply what an incident supplies, an event the governm
 
 ## Contents
 
-- [2026-04-anthropic-emotion-concepts-functional-emotions.md](2026-04-anthropic-emotion-concepts-functional-emotions.md) — Anthropic's April 2026 interpretability paper *Emotion Concepts and their Function in a Large Language Model*, read against §3.2, §3.5, §4, §5 and §9. The first case study of a research finding rather than an incident; the README's three jobs and the standing hazard apply unchanged. **Research-stage; quotations verified against the retrieved paper text 2026-09-15; ten-model round run the same day and its convergent redlines applied (`../reviews/2026-09-15-emotions-case-study-review-brief.md`, `../reviews/2026-09-15-survey-notes.md`; eight READY AFTER (e), two NOT YET). Awaiting Ben's review, including of the draft research-finding class above.**
+- [2026-04-anthropic-emotion-concepts-functional-emotions.md](2026-04-anthropic-emotion-concepts-functional-emotions.md) — Anthropic's April 2026 interpretability paper *Emotion Concepts and their Function in a Large Language Model*, read against §3.2, §3.5, §4, §5 and §9. The first case study of a research finding rather than an incident; the README's three jobs and the standing hazard apply unchanged. **Research-stage; quotations verified against the retrieved paper text 2026-09-15; ten-model round run the same day and its convergent redlines applied (`../reviews/2026-09-15-emotions-case-study-review-brief.md`, `../reviews/2026-09-15-survey-notes.md`; eight READY AFTER (e), two NOT YET). Raws filed and the research-finding class confirmed by Ben on 15 September; the welfare-module paragraph (follow-on 2) drafted the same day. Awaiting Ben's review of the text itself.**
 - [2026-07-openai-hugging-face-agent-intrusion.md](2026-07-openai-hugging-face-agent-intrusion.md) — the July 2026 OpenAI evaluation escape and Hugging Face production breach. **Research-stage; all seven primary sources retrieved and grep-verified 2026-09-03/04, including OpenAI's 51-page technical report. Awaiting Ben's review.**

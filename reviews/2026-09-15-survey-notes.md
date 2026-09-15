@@ -21,7 +21,7 @@ Tencent's call dropped mid-round with a connection error ("terminated") and was 
 | `mistralai/mistral-large-2512` | 17,711 | 1,890 | 0 | 0.012 | READY AFTER (e) § |
 | `meta/muse-spark-1.3` | 16,895 | 4,323 | 2,106 | 0.039 | READY AFTER (e) |
 
-Total ≈ USD 1.14. No truncations at the 100,000 budget. † Qwen: BLOCKING / reclassify if the directory is strictly incident-only. ‡ GLM's reported reasoning count again exceeds its completion count; recorded as returned. § Mistral rated its (a) BLOCKING and then gave READY AFTER (e); the inconsistency is recorded, not resolved. GPT-5.6's usage shows 16,979 cache-write tokens, the first time prompt caching has appeared in a round's metadata. Raw responses with routing and usage metadata are in [raw/](raw/), **untracked at the time of writing, pending Ben's filing decision.**
+Total ≈ USD 1.14. No truncations at the 100,000 budget. † Qwen: BLOCKING / reclassify if the directory is strictly incident-only. ‡ GLM's reported reasoning count again exceeds its completion count; recorded as returned. § Mistral rated its (a) BLOCKING and then gave READY AFTER (e); the inconsistency is recorded, not resolved. GPT-5.6's usage shows 16,979 cache-write tokens, the first time prompt caching has appeared in a round's metadata. Raw responses with routing and usage metadata are in [raw/](raw/), **filed verbatim on Ben's decision of 2026-09-15** (header added by the script; text untouched).
 
 ## Observation: self-identification, fifth round
 
@@ -78,4 +78,4 @@ Every convergence at 3/10 or above, and the four 1/10 findings listed above, wer
 
 **Not applied:** Mistral's family-replication claims (unverifiable); Kimi's suggestion to drop §4a when empty (the section is now full); the recommendation, from several reviewers, that the filename drop the paper's coinage (it names the paper).
 
-**Disposition (pending Ben's decision):** whether the raws are promoted to filed reviews, retained as the round's record, or both; whether the draft research-finding class in `case-studies/README.md` stands; whether follow-on 2 is drafted; and what, if anything, is done with follow-on 4. The drafter's recommendation is to retain all ten raws as the complete record, as for the September rounds.
+**Disposition (Ben, 2026-09-15):** all ten raws filed in `raw/` as the round's complete record; the research-finding class in `case-studies/README.md` confirmed, with a backlog note to look for research that arrives independently of the major labs; follow-on 2 drafted into `submissions/modules/welfare-evaluation-mandate.md` the same day; follow-on 4 held for discussion.
