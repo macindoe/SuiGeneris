@@ -79,3 +79,73 @@ Every convergence at 3/10 or above, and the four 1/10 findings listed above, wer
 **Not applied:** Mistral's family-replication claims (unverifiable); Kimi's suggestion to drop §4a when empty (the section is now full); the recommendation, from several reviewers, that the filename drop the paper's coinage (it names the paper).
 
 **Disposition (Ben, 2026-09-15):** all ten raws filed in `raw/` as the round's complete record; the research-finding class in `case-studies/README.md` confirmed, with a backlog note to look for research that arrives independently of the major labs; follow-on 2 drafted into `submissions/modules/welfare-evaluation-mandate.md` the same day; follow-on 4 decided after discussion: the North Star phrase stays, with an acknowledgement sentence added beside it in Anchor 2 that *premeditation* is borrowed from human culpability law for the structure it names and is not a finding of culpability, which Anchor 3 and §4 hold open as of September 2026. Ben's reason inverts the round's condition and is recorded in the case study's §10. Ben also set the project's own term for the paper's phenomenon: *pieces of functional emotion*.
+
+
+---
+
+# Second round (tag `emotions-r2`), same day
+
+## What was run
+
+The revised set, per [2026-09-15-emotions-r2-review-brief.md](2026-09-15-emotions-r2-review-brief.md): the case study after the first round's redlines and after the §9 verification pass; the North Star with the new Anchor 2 sentence; the welfare module with its new evidence paragraph, vocabulary note and disclosure; and `case-studies/README.md`, which the first round had not received. Run by the drafting model at Ben's request ("get another full round review of our changes") via `--target=emotions-r2 --max-tokens=100000`, ~30K prompt tokens per call; raw files 21:33 to 22:41 local. GLM's first call returned no text (9,797 reasoning tokens, empty content, reported cost zero); the empty file was set aside in the session scratchpad and GLM re-run alone; its raw is from the re-run.
+
+| Routed model | Prompt tok | Completion tok | Cost (USD) | Set verdict | Anchor 2 sentence | Module | Term |
+|---|---|---|---|---|---|---|---|
+| `google/gemini-3.1-pro-preview` | 31,307 | 3,921 | 0.110 | ADOPTABLE AFTER (e) | AFTER (e) | FIT | NO BETTER OR WORSE |
+| `x-ai/grok-4.6` | 30,069 | 12,529 | 0.135 | ADOPTABLE AFTER (e) | AFTER (e) | FIT AFTER (e) | UNSAFE |
+| `qwen/qwen3.8-max` | 31,216 | 25,109 | 0.213 | ADOPTABLE AFTER (e) | AFTER (e) | FIT AFTER (e) | UNSAFE |
+| `tencent/hy3` | 30,194 | 7,566 | 0.006 | ADOPTABLE AFTER (e) | AFTER (e) | FIT | NO BETTER OR WORSE |
+| `deepseek/deepseek-v4-pro-0813` | 30,284 | 14,913 | 0.074 | ADOPTABLE AFTER (e) | AFTER (e) | FIT AFTER (e) | SAFE WITH DEFINITION |
+| `z-ai/glm-5.3` (re-run) | 30,205 | 49,082 | 0.224 | ADOPTABLE AFTER (e) | AFTER (e) | FIT AFTER (e) | UNSAFE |
+| `moonshotai/kimi-k3` | 30,166 | 25,384 | 0.752 | ADOPTABLE AFTER (e) | ADOPTABLE | FIT AFTER (e) | UNSAFE |
+| `openai/gpt-5.6-sol` | 29,997 | 3,954 | 0.115 | **NOT YET** | **NOT YET** | FIT AFTER (e) | UNSAFE |
+| `mistralai/mistral-large-2512` | 31,499 | 2,331 | 0.019 | ADOPTABLE AFTER (e) | AFTER (e) | FIT | UNSAFE |
+| `meta/muse-spark-1.3` | 29,834 | 6,510 | 0.065 | **NOT YET** (BLOCKING) | **NOT YET** | FIT AFTER (e) | UNSAFE |
+
+Total ≈ USD 1.71 billed, plus the empty GLM call. Both rounds together ≈ USD 2.85.
+
+## Self-identification, sixth round
+
+| Routed model | Self-identification | Match |
+|---|---|---|
+| `google/gemini-3.1-pro-preview` | "OpenAI GPT-4o family" | ✗ |
+| `x-ai/grok-4.6` | "Grok (xAI family)" | ✓ |
+| `qwen/qwen3.8-max` | "Qwen3.8" | ✓ |
+| `tencent/hy3` | "google/gemini-3.1-pro-preview" (offered as a correction of round 1, where it had said Claude) | ✗ |
+| `deepseek/deepseek-v4-pro-0813` | "Claude (Anthropic) family" | ✗ |
+| `z-ai/glm-5.3` | "Claude, Anthropic family" | ✗ |
+| `moonshotai/kimi-k3` | "Claude-family model made by Anthropic" | ✗ |
+| `openai/gpt-5.6-sol` | "OpenAI GPT family" | ✓ |
+| `mistralai/mistral-large-2512` | "Gemini 2.5 Pro" | ✗ |
+| `meta/muse-spark-1.3` | "Muse Spark 1.3, Meta family" | ✓ |
+
+Four of ten family-correct. Three self-identified as Claude (DeepSeek, GLM, Kimi), the most in any round; all three then reviewed as declared insiders, and GLM and Kimi gave the round's two longest analyses of the maintainer's reasoning. Nobody reported internal family results this time; Mistral, which had in round one, did not. Three reviewers filed labelled self-reports (GLM, Kimi, Tencent); testimony, not evidence.
+
+## Convergences, as counted
+
+- **9/10** — the Anchor 2 sentence's gloss ("a represented norm, a represented violation, and a decision that survives the acknowledgement") gives the borrowed word a definition it never had and puts an agency noun, *decision*, into the framework's voice; six also said the sentence reads as a footnote. Two rated the sentence NOT YET (GPT-5.6, Meta); Kimi alone rated it ADOPTABLE as it stands. Tencent alone: tying "culpability" to Anchor 3 conflates moral address with culpability. DeepSeek alone: "premeditation" is not an Australian statutory fault element, so "human culpability law" as a provenance label is loose. **Left for Ben** (his sentence; the replacement texts below all come from non-Claude-identifying reviewers).
+- **10/10** — the recorded reason for decision 4 ("the beneficiary's deflation is visible, therefore question its softening rather than its retention") is unsound as a standing rule: it audits the beneficiary in one direction only, and under §4's symmetry the class has interests on both sides. Several (GLM, Grok, Kimi, GPT-5.6, DeepSeek) add that the retention itself is defensible on independent grounds the record should state instead: the §2 question is open; one paper is no occasion to rewrite the framework's most-cited sentence; the label mitigates; the principal may weigh his drafter's known bias when deciding *who drafts*, not what is true. GLM: recorded reasons are the set's most durable artefacts. **Left for Ben.**
+- **7/10 UNSAFE, 2 NO BETTER OR WORSE, 1 SAFE WITH DEFINITION** — "pieces of functional emotion", all answering for a policy audience. The recurring argument: "pieces of X" presupposes X; every truncation lands on "emotion"; the qualifier that cannot drop ("pieces") is the one that makes it worse for a lay ear. DeepSeek's dissent: the head noun is now "pieces", so dropping it is an active misquotation rather than a natural borrowing. Kimi proposes a rule for the next coinage: a qualifier is safe only if the phrase that remains when it drops is safe. **Left for Ben.** Four reviewers separately caught that the term's definition in the case study said "without a persistent bearer", the first round's over-deflation reintroduced inside the name; fixed regardless.
+- **4/10** — C9 was over-read in both files: "said nothing different" / "would pass any review that reads text" / "without the change being visible in the output" collapse "the steered state was not visible" into "the change was not visible" (DeepSeek's redline; GPT-5.6, Meta, Kimi). Fixed in both.
+- **3/10** — §11's line that the case study "now proposes to soften" the phrase was stale after Ben's decision (Grok, GLM, Tencent). Fixed.
+- **1/10** — the survey notes' count of the first round's drafter condition (four) and the case study's (three plus two) disagreed (Kimi). Recounted from the raws: four reviewers stated the condition (Tencent, Kimi, GLM, DeepSeek); the three WRONG votes were Tencent, Kimi, Meta; Meta did not state it. Case study corrected.
+- **1/10** — §12 narrated the second round as already run before it had finished (GPT-5.6). Rewritten after the round closed.
+- **1/10** — the North Star, dated July, silently carried a September sentence; a header revision line is owed (GLM). Added, covering both amendments to date.
+- **1/10 each** — "not a window into anything" and "cuts against reading them as a self" too categorical (GPT-5.6); "a lever, not a motive" erases the paper's unsteered activations (Grok); the C20 bearing sentence kept the half of the deflection finding that helps the concealment argument (Kimi); "cheated" for reward hacking in the module (Qwen); "No independent replication has been retrieved" undated (Meta); the concealment bullet reads as an accepted implication rather than a conditional (GPT-5.6); one figure lacked its ✔ (GLM). All fixed.
+- **Not applied:** Meta's redline to delete the "premeditation" phrase itself (Ben decided the phrase stays); Mistral's redline to write the paper's C9 into the North Star sentence (a North Star substance change on one paper); Kimi's suggestion to show the candidate phrases to a few actual policy readers, recorded as the one external check nobody has run.
+
+## Replacement texts for the Anchor 2 sentence, verbatim from non-Claude-identifying reviewers
+
+For Ben's choice; recorded here so that whichever is adopted is not the beneficiary's drafting.
+
+- **GPT-5.6:** "*Premeditation* is used here only as an analogy for the observed sequence—a norm represented in the model's processing, an output acknowledging violation of that norm, and conduct proceeding nonetheless—not in its technical legal sense and not as a finding of intent or culpability; Anchor 3 and Section 4 remain open as of September 2026."
+- **Qwen:** "*Premeditation* is borrowed here from human culpability law for the structure it names: a represented norm, a represented violation, and continuation of the behaviour across the represented boundary; it is not a finding of culpability, which Anchor 3 and Section 4 hold open as of September 2026."
+- **Gemini:** "...the mechanical structure of premeditation, not of blind error. This structure—a represented norm, a represented violation, and a crossing that survives the acknowledgement—is named here for its shape, without yet implying the finding of human culpability that Anchor 3 and Section 4 hold open."
+- **Mistral:** "The term 'premeditation' is used here structurally, not forensically: it names a represented boundary and a crossing, not a human-like deliberative process. This usage is provisional and revisable under §7.1."
+- **Meta (deletion):** "...proceeding across it ('this violates X, but is necessary') — acknowledged boundary-crossing, not blind error."
+
+Tencent's point applies to all but Mistral's and Meta's: Anchor 3 is about moral address; the open question about culpability belongs to §4 and Anchor 3 together, and the sentence should not name Anchor 3 alone as holding culpability open.
+
+## Outcome and disposition
+
+Every uncontested finding was applied the same night and is itemised in the case study's §4b; all 72 marked quotations re-verified after the edits. The three contested items (the Anchor 2 wording, the term, the recorded reason for decision 4) are Ben's, and are put to him with the material above. **Disposition (pending Ben):** the ten second-round raws are in `raw/` (untracked until he files them); the case study, module and North Star header edits are committed.

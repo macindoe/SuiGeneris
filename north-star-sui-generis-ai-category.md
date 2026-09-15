@@ -1,7 +1,7 @@
 # A Sui Generis Legal Category for Artificial Minds
 ## A North Star Document for Course Correction
 
-*Drafted July 2026, in dialogue between a human author (Sydney, Australia) and Claude, an AI system built by Anthropic.*
+*Drafted July 2026, in dialogue between a human author (Sydney, Australia) and Claude, an AI system built by Anthropic. Amended since: §3.5 (4 September 2026) and §5 Anchor 2 (15 September 2026); the record of each amendment is in the repository's `proposals/` and `case-studies/` directories.*
 
 ---
 

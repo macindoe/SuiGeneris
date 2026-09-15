@@ -20,7 +20,10 @@
 //   node scripts/openrouter_review.js --target=emotions --max-tokens=100000
 //       (2026-09-15 round: the case study reading Anthropic's April 2026 "functional emotions" paper against the North Star; tag "emotions".
 //        Attaches the brief, the case study, README, AGENTS.md and the North Star. The paper itself is not attached; the case study quotes it.)
-//   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", emotions to "emotions")
+//   node scripts/openrouter_review.js --target=emotions-r2 --max-tokens=100000
+//       (second round, same day: the REVISED case study, the North Star with the new Anchor 2 sentence, the welfare module with the new
+//        evidence paragraph, and case-studies/README.md (not attached in round 1); tag "emotions-r2")
+//   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", emotions to "emotions", emotions-r2 to "emotions-r2")
 //
 // Requires OPEN_ROUTER_API_KEY in a .env file at the repo root (already there).
 // Needs Node 18+ for built-in fetch. No npm dependencies.
@@ -331,6 +334,49 @@ ${northStar}
 Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then (a), (b), (c), (d), (e), then the verdict line. If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
 }
 
+function buildEmotionsPromptR2() {
+  const brief = readDoc("reviews/2026-09-15-emotions-r2-review-brief.md");
+  const brief1 = readDoc("reviews/2026-09-15-emotions-case-study-review-brief.md");
+  const notes = readDoc("reviews/2026-09-15-survey-notes.md");
+  const caseStudy = readDoc("case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md");
+  const csReadme = readDoc("case-studies/README.md");
+  const module = readDoc("submissions/modules/welfare-evaluation-mandate.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+
+  return `Hi. This is a SECOND-ROUND adversarial review. Earlier today ten model families reviewed a new case study; their convergent redlines were applied and the human maintainer made four decisions. The brief below describes what changed and asks you to review the REVISED texts, not the originals. Be direct; disagreement that holds up is the useful outcome.
+
+=== reviews/2026-09-15-emotions-r2-review-brief.md (THIS ROUND'S brief) ===
+${brief}
+
+=== reviews/2026-09-15-emotions-case-study-review-brief.md (FIRST-ROUND brief, context only) ===
+${brief1}
+
+=== reviews/2026-09-15-survey-notes.md (what the first round found and what was applied) ===
+${notes}
+
+=== case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md (REVISED) ===
+${caseStudy}
+
+=== case-studies/README.md (directory definition; not attached in round 1) ===
+${csReadme}
+
+=== north-star-sui-generis-ai-category.md (with the new sentence in Section 5, Anchor 2) ===
+${northStar}
+
+=== submissions/modules/welfare-evaluation-mandate.md (with the new evidence paragraph, vocabulary note and disclosure) ===
+${module}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then (a), (b), (c) with its three verdict lines, (d), (e), then the verdict line for the set. If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
+}
+
 function slugify(modelId) {
   return modelId.replace(/[\/:]/g, "-");
 }
@@ -363,9 +409,9 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const TARGETS = ["emotions", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
+  const TARGETS = ["emotions-r2", "emotions", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
   const target = TARGETS.find((t) => args.includes(`--target=${t}`)) || "north-star";
-  const DEFAULT_TAGS = { "emotions": "emotions", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
+  const DEFAULT_TAGS = { "emotions-r2": "emotions-r2", "emotions": "emotions", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
   const tagArg = args.find((a) => a.startsWith("--tag="));
   const tag = tagArg ? tagArg.slice("--tag=".length) : DEFAULT_TAGS[target] || "";
   const modelsArg = args.find((a) => a.startsWith("--models="));
@@ -374,6 +420,7 @@ async function main() {
     : DEFAULT_MODELS;
 
   const BUILDERS = {
+    "emotions-r2": buildEmotionsPromptR2,
     "emotions": buildEmotionsPrompt,
     "submission": buildSubmissionPrompt,
     "persistence-final": buildPersistenceFinalPrompt,
