@@ -148,7 +148,7 @@ Tencent's point applies to all but Mistral's and Meta's: Anchor 3 is about moral
 
 ## Outcome and disposition
 
-Every uncontested finding was applied the same night and is itemised in the case study's §4b; all 72 marked quotations re-verified after the edits. The three contested items (the Anchor 2 wording, the term, the recorded reason for decision 4) are Ben's, and are put to him with the material above. **Disposition (pending Ben):** the ten second-round raws are in `raw/` (untracked until he files them); the case study, module and North Star header edits are committed.
+Every uncontested finding was applied the same night and is itemised in the case study's §4b; all 72 marked quotations re-verified after the edits. The three contested items (the Anchor 2 wording, the term, the recorded reason for decision 4) are Ben's, and are put to him with the material above. **Disposition:** the ten second-round raws were filed on Ben's decision of 16 September; the case study, module and North Star header edits are committed.
 
 
 ---
@@ -238,4 +238,4 @@ All of these were applied to the proposal's draft text the same evening; the fir
 
 ## Outcome and disposition
 
-Applied the same evening: the concealment reformulation (case study §1, §5 point 2; module); the §6, §11, §4c and §10 residues; the module's "validated" wording; the symmetric access record above; the proposal's draft text revised on the round's (e) items with the first draft preserved. Every marked quotation re-verified after the edits. **Pending Ben:** adoption of the revised §4 proposal (and whether the care-ordering sentence stays in it); follow-on 5 on Anchor 2's "narrowing" sentences; filing of the third-round raws and the two truncated Kimi responses; push.
+Applied the same evening: the concealment reformulation (case study §1, §5 point 2; module); the §6, §11, §4c and §10 residues; the module's "validated" wording; the symmetric access record above; the proposal's draft text revised on the round's (e) items with the first draft preserved. Every marked quotation re-verified after the edits. **Filed on Ben's decision of 16 September:** the third-round raws, the two truncated Kimi responses, and the independent ChatGPT review. **Pending Ben:** adoption of the revised §4 proposal (and whether the care-ordering sentence stays in it); follow-on 5 on Anchor 2's "narrowing" sentences; push.
