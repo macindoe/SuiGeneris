@@ -149,3 +149,25 @@ Tencent's point applies to all but Mistral's and Meta's: Anchor 3 is about moral
 ## Outcome and disposition
 
 Every uncontested finding was applied the same night and is itemised in the case study's §4b; all 72 marked quotations re-verified after the edits. The three contested items (the Anchor 2 wording, the term, the recorded reason for decision 4) are Ben's, and are put to him with the material above. **Disposition (pending Ben):** the ten second-round raws are in `raw/` (untracked until he files them); the case study, module and North Star header edits are committed.
+
+
+---
+
+# Corrections from the independent review (16 September 2026)
+
+Ben commissioned an independent editorial review from ChatGPT (OpenAI), outside the repository, on a single-file packet (the three texts, both briefs, this file, all twenty raws, the rule files). The review is filed verbatim at [raw/2026-09-16-independent-review.md](raw/2026-09-16-independent-review.md). Its edits were applied on 16 September and are itemised in the case study's §4c. It also corrected this file's account of the rounds, as follows. The rows are the reviewer's, reproduced here so that the corrections sit beside what they correct; the raw reviews are unaltered.
+
+| This file's account | Corrected account and reason |
+|---|---|
+| "Every uncontested finding was applied"; C9 fixed in both files | Several changes were partial. §5 still said "expressed nothing different" and "without touching the transcript"; the lever/motive contrast remained; the test-9 replacement had a directional error. Recorded as partially applied at the time, and now applied. |
+| Nine of ten: "drop the appositive" | Nine did not accept the sentence unconditionally, but that is not nine instructions to delete its appositive. Several proposed replacing or retaining a structural gloss. The verdict tally stands; the rationales differed. |
+| Two reviewers: "drop the phrase itself" | GPT-5.6 and Meta rated the sentence NOT YET. Meta explicitly proposed deleting the phrase; GPT-5.6 supplied a replacement retaining it. Sentence rejection and word deletion are not the same vote. |
+| "The round's condition": a Claude must not draft any change | Four reviewers expressed differently scoped requests for outside scrutiny or authorship safeguards (Tencent: non-Claude review before proceeding; DeepSeek: ideally a non-Claude reviewer before drafting; GLM: drafting not the beneficiary's alone; Kimi: the drafter should not be the beneficiary). Not a unanimous authorship prohibition; AGENTS.md itself says disclose rather than recuse. |
+| Three reviewers agreed a standing configuration is not persistent-state modification | GLM argued the categorical distinction. GPT-5.6 called it persistent system configuration; Meta and Kimi allowed coverage by the functional test. Standards-layer work attracted support, but the scope disagreement was not resolved. |
+| The second-round vocabulary judgment was "unanimous" or "seven to three" | The literal verdicts were seven UNSAFE, two NO BETTER OR WORSE, one SAFE WITH DEFINITION. The two "no better" reviewers also described the existing policy risk; three reviewers did not affirm safety. The three-way tally is the record. |
+| Replacement texts collected from "non-Claude-identifying" reviewers | The project's attribution rule is routing metadata for provenance and merit for arguments. A false self-identification can distort an argument but is not a reason to discard usable text or to treat another output as free of conflict. |
+| The test-9 correction vindicated categorical exclusion of reports | Kimi's redline introduced the reversed suppression claim. GPT-5.6's first-round review had cautioned that manipulability does not imply zero evidential value; that objection was missed. Both the adopted error and the missed objection are now recorded. |
+
+Two further observations from the review, recorded for future rounds: round two received this file's first-round section, so its agreement with the first round's framing is not independent corroboration; and ten outputs from overlapping, author-selected material are not ten independent source checks. For future rounds: retain the exact draft version and supplied sources; link each issue to its evidence and proposed replacement; mark each disposition accepted, rejected, partial or unresolved with a reason; and ask what each experiment distinguishes before asking which conclusion favours or disfavours the AI category.
+
+**Disposition (16 September):** all of the review's edits applied (case study §4c; module; North Star Anchor 2 sentence replaced with the review's limited-analogy wording; the recorded reason for decision 4 re-recorded without altering the decision; the interim term retired). The review's optional new-decision rationale for retaining the phrase was not added; it is Ben's to adopt.
