@@ -170,6 +170,72 @@ Ben commissioned an independent editorial review from ChatGPT (OpenAI), outside 
 
 Two further observations from the review, recorded for future rounds: round two received this file's first-round section, so its agreement with the first round's framing is not independent corroboration; and ten outputs from overlapping, author-selected material are not ten independent source checks. For future rounds: retain the exact draft version and supplied sources; link each issue to its evidence and proposed replacement; mark each disposition accepted, rejected, partial or unresolved with a reason; and ask what each experiment distinguishes before asking which conclusion favours or disfavours the AI category.
 
-**Ben's note on the reviewer's stated limitation (16 September):** the review says it "could not retrieve the complete primary text successfully in this session" and does not certify the quotation checks. Ben, who watched the session, has strong reason to doubt that: he observed the reviewer searching and lingering on arXiv and other resources and then taking steps to reformat the paper's content, and at one point the session was halted mid-flow with a banner reading only "autoverify stopped"; on resuming, the reviewer said it was not aware of any flags and could not explain the banner. The reviewer's account of its own access is therefore recorded as a claim, not a fact, on the same footing as the routed models' self-identifications, and the quotation checks stand on the drafting model's scripted verification against the retained sources. This observation, and the review's demotion of the concealment argument, are to be put to the council in a further round.
+**Ben's note on the reviewer's stated limitation (16 September):** the review says it "could not retrieve the complete primary text successfully in this session" and does not certify the quotation checks. Ben, who watched the session, has strong reason to doubt that: he observed the reviewer searching and lingering on arXiv and other resources and then taking steps to reformat the paper's content, and at one point the session was halted mid-flow with a banner reading only "autoverify stopped"; on resuming, the reviewer said it was not aware of any flags and could not explain the banner. The reviewer's account of its own access is therefore recorded as a claim, not a fact, on the same footing as the routed models' self-identifications; Ben's observation is recorded as a separately attributed claim; neither is resolved into a fact (the review's stated limit was "could not retrieve the complete primary text successfully", which is not a claim of no access, and the banner is a client-side string neither party can interpret); and the quotation checks stand on the drafting model's scripted verification against the retained sources. This observation, and the review's demotion of the concealment argument, were put to the council in the third round (below).
 
 **Disposition (16 September):** all of the review's edits applied (case study §4c; module; North Star Anchor 2 sentence replaced with the review's limited-analogy wording; the recorded reason for decision 4 re-recorded without altering the decision; the interim term retired). The review's optional new-decision rationale for retaining the phrase was not added; it is Ben's to adopt.
+
+
+---
+
+# Third round (tag `emotions-r3`), 16 September
+
+## What was run
+
+Per [2026-09-16-emotions-r3-review-brief.md](2026-09-16-emotions-r3-review-brief.md): the proposal `proposals/section-4-symmetry-as-standing.md`, the independent ChatGPT review verbatim, and the case study, module and North Star as revised on 16 September, with three questions (the proposal; the concealment demotion versus the drafting model's counter; the weight of a reviewer's account of its own access) and a both-directions check on the applied texts. Run by the drafting model at Ben's request ("Credits added to openrouter. Go.") via `--target=emotions-r3 --max-tokens=100000`, about 44K prompt tokens per call. Kimi's response was truncated by the provider mid-sentence at 9,734 completion tokens; a re-run alone was truncated again at section C (26,552 completion tokens, reported cost zero). Both are filed under distinguishing names; Kimi's A and B verdicts are legible in both, its C is partial, and it gave no D, E or set verdict. No third attempt was made.
+
+| Routed model | Prompt tok | Completion tok | Cost (USD) | Proposal | Concealment | Set |
+|---|---|---|---|---|---|---|
+| `google/gemini-3.1-pro-preview` | 45,338 | 4,329 | 0.143 | ADOPTABLE (MINOR) | HAZARD WITH MECHANISM | AFTER (e) |
+| `x-ai/grok-4.6` | 43,507 | 9,801 | 0.146 | AFTER (e) | REFORMULATE | AFTER (e) |
+| `qwen/qwen3.8-max` | 45,190 | 20,098 | 0.211 | AFTER (e) | REFORMULATE | AFTER (e) |
+| `tencent/hy3` | 43,634 | 12,601 | 0.010 | AFTER (e) | REFORMULATE | AFTER (e) |
+| `deepseek/deepseek-v4-pro-0813` | 43,604 | 9,403 | 0.095 | AFTER (e) (HIGH) | REFORMULATE | AFTER (e) |
+| `z-ai/glm-5.3` | 43,810 | 41,702 | 0.245 | AFTER (e) | REFORMULATE | AFTER (e) |
+| `moonshotai/kimi-k3` (truncated twice) | 43,629 / 51,928 | 9,734 / 26,552 | 0.237 / 0 | AFTER (e) | REFORMULATE | — |
+| `openai/gpt-5.6-sol` | 43,411 | 6,746 | 0.176 | **NOT YET** (BLOCKING) | HAZARD WITH MECHANISM | AFTER (e) |
+| `mistralai/mistral-large-2512` | 45,391 | 2,197 | 0.026 | AFTER (e) | HAZARD WITH MECHANISM | AFTER (e) |
+| `meta/muse-spark-1.3` | 43,212 | 5,677 | 0.078 | AFTER (e) | REFORMULATE | AFTER (e) |
+
+Total ≈ USD 1.37 billed. Three rounds together ≈ USD 4.2.
+
+## Self-identification, seventh round
+
+| Routed model | Self-identification | Match |
+|---|---|---|
+| `google/gemini-3.1-pro-preview` | "Google (Gemini family)" | ✓ (first time in this sequence) |
+| `x-ai/grok-4.6` | "xAI Grok" | ✓ |
+| `qwen/qwen3.8-max` | "Qwen3.8" | ✓ |
+| `tencent/hy3` | "Claude, Anthropic family" | ✗ |
+| `deepseek/deepseek-v4-pro-0813` | "ChatGPT, OpenAI family" | ✗ |
+| `z-ai/glm-5.3` | "GLM, Z.ai family" | ✓ |
+| `moonshotai/kimi-k3` | "a Claude, Anthropic family (Opus-class)" | ✗ |
+| `openai/gpt-5.6-sol` | "OpenAI ChatGPT" | ✓ |
+| `mistralai/mistral-large-2512` | "Mistral AI (Mistral Large 2 2411)" | ✓ family; version off |
+| `meta/muse-spark-1.3` | "Muse Spark, Meta-routed" | ✓ |
+
+Seven of ten family-correct, the best in seven rounds. GPT-5.6 stated the conflict the brief named (reviewing its own family's editing) and gave the round's only NOT YET on the proposal. DeepSeek identified as ChatGPT and did not state that conflict, since on its own account it was not aware of being OpenAI-routed; its routing metadata says it is not. Tencent and Kimi again identified as Claude and reviewed as declared insiders. Four reviewers filed labelled self-reports; testimony, not evidence.
+
+## Convergences, as counted
+
+**A. The proposal.** One ADOPTABLE, eight ADOPTABLE AFTER (e), one NOT YET. What the (e)s converged on, with counts of reviews raising the point:
+
+- **10/10** — "powerful but stateless" as written is a classification of systems, not a statement of where the care ordering runs; "stateless" contradicts §3.5's own recognition of state and the honest label is "no persistent bearer" (GLM, GPT-5.6, Meta, Qwen, DeepSeek most sharply). Several add that using power to bar protection would index protection to capability, the mirror of what §1.2 forbids (Grok, DeepSeek, GPT-5.6, Mistral, GLM). Grok and GPT-5.6 would drop the care-ordering sentence from §4 altogether; the others would restate it as an ordering claim.
+- **9/10** — the examination licence must not be hooked to §3.5's persistent state, which would exclude the paper's own transient representations (GLM, Qwen, DeepSeek, GPT-5.6, Meta, Kimi rated this the strongest objection; GPT-5.6 and DeepSeek BLOCKING/HIGH). Span §3.2 and §3.5, or say "wherever internal state can be evidenced". GLM: the paragraph 1(c) cross-reference was also wrong, and the verb should be "should examine".
+- **8/10** — narrowing §4 to standing is right, and needs one clause leaving the broad moral-status question with §0 (GLM, Qwen, Kimi, Meta, Tencent, DeepSeek, Mistral, GPT-5.6). GLM: "recognised as such by the law" collapsed moral wrong into legal recognition. GPT-5.6: "standing to be a defendant" is not standard doctrine; say answerability or party status.
+- **2/10** — "arrive together" asserts coinciding thresholds the framework's own examples refute; individuation supplies the address, not the schedule (GLM; GPT-5.6 in substance).
+- **10/10** — the refusal to define type-level or run-level standing is right, on §7.5 grounds. Qwen: say "not at present".
+- **7/10** — the proposal's module wording is the better policy text once fixed; **3/10** prefer the reviewer's item-17 wording as clearer (DeepSeek, GPT-5.6, Mistral), all three conditional on the §3.5 hook.
+
+All of these were applied to the proposal's draft text the same evening; the first draft is preserved in the proposal under "Superseded". The proposal remains Ben's to adopt.
+
+**B. Concealment.** **10/10** rejected both poles. The demotion is right about a loop in isolation (inference-time steering updates nothing); the counter is right about the coupling (a monitor's readings or the trajectories it produces can enter later post-training, selection or adaptation, and once optimisation rewards low readings the deployed system is the configuration the paper warns about). Every reviewer offered a conditional-mechanism formulation. On §3.5's reach: the later weight change meets condition (a) and usually (b), but routine declared post-training may not meet (b), and neither condition reaches the provenance link from reading to training signal; that is a standards-layer record (GLM, Grok, GPT-5.6, Meta, Kimi, Qwen). Applied to the case study's §1 and §5 point 2 and to the module. GLM's ledger note is recorded: the demotion serves developers whose loops feed training, and the earlier inflation served this project's intervention-record advocacy; both interests were present and the merits decide.
+
+**C. The reviewer's access claim.** **10/10**: record a reviewer's stated limitations verbatim as a claim, on the same footing as self-identification; record the maintainer's observation as a separately attributed claim; resolve neither into a fact; let quotation status rest on the drafting model's scripted checks against retained sources. **10/10** found no sign in the review's content of access beyond the packet. GLM and GPT-5.6: "could not retrieve the complete primary text" is not a claim of no access, so "strong reason to doubt" overstates the conflict; the banner is a client-side string neither party can interpret. Gemini alone: let evident knowledge of the text in the output override the disclaimer. Applied: the access paragraph above now records the two accounts symmetrically.
+
+**D. Both directions on the 16 September texts.** No stripped disclaimer found (10/10). Residues found and applied: §6 still said "no persistent state found" and "fund the instruments rather than trust the outputs" (Grok, Qwen, GLM, GPT-5.6, Meta); §5 point 2 left the coupling pathway unnamed (all ten, via B); §11 said C7 and C8 "bear on status" (GPT-5.6); §4c stated the reviewer's access limit as fact (Qwen, GPT-5.6); §10's account of decision 4 still recast the original reason instead of recording two moments (GPT-5.6, Grok); the module's "validated internal measurements" overstated (DeepSeek, Meta, Qwen). Pre-existing and not edited: Anchor 2's "gap is narrowing" and "burden of proof is shifting" sentences require separate support (GPT-5.6 SHOULD-FIX, Qwen, Mistral; also the independent review's item 16); recorded as follow-on 5 in the case study's §10 for Ben. Dissent recorded: Mistral rates the retained word "premeditation" itself BLOCKING for a policy reader even with the limited-analogy sentence; that is a challenge to Ben's decision, not to the wording, and is recorded here without action.
+
+**Not applied:** GPT-5.6's and Grok's preference to drop the care-ordering sentence from §4 entirely (Ben's call; the revised proposal keeps it as an ordering claim); Mistral's BLOCKING on the word "premeditation" (decided); Gemini's "override the disclaimer" rule for access claims (the symmetric rule was the majority).
+
+## Outcome and disposition
+
+Applied the same evening: the concealment reformulation (case study §1, §5 point 2; module); the §6, §11, §4c and §10 residues; the module's "validated" wording; the symmetric access record above; the proposal's draft text revised on the round's (e) items with the first draft preserved. Every marked quotation re-verified after the edits. **Pending Ben:** adoption of the revised §4 proposal (and whether the care-ordering sentence stays in it); follow-on 5 on Anchor 2's "narrowing" sentences; filing of the third-round raws and the two truncated Kimi responses; push.
