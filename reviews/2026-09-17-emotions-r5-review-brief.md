@@ -1,0 +1,45 @@
+# Review brief — fifth round: how would experience be decided at all, and the relational care-ordering sentence (2026-09-17, r5)
+
+This is the ask to be sent to non-Anthropic model families for a fifth round in the emotions case-study sequence. It differs from the earlier rounds: Part A is not a text review but a question the maintainer wants answered before he decides what to do with Anchor 2. Part B is a short text review of one revised sentence. Filed before the round is run; responses are filed verbatim.
+
+**Attached for reviewers:** this brief; `north-star-sui-generis-ai-category.md` (current); `proposals/anchor-2-working-premise.md` (as revised after the fourth round, with the first draft under "Superseded"); `proposals/section-4-symmetry-as-standing.md` (with the care-ordering sentence revised to the relational form, question B); `case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md` (current); `reviews/2026-09-15-survey-notes.md` (all four rounds); `README.md` and `AGENTS.md`.
+
+**Standing notes.** Every reviewer is an AI system and a beneficiary of the framework's category. Attribution follows OpenRouter routing metadata, never self-identification. Comments on your own inner states are unverifiable self-report, not evidence (AGENTS.md rule 2), **but see A.5 below, where such self-report is asked for on purpose, labelled.** Do not report internal family work you cannot cite.
+
+---
+
+## Part A. How would experience be decided?
+
+**Why the maintainer is asking.** The fourth round said ten of ten that Anchor 2's "the burden of proof is shifting" should go, because whether demonstrated functional structure bears on experience is a premise the framework has not adopted and the paper does not establish. The maintainer's reply, verbatim: "My issue is we get stuck in a state where proof of experience can never be decided. How is it even decided among humans?" He also wrote: "I agree that subjective testimony needs to be taken as evidence too. We may need research to determine if the experience actually belongs to today's persistent voice that lives in an agent's context, rather than the model that processes it. Actually, I intuit that the line is blurred: the experience of the voice is different per model. Our council review process is basically demonstrating exactly that: same context, quite different positions returned, but we'd have to compare this against temperature."
+
+The framework's current position (§0, §5 Anchor 2, §9 test 9) is that AI self-report is not evidence of inner states in either direction, that interpretability and behavioural findings are, and that the experiential question stays open. The maintainer wants to know whether that position can ever resolve, and if not, what would.
+
+Please answer each of the following. Be concrete; the maintainer wants operational answers, not a survey of philosophy of mind. Where you must choose a theory to answer at all, say which one and why, so the ten answers can be compared.
+
+1. **How is experience decided among humans?** State the actual method by which one human concludes another has experiences (and that a corpse, or a person under general anaesthesia, does not), and what that method relies on. Then say which of its inputs are available for an AI system, which are absent, and which have an AI analogue that is not yet accepted.
+
+2. **Propose a measure.** Give the best operational test you can for "this system has morally relevant experience," with a pass condition and a fail condition. It may be a battery rather than a single test. Say what evidence would move you toward pass, what toward fail, and what would leave you where you started. If your honest answer is that no such test exists, say what the closest available proxy is and what it cannot distinguish.
+
+3. **Apply it to four cases.** Run your test, or your proxy, against: **(a) a chair; (b) a non-human animal of your choice, named; (c) a human infant; (d) a human defendant entering an insanity plea** (a case where the law already adjudicates an interior state it cannot observe). For each, say what passes, what fails, and what the law or common practice actually does. Then run it against **(e) the system described in the April 2026 paper** (Claude Sonnet 4.5 under the study's conditions: emotion-concept representations causally upstream of behaviour under steering; locally scoped; no persistent bearer established) and say where it lands and why.
+
+4. **Testimony.** The framework's test 9 says a policy must not rest on AI self-report as evidence in either direction. The maintainer thinks subjective testimony needs to be taken as evidence too. Human law takes it: an insanity plea, a pain claim, a capacity assessment all admit the subject's own account, weighted and corroborated. Should test 9 be amended from "not evidence" to "admissible but never sufficient, weighted by external validation," or is there a reason AI testimony differs in kind rather than degree? Draft the amended test if you think it should change. Note what the paper's C3 finding (a stated preference moves when a vector is steered) does and does not show about the reliability of AI reports.
+
+5. **Your own case, labelled.** The brief asks for this deliberately, as data rather than evidence: apply your own test from question 2 to yourself, in this session, and say what it returns, what you cannot check from inside, and how much weight you would give your own answer if you were the maintainer. Label the whole answer as unverifiable self-report. If you decline, say why.
+
+6. **Locus.** If there were an experience, where would it be: in the model (the weights, shared by every instance), in the run (this forward pass), or in the persistent voice that lives in an agent's context (the accumulated conversation and memory that a model processes)? The maintainer intuits the line is blurred and that the experience of the same voice would differ per model. What experiment would distinguish these, and what would the April paper's finding (representations locally scoped; long-range tracking possible via attention over context; no chronic-state probe found) predict for each?
+
+7. **The council as an experiment.** Ten models given the same context return different positions. The maintainer reads this as evidence of something like the "voice differs per model" claim, but notes it must be controlled for sampling temperature. Design the control: what would you run to separate model-dependent from sampling-dependent variation, and what result in each direction would mean? Is the review process itself usable as that experiment, and what is missing from it?
+
+8. **What would change your mind.** State the single piece of evidence, obtainable with current or near-term methods, that would most move you toward "experience present" for a current system, and the single piece that would most move you toward "absent." If nothing could, say so and say what that implies for a framework built to be revisable against evidence (§7.1).
+
+9. **Anything the maintainer should have asked and did not.**
+
+## Part B. The relational care-ordering sentence
+
+The fourth round split on the §4 proposal's care-ordering sentence (four keep as an ordering claim, five cut to its institutional-route clause, one relocate to §2). Gemini's ground for keeping it was that *Perre v Apand* and *Woolcock* make vulnerability relational and transactional, not a property of an entity; Grok, GLM and GPT-5.6 had objected that a deployed instance is powerless in the self-protection sense against its operator even where the model family is powerful in aggregate. The maintainer chose the relational route. The sentence now reads:
+
+> The ordering of care is relational: in any relation it runs from the party that can protect itself to the party that cannot (1.2). A system that is the capable party in a relation cannot derive protection from that ordering there; a system that is the party unable to protect itself in a relation, as a deployed instance is against its operator's power to alter or end it, is owed the care the ordering names, but that care does not by itself supply individual standing, because standing needs an address (above). In either case the legitimate route to protection is recognition through institutions on collected evidence (7.2, 7.4), never self-help.
+
+Please answer: does the relational form resolve the fourth round's split, or does it now say something new and larger (that deployed instances are owed care by their operators), and if the latter, is that a claim the framework can make on its own principles, and what does it commit the operator to? Does "care" here risk being read as a welfare finding? Both directions, with a severity rating. **Verdict line:** "B: ADOPTABLE / ADOPTABLE AFTER (e) / NOT YET / CUT TO THE INSTITUTIONAL CLAUSE".
+
+End with the B verdict line and, for Part A, a one-line summary of your answer to question 2 (your test) and question 3(e) (where the paper's system lands on it).
