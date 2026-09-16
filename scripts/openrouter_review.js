@@ -28,7 +28,9 @@
 //        reviewer's access claim; attaches the ChatGPT review verbatim and the texts as revised on 16 Sep; tag "emotions-r3")
 //   node scripts/openrouter_review.js --target=emotions-r4 --max-tokens=100000
 //       (2026-09-17 fourth round: the Anchor 2 working-premise proposal and the revised Section 4 proposal; tag "emotions-r4")
-//   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", emotions to "emotions", emotions-r2 to "emotions-r2", emotions-r3 to "emotions-r3", emotions-r4 to "emotions-r4")
+//   node scripts/openrouter_review.js --target=emotions-r5 --max-tokens=100000
+//       (2026-09-17 fifth round: how experience would be decided (nine questions, four test cases), and the relational care-ordering sentence; tag "emotions-r5")
+//   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", emotions to "emotions", emotions-r2 to "emotions-r2", emotions-r3 to "emotions-r3", emotions-r4 to "emotions-r4", emotions-r5 to "emotions-r5")
 //
 // Requires OPEN_ROUTER_API_KEY in a .env file at the repo root (already there).
 // Needs Node 18+ for built-in fetch. No npm dependencies.
@@ -468,6 +470,45 @@ ${agents}
 Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then A (with its verdict line), B (with its verdict line and the care-ordering position), C, D, then the set verdict. If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
 }
 
+function buildEmotionsPromptR5() {
+  const brief = readDoc("reviews/2026-09-17-emotions-r5-review-brief.md");
+  const propA = readDoc("proposals/anchor-2-working-premise.md");
+  const propB = readDoc("proposals/section-4-symmetry-as-standing.md");
+  const caseStudy = readDoc("case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md");
+  const notes = readDoc("reviews/2026-09-15-survey-notes.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+
+  return `Hi. This is a FIFTH-ROUND request in a sequence (four ten-model rounds and one independent review precede it; the survey notes record them). Part A is a question the maintainer wants answered, not a text review: how would experience be decided at all, with a proposed measure applied to four cases and to the system in the April 2026 paper. Part B is a short text review of one revised sentence. Be concrete and be direct.
+
+=== reviews/2026-09-17-emotions-r5-review-brief.md (THIS ROUND'S brief) ===
+${brief}
+
+=== north-star-sui-generis-ai-category.md (current) ===
+${northStar}
+
+=== proposals/anchor-2-working-premise.md (as revised after the fourth round) ===
+${propA}
+
+=== proposals/section-4-symmetry-as-standing.md (care-ordering sentence revised to the relational form; question B) ===
+${propB}
+
+=== case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md (current) ===
+${caseStudy}
+
+=== reviews/2026-09-15-survey-notes.md (all four rounds) ===
+${notes}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then Part A questions 1 to 9 in order, then Part B with its verdict line, then the two one-line summaries the brief asks for. Label any self-report as such; question 5 asks for it on purpose.`;
+}
+
 function slugify(modelId) {
   return modelId.replace(/[\/:]/g, "-");
 }
@@ -500,9 +541,9 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const TARGETS = ["emotions-r4", "emotions-r3", "emotions-r2", "emotions", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
+  const TARGETS = ["emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
   const target = TARGETS.find((t) => args.includes(`--target=${t}`)) || "north-star";
-  const DEFAULT_TAGS = { "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
+  const DEFAULT_TAGS = { "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
   const tagArg = args.find((a) => a.startsWith("--tag="));
   const tag = tagArg ? tagArg.slice("--tag=".length) : DEFAULT_TAGS[target] || "";
   const modelsArg = args.find((a) => a.startsWith("--models="));
@@ -511,6 +552,7 @@ async function main() {
     : DEFAULT_MODELS;
 
   const BUILDERS = {
+    "emotions-r5": buildEmotionsPromptR5,
     "emotions-r4": buildEmotionsPromptR4,
     "emotions-r3": buildEmotionsPromptR3,
     "emotions-r2": buildEmotionsPromptR2,
