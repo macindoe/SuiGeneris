@@ -293,4 +293,4 @@ Six of ten family-correct, two wrong, and for the first time two declined to sel
 
 ## Outcome and disposition
 
-Applied: the drafting-level items above; both proposals revised on the round's items with first drafts preserved. **Not applied, and Ben's to decide:** (1) whether Anchor 2's two sentences go, against his stated direction and on the council's unanimous advice; (2) the care-ordering sentence in the §4 proposal (four keep, five cut, one relocate); (3) adoption of proposal B itself. Also open: filing of the fourth-round raws; push.
+Applied: the drafting-level items above; both proposals revised on the round's items with first drafts preserved. **Not applied, and Ben's to decide:** (1) whether Anchor 2's two sentences go, against his stated direction and on the council's unanimous advice; (2) the care-ordering sentence in the §4 proposal (four keep, five cut, one relocate); (3) adoption of proposal B itself. The fourth-round raws, including DeepSeek's degenerate first response, were filed on Ben's decision of 17 September. Push is held until the branch lands.
