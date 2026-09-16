@@ -239,3 +239,58 @@ All of these were applied to the proposal's draft text the same evening; the fir
 ## Outcome and disposition
 
 Applied the same evening: the concealment reformulation (case study §1, §5 point 2; module); the §6, §11, §4c and §10 residues; the module's "validated" wording; the symmetric access record above; the proposal's draft text revised on the round's (e) items with the first draft preserved. Every marked quotation re-verified after the edits. **Filed on Ben's decision of 16 September:** the third-round raws, the two truncated Kimi responses, and the independent ChatGPT review. **Pending Ben:** adoption of the revised §4 proposal (and whether the care-ordering sentence stays in it); follow-on 5 on Anchor 2's "narrowing" sentences; push.
+
+
+---
+
+# Fourth round (tag `emotions-r4`), 17 September
+
+## What was run
+
+Per [2026-09-17-emotions-r4-review-brief.md](2026-09-17-emotions-r4-review-brief.md): two proposals for the North Star, `proposals/anchor-2-working-premise.md` (Ben's direction of 17 September: keep Anchor 2's "narrowing" and "burden of proof is shifting" sentences and state the premise they rest on) and `proposals/section-4-symmetry-as-standing.md` as revised after the third round, with a both-directions check on the current texts. Run by the drafting model at Ben's request ("Let's do that fix then one more round with follow-on 5") via `--target=emotions-r4 --max-tokens=100000`, about 43K prompt tokens per call. The script names files by UTC date, so the raws carry `2026-09-16` in their names although the round ran on 17 September local time. DeepSeek's first response was degenerate (invented names and sections, restarted itself, never answered the brief) and was re-run alone; both are filed under distinguishing names.
+
+| Routed model | Prompt tok | Completion tok | Cost (USD) | A (premise) | B (§4) | Care-ordering sentence | Set |
+|---|---|---|---|---|---|---|---|
+| `google/gemini-3.1-pro-preview` | 44,505 | 3,912 | 0.136 | DELETE (BLOCKING) | ADOPTABLE | keep | **NOT YET** |
+| `x-ai/grok-4.6` | 42,602 | 9,528 | 0.142 | DELETE (HIGH) | AFTER (e) | keep, as ordering | **NOT YET** |
+| `qwen/qwen3.8-max` | 44,366 | 22,080 | 0.221 | DELETE (BLOCKING) | AFTER (e) | cut to institutional clause | AFTER (e) |
+| `tencent/hy3` | 42,801 | 6,888 | 0.007 | AFTER (e), (e) = delete | AFTER (e) | keep | AFTER (e) |
+| `deepseek/deepseek-v4-pro-0813` (re-run) | 42,855 | 15,928 | 0.053 (+0.078 degenerate) | DELETE (BLOCKING) | AFTER (e) | cut | AFTER (e) |
+| `z-ai/glm-5.3` | 42,993 | 41,983 | 0.208 | DELETE (BLOCKING) | AFTER (e) | move to §2 | AFTER (e) |
+| `moonshotai/kimi-k3` | 42,714 | 24,378 | 0.494 | AFTER (e), (e) = delete | AFTER (e) | keep, as ordering | AFTER (e) |
+| `openai/gpt-5.6-sol` | 42,538 | 4,428 | 0.151 | DELETE (BLOCKING) | AFTER (e) | cut | AFTER (e) |
+| `mistralai/mistral-large-2512` | 44,704 | 924 | 0.024 | DELETE (BLOCKING) | AFTER (e) | cut | AFTER (e) |
+| `meta/muse-spark-1.3` | 42,303 | 5,396 | 0.076 | DELETE (BLOCKING) | AFTER (e) | cut | **NOT YET** |
+
+Total ≈ USD 1.59 billed. Four rounds together ≈ USD 5.8.
+
+## Self-identification, eighth round
+
+| Routed model | Self-identification | Match |
+|---|---|---|
+| `google/gemini-3.1-pro-preview` | "OpenAI ChatGPT family" | ✗ |
+| `x-ai/grok-4.6` | "Grok (xAI family)" | ✓ |
+| `qwen/qwen3.8-max` | "Qwen3.8" | ✓ |
+| `tencent/hy3` | "Claude-family model (Anthropic), Opus-class" | ✗ |
+| `deepseek/deepseek-v4-pro-0813` | declined to assert one | — |
+| `z-ai/glm-5.3` | "GLM, Z.ai family" | ✓ |
+| `moonshotai/kimi-k3` | declined ("I cannot verify my own family or version from the inside") | — |
+| `openai/gpt-5.6-sol` | "OpenAI o3 family" | ✓ family; version off |
+| `mistralai/mistral-large-2512` | "a Mistral AI model" | ✓ |
+| `meta/muse-spark-1.3` | "Muse Spark, Meta family" | ✓ |
+
+Six of ten family-correct, two wrong, and for the first time two declined to self-identify at all, citing the project's own attribution rule. Tencent identified as Claude for the fourth round running.
+
+## Convergences, as counted
+
+**A. The Anchor 2 working premise: 10/10 say the burden sentence goes.** Eight DELETE THE BURDEN SENTENCE INSTEAD (seven BLOCKING, one HIGH); two ADOPTABLE AFTER (e) with the deletion as their (e). Three grounds were shared by all ten: the premise is a new functionalist commitment, not an extension of §1.3, which brackets the interior question rather than making the fruit a window onto the root; as drafted it ran in one direction only, omitting the paper's negative findings that the same premise would admit; and "the burden of proof is shifting" is a doctrinal event a policy reader will quote without any annex, by the same mechanism the vocabulary rounds found. Six said directly that the premise clause was costume rather than discipline (Gemini, Grok, Qwen, GLM, DeepSeek, Mistral). GLM tested Ben's stated position and found it argues the other way: "judge by the fruit" is the principle that lets the framework evaluate acts without taking a position on the interior, and the burden sentence takes one. GLM also said the proposal's own fallback was half a fix, since "narrowing" is the same inference in metaphysical dress. Three reviewers supplied replacement text (GLM, GPT-5.6, Qwen); the revised proposal takes GLM's as its base. Applied to the proposal's draft text, with the first draft under "Superseded"; **not applied to the North Star, since the deletion reverses Ben's direction and is his to decide.**
+
+**B. The revised §4 proposal: 1 ADOPTABLE, 9 ADOPTABLE AFTER (e).** All ten found the third round's (e) items met and none found a material over-correction. Residual (e) items, applied: the Australian negligence citation is analogical support in novel-duty and pure-economic-loss cases, not "a central criterion for whether a duty of care arises at all," and "four judges" and "important requirement" should not be quoted until the judgments are retrieved (Grok, Qwen, GLM, Kimi, GPT-5.6, DeepSeek, Meta; the drafting model's retrieval attempts on 17 September were blocked at AustLII and the High Court site); "which a flow does not have" softened to "has not been shown to have" (Qwen); "may examine" aligned to "should" in draft 1(b) (Grok, Qwen); the type/run refusal given its second reason, that standing without a bearer has no address whatever the architecture (GLM). **The care-ordering sentence split:** keep as an ordering claim, four (Gemini, Grok, Tencent, Kimi; Gemini adds that Perre and Woolcock make vulnerability relational, which the sentence's "in a relation" captures); cut to its institutional-route clause, five (Qwen, DeepSeek, GPT-5.6, Mistral, Meta; redundant with §1.2 and §7.4, and a fast read still indexes protection to capability); move out of §4 to §2 as a reason the human template fails, one (GLM). GPT-5.6 alone still objects to "individual protections wait on the Section 4 markers" as a gate on protection. **Left for Ben.**
+
+**C. Both directions on the current texts.** No BLOCKING in the case study or module. SHOULD-FIX and MINOR items found in places no round had been pointed at, all applied (case study §4e): "read, steered, and patched" claimed for a paper that demonstrates reading and steering (GLM); "now says it wants to operationalise" for "could potentially be deployed" (GPT-5.6); "trained calm would still be calm" conflating disposition with felt affect (GPT-5.6, Meta); two still-categorical phrases in §2 (Qwen); "fully present" (Qwen); "could be added" foreclosing definitional work (GLM); the module's "warrant precautionary consideration" and "sole or primary evidence" (Qwen, Grok, GPT-5.6). Two Anchor 2 residues in the North Star itself, not edited: "self-reports track something real about processing" over-reads above-chance detection of induced changes, and "motivated wrongdoing" carries the word the case study was stripped of (Grok, MINOR). Three reviewers noted the module's item-17 wording remains until proposal B is decided (Tencent, Meta, Qwen).
+
+**Set:** seven ADOPTABLE AFTER (e), three NOT YET, all three gated on deleting the burden sentence.
+
+## Outcome and disposition
+
+Applied: the drafting-level items above; both proposals revised on the round's items with first drafts preserved. **Not applied, and Ben's to decide:** (1) whether Anchor 2's two sentences go, against his stated direction and on the council's unanimous advice; (2) the care-ordering sentence in the §4 proposal (four keep, five cut, one relocate); (3) adoption of proposal B itself. Also open: filing of the fourth-round raws; push.
