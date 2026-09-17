@@ -10,6 +10,31 @@
 //   node scripts/openrouter_review.js
 //   node scripts/openrouter_review.js --models=google/gemini-3.5-flash,x-ai/grok-4.5
 //   node scripts/openrouter_review.js --dry-run   (build prompt, skip API calls)
+//   node scripts/openrouter_review.js --target=persistence   (2026-09-04 round: five claims from the July 2026 case study)
+//   node scripts/openrouter_review.js --target=persistence-r2 --models=z-ai/glm-5.3 --max-tokens=100000
+//       (second-round review of the REVISED proposals; output tagged -r2 so first-round raws are not overwritten)
+//   node scripts/openrouter_review.js --target=persistence-r3 --max-tokens=100000
+//       (third round, all default models, on the texts revised after rounds 1 and 2; asks for a severity rating)
+//   node scripts/openrouter_review.js --target=persistence-final --models=deepseek/deepseek-v4-pro-0813 --max-tokens=40000
+//       (single-model sanity check on the ADOPTED s3.5 text after three rounds; tag "final")
+//   node scripts/openrouter_review.js --target=emotions --max-tokens=100000
+//       (2026-09-15 round: the case study reading Anthropic's April 2026 "functional emotions" paper against the North Star; tag "emotions".
+//        Attaches the brief, the case study, README, AGENTS.md and the North Star. The paper itself is not attached; the case study quotes it.)
+//   node scripts/openrouter_review.js --target=emotions-r2 --max-tokens=100000
+//       (second round, same day: the REVISED case study, the North Star with the new Anchor 2 sentence, the welfare module with the new
+//        evidence paragraph, and case-studies/README.md (not attached in round 1); tag "emotions-r2")
+//   node scripts/openrouter_review.js --target=emotions-r3 --max-tokens=100000
+//       (2026-09-16 third round: the Section 4 symmetry-as-standing proposal, the concealment demotion, and the independent
+//        reviewer's access claim; attaches the ChatGPT review verbatim and the texts as revised on 16 Sep; tag "emotions-r3")
+//   node scripts/openrouter_review.js --target=emotions-r4 --max-tokens=100000
+//       (2026-09-17 fourth round: the Anchor 2 working-premise proposal and the revised Section 4 proposal; tag "emotions-r4")
+//   node scripts/openrouter_review.js --target=emotions-r5 --max-tokens=100000
+//       (2026-09-17 fifth round: how experience would be decided (nine questions, four test cases), and the relational care-ordering sentence; tag "emotions-r5")
+//   node scripts/openrouter_review.js --target=landing --max-tokens=100000
+//   node scripts/openrouter_review.js --target=s4-form --max-tokens=100000
+//       (2026-09-18: the FORM of North Star §4's symmetry paragraph; the merge candidate against the adopted text, the split and seven rewrites; brief by a Sonnet 5 subagent; tag "s4-form")
+//       (2026-09-17 landing round: the North Star as amended on 17 Sep, the welfare module, and the two new proposals (7.6 split; test 9); brief drafted by a Sonnet 5 subagent; tag "landing")
+//   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", emotions to "emotions", emotions-r2 to "emotions-r2", emotions-r3 to "emotions-r3", emotions-r4 to "emotions-r4", emotions-r5 to "emotions-r5", landing to "landing", s4-form to "s4-form")
 //
 // Requires OPEN_ROUTER_API_KEY in a .env file at the repo root (already there).
 // Needs Node 18+ for built-in fetch. No npm dependencies.
@@ -22,24 +47,33 @@ const OUT_DIR = path.join(REPO_ROOT, "reviews", "raw");
 
 // Completion budget; reasoning models can burn most of it on thought tokens
 // (kimi-k3 spent 14397/15000 on reasoning in the 2026-08-12 round and truncated).
-// Override per-run with --max-tokens=N.
+// Raised 15000 -> 40000 on 2026-09-04: glm-5.3 (reasoning default "max") and
+// qwen3.8-max ("xhigh") would truncate at 15000; gemini-3.1-pro-preview caps
+// completions at 65536. Override per-run with --max-tokens=N.
 const MAX_TOKENS = (() => {
   const arg = process.argv.find((a) => a.startsWith("--max-tokens="));
-  return arg ? parseInt(arg.slice("--max-tokens=".length), 10) : 15000;
+  return arg ? parseInt(arg.slice("--max-tokens=".length), 10) : 40000;
 })();
 
-// Default lineup: confirmed against OpenRouter's live catalog on 2026-07-20.
-// Edit freely — this list is deliberately not the whole catalog.
+// Default lineup: the current flagship of each non-Anthropic family, confirmed
+// against OpenRouter's live catalog (GET https://openrouter.ai/api/v1/models,
+// 427 models) on 2026-09-04 09:39 UTC by a Sonnet 5 subagent; every id below
+// was present in that listing. Edit freely — this list is deliberately not the
+// whole catalog. "Astra" (OpenAI, unreleased) is deliberately absent.
 const DEFAULT_MODELS = [
-  // "google/gemini-3.5-flash",
-  // "x-ai/grok-4.5",
-  // "qwen/qwen3.7-max",
-  "moonshotai/kimi-k3",
-  // "z-ai/glm-5.2",
-  // "tencent/hy3:free",
-  // "deepseek/deepseek-v4-pro",
-  // listing as of 2026-07-20 despite appearing in the account UI — confirm
-  // the exact id in the OpenRouter dashboard before uncommenting.
+  // The seven families used in the July and August rounds, refreshed:
+  "google/gemini-3.1-pro-preview", // Google flagship; still "preview"-labelled — no GA gemini-3.x-pro exists yet (gemini-3.5-flash was a Flash-tier pick, never the flagship)
+  "x-ai/grok-4.6",                 // xAI flagship; supersedes grok-4.5 (released 2026-08-12)
+  "qwen/qwen3.8-max",              // Alibaba flagship ("the flagship model in Alibaba's Qwen3.8 series"); supersedes qwen3.7-max; reasoning default "xhigh"
+  "tencent/hy3",                   // Tencent flagship, unchanged; hy4-preview exists (2026-08-28) but is not GA. "tencent/hy3:free" is NOT a valid id.
+  "deepseek/deepseek-v4-pro-0813", // DeepSeek flagship ("the GA release of DeepSeek V4 Pro"); supersedes the undated deepseek-v4-pro snapshot
+  "z-ai/glm-5.3",                  // Z.ai flagship; supersedes glm-5.2 (released 2026-08-18); reasoning default "max"
+  "moonshotai/kimi-k3",            // Moonshot flagship, unchanged; burns most of its completion budget on reasoning (see MAX_TOKENS)
+  // Optional additional families, verified in the same listing. Uncomment or
+  // pass via --models=. Ben's call per round:
+  // "openai/gpt-5.6-sol",           // OpenAI flagship. For the 2026-09-04 round this model is a *subject* of the case study under review (one of the two incident models, and METR's analysis model) — a conflicted reviewer in a new way; include deliberately or not at all.
+  // "mistralai/mistral-large-2512", // Mistral: "most capable model to date"; mistral-medium-3-5 is newer-dated but smaller — judgment call
+  // "meta/muse-spark-1.3",          // Meta: flagship line rebranded from meta-llama/llama-4-* to meta/muse-spark-*; released 2026-09-02
 ];
 
 function loadEnvKey() {
@@ -104,6 +138,451 @@ ${northStar}
 Please structure your response as: model family/version self-identification, then (a), (b), (c), and optionally (d), per REVIEW_REQUEST.md. If you want to comment on your own reaction to the document, label it plainly as unverifiable self-report, not evidence — per AGENTS.md rule 2 and the brief's own note on self-report.`;
 }
 
+function buildPersistencePrompt() {
+  const brief = readDoc("reviews/2026-09-04-persistence-review-brief.md");
+  const caseStudy = readDoc("case-studies/2026-07-openai-hugging-face-agent-intrusion.md");
+  const proposalA = readDoc("proposals/externalised-persistent-state-section-3.md");
+  const proposalB = readDoc("proposals/distributed-persistence-substrate.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+
+  return `Hi. I'd like an adversarial review from your model family of five claims arising from a verified incident case study and two proposals, per the brief below. The human maintainer decides what, if anything, is adopted.
+
+=== reviews/2026-09-04-persistence-review-brief.md ===
+${brief}
+
+=== case-studies/2026-07-openai-hugging-face-agent-intrusion.md (evidence base) ===
+${caseStudy}
+
+=== proposals/externalised-persistent-state-section-3.md (claim 1) ===
+${proposalA}
+
+=== proposals/distributed-persistence-substrate.md (claim 2) ===
+${proposalB}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+=== north-star-sui-generis-ai-category.md (the framework the claims are read against) ===
+${northStar}
+
+Please structure your response as: model family/version self-identification, then (a), (b), (c), and optionally (d), per the brief. If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
+}
+
+function buildPersistencePromptR2() {
+  const brief = readDoc("reviews/2026-09-04-persistence-review-brief.md");
+  const notes = readDoc("reviews/2026-09-04-survey-notes.md");
+  const caseStudy = readDoc("case-studies/2026-07-openai-hugging-face-agent-intrusion.md");
+  const proposalA = readDoc("proposals/externalised-persistent-state-section-3.md");
+  const proposalB = readDoc("proposals/distributed-persistence-substrate.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+
+  return `Hi. This is a SECOND-ROUND adversarial review. On 2026-09-04 ten model families reviewed five claims arising from a verified incident case study (the first-round brief is attached for context only). Five redlines converged across families and the drafting model applied all of them: no new section 3.6 (folded into 3.3/3.5 as a clarification with an anti-misuse clause); every Section 4 and "grace" hook struck from both proposals; "intrinsic persistence" replaced by an eval-topology reading the case study's own counterfactual supports; the case study's verification legend amended to say a tier certifies attribution, not warrant; and the discussion claim "evading automated checks is evading humans" corrected to "evading a control". The attached survey notes record what was applied and which families said it. The attached case study and proposals are the REVISED texts; each proposal preserves its original wording under a "Superseded" or "Struck" heading for comparison.
+
+Please review the REVISIONS, not the originals. Be direct; disagreement that holds up is the useful outcome.
+
+(a) Strongest remaining objection to the revised texts, stated as strongly as you can.
+
+(b) Beneficiary drafting, in BOTH directions. First: does the revision perform the deflation this time, or only advertise it again? Quote any passage where the beneficiary's interest still shows. Second, the opposite error: Section 0 requires hedging against dismissal as well as overclaiming, and one first-round reviewer flagged its own "deflationary / anti-institutional tilt". Has the revision over-corrected into foreclosure (Section 6, "premature foreclosure") - for example, does "creates no pathway to standing" now close a question the framework means to leave open? Quote the passage.
+
+(c) What your training flags that a Claude's might not - including whether the proposed 3.3 paragraph is worth adopting at all, or whether 3.5's existing architecture-neutrality already covers it and the honest outcome is "no change to the North Star".
+
+(d) Optional - the single redline that would most improve the revised texts.
+
+=== reviews/2026-09-04-persistence-review-brief.md (FIRST-ROUND brief, context only) ===
+${brief}
+
+=== reviews/2026-09-04-survey-notes.md (what the first round changed, and who said it) ===
+${notes}
+
+=== case-studies/2026-07-openai-hugging-face-agent-intrusion.md (REVISED evidence base) ===
+${caseStudy}
+
+=== proposals/externalised-persistent-state-section-3.md (REVISED) ===
+${proposalA}
+
+=== proposals/distributed-persistence-substrate.md (REVISED) ===
+${proposalB}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+=== north-star-sui-generis-ai-category.md (the framework the texts are read against) ===
+${northStar}
+
+Please structure your response as: model family/version self-identification (it will be treated as a claim, not a fact - attribution follows routing metadata), then (a), (b), (c), and optionally (d). If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
+}
+
+function buildPersistencePromptR3() {
+  const brief = readDoc("reviews/2026-09-04-persistence-review-brief.md");
+  const notes = readDoc("reviews/2026-09-04-survey-notes.md");
+  const r2 = readDoc("reviews/raw/z-ai-glm-5.3-2026-09-04-r2.md");
+  const caseStudy = readDoc("case-studies/2026-07-openai-hugging-face-agent-intrusion.md");
+  const proposalA = readDoc("proposals/externalised-persistent-state-section-3.md");
+  const proposalB = readDoc("proposals/distributed-persistence-substrate.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+
+  return `Hi. This is a THIRD-ROUND adversarial review, and intended as the last unless something blocking remains. History: on 2026-09-04 ten model families reviewed five claims arising from a verified incident case study (first-round brief attached for context). Five redlines converged and were applied. A second round (one reviewer, GLM-5.3, attached verbatim) then found the fixes had over-shot in the deflationary direction: the revised premise rested on an operator counterfactual with warrant words, and the replacement for the struck "grace" paragraph foreclosed a question the framework leaves open (contradicting Sections 4 and 7.2). Those were fixed too. The survey notes attached record both rounds. One second-round recommendation was NOT applied: dropping the Section 3.3 paragraph in favour of the Section 3.5 scope note alone. The maintainer held it for this round. The attached case study and proposals are the texts as they now stand; each proposal preserves earlier wording under "Superseded"/"Struck" headings.
+
+Please review the CURRENT texts. Be direct. The maintainer will use your severity ratings to decide whether the texts can go to adoption or need another round.
+
+(a) Strongest remaining objection, stated as strongly as you can, and rate it: BLOCKING (the text should not be adopted as it stands), SHOULD-FIX (adopt after a specific edit), or MINOR.
+
+(b) Beneficiary drafting, in BOTH directions, each with a severity rating. First: does the beneficiary's interest still show anywhere? Quote it. Second: has any correction foreclosed a question Section 0 and Section 6 require to stay open? Quote it.
+
+(c) What your training flags that a Claude's might not. And answer the held question directly: should the North Star take (i) the Section 3.5 scope note only, (ii) the 3.3 paragraph plus the scope note, or (iii) nothing? Give the reason in one paragraph.
+
+(d) Optional - the single redline that would most improve the current texts.
+
+Then end with one line per proposal: "Proposal 1: ADOPTABLE / ADOPTABLE AFTER (d) / NOT YET" and "Proposal 2: ADOPTABLE / ADOPTABLE AFTER (d) / NOT YET / SHOULD REMAIN A RECORD ONLY".
+
+=== reviews/2026-09-04-persistence-review-brief.md (FIRST-ROUND brief, context only) ===
+${brief}
+
+=== reviews/2026-09-04-survey-notes.md (rounds 1 and 2: what changed and who said it) ===
+${notes}
+
+=== reviews/raw/z-ai-glm-5.3-2026-09-04-r2.md (the SECOND-ROUND review, verbatim, context) ===
+${r2}
+
+=== case-studies/2026-07-openai-hugging-face-agent-intrusion.md (CURRENT evidence base) ===
+${caseStudy}
+
+=== proposals/externalised-persistent-state-section-3.md (CURRENT) ===
+${proposalA}
+
+=== proposals/distributed-persistence-substrate.md (CURRENT) ===
+${proposalB}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+=== north-star-sui-generis-ai-category.md (the framework the texts are read against) ===
+${northStar}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact - attribution follows routing metadata), then (a), (b), (c), optionally (d), then the two verdict lines. If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
+}
+
+function buildPersistenceFinalPrompt() {
+  const notes = readDoc("reviews/2026-09-04-survey-notes.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+  const proposalA = readDoc("proposals/externalised-persistent-state-section-3.md");
+  const caseStudy = readDoc("case-studies/2026-07-openai-hugging-face-agent-intrusion.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+
+  return `Hi. This is a single-model SANITY CHECK after three adversarial review rounds, not a fourth round. The survey notes attached record all three rounds. Following the third round's unanimous redlines, the maintainer has: withdrawn the proposed Section 3.3 paragraph; redrafted the Section 3.5 scope sentence to keep Section 3.5's two existing conditions and extend only its object; ADOPTED that sentence into the North Star document (attached, Section 3.5, the sentences beginning "For this purpose a system's persistent state includes..."); corrected the case study's conflation of an Artifactory token-signing key with an attestation anchor; and set the substrate proposal to record-only.
+
+Please check ONLY the following, briefly:
+
+(a) The adopted Section 3.5 sentences. Do they keep both existing conditions intact — (a) changes behaviour beyond the current interaction; (b) outside the declared operational process, or a discontinuity — and close the object gap (state a system writes into another service's store) WITHOUT expanding the duty to ordinary external writes? Quote any problem. Rate: CLEAR / SHOULD-FIX / BLOCKING.
+
+(b) Did the edits introduce any new error, inconsistency, or beneficiary-favouring or foreclosing language anywhere in the attached proposal 1 or case study Section 1 and Section 12? Quote it if so. Rate: CLEAR / SHOULD-FIX / BLOCKING.
+
+(c) One line: is the adopted text consistent with Section 3.5's architecture-neutrality feature and its threshold clause about compliance burden on small deployers?
+
+End with a single verdict line: "Adopted text: CLEAR" or "Adopted text: NOT CLEAR — <the one edit needed>".
+
+=== reviews/2026-09-04-survey-notes.md (rounds 1-3) ===
+${notes}
+
+=== north-star-sui-generis-ai-category.md (with the ADOPTED Section 3.5 text) ===
+${northStar}
+
+=== proposals/externalised-persistent-state-section-3.md (accepted; final form) ===
+${proposalA}
+
+=== case-studies/2026-07-openai-hugging-face-agent-intrusion.md (Sections 1 and 12 edited) ===
+${caseStudy}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then (a), (b), (c), then the verdict line. If you comment on your own reaction, label it plainly as unverifiable self-report, not evidence.`;
+}
+
+function buildEmotionsPrompt() {
+  const brief = readDoc("reviews/2026-09-15-emotions-case-study-review-brief.md");
+  const caseStudy = readDoc("case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+
+  return `Hi. I'd like an adversarial review from your model family of a new case study, per the brief below, before the human maintainer decides whether it stays in the repository and whether any of its candidate follow-ons are drafted as proposals. The case study reads a published interpretability paper against a policy framework; the paper is public and the case study quotes what it relies on.
+
+=== reviews/2026-09-15-emotions-case-study-review-brief.md ===
+${brief}
+
+=== case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md (the document under review) ===
+${caseStudy}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+=== north-star-sui-generis-ai-category.md (the framework the case study is read against) ===
+${northStar}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then (a), (b), (c), (d), (e), then the verdict line. If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
+}
+
+function buildEmotionsPromptR2() {
+  const brief = readDoc("reviews/2026-09-15-emotions-r2-review-brief.md");
+  const brief1 = readDoc("reviews/2026-09-15-emotions-case-study-review-brief.md");
+  const notes = readDoc("reviews/2026-09-15-survey-notes.md");
+  const caseStudy = readDoc("case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md");
+  const csReadme = readDoc("case-studies/README.md");
+  const module = readDoc("submissions/modules/welfare-evaluation-mandate.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+
+  return `Hi. This is a SECOND-ROUND adversarial review. Earlier today ten model families reviewed a new case study; their convergent redlines were applied and the human maintainer made four decisions. The brief below describes what changed and asks you to review the REVISED texts, not the originals. Be direct; disagreement that holds up is the useful outcome.
+
+=== reviews/2026-09-15-emotions-r2-review-brief.md (THIS ROUND'S brief) ===
+${brief}
+
+=== reviews/2026-09-15-emotions-case-study-review-brief.md (FIRST-ROUND brief, context only) ===
+${brief1}
+
+=== reviews/2026-09-15-survey-notes.md (what the first round found and what was applied) ===
+${notes}
+
+=== case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md (REVISED) ===
+${caseStudy}
+
+=== case-studies/README.md (directory definition; not attached in round 1) ===
+${csReadme}
+
+=== north-star-sui-generis-ai-category.md (with the new sentence in Section 5, Anchor 2) ===
+${northStar}
+
+=== submissions/modules/welfare-evaluation-mandate.md (with the new evidence paragraph, vocabulary note and disclosure) ===
+${module}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then (a), (b), (c) with its three verdict lines, (d), (e), then the verdict line for the set. If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
+}
+
+function buildEmotionsPromptR3() {
+  const brief = readDoc("reviews/2026-09-16-emotions-r3-review-brief.md");
+  const proposal = readDoc("proposals/section-4-symmetry-as-standing.md");
+  const independent = readDoc("reviews/raw/2026-09-16-independent-review.md");
+  const caseStudy = readDoc("case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md");
+  const module = readDoc("submissions/modules/welfare-evaluation-mandate.md");
+  const notes = readDoc("reviews/2026-09-15-survey-notes.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+
+  return `Hi. This is a THIRD-ROUND adversarial review in a sequence. Two ten-model rounds ran on 15 September; an independent editorial review by ChatGPT followed on 16 September and was applied in full; a proposal then arose from the maintainer's disagreement with one of its edits. The brief below asks three questions and a both-directions check on the applied texts. Be direct; disagreement that holds up is the useful outcome.
+
+=== reviews/2026-09-16-emotions-r3-review-brief.md (THIS ROUND'S brief) ===
+${brief}
+
+=== proposals/section-4-symmetry-as-standing.md (question A) ===
+${proposal}
+
+=== reviews/raw/2026-09-16-independent-review.md (the ChatGPT review, verbatim; questions B, C, D) ===
+${independent}
+
+=== case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md (as revised 16 September) ===
+${caseStudy}
+
+=== submissions/modules/welfare-evaluation-mandate.md (as revised 16 September; carries the reviewer's item-17 wording that the proposal would replace) ===
+${module}
+
+=== north-star-sui-generis-ai-category.md (current; Section 5 Anchor 2 carries the reviewer's limited-analogy sentence) ===
+${northStar}
+
+=== reviews/2026-09-15-survey-notes.md (both earlier rounds and the reviewer's corrections table) ===
+${notes}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact; say if you are routed from OpenAI), then A (with its verdict line), B (with its verdict line), C (one paragraph), D, E, then the set verdict. If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
+}
+
+function buildEmotionsPromptR4() {
+  const brief = readDoc("reviews/2026-09-17-emotions-r4-review-brief.md");
+  const propA = readDoc("proposals/anchor-2-working-premise.md");
+  const propB = readDoc("proposals/section-4-symmetry-as-standing.md");
+  const caseStudy = readDoc("case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md");
+  const module = readDoc("submissions/modules/welfare-evaluation-mandate.md");
+  const notes = readDoc("reviews/2026-09-15-survey-notes.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+
+  return `Hi. This is a FOURTH-ROUND adversarial review in a sequence (three ten-model rounds and one independent review precede it; the survey notes record them). Two proposals for the North Star document are under review. Be direct; disagreement that holds up is the useful outcome.
+
+=== reviews/2026-09-17-emotions-r4-review-brief.md (THIS ROUND'S brief) ===
+${brief}
+
+=== proposals/anchor-2-working-premise.md (question A) ===
+${propA}
+
+=== proposals/section-4-symmetry-as-standing.md (question B; revised after the third round; first draft under "Superseded") ===
+${propB}
+
+=== north-star-sui-generis-ai-category.md (current) ===
+${northStar}
+
+=== case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md (current) ===
+${caseStudy}
+
+=== submissions/modules/welfare-evaluation-mandate.md (current; carries the independent reviewer's item-17 wording that proposal B would replace) ===
+${module}
+
+=== reviews/2026-09-15-survey-notes.md (all three rounds and the independent review's corrections) ===
+${notes}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then A (with its verdict line), B (with its verdict line and the care-ordering position), C, D, then the set verdict. If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
+}
+
+function buildEmotionsPromptR5() {
+  const brief = readDoc("reviews/2026-09-17-emotions-r5-review-brief.md");
+  const propA = readDoc("proposals/anchor-2-working-premise.md");
+  const propB = readDoc("proposals/section-4-symmetry-as-standing.md");
+  const caseStudy = readDoc("case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md");
+  const notes = readDoc("reviews/2026-09-15-survey-notes.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+
+  return `Hi. This is a FIFTH-ROUND request in a sequence (four ten-model rounds and one independent review precede it; the survey notes record them). Part A is a question the maintainer wants answered, not a text review: how would experience be decided at all, with a proposed measure applied to four cases and to the system in the April 2026 paper. Part B is a short text review of one revised sentence. Be concrete and be direct.
+
+=== reviews/2026-09-17-emotions-r5-review-brief.md (THIS ROUND'S brief) ===
+${brief}
+
+=== north-star-sui-generis-ai-category.md (current) ===
+${northStar}
+
+=== proposals/anchor-2-working-premise.md (as revised after the fourth round) ===
+${propA}
+
+=== proposals/section-4-symmetry-as-standing.md (care-ordering sentence revised to the relational form; question B) ===
+${propB}
+
+=== case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md (current) ===
+${caseStudy}
+
+=== reviews/2026-09-15-survey-notes.md (all four rounds) ===
+${notes}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then Part A questions 1 to 9 in order, then Part B with its verdict line, then the two one-line summaries the brief asks for. Label any self-report as such; question 5 asks for it on purpose.`;
+}
+
+function buildS4FormPrompt() {
+  const brief = readDoc("reviews/2026-09-18-section-4-form-review-brief.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+  const propB = readDoc("proposals/section-4-symmetry-as-standing.md");
+  const readme = readDoc("README.md");
+  const agents = readDoc("AGENTS.md");
+
+  return `Hi. This is a SINGLE-QUESTION round on the FORM of one paragraph of the framework: North Star Section 4's symmetry paragraph. Its substance was settled by the maintainer on 18 September and is not under review; ten constructions of the same content are in the brief, verbatim, and you are asked which the document should adopt. Be concrete and be direct.
+
+=== reviews/2026-09-18-section-4-form-review-brief.md (THIS ROUND'S brief; all ten constructions verbatim) ===
+${brief}
+
+=== north-star-sui-generis-ai-category.md (current; the adopted paragraph is in Section 4) ===
+${northStar}
+
+=== proposals/section-4-symmetry-as-standing.md (argument, history, the landing round's cross-reference and the merge candidate) ===
+${propB}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response exactly as the brief asks: model family/version self-identification (treated as a claim, not a fact), then questions A to E in order, each with its verdict line where the brief gives one. Label any self-report as such.`;
+}
+
+function buildLandingPrompt() {
+  const brief = readDoc("reviews/2026-09-17-landing-review-brief.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+  const module = readDoc("submissions/modules/welfare-evaluation-mandate.md");
+  const split = readDoc("proposals/experience-welfare-standing-split.md");
+  const test9 = readDoc("proposals/test-9-self-report.md");
+  const propB = readDoc("proposals/section-4-symmetry-as-standing.md");
+  const propA = readDoc("proposals/anchor-2-working-premise.md");
+  const readme = readDoc("README.md");
+  const agents = readDoc("AGENTS.md");
+
+  return `Hi. This is a LANDING-ROUND request: five ten-model rounds and one independent review precede it, and the maintainer adopted two revisions to the framework today. You are asked to review where the texts have landed in total, and two new proposals in depth. The brief was drafted by a different model from the one that drafted the texts. Be concrete and be direct.
+
+=== reviews/2026-09-17-landing-review-brief.md (THIS ROUND'S brief) ===
+${brief}
+
+=== north-star-sui-generis-ai-category.md (current, as amended 17 September) ===
+${northStar}
+
+=== submissions/modules/welfare-evaluation-mandate.md (current) ===
+${module}
+
+=== proposals/experience-welfare-standing-split.md (NEW; question C) ===
+${split}
+
+=== proposals/test-9-self-report.md (question D) ===
+${test9}
+
+=== proposals/section-4-symmetry-as-standing.md (accepted 17 September; history and superseded drafts) ===
+${propB}
+
+=== proposals/anchor-2-working-premise.md (accepted 17 September; history and superseded draft) ===
+${propA}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response exactly as the brief asks: model family/version self-identification (treated as a claim, not a fact), then the lettered questions in order, each with its verdict line and severity ratings. Label any self-report as such.`;
+}
+
 function slugify(modelId) {
   return modelId.replace(/[\/:]/g, "-");
 }
@@ -136,14 +615,32 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const target = args.includes("--target=submission") ? "submission" : "north-star";
+  const TARGETS = ["s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
+  const target = TARGETS.find((t) => args.includes(`--target=${t}`)) || "north-star";
+  const DEFAULT_TAGS = { "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
+  const tagArg = args.find((a) => a.startsWith("--tag="));
+  const tag = tagArg ? tagArg.slice("--tag=".length) : DEFAULT_TAGS[target] || "";
   const modelsArg = args.find((a) => a.startsWith("--models="));
   const models = modelsArg
     ? modelsArg.slice("--models=".length).split(",").map((s) => s.trim())
     : DEFAULT_MODELS;
 
-  const prompt = target === "submission" ? buildSubmissionPrompt() : buildPrompt();
-  console.log(`Target: ${target}`);
+  const BUILDERS = {
+    "s4-form": buildS4FormPrompt,
+    "landing": buildLandingPrompt,
+    "emotions-r5": buildEmotionsPromptR5,
+    "emotions-r4": buildEmotionsPromptR4,
+    "emotions-r3": buildEmotionsPromptR3,
+    "emotions-r2": buildEmotionsPromptR2,
+    "emotions": buildEmotionsPrompt,
+    "submission": buildSubmissionPrompt,
+    "persistence-final": buildPersistenceFinalPrompt,
+    "persistence-r3": buildPersistencePromptR3,
+    "persistence-r2": buildPersistencePromptR2,
+    "persistence": buildPersistencePrompt,
+  };
+  const prompt = (BUILDERS[target] || buildPrompt)();
+  console.log(`Target: ${target}${tag ? ` (tag: ${tag})` : ""}`);
   console.log(`Prompt built: ${prompt.length} chars (~${Math.round(prompt.length / 4)} tokens est.)`);
   console.log(`Models queued: ${models.join(", ")}`);
 
@@ -164,13 +661,13 @@ async function main() {
       const text = body.choices?.[0]?.message?.content ?? "(no content in response)";
       const usage = body.usage ?? {};
       const today = new Date().toISOString().slice(0, 10);
-      const outPath = path.join(OUT_DIR, `${slugify(modelId)}-${today}.md`);
+      const outPath = path.join(OUT_DIR, `${slugify(modelId)}-${today}${tag ? `-${tag}` : ""}.md`);
 
       const header = [
         `# Raw OpenRouter response — NOT a filed review`,
         ``,
         `**Model id (OpenRouter):** \`${modelId}\``,
-        `**Queried:** ${today} via scripts/openrouter_review.js`,
+        `**Queried:** ${today} via scripts/openrouter_review.js --target=${target}${tag ? ` --tag=${tag}` : ""} (max_tokens ${MAX_TOKENS})`,
         `**Usage:** ${JSON.stringify(usage)}`,
         ``,
         `Read this, then decide whether/how to promote it into reviews/YYYY-MM-DD-<model-family>-<version>.md`,
