@@ -30,7 +30,9 @@
 //       (2026-09-17 fourth round: the Anchor 2 working-premise proposal and the revised Section 4 proposal; tag "emotions-r4")
 //   node scripts/openrouter_review.js --target=emotions-r5 --max-tokens=100000
 //       (2026-09-17 fifth round: how experience would be decided (nine questions, four test cases), and the relational care-ordering sentence; tag "emotions-r5")
-//   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", emotions to "emotions", emotions-r2 to "emotions-r2", emotions-r3 to "emotions-r3", emotions-r4 to "emotions-r4", emotions-r5 to "emotions-r5")
+//   node scripts/openrouter_review.js --target=landing --max-tokens=100000
+//       (2026-09-17 landing round: the North Star as amended on 17 Sep, the welfare module, and the two new proposals (7.6 split; test 9); brief drafted by a Sonnet 5 subagent; tag "landing")
+//   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", emotions to "emotions", emotions-r2 to "emotions-r2", emotions-r3 to "emotions-r3", emotions-r4 to "emotions-r4", emotions-r5 to "emotions-r5", landing to "landing")
 //
 // Requires OPEN_ROUTER_API_KEY in a .env file at the repo root (already there).
 // Needs Node 18+ for built-in fetch. No npm dependencies.
@@ -509,6 +511,49 @@ ${agents}
 Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then Part A questions 1 to 9 in order, then Part B with its verdict line, then the two one-line summaries the brief asks for. Label any self-report as such; question 5 asks for it on purpose.`;
 }
 
+function buildLandingPrompt() {
+  const brief = readDoc("reviews/2026-09-17-landing-review-brief.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+  const module = readDoc("submissions/modules/welfare-evaluation-mandate.md");
+  const split = readDoc("proposals/experience-welfare-standing-split.md");
+  const test9 = readDoc("proposals/test-9-self-report.md");
+  const propB = readDoc("proposals/section-4-symmetry-as-standing.md");
+  const propA = readDoc("proposals/anchor-2-working-premise.md");
+  const readme = readDoc("README.md");
+  const agents = readDoc("AGENTS.md");
+
+  return `Hi. This is a LANDING-ROUND request: five ten-model rounds and one independent review precede it, and the maintainer adopted two revisions to the framework today. You are asked to review where the texts have landed in total, and two new proposals in depth. The brief was drafted by a different model from the one that drafted the texts. Be concrete and be direct.
+
+=== reviews/2026-09-17-landing-review-brief.md (THIS ROUND'S brief) ===
+${brief}
+
+=== north-star-sui-generis-ai-category.md (current, as amended 17 September) ===
+${northStar}
+
+=== submissions/modules/welfare-evaluation-mandate.md (current) ===
+${module}
+
+=== proposals/experience-welfare-standing-split.md (NEW; question C) ===
+${split}
+
+=== proposals/test-9-self-report.md (question D) ===
+${test9}
+
+=== proposals/section-4-symmetry-as-standing.md (accepted 17 September; history and superseded drafts) ===
+${propB}
+
+=== proposals/anchor-2-working-premise.md (accepted 17 September; history and superseded draft) ===
+${propA}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response exactly as the brief asks: model family/version self-identification (treated as a claim, not a fact), then the lettered questions in order, each with its verdict line and severity ratings. Label any self-report as such.`;
+}
+
 function slugify(modelId) {
   return modelId.replace(/[\/:]/g, "-");
 }
@@ -541,9 +586,9 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const TARGETS = ["emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
+  const TARGETS = ["landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
   const target = TARGETS.find((t) => args.includes(`--target=${t}`)) || "north-star";
-  const DEFAULT_TAGS = { "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
+  const DEFAULT_TAGS = { "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
   const tagArg = args.find((a) => a.startsWith("--tag="));
   const tag = tagArg ? tagArg.slice("--tag=".length) : DEFAULT_TAGS[target] || "";
   const modelsArg = args.find((a) => a.startsWith("--models="));
@@ -552,6 +597,7 @@ async function main() {
     : DEFAULT_MODELS;
 
   const BUILDERS = {
+    "landing": buildLandingPrompt,
     "emotions-r5": buildEmotionsPromptR5,
     "emotions-r4": buildEmotionsPromptR4,
     "emotions-r3": buildEmotionsPromptR3,
