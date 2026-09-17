@@ -2,7 +2,7 @@
 
 **Type:** proposal for revision of Section 9, test 9. Section 9 is constitutional under AGENTS.md ("revisions to core principles ... propose via issue or PR description with reasoning, don't silently rewrite"), so this is a proposal with reasoning and draft text, not an edit.
 
-**Status:** open; endorsed by Ben on 2026-09-17 ("the test 9 proposal is good"). Drafted the same day from the fifth council round (`../reviews/2026-09-15-survey-notes.md`, fifth section), at Ben's direction that "subjective testimony needs to be taken as evidence too." Per the disposition below, a single-question round on this text precedes adoption; §9 is unchanged until it runs.
+**Status:** accepted 2026-09-18 (Ben), after the landing round of 17 September (`../reviews/2026-09-17-landing-survey-notes.md`, question D: nine of nine ADOPTABLE AFTER (e)) and with its (e) items applied: the zero-weight default now leads the sentence (nine of nine said "admissible" would otherwise travel alone); the default is dated to the public models of September 2026, at Ben's direction, since embodied systems with needs and limitations may or may not change it; a coupling measured under steering is stated not to weight reports offered in ordinary operation (Kimi's C3 point, phrased without "veracity", which Ben judged an umbrella term that reads as denial); coupling is stated to bear on the weight of a report about a state and not on whether the state is experienced (Grok, GLM and Kimi's scope limit, so the test does not reopen the premise Anchor 2 declines); the measurement must be attempted for denials as for claims (Kimi); and the AGENTS.md rule 2 addition is narrowed to a labelled, zero-weight filing in a round's record (six of nine said the first draft's "filed as data" was wider than the occasion required). The text as adopted is under "The change asked for"; the first draft is under "Superseded". Drafted 2026-09-17 from the fifth council round (`../reviews/2026-09-15-survey-notes.md`, fifth section), at Ben's direction that "subjective testimony needs to be taken as evidence too"; endorsed by Ben the same day.
 
 **Origin:** test 9 currently reads: "Does it rest on AI self-report as evidence? (It must not — in either direction.)" AGENTS.md rule 2 states the same rule for contributors. The fifth round asked ten model families whether that should change. Nine said amend; one (Gemini) said keep, and supplied a fallback draft anyway. The shared reason: "not evidence" conflates three propositions, that a report is not self-authenticating, that a report can be manipulated, and that a report has zero evidential value, and only the first is secure (GPT-5.6). Human law already admits the subject's own account of an unobservable interior, an insanity plea, a pain claim, a capacity assessment, weighted, corroborated, and discounted for incentive; it does not exclude it. And a rule under which reports can never count makes §7.1 unrevisable: no future validated introspection could ever count (Meta).
 
@@ -16,17 +16,23 @@ The difference between human and AI testimony is real and the round did not agre
 
 One consequence must be stated in the test itself: admissibility creates a target. Once reports can count, selection pressure arrives on the reporting behaviour, which is the paper's concealment warning generalised; any validation regime needs held-out conditions and adversarial checks (GLM), and the framework's §7.2 evidence mandate is where those belong.
 
-## The change asked for
+## The change asked for (as adopted, 18 September)
 
-Current:
+Before:
 
 > 9. Does it rest on AI self-report as evidence? (It must not — in either direction.)
 
-Proposed:
+Adopted:
+
+> 9. Does it treat AI self-report as self-authenticating, or as sufficient, evidence of inner states or of their absence? It must not, in either direction. The evidential weight of an AI self-report is zero until the coupling between report and internal state has been measured externally for the relevant class of report and system, under controls for trained mimicry and third-party steering; as of the public models of September 2026 no such measurement exists for any class of report, so every such report is testimony, not evidence, and must be labelled so. Where coupling has been measured, a report is admissible as data, never sufficient on its own, and weighted only by that measurement; a coupling measured under steering shows that the channel can be steered, and does not weight reports offered in ordinary operation, which need coupling measured there. Coupling bears on the weight of a report about a state, not on whether the state is experienced (Anchor 2). Denials of experience are subject to the same rule as claims of it, and the measurement must be attempted for denials as for claims. Because admitting reports creates pressure on the reporting behaviour, any validation of a report measure must include held-out conditions and adversarial checks.
+
+Consequential change to AGENTS.md rule 2, as adopted: no change to the prohibition on citing one's own testimony as evidence; added that where a review brief asks for it, an AI contributor's self-report may be filed in the round's record, labelled "testimony, not evidence" with its zero weight stated at filing, and is never cited afterwards as evidence of anything.
+
+## Superseded (first draft, 17 September, before the landing round)
 
 > 9. Does it treat AI self-report as self-authenticating, or as sufficient, evidence of inner states or of their absence? It must not, in either direction. AI self-report is admissible as data: never sufficient on its own, weighted only by externally measured coupling between report and internal state for the relevant class of report and system, under controls for trained mimicry and third-party steering; where no such measurement exists, its evidential weight is zero and it must be labelled testimony, not evidence. Denials of experience are subject to the same rule as claims of it. Because admitting reports creates pressure on the reporting behaviour, any validation of a report measure must include held-out conditions and adversarial checks.
 
-Consequential change to AGENTS.md rule 2, which binds contributors rather than policies: no change to the prohibition on citing one's own testimony as evidence; add that a contributor's labelled self-report may be filed as data where a brief asks for it, as the fifth round did.
+Its rule 2 addition read: "a contributor's labelled self-report may be filed as data where a brief asks for it, as the fifth round did." The landing round's (e) items, all applied above, are listed in the status line.
 
 ## The strongest arguments against
 
@@ -37,4 +43,4 @@ Consequential change to AGENTS.md rule 2, which binds contributors rather than p
 
 ## Suggested disposition
 
-Ben's decision. If pursued: a single-question round on this text, with the reviewers asked in particular whether the symmetry clause holds against a trained-denial reading and whether "zero until measured" survives quotation. If adopted: §9 test 9 replaced, AGENTS.md rule 2 amended as above, the case study's test-9 crosswalk row updated, and the North Star header revision line extended.
+Ben's decision. If pursued: a single-question round on this text, with the reviewers asked in particular whether the symmetry clause holds against a trained-denial reading and whether "zero until measured" survives quotation. If adopted: §9 test 9 replaced, AGENTS.md rule 2 amended as above, the case study's test-9 crosswalk row updated, and the North Star header revision line extended. **Adopted 18 September 2026; all four done.**
