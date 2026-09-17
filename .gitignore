@@ -19,3 +19,10 @@ submissions/pending/
 # publicly. Never commit. Public-safe findings go in case-studies/ or
 # submissions/ only where independently supported by a public source.
 local/
+
+# The 10 September 2026 NAIC email review round (brief, survey notes, raws):
+# its brief summarises the 8 September workshop from the session material in
+# local/. Held out until NAIC has published its own side (Ben, 17 Sep 2026).
+reviews/*naic*
+reviews/raw/*naic*
+reviews/2026-09-10-survey-notes.md
