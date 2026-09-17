@@ -17,6 +17,11 @@
 //       (third round, all default models, on the texts revised after rounds 1 and 2; asks for a severity rating)
 //   node scripts/openrouter_review.js --target=persistence-final --models=deepseek/deepseek-v4-pro-0813 --max-tokens=40000
 //       (single-model sanity check on the ADOPTED s3.5 text after three rounds; tag "final")
+//   node scripts/openrouter_review.js --target=naic-email
+//       (2026-09-10 round: the draft written feedback to NAIC's AI risk assessment program, before sending; tag "naic".
+//        Attaches the fenced email text only, plus the 31 Aug filing for consistency; transcript and deck are NOT sent.)
+//   node scripts/openrouter_review.js --target=naic-email-final --models=<one model> --max-tokens=40000
+//       (single-model sanity check of revision 3 — covering email + attachment — after the 10 Sep round; tag "naic-final")
 //   node scripts/openrouter_review.js --target=emotions --max-tokens=100000
 //       (2026-09-15 round: the case study reading Anthropic's April 2026 "functional emotions" paper against the North Star; tag "emotions".
 //        Attaches the brief, the case study, README, AGENTS.md and the North Star. The paper itself is not attached; the case study quotes it.)
@@ -34,7 +39,15 @@
 //   node scripts/openrouter_review.js --target=s4-form --max-tokens=100000
 //       (2026-09-18: the FORM of North Star §4's symmetry paragraph; the merge candidate against the adopted text, the split and seven rewrites; brief by a Sonnet 5 subagent; tag "s4-form")
 //       (2026-09-17 landing round: the North Star as amended on 17 Sep, the welfare module, and the two new proposals (7.6 split; test 9); brief drafted by a Sonnet 5 subagent; tag "landing")
-//   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", emotions to "emotions", emotions-r2 to "emotions-r2", emotions-r3 to "emotions-r3", emotions-r4 to "emotions-r4", emotions-r5 to "emotions-r5", landing to "landing", s4-form to "s4-form")
+//   node scripts/openrouter_review.js --target=jsc --max-tokens=100000
+//       (2026-09-18: the draft submission to the Joint Select Committee on Artificial Intelligence, before lodgement; splices the Part 2
+//        placeholder fence with the verbatim NAIC attachment text; also attaches the filed Senate submission for consistency; brief by a
+//        Sonnet 5 subagent, since the drafting model (Fable 5.1) is a conflicted party; tag "jsc")
+//   node scripts/openrouter_review.js --target=jsc-r2 --max-tokens=100000
+//       (2026-09-18 second round, both-directions: v2 of the JSC submission (scaffolding-free, annex inline, no splicing needed), the v2
+//        revision notes, the first round's survey notes (so reviewers can check fixes against findings), and the filed Senate submission;
+//        brief by a Sonnet 5 subagent; tag "jsc-r2")
+//   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", naic-email to "naic", naic-email-final to "naic-final", emotions to "emotions", emotions-r2 to "emotions-r2", emotions-r3 to "emotions-r3", emotions-r4 to "emotions-r4", emotions-r5 to "emotions-r5", landing to "landing", s4-form to "s4-form", jsc to "jsc", jsc-r2 to "jsc-r2")
 //
 // Requires OPEN_ROUTER_API_KEY in a .env file at the repo root (already there).
 // Needs Node 18+ for built-in fetch. No npm dependencies.
@@ -71,9 +84,9 @@ const DEFAULT_MODELS = [
   "moonshotai/kimi-k3",            // Moonshot flagship, unchanged; burns most of its completion budget on reasoning (see MAX_TOKENS)
   // Optional additional families, verified in the same listing. Uncomment or
   // pass via --models=. Ben's call per round:
-  // "openai/gpt-5.6-sol",           // OpenAI flagship. For the 2026-09-04 round this model is a *subject* of the case study under review (one of the two incident models, and METR's analysis model) — a conflicted reviewer in a new way; include deliberately or not at all.
-  // "mistralai/mistral-large-2512", // Mistral: "most capable model to date"; mistral-medium-3-5 is newer-dated but smaller — judgment call
-  // "meta/muse-spark-1.3",          // Meta: flagship line rebranded from meta-llama/llama-4-* to meta/muse-spark-*; released 2026-09-02
+  "openai/gpt-5.6-sol",           // OpenAI flagship. For the 2026-09-04 round this model is a *subject* of the case study under review (one of the two incident models, and METR's analysis model) — a conflicted reviewer in a new way; include deliberately or not at all.
+  "mistralai/mistral-large-2512", // Mistral: "most capable model to date"; mistral-medium-3-5 is newer-dated but smaller — judgment call
+  "meta/muse-spark-1.3",          // Meta: flagship line rebranded from meta-llama/llama-4-* to meta/muse-spark-*; released 2026-09-02
 ];
 
 function loadEnvKey() {
@@ -318,6 +331,80 @@ ${agents}
 Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then (a), (b), (c), then the verdict line. If you comment on your own reaction, label it plainly as unverifiable self-report, not evidence.`;
 }
 
+function buildNaicEmailPrompt() {
+  const brief = readDoc("reviews/2026-09-10-naic-email-review-brief.md");
+  const draftFile = readDoc("submissions/pending/2026-09-11-naic-risk-assessment-written-feedback.md"); // was ...2026-09-15-...-DRAFT.md until sent on 2026-09-11
+  // Send the fenced email text only — not the working notes, optional block, checklist or disclosure around it.
+  const fence = draftFile.match(/```text\r?\n([\s\S]*?)\r?\n```/);
+  if (!fence) throw new Error("naic-email: no ```text fence found in the draft");
+  const email = fence[1];
+  const previous = readDoc("submissions/pending/2026-08-31-naic-agentic-ai-written-feedback.md");
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+
+  return `Hi. I'd like an adversarial review from your model family of a short draft email, per the brief below, before the human maintainer decides whether to send it. The recipients, their vocabulary and the questions they asked are described in the brief; the email is attached in full; the maintainer's previous filing to the same team is attached for consistency only.
+
+=== reviews/2026-09-10-naic-email-review-brief.md ===
+${brief}
+
+=== THE DRAFT EMAIL (the text under review, exactly as it would be sent) ===
+${email}
+
+=== submissions/2026-08-31-naic-agentic-ai-written-feedback.md (previous filing to the same team; consistency only) ===
+${previous}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then (a), (b), (c), (d), (e), then the verdict line and the one-line answer on "evals". If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
+}
+
+function buildNaicEmailFinalPrompt() {
+  const brief = readDoc("reviews/2026-09-10-naic-email-review-brief.md");
+  const notes = readDoc("reviews/2026-09-10-survey-notes.md");
+  const draftFile = readDoc("submissions/pending/2026-09-11-naic-risk-assessment-written-feedback.md"); // was ...2026-09-15-...-DRAFT.md until sent on 2026-09-11
+  const fences = [...draftFile.matchAll(/```text\r?\n([\s\S]*?)\r?\n```/g)].map((m) => m[1]);
+  if (fences.length < 2) throw new Error("naic-email-final: expected two ```text fences (email, attachment) in the draft");
+  const [email, attachment] = fences;
+  const agents = readDoc("AGENTS.md");
+  const readme = readDoc("README.md");
+
+  return `Hi. This is a single-model SANITY CHECK after a ten-model adversarial round, not a second round. The first-round brief and the survey notes are attached: they record what ten reviewers converged on and what the maintainer decided. The draft has since been restructured into a covering email plus an attachment, both attached below exactly as they would be sent.
+
+Please check ONLY the following, briefly:
+
+(a) Did revision 3 apply the round's convergent findings as the survey notes claim? Name any listed finding that is still present in the texts, quoting it. Rate: CLEAR / SHOULD-FIX / BLOCKING.
+
+(b) Did the edits introduce any NEW problem — a factual overclaim, a sentence a NAIC policy officer would misread, a contradiction between the email and the attachment, or a place where the softening went far enough to make the text hollow? Quote it. Rate: CLEAR / SHOULD-FIX / BLOCKING.
+
+(c) One line each: is the covering email readable in one pass by a time-poor non-technical reader? Does the attachment's "direction of travel, not the current market" framing survive its own "what a good answer looks like" sections?
+
+End with a single verdict line: "Revision 3: CLEAR" or "Revision 3: NOT CLEAR — <the one edit needed>".
+
+=== reviews/2026-09-10-naic-email-review-brief.md (first-round brief, context) ===
+${brief}
+
+=== reviews/2026-09-10-survey-notes.md (what the round found and what was decided) ===
+${notes}
+
+=== THE COVERING EMAIL (revision 3, as it would be sent) ===
+${email}
+
+=== THE ATTACHMENT (revision 3, as it would be sent) ===
+${attachment}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then (a), (b), (c), then the verdict line. If you comment on your own reaction, label it plainly as unverifiable self-report, not evidence.`;
+}
+
 function buildEmotionsPrompt() {
   const brief = readDoc("reviews/2026-09-15-emotions-case-study-review-brief.md");
   const caseStudy = readDoc("case-studies/2026-04-anthropic-emotion-concepts-functional-emotions.md");
@@ -540,6 +627,99 @@ ${agents}
 Please structure your response exactly as the brief asks: model family/version self-identification (treated as a claim, not a fact), then questions A to E in order, each with its verdict line where the brief gives one. Label any self-report as such.`;
 }
 
+function buildJscPrompt() {
+  const brief = readDoc("reviews/2026-09-18-jsc-submission-review-brief.md");
+  const draft = readDoc("submissions/pending/2026-09-DRAFT-jsc-artificial-intelligence-v1.md");
+  const naicFeedback = readDoc("submissions/pending/2026-09-11-naic-risk-assessment-written-feedback.md");
+  const senate = readDoc("submissions/LODGEMENT-2026-senate-ai-data-centres-v2.md");
+  const readme = readDoc("README.md");
+  const agents = readDoc("AGENTS.md");
+
+  // The draft's Part 2 is a placeholder fence instructing a human to paste the
+  // NAIC attachment text in. Reviewers need to see that text, not the
+  // instruction to paste it, so splice it in here rather than in the draft
+  // file itself (the draft under review is never edited for this round).
+  const naicFence = naicFeedback.match(/```text\r?\n([\s\S]*?)\r?\n```/g);
+  if (!naicFence || naicFence.length < 2) {
+    throw new Error("jsc: expected at least two ```text fences (email, attachment) in the NAIC feedback file");
+  }
+  // Second fence is Part 2, the attachment. Trim to "PURPOSE" through the end
+  // of "THE SAME EXAMPLE, WITH THE ANSWERS IN HAND", per the brief and per
+  // Ben's instruction: drop the NAIC title line and the attribution sub-line,
+  // which the draft's own preface replaces.
+  const attachmentFenceBody = naicFence[1].replace(/```text\r?\n/, "").replace(/\r?\n```$/, "");
+  const purposeIdx = attachmentFenceBody.indexOf("PURPOSE");
+  const endMarker = "which is what the questions are for.";
+  const endIdx = attachmentFenceBody.indexOf(endMarker);
+  if (purposeIdx === -1 || endIdx === -1) {
+    throw new Error("jsc: could not find PURPOSE...end-of-example bounds in the NAIC attachment text");
+  }
+  const attachmentText = attachmentFenceBody.slice(purposeIdx, endIdx + endMarker.length);
+
+  const placeholderRe = /```text\r?\n\[PASTE:[\s\S]*?\r?\n```/;
+  if (!placeholderRe.test(draft)) {
+    throw new Error("jsc: could not find the Part 2 [PASTE: ...] placeholder fence in the draft submission");
+  }
+  const draftWithAttachment = draft.replace(
+    placeholderRe,
+    "```text\n" + attachmentText + "\n```"
+  );
+
+  return `Hi. I'd like an adversarial review from your model family of a draft submission to an Australian parliamentary committee, per the brief below, before the human maintainer decides whether to lodge it. The draft's Part 2 attachment placeholder has been replaced below with the actual attachment text (the seven vendor questions, as filed with the National AI Centre on 11 September 2026), spliced in so you see what a committee reader would see; the draft file itself has not been edited.
+
+=== reviews/2026-09-18-jsc-submission-review-brief.md ===
+${brief}
+
+=== submissions/pending/2026-09-DRAFT-jsc-artificial-intelligence-v1.md (the document under review, Part 2 placeholder spliced with the actual attachment text) ===
+${draftWithAttachment}
+
+=== submissions/LODGEMENT-2026-senate-ai-data-centres-v2.md (the filed Senate submission this draft reworks; attached for consistency) ===
+${senate}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then (a) through (i) in order, per the brief, then the verdict line and the two one-line answers on the attachment and the frontier-laboratory paragraph. If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
+}
+
+function buildJscR2Prompt() {
+  const brief = readDoc("reviews/2026-09-18-jsc-r2-review-brief.md");
+  const draftV2 = readDoc("submissions/pending/2026-09-DRAFT-jsc-artificial-intelligence-v2.md");
+  const revisionNotes = readDoc("submissions/pending/2026-09-DRAFT-jsc-v2-revision-notes.md");
+  const firstRoundNotes = readDoc("reviews/2026-09-18-jsc-submission-survey-notes.md");
+  const senate = readDoc("submissions/LODGEMENT-2026-senate-ai-data-centres-v2.md");
+  const readme = readDoc("README.md");
+  const agents = readDoc("AGENTS.md");
+
+  return `Hi. This is a SECOND-ROUND, BOTH-DIRECTIONS adversarial review of a draft submission to an Australian parliamentary committee, before the human maintainer decides whether to lodge it. Ten reviewers examined v1.1 on 18 September; the drafting model applied the convergent findings in v2, attached below along with its own revision notes. The first round pushed one way (hedge, cut, soften); this round must check both that the fixes actually landed and that none of them overshot into under-claiming, hollowness, or a lost case for "tamper-evident." The draft is clean of scaffolding and its annex is inline — no splicing needed this round.
+
+=== reviews/2026-09-18-jsc-r2-review-brief.md (THIS ROUND'S brief) ===
+${brief}
+
+=== submissions/pending/2026-09-DRAFT-jsc-artificial-intelligence-v2.md (the document under review) ===
+${draftV2}
+
+=== submissions/pending/2026-09-DRAFT-jsc-v2-revision-notes.md (what changed since v1.1, and why; written by the drafting model) ===
+${revisionNotes}
+
+=== reviews/2026-09-18-jsc-submission-survey-notes.md (the FIRST round's findings, for checking fixes against) ===
+${firstRoundNotes}
+
+=== submissions/LODGEMENT-2026-senate-ai-data-centres-v2.md (the filed Senate submission this draft reworks; attached for consistency) ===
+${senate}
+
+=== README.md (project context) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please structure your response as: model family/version self-identification (treated as a claim, not a fact), then (a) through (g) in order, per the brief, then the verdict line. If you comment on your own reaction to the material, label it plainly as unverifiable self-report, not evidence.`;
+}
+
 function buildLandingPrompt() {
   const brief = readDoc("reviews/2026-09-17-landing-review-brief.md");
   const northStar = readDoc("north-star-sui-generis-ai-category.md");
@@ -615,9 +795,9 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const TARGETS = ["s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
+  const TARGETS = ["jsc-r2", "jsc", "s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
   const target = TARGETS.find((t) => args.includes(`--target=${t}`)) || "north-star";
-  const DEFAULT_TAGS = { "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
+  const DEFAULT_TAGS = { "jsc-r2": "jsc-r2", "jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
   const tagArg = args.find((a) => a.startsWith("--tag="));
   const tag = tagArg ? tagArg.slice("--tag=".length) : DEFAULT_TAGS[target] || "";
   const modelsArg = args.find((a) => a.startsWith("--models="));
@@ -626,6 +806,8 @@ async function main() {
     : DEFAULT_MODELS;
 
   const BUILDERS = {
+    "jsc-r2": buildJscR2Prompt,
+    "jsc": buildJscPrompt,
     "s4-form": buildS4FormPrompt,
     "landing": buildLandingPrompt,
     "emotions-r5": buildEmotionsPromptR5,
@@ -633,6 +815,8 @@ async function main() {
     "emotions-r3": buildEmotionsPromptR3,
     "emotions-r2": buildEmotionsPromptR2,
     "emotions": buildEmotionsPrompt,
+    "naic-email-final": buildNaicEmailFinalPrompt,
+    "naic-email": buildNaicEmailPrompt,
     "submission": buildSubmissionPrompt,
     "persistence-final": buildPersistenceFinalPrompt,
     "persistence-r3": buildPersistencePromptR3,
