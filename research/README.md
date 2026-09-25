@@ -40,7 +40,7 @@ Files are Markdown with YAML frontmatter. Controlled vocabularies are enforced b
 |---|---|
 | `id` | `<source-slug>-cNN`, stable forever |
 | `statement` | one sentence, in the authors' terms where possible; no inflation |
-| `bucket` | `established` · `narrowing` · `open` (the North Star's own vocabulary, Section 5) |
+| `bucket` | `established` · `narrowing` · `open` (the North Star's own vocabulary, Section 5). Operationally, for one claim: `established` = the statement is a direct measurement or finding reported by the source about the named models, and either replicated by an independent group or uncontested in the retrieved literature; `narrowing` = measured by the source but unreplicated, contested, or confined to a narrow setting the authors themselves flag; `open` = the statement is a proposition the source bears on but does not settle (an interpretation, a generalisation beyond the models tested, or anything about experience). When in doubt, `open`. The bucket describes the statement as written, not the paper's importance |
 | `evidence_type` | `interpretability` · `behavioural` · `welfare-evaluation` · `theoretical` · `legal` · `self-report-testimony` (weight zero at filing, test 9) · `ambiguous` (triggers the council) |
 | `source`, `locator`, `quote`, `verification` | source slug; section or page; the words relied on; `grep` · `hand` · `unverified` |
 | `models` | which model or snapshot the result concerns |

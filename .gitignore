@@ -26,3 +26,6 @@ local/
 reviews/*naic*
 reviews/raw/*naic*
 reviews/2026-09-10-survey-notes.md
+
+# Python bytecode
+__pycache__/
