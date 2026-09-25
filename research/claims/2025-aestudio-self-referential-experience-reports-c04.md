@@ -10,7 +10,7 @@ verification: grep
 models: [Llama 3.3 70B (Goodfire SAE features)]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "That the self-referential condition accesses a genuine internal state that the controls lack; that feature suppression is not relaxing a trained disclaimer policy (the authors say partial unlearning or policy interference cannot yet be ruled out); that any report is evidence of experience."
+not_evidence_of: "Paper: Not evidence that the self-referential condition accesses a genuine internal state that the controls lack; Paper: Not evidence that feature suppression is not relaxing a trained disclaimer policy (the authors say partial unlearning or policy interference cannot yet be ruled out); Framework (test 9): a model's report about its own states carries no weight as evidence of experience until the link between report and internal state has been measured externally for this kind of report and system"
 bears_on: [9.t9, 5.A2]
 contests: []
 contested_by: []

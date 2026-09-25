@@ -47,6 +47,10 @@
 //       (2026-09-18 second round, both-directions: v2 of the JSC submission (scaffolding-free, annex inline, no splicing needed), the v2
 //        revision notes, the first round's survey notes (so reviewers can check fixes against findings), and the filed Senate submission;
 //        brief by a Sonnet 5 subagent; tag "jsc-r2")
+//   node scripts/openrouter_review.js --target=research-docket --max-tokens=100000
+//       (2026-09-26: first council sitting on the research library's docket (research/DOCKET.md): 27 items across four dossiers;
+//        brief by a Sonnet 5 subagent; attaches README, docket, dossiers 9.t9 / 5.A2 / 3.3 / 4.endorsement, the second-read
+//        survey notes, AGENTS.md and the North Star; tag "docket")
 //   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", naic-email to "naic", naic-email-final to "naic-final", emotions to "emotions", emotions-r2 to "emotions-r2", emotions-r3 to "emotions-r3", emotions-r4 to "emotions-r4", emotions-r5 to "emotions-r5", landing to "landing", s4-form to "s4-form", jsc to "jsc", jsc-r2 to "jsc-r2")
 //
 // Requires OPEN_ROUTER_API_KEY in a .env file at the repo root (already there).
@@ -763,6 +767,59 @@ ${agents}
 Please structure your response exactly as the brief asks: model family/version self-identification (treated as a claim, not a fact), then the lettered questions in order, each with its verdict line and severity ratings. Label any self-report as such.`;
 }
 
+function buildResearchDocketPrompt() {
+  // 2026-09-26: first council sitting on the research library's docket. Attaches
+  // the brief (by a Sonnet 5 subagent), the library README (schema and convening
+  // rules), the generated docket, the four dossiers the docket items sit in, the
+  // second-read survey notes, and the North Star. Claim files and held texts are
+  // not attached: statement fidelity was the second readers' job; the council
+  // rules on classification, contests, single-lineage support and drift.
+  const brief = readDoc("reviews/2026-09-26-research-docket-review-brief.md");
+  const readme = readDoc("research/README.md");
+  const docket = readDoc("research/DOCKET.md");
+  const d9 = readDoc("research/dossiers/9-t9.md");
+  const d5 = readDoc("research/dossiers/5-A2.md");
+  const d33 = readDoc("research/dossiers/3-3.md");
+  const d4e = readDoc("research/dossiers/4-endorsement.md");
+  const notes = readDoc("reviews/2026-09-25-second-read-survey-notes.md");
+  const agents = readDoc("AGENTS.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+
+  return `Hi. I'd like an adversarial review, from your model family, of the first docket of a research library that supports a legal-policy framework, per the brief below. The human maintainer adjudicates after reading all responses.
+
+=== reviews/2026-09-26-research-docket-review-brief.md (the brief) ===
+${brief}
+
+=== research/README.md (the library's schema and convening rules) ===
+${readme}
+
+=== research/DOCKET.md (the items under review) ===
+${docket}
+
+=== research/dossiers/9-t9.md ===
+${d9}
+
+=== research/dossiers/5-A2.md ===
+${d5}
+
+=== research/dossiers/3-3.md ===
+${d33}
+
+=== research/dossiers/4-endorsement.md ===
+${d4e}
+
+=== reviews/2026-09-25-second-read-survey-notes.md (what the second readers found) ===
+${notes}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+=== north-star-sui-generis-ai-category.md (the framework the dossiers serve) ===
+${northStar}
+
+Please respond in the structure the brief specifies, beginning with your model family/version self-identification, labelled as unverified.`;
+}
+
 function slugify(modelId) {
   return modelId.replace(/[\/:]/g, "-");
 }
@@ -795,9 +852,9 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const TARGETS = ["jsc-r2", "jsc", "s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
+  const TARGETS = ["research-docket", "jsc-r2", "jsc","s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
   const target = TARGETS.find((t) => args.includes(`--target=${t}`)) || "north-star";
-  const DEFAULT_TAGS = { "jsc-r2": "jsc-r2", "jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
+  const DEFAULT_TAGS = { "research-docket": "docket", "jsc-r2": "jsc-r2","jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
   const tagArg = args.find((a) => a.startsWith("--tag="));
   const tag = tagArg ? tagArg.slice("--tag=".length) : DEFAULT_TAGS[target] || "";
   const modelsArg = args.find((a) => a.startsWith("--models="));
@@ -806,6 +863,7 @@ async function main() {
     : DEFAULT_MODELS;
 
   const BUILDERS = {
+    "research-docket": buildResearchDocketPrompt,
     "jsc-r2": buildJscR2Prompt,
     "jsc": buildJscPrompt,
     "s4-form": buildS4FormPrompt,

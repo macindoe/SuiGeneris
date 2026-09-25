@@ -11,6 +11,7 @@ publisher_relation: independent
 status: stub
 retrieved: {date: "", method: "", by: "", sha256: "", text_location: ""}
 related: []
+system_conditions: {modality: unstated, state: unstated, operation: unstated, world: unstated, access: unstated}
 ---
 
 # Title

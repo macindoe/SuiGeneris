@@ -10,13 +10,13 @@ verification: grep
 models: [Llama-3-70B, Gemma-3-27B]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "Not evidence that these models cannot monitor their own belief conflicts; only that the Belief Dominance task as published is solvable from entity properties without privileged access. The authors' explanation (entity frequency) is a stated hypothesis, not a finding. Not evidence about Claude models, and nothing about experience or moral status."
+not_evidence_of: "Paper: Not evidence that these models cannot monitor their own belief conflicts, only that the Belief Dominance task as published is solvable from entity properties without privileged access; Paper: The authors' explanation (entity frequency) is a stated hypothesis, not a finding; Paper: Not evidence about Claude models, and nothing about experience or moral status"
 bears_on: [9.t9, 5.A2]
 contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree", council: none, adjudicated: none}
 added: 2026-09-25
-changed: 2026-09-25
+changed: 2026-09-26
 ---
 
 Probes see only the embeddings of subject + counter entity, or base + counter entity, with no other prompt content and no signal of a belief conflict; the in-context (ICL) figures are Steinmetz Yalon et al.'s published numbers, not re-run. On a balanced test set (App. S) the models are above the 0.33 majority baseline but "often at par or worse than" the probes. The authors "hypothesize" entity frequency as the driver, and argue the companion steering result shows causal efficacy of the representation, not introspective access to it.

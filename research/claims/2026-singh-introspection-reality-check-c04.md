@@ -10,13 +10,13 @@ verification: grep
 models: [Llama-3.1-70B-Instruct, Qwen-3-32B]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "Not evidence that introspection is absent in these models or in Claude: the Claude model Lindsey tested was not accessible to the authors and was not re-run, and the authors themselves conclude 'not that these models demonstrably lack introspective capacities'. It shows only that the two-way design cannot separate detection of activation interventions from detection of a generically unusual state. Nothing about experience, awareness in the phenomenal sense, or moral status."
+not_evidence_of: "Paper: Not evidence that introspection is absent in these models or in Claude: the Claude model Lindsey tested was not accessible to the authors and was not re-run, and the authors themselves conclude 'not that these models demonstrably lack introspective capacities'; Paper: It shows only that the two-way design cannot separate detection of activation interventions from detection of a generically unusual state; Paper: Nothing about experience, awareness in the phenomenal sense, or moral status"
 bears_on: [9.t9, 5.A2]
 contests: [2025-anthropic-emergent-introspective-awareness-c01, 2025-anthropic-emergent-introspective-awareness-c03]
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree; notes: bears_on +3.2", council: none, adjudicated: none}
 added: 2026-09-25
-changed: 2026-09-25
+changed: 2026-09-26
 ---
 
 CONTESTS: 2025-anthropic-emergent-introspective-awareness — the inference that low false positives plus non-trivial detection in the two-way injected-thought design show that models track interventions on their internal states (the authors' "steering awareness"), as opposed to a general sensitivity to irregularity; it does not contest Lindsey's measured detection rates on Claude, which were not re-run.

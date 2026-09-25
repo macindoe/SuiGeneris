@@ -11,6 +11,7 @@ publisher_relation: independent
 status: verified
 retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "8d7c0e4a9058af086c719a61298be98f9dccd439a144191846b018d132060c76", text_location: "research/texts/2026-ferrara-owmi/text.txt (gitignored; raw.html alongside; re-fetch and compare sha256 if absent)"}
 related: []
+system_conditions: {modality: text, state: none, operation: per-call, world: none, access: open-weights}
 ---
 
 # Open-Weight Masked Introspection (OWMI)
@@ -45,3 +46,11 @@ Further scope limits stated in the text: the eight-model battery covers one resi
 - All five claim quotes checked by script (whitespace and curly/straight quote normalisation, substring match against `text.txt`): see each claim's `verification` field.
 - Internal inconsistencies in the paper, recorded rather than resolved: the text says "eight open-weight models from seven families" throughout, but §6.1 says "Nine models from seven laboratories" and the Table 1 caption says "Nine evaluated models" (the table lists eight plus the LoRA fine-tune), and Appendix D.1 says "nine models"; the stated range "0.5B to 15B" exceeds the largest listed model (14.77B). Most likely Qwen3-14B (excluded) accounts for "nine". §1 says "Our results establish the inability of current open-weight models to introspect on this class of internal event", which is stronger than the paper's own outcome-to-claim rule (Appendix D.5: a null "does not license a claim that the model lacks all introspective access"); claims here follow D.5.
 - Second read (intake step 4) not yet done.
+
+## System conditions (added 2026-09-26)
+
+- `modality: text`: §6, "The evaluation uses twelve benchmarks spanning knowledge, commonsense, arithmetic, code, instruction following, and truthfulness"
+- `state: none`: §3.3 (Track A), "The introspective query follows the intervention directly, before the model has generated any task output." The Track B masked-context variant as executed also runs on the immediate path and withholds the model's prior output (§7.6); a genuine delayed track was not executed.
+- `operation: per-call`: §1, "takes an ordinary benchmark item, preserves its task and its scoring, caches a baseline forward pass, alters one internal computational object"
+- `world: none`: no single passage; the methods (§3.3, §5, §6) describe only benchmark items and a report query, with no tools, environment or embodiment, so `none` rests on that absence rather than a sentence.
+- `access: open-weights`: §5, "We use forward hooks to alter selected activations while each frozen open-weight model computes."

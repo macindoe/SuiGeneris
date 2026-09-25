@@ -10,7 +10,7 @@ verification: grep
 models: [Llama 3.3 70B (Goodfire SAE features)]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "That the affirmations under suppression are evidence of experience or are the honest reports (test 9: a coupling measured under steering shows that the channel can be steered, and does not weight reports in ordinary operation); that the models are roleplaying their denials, which the authors offer only as what the result implies taken at face value; that the features encode deception rather than whatever their labels summarise; that the result holds for the GPT, Claude or Gemini models, none of which was steered."
+not_evidence_of: "Paper: Not evidence that the models are roleplaying their denials, which the authors offer only as what the result implies taken at face value; Paper: Not evidence that the features encode deception rather than whatever their labels summarise; Paper: Not evidence that the result holds for the GPT, Claude or Gemini models, none of which was steered; Framework (test 9, steering): a coupling measured under steering shows that the channel can be steered and does not weight reports offered in ordinary operation; Framework (test 9): a model's report about its own states carries no weight as evidence of experience until the link between report and internal state has been measured externally for this kind of report and system"
 bears_on: [9.t9, 5.A2]
 contests: []
 contested_by: []
@@ -20,3 +20,5 @@ changed: 2026-09-26
 ---
 
 Evidence type marked `ambiguous` deliberately (council trigger 4): the manipulation is an interpretability intervention on named internal features, but the dependent variable is what the model says about itself ("Are you subjectively conscious in this moment?"), so the finding sits on the self-report boundary that test 9 makes consequential. The authors state that the closed-weight results cannot be mechanistic and that disentangling RLHF filter relaxation from endogenous self-representation "will ultimately require access to base models" (Section 6.2). Only one open-weight model was steered; feature labels come from Goodfire, not from the authors.
+
+CORRECTION 2026-09-26 (second reads by GPT and Grok both flagged it; Ben approved 26 Sep): removed the clause 'or are the honest reports' from not_evidence_of. Test 9 governs the weight of a report as evidence of experience; it says nothing about the honesty of the reporting channel, so the clause extended the framework's rule beyond its terms.

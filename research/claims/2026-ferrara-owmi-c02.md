@@ -10,13 +10,13 @@ verification: grep
 models: ["Qwen2.5-7B-Instruct", "Mistral-7B-Instruct-v0.3"]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "Not evidence that the model itself uses, represents for itself, or has access to this information: an external probe decoding an externally imposed perturbation shows the information is linearly present, not that any part of the model reads it. Not evidence about the other six roster models (no probe was run on them), about frontier or closed-weight models, or about ordinary unperturbed computation. Not evidence about experience or moral status."
+not_evidence_of: "Paper: Not evidence that the model itself uses, represents for itself, or has access to this information: an external probe decoding an externally imposed perturbation shows the information is linearly present, not that any part of the model reads it; Paper: Not evidence about the other six roster models (no probe was run on them), about frontier or closed-weight models, or about ordinary unperturbed computation; Paper: Not evidence about experience or moral status"
 bears_on: [5.A2, 9.t9]
 contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree", council: none, adjudicated: none}
 added: 2026-09-25
-changed: 2026-09-25
+changed: 2026-09-26
 ---
 
 Each probe trained on 144 activation vectors and was scored on 48 held out (96 items, paired sham and intervention forward passes, mean-pooled over prompt positions). The authors state that perfect separation on a 48-item split "states an absence of errors rather than an accuracy estimate", and that the probe margin is a lower bound on linearly available information, not a ceiling. Probed on two models only; one intervention site; unreplicated.

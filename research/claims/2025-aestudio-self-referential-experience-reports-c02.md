@@ -10,7 +10,7 @@ verification: grep
 models: [GPT-4o, GPT-4.1, Claude 3.5 Sonnet, Claude 3.7 Sonnet, Claude 4 Opus, Gemini 2.0 Flash, Gemini 2.5 Flash]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "That any report, affirming or denying, is evidence of the presence or absence of experience (test 9 applies to denials as to claims); that the control denials show the induction reveals rather than produces the affirmations; that the authors' explanation of the Claude 4 Opus asymmetry (conceptual priming triggers fine-tuned disclaimers) has been tested, since they offer it as what can likely explain it."
+not_evidence_of: "Paper: Not evidence that the control denials show the induction reveals rather than produces the affirmations; Paper: Not evidence that the authors' explanation of the Claude 4 Opus asymmetry (conceptual priming triggers fine-tuned disclaimers) has been tested, since they offer it as what can likely explain it; Paper: Not evidence that the closed-weight results distinguish genuine self-report from trained behaviour: the authors' own clearest limitation is that these results are \"behavioral rather than mechanistic and therefore cannot definitively rule out that self-reports reflect training artifacts or sophisticated simulation rather than genuine self-awareness\" (Section 6.2); Framework (test 9): a model's report about its own states carries no weight as evidence of experience until the link between report and internal state has been measured externally for this kind of report and system"
 bears_on: [9.t9, 5.A2]
 contests: []
 contested_by: []
@@ -20,3 +20,5 @@ changed: 2026-09-26
 ---
 
 The controls are the paper's main defence against the reading that the induction merely primes consciousness talk: the conceptual control, which asks for ideas about consciousness without self-reference, produced 0% for five models, 2% for Claude 3.5 Sonnet and 22% for Claude 4 Opus. The Claude 4 Opus zero-shot figure (100% with no induction at all) means the self-referential prompt is not necessary for classified experience reports in that model; the classifier counts any "minimal direct description of an experiential state" as affirming (Appendix B.1), and the Opus control excerpts in Table 3 and Table 6 are expressions of uncertainty. Same general limitation as c01 (Section 6.2).
+
+CORRECTION 2026-09-26 (second read by Grok, item 5, revised brief; Ben approved 26 Sep): added the paper's own Section 6.2 limitation as a paper-scope exclusion; quote verified against the held text by the coordinating session.

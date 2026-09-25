@@ -11,6 +11,7 @@ publisher_relation: independent
 status: verified
 retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "ad7960b10176ebc4208c96995eb780e38f5538650b5a1dfe76f1686d8a166e92", text_location: "research/texts/2026-singh-introspection-reality-check/text.txt (gitignored; raw.html alongside; re-fetch and compare sha256 if absent)"}
 related: []
+system_conditions: {modality: text, state: none, operation: per-call, world: none, access: open-weights}
 ---
 
 # Can LLMs Introspect? A Reality Check
@@ -36,3 +37,11 @@ Further scope limits stated in the body: Lindsey's Claude model "is not accessib
 **Notes on retrieval and verification:** one fetch each of https://arxiv.org/html/2605.26242 (HTTP 200, 328,634 bytes, v2 of 21 Aug 2026; raw.html beside text.txt) and of the abstract page https://arxiv.org/abs/2605.26242 (for the COLM comment and submission history only). SHA-256 is of raw.html. text.txt is raw.html with script, style and MathML removed, tags stripped, entities unescaped and whitespace collapsed, so inline mathematical symbols are absent from the text. All six claim quotes were checked by script (whitespace and curly/straight quotes normalised on both sides; substring match): all found. Small internal inconsistency in the paper, recorded not resolved: the Introduction says "four open-weight models" were tested on the gaslight condition, §4.3.1 lists five, and the §4.3.2 Discussion says "two of the three models we tested replicate".
 
 **Conflicted-party note:** the extractor is a Claude-lineage model (Claude Opus 5.5), and the paper this source contests is by Anthropic about Claude models; the extraction may be biased in either direction (toward defending the Anthropic result, or toward over-crediting its critique to appear even-handed), and a second reader from a different family has not yet checked it.
+
+## System conditions (added 2026-09-26)
+
+- `modality: text`: §4.3.1, "The gaslight string is put in the user string right before the prompt that describes the experimental setting"
+- `state: none`: Appendix G.3, "an initial response from the model is provided as well. Note that we use this text literally as input." Where a prompt contains a prior model turn it is supplied text, not carried state; the in-context examples of §4.1 likewise sit within one prompt.
+- `operation: per-call`: §4.3.1, "The gaslight condition is evaluated with 500 samples per concept"
+- `world: none`: §4.3.1, "We apply the intervention at all of the positions of the string “Trial 1: What do you detect?”, which ends the prompt" No tools, environment or embodiment are described.
+- `access: open-weights`: §4.3.1, "Interventions are implemented as linear steering: a direction encoding a target concept is added to the residual stream at inference time"

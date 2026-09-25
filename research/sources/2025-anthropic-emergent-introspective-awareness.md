@@ -11,6 +11,7 @@ publisher_relation: developer-of-studied-model
 status: verified
 retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "86351a5710c2eace886f114ca262b45c8b744124ac327bd2ddf73f646e114d8d", text_location: "research/texts/2025-anthropic-emergent-introspective-awareness/text.txt (gitignored; raw.html alongside; re-fetch and compare sha256 if absent)"}
 related: []
+system_conditions: {modality: text, state: none, operation: per-call, world: none, access: internal}
 ---
 
 # Emergent Introspective Awareness in Large Language Models
@@ -79,3 +80,12 @@ The same section also names a risk direction: "Models with genuine introspective
 - Sections 1 to 10.4 were read in full; the appendix (12) was searched for statements on consciousness, experience, sentience, moral status and welfare, and holds none.
 - Every claim quote was checked by script against `text.txt`, normalising whitespace and curly/straight quotes on both sides, then substring match. All seven passed, hence `status: verified`. This is a quote check only; the README's step 4 second read by a different family has not been done.
 - The text does not mention Singh, Linzen and Ravfogel (it predates that work), so no claim carries a CONTESTED BY line derived from this paper's own text.
+
+## System conditions (added 2026-09-26)
+
+- `modality: text`: §5.1, "we provided a model with a prompt explaining the possibility of concepts being injected into its neural network, and we asked it to report"
+- `state: none`: Appendix 12.1.2, "Concept vector injection begins on the double-newline token prior to “Trial 1” and continues for the remainder of the interaction" Each trial is one interaction. In the prefill experiment (§2.3, §7) the earlier Assistant turn is written by the experimenters, not generated in a previous call, so nothing persists beyond one call.
+- `operation: per-call`: §4 (Methods Notes), "Responses used in systematic comparisons involving multiple trials were sampled at temperature 1."
+- `world: none`: §7 (prefill experiment), "in a dialogue between a human (the user) and an Assistant character, whose outputs the model is responsible for producing" No tools, environment or embodiment are described.
+- `access: unstated`: §4 (Methods Notes), "In all of our experiments, activations were recorded from and injected into the residual stream at a given layer of the model." The paper does state its access: developer-internal activation access to closed-weight production Claude models (and unreleased helpful-only variants). The vocabulary has no value for that. It is not `api` (activations were read and written) and not `open-weights` (the weights are not public), so `unstated` is recorded as the least wrong value pending a vocabulary decision.
+- access: `internal` (set by the coordinating session 26 Sep 2026 after the backfill agent recorded `unstated` for want of a value): activations were read from and injected into the residual stream of closed-weight production Claude models and unreleased helpful-only variants (§4), an access mode only the developer has.

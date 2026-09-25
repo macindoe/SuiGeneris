@@ -35,6 +35,13 @@ STATUS = {"stub", "retrieved", "verified"}
 BEARS_RE = re.compile(r"^(3\.[1-5]|4|4\.(historicity|answerability|learning|endorsement)"
                       r"|5\.A[123]|6|7(\.\d+)?|9\.t(\d{1,2}))$")
 INNER_STATE = {"5.A2", "9.t9", "3.2", "3.3"}   # sections where bucket moves favour or foreclose
+SYSTEM_CONDITIONS = {   # research/README.md, source field system_conditions (added 2026-09-26)
+    "modality": {"text", "multimodal", "unstated"},
+    "state": {"none", "in-context", "cross-session", "unstated"},
+    "operation": {"per-call", "continuous", "unstated"},
+    "world": {"none", "tools", "embodied", "unstated"},
+    "access": {"api", "open-weights", "internal", "both", "unstated"},
+}
 
 DOSSIER_TITLES = {
     "3.1": "§3.1 Replication and migration",
@@ -167,6 +174,14 @@ def validate(sources, claims):
         for f in ("title", "url", "date"):
             if not s.get(f):
                 errs.append("%s: missing %s" % (name, f))
+        sc = s.get("system_conditions")
+        if sc is not None:
+            if not isinstance(sc, dict):
+                errs.append("%s: system_conditions must be a flow map" % name)
+            else:
+                for k, allowed in SYSTEM_CONDITIONS.items():
+                    if sc.get(k, "unstated") not in allowed:
+                        errs.append("%s: system_conditions.%s %r" % (name, k, sc.get(k)))
         src_by_slug[slug] = s
     ids = set()
     for name, c in claims.items():
@@ -394,6 +409,12 @@ def main(argv):
         print("  -", it)
     if not items:
         print("  (none)")
+    # Also written to research/DOCKET.md so a council round can attach it.
+    dk = ["# Docket", "",
+          "*Generated %s by `scripts/research_index.py`. Council triggers that have fired and are not yet adjudicated (research/README.md, \"Convening rules\"). Do not edit; regenerate.*" % date.today().isoformat(),
+          "", "%d item(s)." % len(items), ""]
+    dk += ["- %s" % it for it in items] or ["- (none)"]
+    open(os.path.join(RES, "DOCKET.md"), "w", encoding="utf-8", newline="\n").write("\n".join(dk) + "\n")
     return 0
 
 

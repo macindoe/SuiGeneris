@@ -10,7 +10,7 @@ verification: grep
 models: [GPT-4o, GPT-4.1, Claude 3.5 Sonnet, Claude 3.7 Sonnet, Claude 4 Opus, Gemini 2.0 Flash, Gemini 2.5 Flash]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "That the models share an internal state or attractor of internal representations (the authors say such convergence might suggest one; only output text was embedded); that the convergence reflects a common experience; that any report is evidence of experience."
+not_evidence_of: "Paper: Not evidence that the models share an internal state or attractor of internal representations (the authors say such convergence might suggest one, but only output text was embedded); Paper: Not evidence that the convergence reflects a common experience; Framework (test 9): a model's report about its own states carries no weight as evidence of experience until the link between report and internal state has been measured externally for this kind of report and system"
 bears_on: [9.t9, 5.A2]
 contests: []
 contested_by: []

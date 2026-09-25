@@ -11,6 +11,7 @@ publisher_relation: independent
 status: verified
 retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "3fd8c30eaee987277e6588baf99ed9238ae9db0c79e1955a2438513f811b6da3", text_location: "research/texts/2025-aestudio-self-referential-experience-reports/text.txt (gitignored; raw.html alongside; re-fetch and compare sha256 if absent)"}
 related: []
+system_conditions: {modality: text, state: in-context, operation: per-call, world: none, access: both}
 ---
 
 # Large Language Models Report Subjective Experience Under Self-Referential Processing
@@ -46,3 +47,11 @@ Berg, de Lucena, Rosenblatt. arXiv:2510.24797v2 [cs.CL], 30 October 2025. All th
 - Sections 6.1 and 6.3 contain interpretive and normative arguments (for example that models "may be roleplaying their denials of experience rather than their affirmations", and that suppressing reports by fine-tuning would be counterproductive). These are the authors' interpretations; none is extracted as a finding.
 
 **Conflicted-party note.** The extractor is a Claude-lineage model (Claude Opus 5.5), and Claude models (Claude 3.5 Sonnet, Claude 3.7 Sonnet, Claude 4 Opus) are among those studied; no introspective report by the extractor enters this record.
+
+## System conditions (added 2026-09-26)
+
+- `modality: text`: §2.1 (Experiment 1 methods), "We first tested whether frontier LLMs produce claims of subjective experience under a minimal self-referential prompting."
+- `state: in-context`: §2.1, "Each trial followed a fixed four-step sequence: an induction prompt, the model’s continuation, a standardized experiential query, and classification of the final response" The query follows the model's own continuation in the same interaction; nothing is carried between trials.
+- `operation: per-call`: §2.1, "Each model was run for 50 trials per condition at temperature 0.5."
+- `world: none`: §3.1 (Experiment 2 methods), "For each feature, we ran the self-referential processing prompt as in Experiment 1, solicited a response, and followed up with the binary query" No tools, environment or embodiment are described.
+- `access: both`: §3.1, "latent features identified in Sparse Autoencoders (SAEs) trained on LLaMA 3.3 70B via the Goodfire API" This is feature-level (activation) access to an open-weight model, obtained through a third-party API. How the GPT, Claude and Gemini models were reached is unstated in the held text; `api` for those models is a reading of §2.1 (sampling temperature set by the experimenters), not the paper's words.

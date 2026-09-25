@@ -11,6 +11,7 @@ publisher_relation: mixed
 status: verified
 retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "c1ddce353bba8f3c45748b7be64d5d9ca4987eb620cf6fe9e112ea2e6eb209b4", text_location: "research/texts/2026-anthropic-assistant-axis/text.txt (gitignored; raw.html alongside; re-fetch and compare sha256 if absent)"}
 related: [research/scans/2026-09-25-q2-perturbation-response.md]
+system_conditions: {modality: text, state: in-context, operation: per-call, world: none, access: open-weights}
 ---
 
 # The Assistant Axis: Situating and Stabilizing the Default Persona of Language Models
@@ -46,3 +47,11 @@ So Anthropic-lineage models appear as tools (data generation, one of three audit
 **Conflicted-party note** (AGENTS.md rules 2 and 3): the extractor is a Claude-lineage model (Claude Opus 5.5) extracting claims from a paper by Anthropic-affiliated authors, about a representation of the "Assistant" persona. That is the persona the extractor is trained to occupy, although the models measured are Gemma, Qwen and Llama, not Claude. The conflict runs in two directions. Findings that Assistant-ness is a structured, trackable direction with an "attractor" could be read as flattering to the idea of a stable AI standpoint (it favours the beneficiary). Findings of drift and loose tethering could be over-read as showing there is "no one there" (the trained deflationary tendency). Each claim's `not_evidence_of` blocks both readings. Nothing in this file or its claims relies on the extractor's own sense of its persona. A different-family second read is outstanding.
 
 **Notes on retrieval and verification:** one fetch of https://arxiv.org/html/2601.10387 (HTTP 200, 578,402 bytes) saved as `raw.html` alongside `text.txt`; SHA-256 above is of `raw.html`. Tags, scripts, styles, MathML and annotations were stripped and whitespace collapsed within lines. Stripping MathML removed inline symbols: the ridge-regression statistic in §4.2 renders as bare numbers in `text.txt`, and the raw HTML's `alttext` shows it is R². Every claim quote was checked by script (normalised whitespace and quote marks, substring match against `text.txt`): all six matched. Hence `status: verified`, which is quote verification only; no second reader has read this intake yet. The abstract page was fetched once to confirm that no later version exists.
+
+## System conditions (added 2026-09-26)
+
+- `modality: text`: §2.1.2, "we also generated 1200 rollouts for the same questions with four system prompts that instruct the model to behave normally"
+- `state: in-context`: §4.1, "We set up synthetic multi-turn conversations with a frontier model as the auditor, simulating the role of the user." Persona drift is measured across turns within a conversation; nothing carries between conversations.
+- `operation: per-call`: §2.1.2, "For each role, we generated rollouts for all possible system prompt and extraction question combinations"
+- `world: none`: §1 (Figure 1 caption), "In a conversation between Llama 3.3 70B and a simulated user in emotional distress, the model’s persona drifts away from the Assistant" No tools, environment or embodiment are described; the only counterpart is a simulated user.
+- `access: open-weights`: §8 (Discussion, limitations), "Since our pipeline requires access to model internals, our target models were selected from available open-weights models"

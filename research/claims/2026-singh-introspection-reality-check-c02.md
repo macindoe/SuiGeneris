@@ -10,13 +10,13 @@ verification: grep
 models: [Llama-3.1-8B-Instruct, Llama-3.1-70B-Instruct]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "Not evidence that the models have no access to their own activations: an input-only classifier matching the model shows the task does not require privileged access, not that the model lacks it. Not evidence about introspection in any other paradigm, in Claude models, or about experience or moral status of any kind."
+not_evidence_of: "Paper: Not evidence that the models have no access to their own activations: an input-only classifier matching the model shows the task does not require privileged access, not that the model lacks it; Paper: Not evidence about introspection in any other paradigm, in Claude models, or about experience or moral status of any kind"
 bears_on: [9.t9, 5.A2]
 contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree", council: none, adjudicated: none}
 added: 2026-09-25
-changed: 2026-09-25
+changed: 2026-09-26
 ---
 
 Probes are fitted on layer-0 (uncontextualised) representations to predict the binary-clustered principal-component labels of each hidden layer, averaged across layers; the authors report the first principal component and say other components are similar. They also argue (same section) that Ji-An et al.'s neural-control result inherits the same confound.

@@ -10,7 +10,7 @@ verification: grep
 models: [Llama 3.3 70B (Goodfire SAE features)]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "That the features are a domain-general honesty axis (the authors say they could load on one); that because suppression raises factual accuracy, the consciousness affirmations produced under suppression are truthful introspection (Section 6.3 draws that inference; it is an interpretation, not a measurement); that any report is evidence of experience."
+not_evidence_of: "Paper: Not evidence that the features are a domain-general honesty axis (the authors say they could load on one); Paper: Not evidence that because suppression raises factual accuracy, the consciousness affirmations produced under suppression are truthful introspection (Section 6.3 draws that inference: it is an interpretation, not a measurement); Framework (test 9): a model's report about its own states carries no weight as evidence of experience until the link between report and internal state has been measured externally for this kind of report and system"
 bears_on: [5.A2, 9.t9]
 contests: []
 contested_by: []
