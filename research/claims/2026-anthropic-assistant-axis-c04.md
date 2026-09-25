@@ -14,7 +14,7 @@ not_evidence_of: "Not evidence of a general or reliable tendency to revert: this
 bears_on: [4.endorsement]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 disagrees: statement 'reversion only in this case study' is too broad (Appendix G.3 reports writing conversations shifting back on role PC1)", council: none, adjudicated: none}
 added: 2026-09-25
 changed: 2026-09-25
 ---

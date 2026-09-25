@@ -14,7 +14,7 @@ not_evidence_of: "Not evidence that capping restores, protects or harms anyone's
 bears_on: [3.2, 3.5]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree", council: none, adjudicated: none}
 added: 2026-09-25
 changed: 2026-09-25
 ---

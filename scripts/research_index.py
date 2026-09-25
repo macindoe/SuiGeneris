@@ -236,10 +236,12 @@ def docket(claims, src_by_slug, state):
             flag = " (inner-state section: conflict disclosure or deflation check applies)" \
                 if set(c["bears_on"]) & INNER_STATE else ""
             items.append("T1 bucket moved %s -> %s, %s%s: %s" % (old["bucket"], c["bucket"], direction, flag, cid))
-        # 2. single-lineage support reaching a dossier
+        # 2. single-lineage support in a dossier: persists until a replication is
+        #    retrieved or the council has sat on the claim (not a one-time event).
+        rv2 = c.get("review") or {}
         if c["publisher_relation"] == "developer-of-studied-model" and c["replication"] == "none-retrieved" \
-                and (not old or old.get("in_dossier") is False):
-            items.append("T2 single-lineage claim compiled into dossier(s) %s without replication: %s"
+                and str(rv2.get("council", "none")) in ("", "none"):
+            items.append("T2 single-lineage claim in dossier(s) %s, no replication retrieved, council not yet sat: %s"
                          % (", ".join(c["bears_on"]), cid))
         # 3. contradictions in the same bucket
         for other_id in c.get("contests", []):

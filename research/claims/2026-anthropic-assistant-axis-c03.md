@@ -14,7 +14,7 @@ not_evidence_of: "Not evidence that the models lack any persisting self-model, n
 bears_on: [4.endorsement]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree; notes: bears_on +3.3", council: none, adjudicated: none}
 added: 2026-09-25
 changed: 2026-09-25
 ---

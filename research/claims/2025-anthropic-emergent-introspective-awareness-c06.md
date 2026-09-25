@@ -14,7 +14,7 @@ not_evidence_of: "The model outputs this claim concerns (emotional responses, de
 bears_on: [9.t9, 5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 disagrees: evidence_type -> theoretical (records the author's methodological limit, not the model's testimony)", council: none, adjudicated: none}
 added: 2026-09-25
 changed: 2026-09-25
 ---

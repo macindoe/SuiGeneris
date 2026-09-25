@@ -14,7 +14,7 @@ not_evidence_of: "That the features are a domain-general honesty axis (the autho
 bears_on: [5.A2, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of over-excludes (paper leaves indirect relevance open; same brief caveat); notes: bears_on +3.2 +3.5", council: none, adjudicated: none}
 added: 2026-09-25
 changed: 2026-09-25
 ---

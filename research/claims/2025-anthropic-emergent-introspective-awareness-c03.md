@@ -14,7 +14,7 @@ not_evidence_of: "Not evidence of experience or of a subjective distinction betw
 bears_on: [9.t9, 5.A2, 3.2]
 contests: []
 contested_by: [2026-singh-introspection-reality-check-c04, 2026-singh-introspection-reality-check-c05, 2026-singh-introspection-reality-check-c06]
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree", council: none, adjudicated: none}
 added: 2026-09-25
 changed: 2026-09-25
 ---

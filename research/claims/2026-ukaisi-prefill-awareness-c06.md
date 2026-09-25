@@ -14,7 +14,7 @@ not_evidence_of: "Not evidence that a model which does not flag an altered histo
 bears_on: [3.3, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 agree; notes: bears_on +3.5", council: none, adjudicated: none}
 added: 2026-09-25
 changed: 2026-09-25
 ---
