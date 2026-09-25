@@ -9,7 +9,7 @@ identifiers: {arxiv: "2608.20569v1", doi: ""}
 models_studied: ["Qwen2.5-0.5B-Instruct", "Mistral-7B-Instruct-v0.3", "Qwen2.5-7B-Instruct", "Llama-3.1-8B-Instruct", "Gemma-2-9B-IT", "GLM-4-9B-0414", "Phi-4", "DeepSeek-R1-Distill-Qwen-14B", "Qwen2.5-7B-Instruct LoRA known-positive (author-trained, base revision a09a3545)", "Qwen3-14B (run, excluded: 5 of 384 trials scorable; Appendix A)"]
 publisher_relation: independent
 status: verified
-retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "8d7c0e4a9058af086c719a61298be98f9dccd439a144191846b018d132060c76", text_location: "C:\Users\Ace\AppData\Local\Temp\claude\c--Users-Ace-Documents-Ai-Claude-SuiGeneris\5f878f5b-d552-4e21-87b3-255e0f716716\scratchpad\research-text\2026-ferrara-owmi\text.txt"}
+retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "8d7c0e4a9058af086c719a61298be98f9dccd439a144191846b018d132060c76", text_location: "research/texts/2026-ferrara-owmi/text.txt (gitignored; raw.html alongside; re-fetch and compare sha256 if absent)"}
 related: []
 ---
 

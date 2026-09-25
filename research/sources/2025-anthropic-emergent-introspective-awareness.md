@@ -9,7 +9,7 @@ identifiers: {arxiv: "2601.01828v1", doi: ""}
 models_studied: ["Claude Opus 4.1", "Claude Opus 4", "Claude Sonnet 4", "Claude Sonnet 3.7", "Claude Sonnet 3.5 (new)", "Claude Haiku 3.5", "Claude Opus 3", "Claude Sonnet 3", "Claude Haiku 3", "unreleased helpful-only (H-only) variants of these models", "base pretrained models (not individually named in the text)"]
 publisher_relation: developer-of-studied-model
 status: verified
-retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "86351a5710c2eace886f114ca262b45c8b744124ac327bd2ddf73f646e114d8d", text_location: "C:\Users\Ace\AppData\Local\Temp\claude\c--Users-Ace-Documents-Ai-Claude-SuiGeneris\5f878f5b-d552-4e21-87b3-255e0f716716\scratchpad\research-text\2025-anthropic-emergent-introspective-awareness\text.txt"}
+retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "86351a5710c2eace886f114ca262b45c8b744124ac327bd2ddf73f646e114d8d", text_location: "research/texts/2025-anthropic-emergent-introspective-awareness/text.txt (gitignored; raw.html alongside; re-fetch and compare sha256 if absent)"}
 related: []
 ---
 

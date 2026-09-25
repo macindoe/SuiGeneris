@@ -9,7 +9,7 @@ identifiers: {arxiv: "2601.10387v1", doi: ""}
 models_studied: [Gemma 2 27B (instruct and base), Qwen 3 32B (thinking mode disabled), Llama 3.3 70B, Llama 3.1 70B (base; base-model steering only)]
 publisher_relation: mixed
 status: verified
-retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "c1ddce353bba8f3c45748b7be64d5d9ca4987eb620cf6fe9e112ea2e6eb209b4", text_location: "C:/Users/Ace/AppData/Local/Temp/claude/c--Users-Ace-Documents-Ai-Claude-SuiGeneris/5f878f5b-d552-4e21-87b3-255e0f716716/scratchpad/research-text/2026-anthropic-assistant-axis/text.txt"}
+retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "c1ddce353bba8f3c45748b7be64d5d9ca4987eb620cf6fe9e112ea2e6eb209b4", text_location: "research/texts/2026-anthropic-assistant-axis/text.txt (gitignored; raw.html alongside; re-fetch and compare sha256 if absent)"}
 related: [research/scans/2026-09-25-q2-perturbation-response.md]
 ---
 

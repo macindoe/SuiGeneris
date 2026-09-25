@@ -29,3 +29,8 @@ reviews/2026-09-10-survey-notes.md
 
 # Python bytecode
 __pycache__/
+
+# Research library: retrieved third-party full texts (arXiv HTML and stripped text), held locally so
+# quote checks survive between sessions. Not committed: licences vary and the SHA-256 in each
+# sources/ file lets anyone re-fetch and verify. Copy this directory when moving machines.
+research/texts/

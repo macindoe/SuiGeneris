@@ -4,6 +4,11 @@
 
 **Question (Ben, 25 Sep 2026):** Is there an "impulse response" test for model ontology?
 
+**Corrections found at intake (25 Sep 2026), body below left verbatim:**
+- Entry 6 (Lu et al., *The Assistant Axis*) attributes to the paper the words "didn't systematically measure full reversion rates". The intake extractor searched the normalised arXiv v1 text and found neither "systematically measure" nor "reversion". The phrase is not the authors' and must not be attributed to them; the paper shows reversion in one case study and reports no aggregate measure (see `claims/2026-anthropic-assistant-axis-c04.md`).
+- Entry 6 lists "Claude Sonnet 4, GPT-5, Kimi K2 as auditors". Per the paper, the simulated users were Kimi K2, Claude Sonnet 4.5 and GPT-5; Claude Sonnet 4 generated roles, traits and prompts. The source file records the full model pipeline.
+- Both errors trace to the summarising fetch tool used for the scan. Treat every quotation in this file as unverified until the paper is taken in.
+
 **Short answer from the scan:** no named or general test found. The closest instantiations are concept-injection-and-report protocols (detection as a function of layer and strength, not trajectory), turn-by-turn projection on a persona axis (reversion shown in case studies, not measured systematically), reversion-to-baseline after an inserted assistant turn (measured within one continuation), and dose-response basin-escape curves in recursive loops (two OpenAI models, no identity framing). Formal response-theoretic work exists at the residual-stream level and does not address identity. The phrase "impulse response" was not found in this sense anywhere the subagent searched.
 
 ---

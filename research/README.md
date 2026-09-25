@@ -31,7 +31,7 @@ Files are Markdown with YAML frontmatter. Controlled vocabularies are enforced b
 | `models_studied` | list; name model and snapshot where the paper does |
 | `publisher_relation` | `developer-of-studied-model` · `independent` · `government` · `mixed` |
 | `status` | `stub` (metadata only) · `retrieved` (text held, hashed) · `verified` (quotations checked against the held text) |
-| `retrieved` | date, method, by whom; `sha256` of the held text; `text_location` (scratchpad path or `archive/`) |
+| `retrieved` | date, method, by whom; `sha256` of the raw retrieved file; `text_location`: `research/texts/<slug>/` holding `raw.html` (or `raw.pdf`) and the stripped `text.txt`. That directory is gitignored (third-party full texts, mixed licences) but lives inside the repository so it survives between sessions; the recorded SHA-256 is what makes a re-fetch checkable. Never the session scratchpad, which is deleted |
 | `related` | case-study or submission files that use it |
 
 **Claim** (`claims/<source-slug>-cNN.md`):
@@ -55,7 +55,7 @@ Files are Markdown with YAML frontmatter. Controlled vocabularies are enforced b
 ## Intake procedure
 
 1. **Stub** the source from its abstract page. Status `stub`. Log it.
-2. **Retrieve** the primary text (not a summary), hash it, record where it is held. Status `retrieved`.
+2. **Retrieve** the primary text (not a summary) into `research/texts/<slug>/`, hash the raw file, record the hash and path. Status `retrieved`. Helper scripts go in the same directory under a unique name, never in a shared location.
 3. **Extract** claims. One sentence each. Every claim carries a quote and locator. Mark verification honestly; `unverified` is allowed and visible, a wrong mark is not.
 4. **Second read.** A model from a different family than the extractor checks each claim against the held text: statement, bucket, evidence type, `not_evidence_of`. Disagreement is recorded on the claim and is a council trigger (below). Status `verified` once every quote has been checked by script or by hand.
 5. **Index.** Run `python scripts/research_index.py`. It validates vocabulary, checks that every referenced source and claim exists, regenerates `INDEX.md` and `dossiers/`, and prints the **docket**: the triggers that have fired since the last index.

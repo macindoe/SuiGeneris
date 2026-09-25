@@ -9,7 +9,7 @@ identifiers: {arxiv: "2605.26242v2", doi: ""}
 models_studied: [Llama-3.1-8B-Instruct, Llama-3.1-70B-Instruct, Qwen-2.5-7B-1M, Llama-3-70B, Gemma-3-27B-IT, Qwen-2.5-72B-Instruct, Qwen-3-32B]
 publisher_relation: independent
 status: verified
-retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "ad7960b10176ebc4208c96995eb780e38f5538650b5a1dfe76f1686d8a166e92", text_location: "C:/Users/Ace/AppData/Local/Temp/claude/c--Users-Ace-Documents-Ai-Claude-SuiGeneris/5f878f5b-d552-4e21-87b3-255e0f716716/scratchpad/research-text/2026-singh-introspection-reality-check/text.txt"}
+retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "ad7960b10176ebc4208c96995eb780e38f5538650b5a1dfe76f1686d8a166e92", text_location: "research/texts/2026-singh-introspection-reality-check/text.txt (gitignored; raw.html alongside; re-fetch and compare sha256 if absent)"}
 related: []
 ---
 

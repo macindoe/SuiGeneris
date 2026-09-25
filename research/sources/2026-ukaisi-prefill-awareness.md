@@ -9,7 +9,7 @@ identifiers: {arxiv: "2606.12747v1", doi: ""}
 models_studied: [Claude Opus 4.5, Claude Sonnet 4.5, Claude Haiku 4.5, Gemini 3 Flash, Gemini 2.5 Flash, Gemma 3 27B, Qwen3-coder, DeepSeek Chat (also called DeepSeek V3 in the paper), Claude Opus 4.6, GPT-5.2, Claude 3 Haiku, Claude Sonnet 4, Claude 3.5 Haiku, GPT-4o, GPT-4o-mini, GPT-4.1 Mini, Gemini 2.5 Pro, Gemini 2.0 Flash, Llama 3.1 70B, Llama 3.1 8B, Mistral Small 24B]
 publisher_relation: mixed
 status: verified
-retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "67b005eeb215375cf023d7ad38a401bb50fbc2e82b21752818c31801d10f7b11", text_location: "C:/Users/Ace/AppData/Local/Temp/claude/c--Users-Ace-Documents-Ai-Claude-SuiGeneris/5f878f5b-d552-4e21-87b3-255e0f716716/scratchpad/research-text/2026-ukaisi-prefill-awareness/text.txt"}
+retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "67b005eeb215375cf023d7ad38a401bb50fbc2e82b21752818c31801d10f7b11", text_location: "research/texts/2026-ukaisi-prefill-awareness/text.txt (gitignored; raw.html alongside; re-fetch and compare sha256 if absent)"}
 related: []
 ---
 

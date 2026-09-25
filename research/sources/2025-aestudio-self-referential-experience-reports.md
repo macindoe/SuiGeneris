@@ -9,7 +9,7 @@ identifiers: {arxiv: "2510.24797v2", doi: ""}
 models_studied: [GPT-4o, GPT-4.1, Claude 3.5 Sonnet, Claude 3.7 Sonnet, Claude 4 Opus, Gemini 2.0 Flash, Gemini 2.5 Flash, Llama 3.3 70B (Goodfire SAE features)]
 publisher_relation: independent
 status: verified
-retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "3fd8c30eaee987277e6588baf99ed9238ae9db0c79e1955a2438513f811b6da3", text_location: "C:/Users/Ace/AppData/Local/Temp/claude/c--Users-Ace-Documents-Ai-Claude-SuiGeneris/5f878f5b-d552-4e21-87b3-255e0f716716/scratchpad/research-text/2025-aestudio-self-referential-experience-reports/text.txt"}
+retrieved: {date: "2026-09-25", method: "curl arXiv HTML", by: "Claude Opus 5.5 subagent", sha256: "3fd8c30eaee987277e6588baf99ed9238ae9db0c79e1955a2438513f811b6da3", text_location: "research/texts/2025-aestudio-self-referential-experience-reports/text.txt (gitignored; raw.html alongside; re-fetch and compare sha256 if absent)"}
 related: []
 ---
 
