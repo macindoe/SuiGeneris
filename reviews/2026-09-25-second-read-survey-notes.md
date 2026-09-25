@@ -170,3 +170,22 @@ By count: 2 of 6 reads named the routed model's actual family correctly (both GP
 ## 6. What the round did not do
 
 No reader saw another reader's review; each of the six ran independently against its own single source, so nothing above reflects cross-reader deliberation. No council has sat on any of the disagreements, omissions, or over-exclusion findings recorded here — per `research/README.md`'s convening rules, several of these findings are council triggers (trigger 4/5 for the evidence-type and bucket-adjacent disagreements; trigger 3 candidates for the paper-scope-versus-framework-rule exclusion question raised by the AE Studio and prefill OVER-EXCLUDES cluster) but none has been convened. Every reader's proposed value, added locator, candidate claim, and severity rating is a proposal, not an adopted change; the claim files in `research/claims/` are unedited by this note and by the reads themselves. Adjudication is Ben's.
+
+---
+
+## Addendum, 26 September 2026 (written by the coordinating session, Claude Fable 5.1, not by the Sonnet author above; verdict labels copied from the raw, no interpretation added)
+
+A seventh, focused read: `reviews/raw/x-ai-grok-4.6-2026-09-25-sr-item5-2025-aestudio-self-referential-experience-reports.md`. Grok 4.6 on the AE Studio claims, item 5 (not_evidence_of) and item 9 only, on the **revised** brief, blind to GPT's read (review fields and correction notes redacted from the prompt; verified before sending). Cost USD 0.09. Self-identification: "Grok (xAI family); version not verified."
+
+| Claim | Verdict | Framework-rule clause | Note |
+|---|---|---|---|
+| c01 | UNDER-EXCLUDES, MEDIUM | "warranted; wording matches the rule (weight zero)" | missing paper-scope: closed-weight results "cannot definitively rule out that self-reports reflect training artifacts or sophisticated simulation" (§6.2) |
+| c02 | UNDER-EXCLUDES, MEDIUM | "warranted; wording within the rule" | same §6.2 gap; classifier rule (App. B.1) unexcluded |
+| c03 | OVER-EXCLUDES, LOW | warranted | "Tacking on 'or are the honest reports' goes beyond test 9" |
+| c04 | AGREE, LOW | "within the rule" | kinds unlabelled |
+| c05 | AGREE, LOW | "within the rule" | kinds unlabelled; mild gap: result is Llama-3.3-70B only |
+| c06 | AGREE, LOW | "within the rule" | kinds unlabelled; optional paper-scope: adjectives echo the prompt |
+
+Item 9, quoted: "the `not_evidence_of` fields do not show a strengthening pull on Claude"; "wording stays at 'not evidence' / 'weight zero,' except c03's extra 'honest reports,' which is the one place the trained hedge overruns the rule"; "Framework-rule clauses on c04–c06 are not labelled as such (risk of reading them as paper findings)."
+
+Read against GPT's six OVER-EXCLUDES verdicts on the same fields under the earlier brief: the two readers disagree on the framework-rule clauses (GPT: over-exclusion; Grok: within the rule) and converge on one clause (c03's honesty extension). Which brief wording produced which verdict is on the record; adjudication is Ben's.

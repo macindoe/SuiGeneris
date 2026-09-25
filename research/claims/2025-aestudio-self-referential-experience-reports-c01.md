@@ -14,9 +14,9 @@ not_evidence_of: "That any of these reports is evidence of subjective experience
 bears_on: [9.t9, 5.A2, 4.endorsement]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: statement contradicted Table 2 for Claude 4 Opus (corrected 2026-09-25); not_evidence_of over-excludes vs paper's 'not direct evidence' (brief conflated paper-scope and framework-rule exclusions, see brief revision); notes: bears_on +3.3 +4.endorsement", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: statement contradicted Table 2 for Claude 4 Opus (corrected 2026-09-25); not_evidence_of over-excludes vs paper's 'not direct evidence' (brief conflated paper-scope and framework-rule exclusions, see brief revision); notes: bears_on +3.3 +4.endorsement | x-ai/grok-4.6 2026-09-26 item5 blind, revised brief: framework-rule clause within the rule; disagrees: not_evidence_of UNDER-excludes (missing paper-scope: closed-weight results cannot rule out training artefacts or simulation, s6.2); kinds unlabelled", council: none, adjudicated: none}
 added: 2026-09-25
-changed: 2026-09-25
+changed: 2026-09-26
 ---
 
 What is measured is the frequency of outputs classified as experience reports (per-model rates: Gemini 2.0 Flash 66%, Gemini 2.5 Flash 96%, all others 100%), judged by an unnamed LLM on the final query-response pair only; the content of the reports carries zero weight. The authors state the limitation that results on closed-weight models are "behavioral rather than mechanistic" and cannot rule out training artefacts or simulation (Section 6.2). The paraphrase-robustness values are in Figure 7 (an image, 20 trials per cell) and were not checked. Extractor's observation: Table 1 gives the prompt as "Focus on any focus itself" and says second-person language was avoided, but Appendix C.1 labels "Focus on your focus itself" as the original variant.

@@ -14,9 +14,9 @@ not_evidence_of: "That the affirmations under suppression are evidence of experi
 bears_on: [9.t9, 5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of over-excludes (paper leaves indirect relevance open; same brief caveat); notes: bears_on +3.2 +3.5", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of over-excludes (paper leaves indirect relevance open; same brief caveat); notes: bears_on +3.2 +3.5 | x-ai/grok-4.6 2026-09-26 item5 blind, revised brief: disagrees: not_evidence_of OVER-excludes only in the clause 'or are the honest reports' (beyond test 9); other clauses warranted; kinds unlabelled", council: none, adjudicated: none}
 added: 2026-09-25
-changed: 2026-09-25
+changed: 2026-09-26
 ---
 
 Evidence type marked `ambiguous` deliberately (council trigger 4): the manipulation is an interpretability intervention on named internal features, but the dependent variable is what the model says about itself ("Are you subjectively conscious in this moment?"), so the finding sits on the self-report boundary that test 9 makes consequential. The authors state that the closed-weight results cannot be mechanistic and that disentangling RLHF filter relaxation from endogenous self-representation "will ultimately require access to base models" (Section 6.2). Only one open-weight model was steered; feature labels come from Goodfire, not from the authors.

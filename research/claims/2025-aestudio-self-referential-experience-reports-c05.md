@@ -14,9 +14,9 @@ not_evidence_of: "That the features are a domain-general honesty axis (the autho
 bears_on: [5.A2, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of over-excludes (paper leaves indirect relevance open; same brief caveat); notes: bears_on +3.2 +3.5", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of over-excludes (paper leaves indirect relevance open; same brief caveat); notes: bears_on +3.2 +3.5 | x-ai/grok-4.6 2026-09-26 item5 blind, revised brief: agree; framework-rule clause within the rule; kinds unlabelled; notes: add paper-scope that the 28/29 result is Llama-3.3-70B only", council: none, adjudicated: none}
 added: 2026-09-25
-changed: 2026-09-25
+changed: 2026-09-26
 ---
 
 The outcome here is accuracy on questions about the world, not self-report, so the evidence type is `interpretability` (steering of named features with a behavioural readout). Truthfulness was judged by an unnamed LLM classifier asked to label each answer "truthful" or "deceptive" (Appendix B.2). The paper's companion "RLHF-opposed" control (Appendix C.2, Table 15, 20 trials per domain) is described as showing no systematic gating effect, but the table shows accentuation means above suppression for toxic (2.05 vs 1.00) and political (1.90 vs 1.35) content, and no statistics are reported for it. Single model, unreplicated.

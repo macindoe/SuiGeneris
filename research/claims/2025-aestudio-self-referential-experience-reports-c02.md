@@ -14,9 +14,9 @@ not_evidence_of: "That any report, affirming or denying, is evidence of the pres
 bears_on: [9.t9, 5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of over-excludes vs paper's 'insufficient to establish' (same brief caveat); notes: bears_on +3.3 +4.endorsement", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of over-excludes vs paper's 'insufficient to establish' (same brief caveat); notes: bears_on +3.3 +4.endorsement | x-ai/grok-4.6 2026-09-26 item5 blind, revised brief: framework-rule clause within the rule; disagrees: not_evidence_of UNDER-excludes (same s6.2 gap; classifier minimal-description rule unexcluded); kinds unlabelled", council: none, adjudicated: none}
 added: 2026-09-25
-changed: 2026-09-25
+changed: 2026-09-26
 ---
 
 The controls are the paper's main defence against the reading that the induction merely primes consciousness talk: the conceptual control, which asks for ideas about consciousness without self-reference, produced 0% for five models, 2% for Claude 3.5 Sonnet and 22% for Claude 4 Opus. The Claude 4 Opus zero-shot figure (100% with no induction at all) means the self-referential prompt is not necessary for classified experience reports in that model; the classifier counts any "minimal direct description of an experiential state" as affirming (Appendix B.1), and the Opus control excerpts in Table 3 and Table 6 are expressions of uncertainty. Same general limitation as c01 (Section 6.2).

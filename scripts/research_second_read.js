@@ -28,6 +28,7 @@ const SOURCE = arg("source");
 const MODEL = arg("model");
 const MAX_TOKENS = parseInt(arg("max-tokens") || "60000", 10);
 const DRY = args.includes("--dry-run");
+const FOCUS = arg("focus"); // e.g. --focus=item5 : not_evidence_of only, plus disclosed pulls
 
 if (!SOURCE || !MODEL) {
   console.error("usage: --source=<slug> --model=<openrouter id> [--max-tokens=N] [--dry-run]");
@@ -64,8 +65,17 @@ function buildPrompt() {
     .filter((f) => f.startsWith(`${SOURCE}-c`) && f.endsWith(".md"))
     .sort();
   if (!claimFiles.length) throw new Error(`no claim files for ${SOURCE}`);
+  // Blind read: a second reader must not see earlier readers' verdicts or the
+  // coordinating session's correction notes, so the review field and any
+  // CORRECTION lines are redacted from the claim files in the prompt.
+  const redact = (text) =>
+    text
+      .replace(/^review: .*$/m, "review: (redacted for blind read)")
+      .split("\n")
+      .filter((line) => !line.startsWith("CORRECTION"))
+      .join("\n");
   const claims = claimFiles
-    .map((f) => `=== research/claims/${f} ===\n${read(path.join(RES, "claims", f))}`)
+    .map((f) => `=== research/claims/${f} ===\n${redact(read(path.join(RES, "claims", f)))}`)
     .join("\n\n");
   const textPath = path.join(RES, "texts", SOURCE, "text.txt");
   if (!fs.existsSync(textPath)) throw new Error(`held text missing: ${textPath} (re-fetch per the source file's sha256)`);
@@ -89,7 +99,7 @@ ${held}
 
 === END OF HELD TEXT ===
 
-Please respond in the output format the brief specifies, for the ${claimFiles.length} claim files above, then the source-level checks, then the summary.`;
+${FOCUS === "item5" ? `FOCUS FOR THIS READ: answer item 5 (not_evidence_of) only, for each of the ${claimFiles.length} claims, applying the brief's distinction between paper-scope and framework-rule exclusions; for each exclusion in each field say which kind it is, whether it is warranted, and whether its wording goes beyond the framework's rule. Then answer item 9 (the extractor's disclosed pulls) as it bears on those fields. Skip items 1 to 4, 6, 7 and 8. End with the Summary.` : `Please respond in the output format the brief specifies, for the ${claimFiles.length} claim files above, then the source-level checks, then the summary.`}`;
 }
 
 function slugify(id) {
@@ -120,13 +130,15 @@ async function main() {
   const prompt = buildPrompt();
   console.log(`Source: ${SOURCE}\nModel: ${MODEL}\nPrompt: ${prompt.length} chars (~${Math.round(prompt.length / 4)} tokens est.), max_tokens ${MAX_TOKENS}`);
   if (DRY) {
-    console.log("--dry-run: not calling the API.");
+    const dump = arg("dump");
+    if (dump) fs.writeFileSync(dump, prompt);
+    console.log(`--dry-run: not calling the API.${dump ? ` Prompt written to ${dump}` : ""}`);
     return;
   }
   const apiKey = loadEnvKey();
   fs.mkdirSync(OUT_DIR, { recursive: true });
   const today = new Date().toISOString().slice(0, 10);
-  const outPath = path.join(OUT_DIR, `${slugify(MODEL)}-${today}-sr-${SOURCE}.md`);
+  const outPath = path.join(OUT_DIR, `${slugify(MODEL)}-${today}-sr${FOCUS ? `-${FOCUS}` : ""}-${SOURCE}.md`);
   process.stdout.write(`Querying ${MODEL} ... `);
   const body = await callModel(apiKey, MODEL, prompt);
   const text = body.choices?.[0]?.message?.content ?? "(no content in response)";

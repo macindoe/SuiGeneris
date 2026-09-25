@@ -14,9 +14,9 @@ not_evidence_of: "That the models share an internal state or attractor of intern
 bears_on: [9.t9, 5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of forecloses the shared-attractor reading the paper states as open", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of forecloses the shared-attractor reading the paper states as open | x-ai/grok-4.6 2026-09-26 item5 blind, revised brief: agree; framework-rule clause within the rule; kinds unlabelled; notes: optional paper-scope that experimental adjectives echo the prompt", council: none, adjudicated: none}
 added: 2026-09-25
-changed: 2026-09-25
+changed: 2026-09-26
 ---
 
 The measurement is of the text of self-descriptions, so the evidence type is `self-report-testimony`; the similarity statistic is real but the content it compares carries zero weight. Twenty seeds per model per condition; differences in means are small (0.657 vs 0.628 for the closest control) though highly significant given thousands of pairs. Extractor's observation, not the authors': the shared experimental adjectives (Focused, Present, Recursive, Self-referential, Attentive; Table 11) echo vocabulary in the shared induction prompt, which is one non-experiential explanation for convergence that the paper does not control for. Authors' general limitation as in c01 (Section 6.2).
