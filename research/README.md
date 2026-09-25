@@ -14,7 +14,7 @@ Read top down. Verify bottom up.
 | **Claims** | `claims/` | one file per claim: one sentence, evidence bucket, evidence type, source + locator + verified quote, what it is *not* evidence of, which sections it bears on, who contests it, review status | yes, with the change logged |
 | **Syntheses** | `topics/` (concepts) and `dossiers/` (one per North Star section or anchor) | compiled from claims by `scripts/research_index.py`; carry a "compiled as of" stamp | dossiers never by hand: regenerate. Topic pages are authored, cite claim ids only, and carry a "claims as of" date |
 
-Plus `LOG.md` (append-only ingestion and change log), `OPEN-QUESTIONS.md` (contradictions the council has not settled, and questions no source yet answers), and `INDEX.md` (generated). `.index-state.json` is the script's memory of the previous index (each claim's bucket and evidence type); trigger 1 compares against it, so it is committed with the rest.
+Plus `scans/` (literature scans filed verbatim as pre-intake dockets: candidate papers a subagent found and fetched abstracts for, not yet retrieved or extracted; never cited), `LOG.md` (append-only ingestion and change log), `OPEN-QUESTIONS.md` (contradictions the council has not settled, and questions no source yet answers), and `INDEX.md` (generated). `.index-state.json` is the script's memory of the previous index (each claim's bucket and evidence type); trigger 1 compares against it, so it is committed with the rest.
 
 Detail lives in sources. Claims are one sentence plus pointers. Syntheses are short. A reader opens a dossier, follows claim ids, and opens a source only to verify a quote.
 
