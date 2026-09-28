@@ -120,6 +120,66 @@
    "evidence_type": "behavioural",
    "in_dossier": true
   },
+  "2026-lederman-mahowald-content-agnostic-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2026-lederman-mahowald-content-agnostic-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2026-lederman-mahowald-content-agnostic-c03": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2026-lederman-mahowald-content-agnostic-c04": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2026-lederman-mahowald-content-agnostic-c05": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2026-lederman-mahowald-content-agnostic-c06": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2026-macar-mechanisms-introspective-awareness-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2026-macar-mechanisms-introspective-awareness-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2026-macar-mechanisms-introspective-awareness-c03": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2026-macar-mechanisms-introspective-awareness-c04": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2026-macar-mechanisms-introspective-awareness-c05": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2026-macar-mechanisms-introspective-awareness-c06": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
   "2026-singh-introspection-reality-check-c01": {
    "bucket": "narrowing",
    "evidence_type": "behavioural",

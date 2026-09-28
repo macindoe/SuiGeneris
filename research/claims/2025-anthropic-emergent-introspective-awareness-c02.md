@@ -20,3 +20,5 @@ changed: 2026-09-26
 ---
 
 This is the author's own summary judgement across all four experiments, filed as its own claim so that the negative finding travels with the positive ones. The quantitative anchor is c01 (about 20% success at the best layer and strength for the best model). §10.1 repeats it: "this capability appears to be quite unreliable in most of our experiments"; §10.4: the abilities "are highly limited and context-dependent, and fall short of human-level self-awareness."
+
+REPLICATION NOTE 2026-09-28: consistent with 2026-lederman-mahowald-content-agnostic-c01 (best identification rate 13.9%) and 2026-macar-mechanisms-introspective-awareness-c01 (22.3% introspection rate); replication field left none-retrieved because neither paper tests this statement as such.

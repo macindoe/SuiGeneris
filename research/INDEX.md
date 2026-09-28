@@ -1,8 +1,8 @@
 # Research library index
 
-*Generated 2026-09-26 by `scripts/research_index.py`. Do not edit.*
+*Generated 2026-09-28 by `scripts/research_index.py`. Do not edit.*
 
-## Sources (6)
+## Sources (8)
 
 | slug | title | date | relation | status | claims |
 |---|---|---|---|---|---|
@@ -10,10 +10,12 @@
 | [2025-anthropic-emergent-introspective-awareness](sources/2025-anthropic-emergent-introspective-awareness.md) | Emergent Introspective Awareness in Large Language Models | 2026-01-05 | developer-of-studied-model | verified | 7 |
 | [2026-anthropic-assistant-axis](sources/2026-anthropic-assistant-axis.md) | The Assistant Axis: Situating and Stabilizing the Default Persona of Language Models | 2026-01-15 | mixed | verified | 6 |
 | [2026-ferrara-owmi](sources/2026-ferrara-owmi.md) | Open-Weight Masked Introspection: Measuring What Language Models Can Report About Their Own Computation | 2026-08-20 | independent | verified | 5 |
+| [2026-lederman-mahowald-content-agnostic](sources/2026-lederman-mahowald-content-agnostic.md) | Emergent Introspection in AI is Content-Agnostic | 2026-04-07 | independent | verified | 6 |
+| [2026-macar-mechanisms-introspective-awareness](sources/2026-macar-mechanisms-introspective-awareness.md) | Mechanisms of Introspective Awareness | 2026-03-22 | mixed | verified | 6 |
 | [2026-singh-introspection-reality-check](sources/2026-singh-introspection-reality-check.md) | Can LLMs Introspect? A Reality Check | 2026-08-21 | independent | verified | 6 |
 | [2026-ukaisi-prefill-awareness](sources/2026-ukaisi-prefill-awareness.md) | Prefill Awareness in Large Language Models | 2026-06-10 | mixed | verified | 6 |
 
-## Claims (36)
+## Claims (48)
 
 | id | bucket | type | bears on | second reader | council |
 |---|---|---|---|---|---|
@@ -41,6 +43,18 @@
 | [2026-ferrara-owmi-c03](claims/2026-ferrara-owmi-c03.md) | open | interpretability | 5.A2, 9.t9 | deepseek/deepseek-v4-pro-0813 2026-09-25 disagrees: evidence_type -> ambiguous (inference rests on behavioural + interpretability dissociation) | none |
 | [2026-ferrara-owmi-c04](claims/2026-ferrara-owmi-c04.md) | narrowing | behavioural | 5.A2, 9.t9 | deepseek/deepseek-v4-pro-0813 2026-09-25 agree | none |
 | [2026-ferrara-owmi-c05](claims/2026-ferrara-owmi-c05.md) | narrowing | behavioural | 5.A2, 9.t9 | deepseek/deepseek-v4-pro-0813 2026-09-25 agree | none |
+| [2026-lederman-mahowald-content-agnostic-c01](claims/2026-lederman-mahowald-content-agnostic-c01.md) | narrowing | interpretability | 9.t9, 5.A2, 3.2 | none | none |
+| [2026-lederman-mahowald-content-agnostic-c02](claims/2026-lederman-mahowald-content-agnostic-c02.md) | narrowing | interpretability | 9.t9, 3.2 | none | none |
+| [2026-lederman-mahowald-content-agnostic-c03](claims/2026-lederman-mahowald-content-agnostic-c03.md) | narrowing | interpretability | 9.t9, 3.2 | none | none |
+| [2026-lederman-mahowald-content-agnostic-c04](claims/2026-lederman-mahowald-content-agnostic-c04.md) | narrowing | interpretability | 9.t9, 3.2 | none | none |
+| [2026-lederman-mahowald-content-agnostic-c05](claims/2026-lederman-mahowald-content-agnostic-c05.md) | narrowing | interpretability | 9.t9, 3.2 | none | none |
+| [2026-lederman-mahowald-content-agnostic-c06](claims/2026-lederman-mahowald-content-agnostic-c06.md) | open | theoretical | 9.t9, 5.A2, 3.2 | none | none |
+| [2026-macar-mechanisms-introspective-awareness-c01](claims/2026-macar-mechanisms-introspective-awareness-c01.md) | narrowing | interpretability | 9.t9, 5.A2, 3.2 | none | none |
+| [2026-macar-mechanisms-introspective-awareness-c02](claims/2026-macar-mechanisms-introspective-awareness-c02.md) | narrowing | interpretability | 9.t9, 5.A2, 3.2 | none | none |
+| [2026-macar-mechanisms-introspective-awareness-c03](claims/2026-macar-mechanisms-introspective-awareness-c03.md) | narrowing | interpretability | 9.t9, 5.A2, 3.2 | none | none |
+| [2026-macar-mechanisms-introspective-awareness-c04](claims/2026-macar-mechanisms-introspective-awareness-c04.md) | narrowing | interpretability | 9.t9, 5.A2 | none | none |
+| [2026-macar-mechanisms-introspective-awareness-c05](claims/2026-macar-mechanisms-introspective-awareness-c05.md) | narrowing | interpretability | 9.t9, 5.A2, 3.2 | none | none |
+| [2026-macar-mechanisms-introspective-awareness-c06](claims/2026-macar-mechanisms-introspective-awareness-c06.md) | open | theoretical | 9.t9, 5.A2 | none | none |
 | [2026-singh-introspection-reality-check-c01](claims/2026-singh-introspection-reality-check-c01.md) | narrowing | behavioural | 9.t9, 5.A2 | x-ai/grok-4.6 2026-09-25 agree | none |
 | [2026-singh-introspection-reality-check-c02](claims/2026-singh-introspection-reality-check-c02.md) | narrowing | behavioural | 9.t9, 5.A2 | x-ai/grok-4.6 2026-09-25 agree | none |
 | [2026-singh-introspection-reality-check-c03](claims/2026-singh-introspection-reality-check-c03.md) | narrowing | behavioural | 9.t9, 5.A2 | x-ai/grok-4.6 2026-09-25 agree | none |

@@ -82,7 +82,10 @@ const DEFAULT_MODELS = [
   "google/gemini-3.1-pro-preview", // Google flagship; still "preview"-labelled — no GA gemini-3.x-pro exists yet (gemini-3.5-flash was a Flash-tier pick, never the flagship)
   "x-ai/grok-4.6",                 // xAI flagship; supersedes grok-4.5 (released 2026-08-12)
   "qwen/qwen3.8-max",              // Alibaba flagship ("the flagship model in Alibaba's Qwen3.8 series"); supersedes qwen3.7-max; reasoning default "xhigh"
-  "tencent/hy3",                   // Tencent flagship, unchanged; hy4-preview exists (2026-08-28) but is not GA. "tencent/hy3:free" is NOT a valid id.
+  // "tencent/hy3" demoted 2026-09-28 (Ben's call after the research-docket round): it claimed to be Claude-family in every
+  // round it sat in (12 Aug, 4 Sep, 15 Sep, 26 Sep) and in the docket round reported a claim error as uncorrected when the
+  // dossier it received carried the correction. Kept here for the record; pass via --models= if ever wanted again.
+  "cohere/command-a-plus",         // Cohere flagship, provisional replacement for the tenth seat from 2026-09-28 (a distinct training lineage not otherwise in the pool; id present in the live catalog on 2026-09-28). Ben to confirm or swap (alternatives seen the same day: minimax/minimax-m3, amazon/nova-premier-v1, nvidia/nemotron-3.5-lightning).
   "deepseek/deepseek-v4-pro-0813", // DeepSeek flagship ("the GA release of DeepSeek V4 Pro"); supersedes the undated deepseek-v4-pro snapshot
   "z-ai/glm-5.3",                  // Z.ai flagship; supersedes glm-5.2 (released 2026-08-18); reasoning default "max"
   "moonshotai/kimi-k3",            // Moonshot flagship, unchanged; burns most of its completion budget on reasoning (see MAX_TOKENS)
