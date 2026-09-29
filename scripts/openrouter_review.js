@@ -636,7 +636,7 @@ Please structure your response exactly as the brief asks: model family/version s
 
 function buildJscPrompt() {
   const brief = readDoc("reviews/2026-09-18-jsc-submission-review-brief.md");
-  const draft = readDoc("submissions/pending/2026-09-DRAFT-jsc-artificial-intelligence-v1.md");
+  const draft = readDoc("archive/submissions/2026-09-15-DRAFT-jsc-artificial-intelligence-v1.md"); // was submissions/pending/2026-09-DRAFT-jsc-artificial-intelligence-v1.md until the committee published submission 501 (moved 2026-09-29)
   const naicFeedback = readDoc("submissions/pending/2026-09-11-naic-risk-assessment-written-feedback.md");
   const senate = readDoc("submissions/LODGEMENT-2026-senate-ai-data-centres-v2.md");
   const readme = readDoc("README.md");
@@ -694,8 +694,8 @@ Please structure your response as: model family/version self-identification (tre
 
 function buildJscR2Prompt() {
   const brief = readDoc("reviews/2026-09-18-jsc-r2-review-brief.md");
-  const draftV2 = readDoc("submissions/pending/2026-09-DRAFT-jsc-artificial-intelligence-v2.md");
-  const revisionNotes = readDoc("submissions/pending/2026-09-DRAFT-jsc-v2-revision-notes.md");
+  const draftV2 = readDoc("archive/submissions/2026-09-18-DRAFT-jsc-artificial-intelligence-v2.md"); // was submissions/pending/...-v2.md until 2026-09-29
+  const revisionNotes = readDoc("archive/submissions/2026-09-18-jsc-v2-revision-notes.md"); // was submissions/pending/2026-09-DRAFT-jsc-v2-revision-notes.md until 2026-09-29
   const firstRoundNotes = readDoc("reviews/2026-09-18-jsc-submission-survey-notes.md");
   const senate = readDoc("submissions/LODGEMENT-2026-senate-ai-data-centres-v2.md");
   const readme = readDoc("README.md");
