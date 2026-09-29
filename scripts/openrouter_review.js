@@ -85,7 +85,7 @@ const DEFAULT_MODELS = [
   // "tencent/hy3" demoted 2026-09-28 (Ben's call after the research-docket round): it claimed to be Claude-family in every
   // round it sat in (12 Aug, 4 Sep, 15 Sep, 26 Sep) and in the docket round reported a claim error as uncorrected when the
   // dossier it received carried the correction. Kept here for the record; pass via --models= if ever wanted again.
-  "cohere/command-a-plus",         // Cohere flagship, provisional replacement for the tenth seat from 2026-09-28 (a distinct training lineage not otherwise in the pool; id present in the live catalog on 2026-09-28). Ben to confirm or swap (alternatives seen the same day: minimax/minimax-m3, amazon/nova-premier-v1, nvidia/nemotron-3.5-lightning).
+  "cohere/command-a-plus",         // Cohere flagship, tenth seat from 2026-09-28, confirmed by Ben 2026-09-29 (a distinct training lineage not otherwise in the pool; id present in the live catalog on 2026-09-28). Other families considered the same week: MiniMax, Amazon Nova, NVIDIA Nemotron (calibration raws tagged docket-candidates).
   "deepseek/deepseek-v4-pro-0813", // DeepSeek flagship ("the GA release of DeepSeek V4 Pro"); supersedes the undated deepseek-v4-pro snapshot
   "z-ai/glm-5.3",                  // Z.ai flagship; supersedes glm-5.2 (released 2026-08-18); reasoning default "max"
   "moonshotai/kimi-k3",            // Moonshot flagship, unchanged; burns most of its completion budget on reasoning (see MAX_TOKENS)
@@ -636,7 +636,7 @@ Please structure your response exactly as the brief asks: model family/version s
 
 function buildJscPrompt() {
   const brief = readDoc("reviews/2026-09-18-jsc-submission-review-brief.md");
-  const draft = readDoc("archive/submissions/2026-09-15-DRAFT-jsc-artificial-intelligence-v1.md"); // was submissions/pending/2026-09-DRAFT-jsc-artificial-intelligence-v1.md until the committee published submission 501 (moved 2026-09-29)
+  const draft = readDoc("submissions/pending/2026-09-15-DRAFT-jsc-artificial-intelligence-v1.md"); // held locally (quotes the unpublished Senate submission); was submissions/pending/2026-09-DRAFT-jsc-artificial-intelligence-v1.md until the committee published submission 501 (moved 2026-09-29)
   const naicFeedback = readDoc("submissions/pending/2026-09-11-naic-risk-assessment-written-feedback.md");
   const senate = readDoc("submissions/LODGEMENT-2026-senate-ai-data-centres-v2.md");
   const readme = readDoc("README.md");
@@ -694,8 +694,8 @@ Please structure your response as: model family/version self-identification (tre
 
 function buildJscR2Prompt() {
   const brief = readDoc("reviews/2026-09-18-jsc-r2-review-brief.md");
-  const draftV2 = readDoc("archive/submissions/2026-09-18-DRAFT-jsc-artificial-intelligence-v2.md"); // was submissions/pending/...-v2.md until 2026-09-29
-  const revisionNotes = readDoc("archive/submissions/2026-09-18-jsc-v2-revision-notes.md"); // was submissions/pending/2026-09-DRAFT-jsc-v2-revision-notes.md until 2026-09-29
+  const draftV2 = readDoc("submissions/pending/2026-09-18-DRAFT-jsc-artificial-intelligence-v2.md"); // held locally; was submissions/pending/...-v2.md until 2026-09-29
+  const revisionNotes = readDoc("submissions/pending/2026-09-18-jsc-v2-revision-notes.md"); // held locally; was submissions/pending/2026-09-DRAFT-jsc-v2-revision-notes.md until 2026-09-29
   const firstRoundNotes = readDoc("reviews/2026-09-18-jsc-submission-survey-notes.md");
   const senate = readDoc("submissions/LODGEMENT-2026-senate-ai-data-centres-v2.md");
   const readme = readDoc("README.md");
