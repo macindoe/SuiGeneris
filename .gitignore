@@ -26,3 +26,20 @@ local/
 reviews/*naic*
 reviews/raw/*naic*
 reviews/2026-09-10-survey-notes.md
+
+# Python bytecode
+__pycache__/
+
+# Research library: retrieved third-party full texts (arXiv HTML and stripped text), held locally so
+# quote checks survive between sessions. Not committed: licences vary and the SHA-256 in each
+# sources/ file lets anyone re-fetch and verify. Copy this directory when moving machines.
+research/texts/
+
+# Joint Select Committee round 1 (17-18 Sep 2026): the ten raws and the survey notes quote the
+# Senate data-centres submission, which was attached to that round for a consistency check and
+# which its committee has not yet published. Held out whole and unredacted until it does
+# (Ben, 29 Sep 2026). Round 2 quotes none of it and is public. The JSC drafts v1 and v2 and the
+# v2 revision notes reuse Senate passages that did not survive into the published text
+# (submission 501); they sit in submissions/pending/ on the same terms.
+reviews/raw/*-2026-09-17-jsc.md
+reviews/2026-09-18-jsc-submission-survey-notes.md

@@ -70,6 +70,20 @@
       "watchlist_entry": "8. NAIC AI best practice and guidance program",
       "watchlist_anchor": "8-naic-ai-best-practice-and-guidance-program",
       "notes": "NAIC engagement program page: current topics of focus (risk assessment, agentic AI as of Jul-Sep 2026), session announcements, EOI link. KNOWN RISK: ai.gov.au times out on automated fetches (observed 2026-08-12 via WebFetch); failures must surface as issues, and Ben's NAIC newsletter subscription is the manual backstop."
+    },
+    {
+      "id": "jsc-artificial-intelligence",
+      "url": "https://www.aph.gov.au/Parliamentary_Business/Committees/Joint/Artificial_Intelligence",
+      "watchlist_entry": "6. aph.gov.au - new bills and Senate/House committee inquiries",
+      "watchlist_anchor": "6-aphgovau--new-bills-and-senatehouse-committee-inquiries",
+      "notes": "Joint Select Committee on Artificial Intelligence (appointed 20 Aug 2026; submissions closed 14 Sep 2026; report due 30 Nov 2026). Added 2026-09-15 after the committee was missed by the submissions-open pages, which never fetch. Watching for hearings, the report, and any extension. Expect aph.gov.au WAF blocks like the other aph entries."
+    },
+    {
+      "id": "asd-agentic-ai-harnesses",
+      "url": "https://www.cyber.gov.au/business-government/secure-design/artificial-intelligence/agentic-ai-harnesses",
+      "watchlist_entry": "9. ASD agentic AI guidance stream (cyber.gov.au)",
+      "watchlist_anchor": "9-asd-agentic-ai-guidance-stream-cybergovau",
+      "notes": "ASD's Agentic AI Harnesses page (first published Sep 2026). Watching for revisions and for sibling publications in the same Secure design > Artificial intelligence section. cyber.gov.au timed out for WebFetch on 2026-09-15 but answered curl with a browser User-Agent; treat repeated fetch failures as the estate-wide pattern, not a page change."
     }
   ]
 }
