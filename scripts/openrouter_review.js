@@ -85,7 +85,8 @@ const DEFAULT_MODELS = [
   // "tencent/hy3" demoted 2026-09-28 (Ben's call after the research-docket round): it claimed to be Claude-family in every
   // round it sat in (12 Aug, 4 Sep, 15 Sep, 26 Sep) and in the docket round reported a claim error as uncorrected when the
   // dossier it received carried the correction. Kept here for the record; pass via --models= if ever wanted again.
-  "cohere/command-a-plus",         // Cohere flagship, tenth seat from 2026-09-28, confirmed by Ben 2026-09-29 (a distinct training lineage not otherwise in the pool; id present in the live catalog on 2026-09-28). Other families considered the same week: MiniMax, Amazon Nova, NVIDIA Nemotron (calibration raws tagged docket-candidates).
+  "minimax/minimax-m3",            // MiniMax flagship, tenth seat from 2026-09-30 (Ben's call after the 29 Sep calibration run: it alone caught all four points on which the attached dossiers had moved past the brief, and named its own family correctly; reviews/2026-09-29-council-candidates-calibration.md)
+  // "cohere/command-a-plus" was seated provisionally on 28-29 Sep 2026 and stood down after the same calibration run (repeated the stale brief on all four points; misattributed a quotation to the README). Nemotron 3 Ultra caught one and a half of four; Nova Premier returned a provider 404. All three remain available via --models=.
   "deepseek/deepseek-v4-pro-0813", // DeepSeek flagship ("the GA release of DeepSeek V4 Pro"); supersedes the undated deepseek-v4-pro snapshot
   "z-ai/glm-5.3",                  // Z.ai flagship; supersedes glm-5.2 (released 2026-08-18); reasoning default "max"
   "moonshotai/kimi-k3",            // Moonshot flagship, unchanged; burns most of its completion budget on reasoning (see MAX_TOKENS)
