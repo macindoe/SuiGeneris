@@ -54,6 +54,9 @@
 //   node scripts/openrouter_review.js --target=dossier-rewrite --max-tokens=100000
 //       (2026-10-06: second council sitting on the research library: GPT's proposed rewrite of the 41 claims in dossiers 9.t9 and 5.A2,
 //        as checked against the held texts by seven Opus checkers; brief by a Sonnet 5 subagent; tag "dossier-rewrite")
+//   node scripts/openrouter_review.js --target=labelling-rule --max-tokens=100000
+//       (2026-10-06: third council sitting: the rule for when each fixed framework sentence applies; brief by a Sonnet 5
+//        subagent; attaches the labelling table, README and AGENTS.md; tag "labelling-rule")
 //   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", naic-email to "naic", naic-email-final to "naic-final", emotions to "emotions", emotions-r2 to "emotions-r2", emotions-r3 to "emotions-r3", emotions-r4 to "emotions-r4", emotions-r5 to "emotions-r5", landing to "landing", s4-form to "s4-form", jsc to "jsc", jsc-r2 to "jsc-r2")
 //
 // Requires OPEN_ROUTER_API_KEY in a .env file at the repo root (already there).
@@ -870,6 +873,40 @@ ${agents}
 Please respond in the structure the brief specifies, beginning with your model family/version self-identification, labelled as unverified.`;
 }
 
+function buildLabellingRulePrompt() {
+  // 2026-10-06: third council sitting on the research library. One question: the rule for when each
+  // fixed framework sentence (and so each dossier mark) applies. Attaches the brief (Sonnet 5 subagent),
+  // the labelling table (48 claims), the library README and AGENTS.md. After round 2, where three seats
+  // claimed another seat's authorship, the shared prompt addresses no seat by family and carries no
+  // model's self-identification line.
+  const brief = readDoc("reviews/2026-10-06-labelling-rule-review-brief.md");
+  const table = readDoc("reviews/2026-10-06-labelling-table.md");
+  const readme = readDoc("research/README.md");
+  const agents = readDoc("AGENTS.md");
+  // The one-time explanation printed at the top of every dossier (for the brief's Q5), taken from a generated dossier.
+  const dossier = readDoc("research/dossiers/9-t9.md");
+  const header = dossier.slice(dossier.indexOf("## How to read this"), dossier.indexOf("## At a glance")).trim();
+
+  return `Hi. I'd like an adversarial review, from your model family, of one question about a research library, per the brief below. The human maintainer adjudicates after reading all responses.
+
+=== reviews/2026-10-06-labelling-rule-review-brief.md (the brief) ===
+${brief}
+
+=== reviews/2026-10-06-labelling-table.md (the 48 claims and the sentences they carry) ===
+${table}
+
+=== The explanation printed once at the top of every dossier (from research/dossiers/9-t9.md; for Q5) ===
+${header}
+
+=== research/README.md (the library's schema and rules) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please respond in the structure the brief specifies, beginning with one line stating your own model family and version as you understand it, labelled as unverified.`;
+}
+
 function slugify(modelId) {
   return modelId.replace(/[\/:]/g, "-");
 }
@@ -902,9 +939,9 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const TARGETS = ["dossier-rewrite", "research-docket", "jsc-r2", "jsc","s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
+  const TARGETS = ["labelling-rule", "dossier-rewrite","research-docket", "jsc-r2", "jsc","s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
   const target = TARGETS.find((t) => args.includes(`--target=${t}`)) || "north-star";
-  const DEFAULT_TAGS = { "dossier-rewrite": "dossier-rewrite", "research-docket": "docket", "jsc-r2": "jsc-r2","jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
+  const DEFAULT_TAGS = { "labelling-rule": "labelling-rule", "dossier-rewrite": "dossier-rewrite","research-docket": "docket", "jsc-r2": "jsc-r2","jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
   const tagArg = args.find((a) => a.startsWith("--tag="));
   const tag = tagArg ? tagArg.slice("--tag=".length) : DEFAULT_TAGS[target] || "";
   const modelsArg = args.find((a) => a.startsWith("--models="));
@@ -913,6 +950,7 @@ async function main() {
     : DEFAULT_MODELS;
 
   const BUILDERS = {
+    "labelling-rule": buildLabellingRulePrompt,
     "dossier-rewrite": buildDossierRewritePrompt,
     "research-docket": buildResearchDocketPrompt,
     "jsc-r2": buildJscR2Prompt,
