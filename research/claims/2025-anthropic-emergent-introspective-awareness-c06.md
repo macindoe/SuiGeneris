@@ -11,11 +11,11 @@ verification: grep
 models: ["Claude Opus 4.1"]
 publisher_relation: developer-of-studied-model
 replication: none-retrieved
-not_evidence_of: "Paper: The author's statement is not evidence that the model outputs it concerns (emotional responses, descriptions such as 'overly intense') are false: the experiment does not test them either way; Paper: Not evidence about other families; Framework (test 9): a model's report about its own states carries no weight as evidence of experience until the link between report and internal state has been measured externally for this kind of report and system"
+not_evidence_of: "Paper: The author's statement is not evidence that the model outputs it concerns (emotional responses, descriptions such as 'overly intense') are false: the experiment does not test them either way; Paper: Not evidence about other families"
 bears_on: [9.t9, 5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 disagrees: evidence_type -> theoretical (records the author's methodological limit, not the model's testimony)", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-05 Ben: evidence_type self-report-testimony -> theoretical (council 10/10; second reader Gemini); stays in its bucket with the single-lineage mark | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 disagrees: evidence_type -> theoretical (records the author's methodological limit, not the model's testimony)", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-05 Ben: evidence_type self-report-testimony -> theoretical (council 10/10; second reader Gemini); stays in its bucket with the single-lineage mark | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
 added: 2026-09-25
 changed: 2026-10-06
 ---
@@ -31,3 +31,5 @@ REWRITE 2026-10-06 (applied by a Claude Opus 5.5 subagent, Claude lineage editin
 - Framework sentences: canonical sentence present and unchanged (rule R3).
 - evidence_type stays theoretical (retyped 5 October; kept).
 - kind: limitation (the statement reports the author's statement of what the experiment cannot substantiate).
+
+LABELLING 2026-10-06 (council round 3; Ben's adjudication the same day): framework sentence changed from main to none. Reason: the author is speaking: no framework sentence on an author's own caveat (council 8 of 8). No `Paper:` clause was changed.

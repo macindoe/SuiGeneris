@@ -11,11 +11,11 @@ verification: grep
 models: [Llama-3.1-70B-Instruct, Qwen-3-32B, Gemma-3-27B-IT]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "Paper: Not evidence that these models, or Claude models, lack introspective access: the authors say models 'could likely be trained to separate the two interventions' and that they do not conclude the models 'demonstrably lack introspective capacities'; Paper: Failing the three-way test is also not the converse of a pass meaning introspection: the authors state a model passing it 'would still not thereby be shown to deploy meta-representations'"
+not_evidence_of: "Paper: Not evidence that these models, or Claude models, lack introspective access: the authors say models 'could likely be trained to separate the two interventions' and that they do not conclude the models 'demonstrably lack introspective capacities'; Paper: Failing the three-way test is also not the converse of a pass meaning introspection: the authors state a model passing it 'would still not thereby be shown to deploy meta-representations'; Framework (test 9, steering): a coupling measured under steering shows that the channel can be steered and does not weight reports offered in ordinary operation"
 bears_on: [9.t9, 5.A2]
 contests: [2025-anthropic-emergent-introspective-awareness-c01, 2025-anthropic-emergent-introspective-awareness-c03]
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree; notes: bears_on +3.2; models over-includes Llama-3.1-8B-Instruct (App. K: does not clearly reproduce)", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-05 Ben: contest with the Lindsey claims stands recorded; both sides stay in the same bucket (council round 1); the contest is about the inference, not the measured rates | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree; notes: bears_on +3.2; models over-includes Llama-3.1-8B-Instruct (App. K: does not clearly reproduce)", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-05 Ben: contest with the Lindsey claims stands recorded; both sides stay in the same bucket (council round 1); the contest is about the inference, not the measured rates | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
 added: 2026-09-25
 changed: 2026-10-06
 ---
@@ -36,3 +36,5 @@ REWRITE 2026-10-06
 - Clause 3 deleted ('Nothing about experience or moral status'). The paper states no such limit (script search of text.txt, 6 Oct 2026); council 8 of 9 to strip; rule R2. No framework sentence added (rule R3).
 - contests links to the Lindsey claims untouched.
 - kind: measurement (three-way first-token choice under steering or prompt-only gaslight, scored against the known trial type).
+
+LABELLING 2026-10-06 (council round 3; Ben's adjudication the same day): framework sentence changed from none to steering. Reason: as c04: steering sentence (council 8 of 8). No `Paper:` clause was changed.

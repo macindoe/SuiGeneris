@@ -22,6 +22,21 @@ Detail lives in sources. Claims are one sentence plus pointers. Syntheses are sh
 
 A dossier opens with how to read it: the two-error standard, what the buckets and kinds mean, and the framework's rule on self-report printed once. Each entry then shows the statement, the paper's exact words, the models and the kind of system studied, the paper's own limits, and flags. An entry is marked **[T9]** or **[T9-steering]** only when its claim file carries that fixed sentence; the mark is read from the file and never inferred. Review history stays in the claim file.
 
+## Which framework sentence a claim carries (6 October 2026)
+
+Adopted by Ben on the advice of the council's third sitting (eight seats; unanimous on the core). The decision turns on two facts about a claim: **what was done to the model** and **what was measured**.
+
+| What was done | What was measured | Sentence | Dossier mark |
+|---|---|---|---|
+| Nothing inside the model was altered | What the model said about its own inner states | the canonical sentence | [T9] |
+| Researchers altered something inside the model: steering, injection, ablation, capping, zeroing, scaling, noise, replacement | What the model then said about itself | the steering variant | [T9-steering] |
+| Either | Something other than the model's account of itself: a probe reading, a score, a harm rate, an internal projection | none | none |
+| (any) | Nothing: the authors are speaking (`kind` is `interpretation` or `limitation`) | none | none |
+
+Further rulings: a claim **never carries both** sentences (five of eight; a steered model asked about its own experience carries the steering variant alone). An answer to "was that earlier turn mine?", where only the conversation text was edited, carries **neither** (five of eight): the canonical sentence concerns evidence of experience and nobody offers such an answer as that. The steering variant is used for interventions that alter activations without steering toward a concept (seven of eight; one seat would write a third sentence for them). A claim that reports two different measurements is split, so that each half can be labelled by this rule. The rule does not depend on the question Ben has left undecided (whether a scored self-answer is behavioural evidence or testimony): it reads what was done and what was measured, not the evidence type.
+
+Before this rule the sentences followed whichever extractor took in each paper: three papers' inject-then-ask claims carried the steering variant and two papers' claims from the same kind of experiment carried nothing.
+
 ## Frontmatter schema
 
 Files are Markdown with YAML frontmatter. Controlled vocabularies are enforced by the index script; anything outside them fails validation. Templates: `sources/TEMPLATE.md`, `claims/TEMPLATE.md`.

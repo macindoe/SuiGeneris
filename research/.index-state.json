@@ -92,6 +92,11 @@
   },
   "2026-anthropic-assistant-axis-c06": {
    "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2026-anthropic-assistant-axis-c07": {
+   "bucket": "narrowing",
    "evidence_type": "interpretability",
    "in_dossier": true
   },

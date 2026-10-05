@@ -11,11 +11,11 @@ verification: grep
 models: ["Qwen2.5-7B-Instruct LoRA known-positive (author-trained, base revision a09a3545)"]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "Paper: Not evidence that the fine-tuned model introspects in the paper's second-order-access sense: a trained mapping from perturbed state to answer is not shown to be a model reading its own state rather than first-order leakage; Paper: Not evidence about untuned models, about the eight roster models (the authors say it does not test them), about frontier or closed-weight models, or that fine-tuning would build reliable self-report of other inner states; Paper: The authors state: 'These results are about information flow. They say nothing about consciousness, experience, or moral status, and we intend no such reading.' (§8)"
+not_evidence_of: "Paper: Not evidence that the fine-tuned model introspects in the paper's second-order-access sense: a trained mapping from perturbed state to answer is not shown to be a model reading its own state rather than first-order leakage; Paper: Not evidence about untuned models, about the eight roster models (the authors say it does not test them), about frontier or closed-weight models, or that fine-tuning would build reliable self-report of other inner states; Paper: The authors state: 'These results are about information flow. They say nothing about consciousness, experience, or moral status, and we intend no such reading.' (§8); Framework (test 9, steering): a coupling measured under steering shows that the channel can be steered and does not weight reports offered in ordinary operation"
 bears_on: [5.A2, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
 added: 2026-09-25
 changed: 2026-10-06
 ---
@@ -29,3 +29,5 @@ REWRITE 2026-10-06
 - Clause 3 (experience): the original's unattributed "Not evidence about experience or moral status" replaced by the paper's own §8 words with locator, under Ben's experience-exclusion rule and his direction to apply the §8 clause wherever a Ferrara claim carried an experience exclusion. GPT and the checker had kept the original clause; this change rests on the rule, not on their findings.
 - Framework sentences: none, before or after. The answers are scored against imposed activation replacement, not concept steering (checker placement note); R3 forbids adding either.
 - kind: measurement. The statement reports measured hit and false-alarm counts; the authors' validation reading is a qualifier on a measured result.
+
+LABELLING 2026-10-06 (council round 3; Ben's adjudication the same day): framework sentence changed from none to steering. Reason: as c01: steering sentence (council 7 of 8). No `Paper:` clause was changed.

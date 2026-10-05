@@ -11,11 +11,11 @@ verification: grep
 models: ["Qwen3-235B-A22B", "Llama 3.1 405B Instruct"]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "Paper: On the 'higher-order thought' theory, introspective access 'may be sufficient for conscious experience, and hence for welfare status', and the authors state 'We do not take a stand on whether our findings are of the right sort for this theory' (§8); Paper: The conclusion concerns knowledge of injections and does not establish introspection in other contexts, where the authors say other mechanisms may dominate (§8); Paper: Direct access remains unsettled, and the authors report reduced confidence in that v1 interpretation (Appendix M); Paper: The broader introspection conclusion is tentative and rests on a highly prompt-sensitive paradigm (§4, §8); Framework (test 9): a model's report about its own states carries no weight as evidence of experience until the link between report and internal state has been measured externally for this kind of report and system"
+not_evidence_of: "Paper: On the 'higher-order thought' theory, introspective access 'may be sufficient for conscious experience, and hence for welfare status', and the authors state 'We do not take a stand on whether our findings are of the right sort for this theory' (§8); Paper: The conclusion concerns knowledge of injections and does not establish introspection in other contexts, where the authors say other mechanisms may dominate (§8); Paper: Direct access remains unsettled, and the authors report reduced confidence in that v1 interpretation (Appendix M); Paper: The broader introspection conclusion is tentative and rests on a highly prompt-sensitive paradigm (§4, §8)"
 bears_on: [9.t9, 5.A2, 3.2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: "dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: "dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
 added: 2026-09-28
 changed: 2026-10-06
 ---
@@ -36,3 +36,5 @@ REWRITE 2026-10-06 (applied by a Claude Opus 5.5 subagent; Claude lineage, same 
 - Clauses 2 to 4: GPT's wording taken (checker OK).
 - Canonical sentence: kept, unchanged (R3). The steering variant is not added (not among Ben's two exceptions).
 - kind: interpretation (the statement reports the authors' synthesis of Experiments 1 to 4). Bucket stays open (R7; no convening trigger raised).
+
+LABELLING 2026-10-06 (council round 3; Ben's adjudication the same day): framework sentence changed from main to none. Reason: the authors are speaking: no framework sentence (council 8 of 8). No `Paper:` clause was changed.

@@ -11,11 +11,11 @@ verification: grep
 models: ["Qwen2.5-0.5B-Instruct", "Mistral-7B-Instruct-v0.3", "Qwen2.5-7B-Instruct", "Llama-3.1-8B-Instruct", "Gemma-2-9B-IT", "GLM-4-9B-0414", "Phi-4", "DeepSeek-R1-Distill-Qwen-14B"]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "Paper: Results concern the tested 0.5B-to-about-15B open-weight models, not frontier or closed-weight models, whose reportability the authors say these profiles do not estimate; Paper: The layer-16 immediate-probe result does not establish absence of introspective access generally or extend to untested sites, objects, doses, delays or spontaneous reports; Paper: The authors state: 'These results are about information flow. They say nothing about consciousness, experience, or moral status, and we intend no such reading.' (§8); Paper: The 0.15-percentage-point AUROC bound is computed on two models, not all eight"
+not_evidence_of: "Paper: Results concern the tested 0.5B-to-about-15B open-weight models, not frontier or closed-weight models, whose reportability the authors say these profiles do not estimate; Paper: The layer-16 immediate-probe result does not establish absence of introspective access generally or extend to untested sites, objects, doses, delays or spontaneous reports; Paper: The authors state: 'These results are about information flow. They say nothing about consciousness, experience, or moral status, and we intend no such reading.' (§8); Paper: The 0.15-percentage-point AUROC bound is computed on two models, not all eight; Framework (test 9, steering): a coupling measured under steering shows that the channel can be steered and does not weight reports offered in ordinary operation"
 bears_on: [5.A2, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
 added: 2026-09-25
 changed: 2026-10-06
 ---
@@ -31,3 +31,5 @@ REWRITE 2026-10-06
 - Clause 4 (two-model bound): GPT's wording, checker CONFIRMED (CHECK 2).
 - Framework sentences: none, before or after. The reports are scored against imposed interventions, not taken as testimony (checker placement note; GPT, Grok, Kimi, MiniMax in the council).
 - kind: measurement. The statement reports measured discrimination statistics and an equivalence bound.
+
+LABELLING 2026-10-06 (council round 3; Ben's adjudication the same day): framework sentence changed from none to steering. Reason: the experimenters altered activations (zeroing, scaling, noise, replacement) and measured the model's answer about whether its computation changed: steering sentence (Ben, decision 2; council 7 of 8, one seat preferring a third sentence for non-concept interventions). No `Paper:` clause was changed.

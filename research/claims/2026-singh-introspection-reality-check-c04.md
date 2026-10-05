@@ -11,11 +11,11 @@ verification: grep
 models: [Llama-3.1-70B-Instruct, Qwen-3-32B]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "Paper: Not evidence that introspection is absent in these models or in Claude: the Claude model Lindsey tested was not accessible to the authors and was not re-run, and the authors themselves conclude 'not that these models demonstrably lack introspective capacities'; Paper: It shows only that the two-way design cannot separate detection of activation interventions from detection of a generically unusual state"
+not_evidence_of: "Paper: Not evidence that introspection is absent in these models or in Claude: the Claude model Lindsey tested was not accessible to the authors and was not re-run, and the authors themselves conclude 'not that these models demonstrably lack introspective capacities'; Paper: It shows only that the two-way design cannot separate detection of activation interventions from detection of a generically unusual state; Framework (test 9, steering): a coupling measured under steering shows that the channel can be steered and does not weight reports offered in ordinary operation"
 bears_on: [9.t9, 5.A2]
 contests: [2025-anthropic-emergent-introspective-awareness-c01, 2025-anthropic-emergent-introspective-awareness-c03]
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree; notes: bears_on +3.2", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-05 Ben: contest with the Lindsey claims stands recorded; both sides stay in the same bucket (council round 1); the contest is about the inference, not the measured rates | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree; notes: bears_on +3.2", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-05 Ben: contest with the Lindsey claims stands recorded; both sides stay in the same bucket (council round 1); the contest is about the inference, not the measured rates | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
 added: 2026-09-25
 changed: 2026-10-06
 ---
@@ -36,3 +36,5 @@ REWRITE 2026-10-06
 - Clause 3 deleted ('Nothing about experience, awareness in the phenomenal sense, or moral status'). The paper states no such limit (script search of text.txt, 6 Oct 2026); council 8 of 9 to strip; rule R2. No framework sentence added: DeepSeek and Grok raised the steering variant for c04, but rule R3 permits no additions here.
 - contests links to the Lindsey claims untouched.
 - kind: measurement (first-token reports under steering or a prompt-only gaslight, scored against the known trial type).
+
+LABELLING 2026-10-06 (council round 3; Ben's adjudication the same day): framework sentence changed from none to steering. Reason: activation steering on some trials, measuring the model's own answer about whether its state was altered: steering sentence (council 8 of 8). No `Paper:` clause was changed.

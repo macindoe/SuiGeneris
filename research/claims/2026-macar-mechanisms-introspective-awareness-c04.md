@@ -11,11 +11,11 @@ verification: grep
 models: ["Gemma3-27B instruct"]
 publisher_relation: mixed
 replication: none-retrieved
-not_evidence_of: "Paper: Not evidence that no single direction matters: one direction (the success-minus-failure mean difference) explains a substantial fraction of detection variance and behaves as a threshold, which the authors read as a 'factual content' classifier repurposed during introspection; Paper: Not evidence against every shallow explanation: it rules out the specific confound that some concept vectors align with one direction promoting affirmative answers, and does not test prompt-level manipulations; Paper: Not evidence about other models; Paper: The authors state that their results 'should not be interpreted as evidence of subjective experience or consciousness in LLMs' (Ethics Statement)"
+not_evidence_of: "Paper: Not evidence that no single direction matters: one direction (the success-minus-failure mean difference) explains a substantial fraction of detection variance and behaves as a threshold, which the authors read as a 'factual content' classifier repurposed during introspection; Paper: Not evidence against every shallow explanation: it rules out the specific confound that some concept vectors align with one direction promoting affirmative answers, and does not test prompt-level manipulations; Paper: Not evidence about other models; Paper: The authors state that their results 'should not be interpreted as evidence of subjective experience or consciousness in LLMs' (Ethics Statement); Framework (test 9, steering): a coupling measured under steering shows that the channel can be steered and does not weight reports offered in ordinary operation"
 bears_on: [9.t9, 5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: "dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: "dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
 added: 2026-09-28
 changed: 2026-10-06
 ---
@@ -30,3 +30,5 @@ REWRITE 2026-10-06
 - Clause reworded under the experience-exclusion rule (council 9 of 9; Ben): "Not evidence of experience" became the paper's own Ethics Statement words with locator. The paper states this limit for its results, so it stays as `Paper:`.
 - Other clauses kept (GPT KEEP; checker OK; "does not test prompt-level manipulations" is a design fact). No framework sentence, as before (R3: none added).
 - kind: measurement (bidirectional-steering and swap results; the inconsistency with the hypothesis is the direct reading of the measured 23.3% vs 3.2%).
+
+LABELLING 2026-10-06 (council round 3; Ben's adjudication the same day): framework sentence changed from none to steering. Reason: steering along different directions, measuring whether the model says it detects an injection: steering sentence (council 8 of 8). No `Paper:` clause was changed.

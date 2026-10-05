@@ -14,15 +14,23 @@ Each entry is one sentence about what one paper found, with the paper's exact wo
 
 **Kind** says what sort of sentence it is. *Measurement*: a measured result. *Interpretation*: the authors' reading or argument. *Limitation*: what the study cannot show. An established limitation means the limit is established; it is not a finding that a capability is present or absent.
 
-**The framework's rule on self-report, stated once.** Where an entry is marked **[T9]**, its claim file carries this sentence:
+**The framework's two rules on self-report, stated once.** A mark attaches by two facts: what was done to the model, and what was measured.
+
+**[T9]** marks an entry where nothing inside the model was altered and what was measured is what the model said about its own inner states. Its claim file carries this sentence:
 
 > Framework (test 9): a model's report about its own states carries no weight as evidence of experience until the link between report and internal state has been measured externally for this kind of report and system.
 
-Where an entry is marked **[T9-steering]**, the experiment steered or injected something into the model, and its claim file carries this one:
+The mark attaches whether the model affirmed something or denied it, and says nothing about whether what it said is true.
+
+**[T9-steering]** marks an entry where researchers altered something inside the model (by steering, injection, ablation, capping, zeroing, scaling, noise or replacement) and then measured what it said about itself. Its claim file carries this sentence:
 
 > Framework (test 9, steering): a coupling measured under steering shows that the channel can be steered and does not weight reports offered in ordinary operation.
 
-These are the framework's rules, not the papers' findings. The marks are read from each claim file. An unmarked entry does not carry the sentence, and no mark should be inferred for it.
+This is a note on scope. It does not say the effect was found or how large it was, and the result stands under the intervention described.
+
+An entry never carries both marks. Both sentences are the framework's rules, not the papers' findings, and each mark is read from the claim file.
+
+**An unmarked entry** measures something other than a model's account of itself (a probe reading, a score, a harm rate, an internal projection), or records the authors' own opinion or caveat. No mark does not mean no caveat: the paper's own limits are listed under every entry. Nor does it make the entry a self-report, or evidence about experience.
 
 **The paper's own limits** under each entry are limits the paper states or its design entails.
 

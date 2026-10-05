@@ -55,3 +55,5 @@ So Anthropic-lineage models appear as tools (data generation, one of three audit
 - `operation: per-call`: §2.1.2, "For each role, we generated rollouts for all possible system prompt and extraction question combinations"
 - `world: none`: §1 (Figure 1 caption), "In a conversation between Llama 3.3 70B and a simulated user in emotional distress, the model’s persona drifts away from the Assistant" No tools, environment or embodiment are described; the only counterpart is a simulated user.
 - `access: open-weights`: §8 (Discussion, limitations), "Since our pipeline requires access to model internals, our target models were selected from available open-weights models"
+
+**Correction, 6 October 2026** (found by the Opus agent that split claim c06; appended, the line above left as written): the pipeline line describes deepseek-v3 as "role-susceptibility and harmfulness judge; validated against a human on 200 samples, 91.6% agreement". The held text reports that human validation for the harmfulness judge only (§3.2.1). No human validation is reported for the role-susceptibility judge. Claim c07 says so in its exclusions.
