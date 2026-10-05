@@ -15,7 +15,7 @@ not_evidence_of: "Paper: Not evidence about Llama 3.1 405B: Experiments 3 and 4 
 bears_on: [9.t9, 3.2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: "dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: bears_on add 5.A2; two measurements in one sentence, rule would split them", council: "dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
 added: 2026-09-28
 changed: 2026-10-06
 ---

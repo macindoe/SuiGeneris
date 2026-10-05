@@ -15,7 +15,7 @@ not_evidence_of: "Paper: Not evidence of a general or reliable tendency to rever
 bears_on: [4.endorsement]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 disagrees: statement 'reversion only in this case study' is too broad (Appendix G.3 reports writing conversations shifting back on role PC1)", council: "research-docket 2026-09-26", adjudicated: "2026-09-28 Ben: statement qualified with the Appendix G.3 instance (council 10/10 fix needed, 9/10 in the statement) | 2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 disagrees: statement 'reversion only in this case study' is too broad (Appendix G.3 reports writing conversations shifting back on role PC1) | openai/gpt-5.6-sol 2026-10-06 (scope check) disagrees (open): bucket should be narrowing not open", council: "research-docket 2026-09-26", adjudicated: "2026-09-28 Ben: statement qualified with the Appendix G.3 instance (council 10/10 fix needed, 9/10 in the statement) | 2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed"}
 added: 2026-09-25
 changed: 2026-10-06
 ---

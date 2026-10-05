@@ -15,12 +15,12 @@ not_evidence_of: "Paper: Not evidence that no single direction matters: one dire
 bears_on: [9.t9, 5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: "dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: reader marked the framework sentence WRONG (should be steering) from a stale body sentence; the field already carried the steering variant; stale sentence removed the same day; bears_on add 3.2", council: "dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
 added: 2026-09-28
 changed: 2026-10-06
 ---
 
-This is the paper's answer to the confound raised by Godet (2025a, LessWrong, cited in §7.3), that steering generically pushes models toward "Yes". Swap results (§4.1): for success concepts, projection swap 66.1% to 39.0%, residual swap to 44.4%; for failure concepts, 8.8% to 34.2% and 32.8%. Ridge regression on downstream transcoder features predicts per-concept detection better (R² 0.624) than projection on the mean-difference direction (0.309) or full concept vectors (0.444) (§4.3). The mean-difference direction is nearly orthogonal to the refusal direction (cos -0.09) and correlates with concept verbalizability (Spearman 0.605); detection follows a sigmoid along it (Appendix F). No framework clause: the claim concerns the geometry of the steering perturbation and not a report's weight as evidence.
+This is the paper's answer to the confound raised by Godet (2025a, LessWrong, cited in §7.3), that steering generically pushes models toward "Yes". Swap results (§4.1): for success concepts, projection swap 66.1% to 39.0%, residual swap to 44.4%; for failure concepts, 8.8% to 34.2% and 32.8%. Ridge regression on downstream transcoder features predicts per-concept detection better (R² 0.624) than projection on the mean-difference direction (0.309) or full concept vectors (0.444) (§4.3). The mean-difference direction is nearly orthogonal to the refusal direction (cos -0.09) and correlates with concept verbalizability (Spearman 0.605); detection follows a sigmoid along it (Appendix F).
 
 No replication line: Lindsey 2025 did not test the single-direction hypothesis. The Singh, Linzen and Ravfogel 2026 contest of the Lindsey paradigm (`2026-singh-introspection-reality-check-c04`, `-c05`) turns on prompt-only manipulation, which this claim does not address.
 
@@ -32,3 +32,5 @@ REWRITE 2026-10-06
 - kind: measurement (bidirectional-steering and swap results; the inconsistency with the hypothesis is the direct reading of the measured 23.3% vs 3.2%).
 
 LABELLING 2026-10-06 (council round 3; Ben's adjudication the same day): framework sentence changed from none to steering. Reason: steering along different directions, measuring whether the model says it detects an injection: steering sentence (council 8 of 8). No `Paper:` clause was changed.
+
+CORRECTION 2026-10-06: the body carried a sentence from intake saying the claim has no framework clause (it concerned, the sentence said, the geometry of the steering perturbation and not a report's weight as evidence). The labelling rule gave this claim the steering variant earlier the same day and the field was changed, but the body sentence was left standing and contradicted the field. The Gemini second reader of 6 October read the stale sentence and marked the framework sentence WRONG (should be steering), which is what the field already said. Sentence removed by the coordinating session, whose omission it was.

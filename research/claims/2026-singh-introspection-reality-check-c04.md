@@ -15,7 +15,7 @@ not_evidence_of: "Paper: Not evidence that introspection is absent in these mode
 bears_on: [9.t9, 5.A2]
 contests: [2025-anthropic-emergent-introspective-awareness-c01, 2025-anthropic-emergent-introspective-awareness-c03]
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree; notes: bears_on +3.2", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-05 Ben: contest with the Lindsey claims stands recorded; both sides stay in the same bucket (council round 1); the contest is about the inference, not the measured rates | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree; notes: bears_on +3.2 | google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: leans behavioural on boundary", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-05 Ben: contest with the Lindsey claims stands recorded; both sides stay in the same bucket (council round 1); the contest is about the inference, not the measured rates | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
 added: 2026-09-25
 changed: 2026-10-06
 ---

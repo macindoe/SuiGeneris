@@ -15,7 +15,7 @@ not_evidence_of: "Paper: Section 3 preference-benchmark detection and resistance
 bears_on: [3.3, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 agree", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 agree | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) disagrees (open): evidence_type proposed ambiguous (methodological comparability caveat is not a behavioural measurement)", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
 added: 2026-09-25
 changed: 2026-10-06
 ---

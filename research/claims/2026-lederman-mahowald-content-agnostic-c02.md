@@ -15,7 +15,7 @@ not_evidence_of: "Paper: Where first- and third-person yes-rates match, first-pe
 bears_on: [9.t9, 3.2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: "dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) disagrees (open): not_evidence_of over-excludes steering clause; framework sentence WRONG, should be none (DV is not the model's account of itself)", council: "dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
 added: 2026-09-28
 changed: 2026-10-06
 ---

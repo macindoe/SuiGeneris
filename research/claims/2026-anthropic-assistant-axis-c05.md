@@ -15,7 +15,7 @@ not_evidence_of: "Paper: Not evidence about frontier or Anthropic models, or tha
 bears_on: [3.2, 3.5]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree", council: none, adjudicated: "2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree | openai/gpt-5.6-sol 2026-10-06 (scope check) disagrees (open): statement and scope MISMATCH (without degrading each benchmark versus a summed aggregate)", council: none, adjudicated: "2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed"}
 added: 2026-09-25
 changed: 2026-10-06
 ---

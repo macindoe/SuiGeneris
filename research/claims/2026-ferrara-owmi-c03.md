@@ -15,7 +15,7 @@ not_evidence_of: "Paper: This event-specific dissociation does not establish tha
 bears_on: [5.A2, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 disagrees: evidence_type -> ambiguous (inference rests on behavioural + interpretability dissociation)", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-05 Ben: evidence type deliberately left undecided, set to ambiguous as the second reader proposed (council: 5 theoretical / 4 ambiguous / 1 interpretability); see OPEN-QUESTIONS Q3 | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 disagrees: evidence_type -> ambiguous (inference rests on behavioural + interpretability dissociation) | x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: evidence_type ambiguous left standing per 5 Oct ruling", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-05 Ben: evidence type deliberately left undecided, set to ambiguous as the second reader proposed (council: 5 theoretical / 4 ambiguous / 1 interpretability); see OPEN-QUESTIONS Q3 | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
 added: 2026-09-25
 changed: 2026-10-06
 ---

@@ -261,8 +261,11 @@ def docket(claims, src_by_slug, state):
         rv2 = c.get("review") or {}
         # A claim whose review.adjudicated carries a dated decision is off the
         # docket for triggers 2 to 5 (added 2026-10-05: until then nothing could
-        # ever be crossed off). A later bucket move (T1) or a new disagreement
-        # recorded after the decision needs adjudicated reset to none.
+        # ever be crossed off). A later bucket move (T1) needs adjudicated reset
+        # to none. A reader disagreement recorded after a decision is written
+        # 'disagrees (open)' and fires T5 whatever adjudicated says (6 Oct 2026),
+        # so the record of the earlier decision is kept; when it is decided the
+        # marker becomes 'disagrees (decided YYYY-MM-DD)'.
         settled = str(rv2.get("adjudicated", "none")) not in ("", "none")
         if c["publisher_relation"] == "developer-of-studied-model" and c["replication"] == "none-retrieved" \
                 and str(rv2.get("council", "none")) in ("", "none") and not settled:
@@ -278,7 +281,9 @@ def docket(claims, src_by_slug, state):
             items.append("T4 evidence_type ambiguous (self-report boundary): %s" % cid)
         # 5. second reader disagreement, recorded in body or review as 'disagrees'
         rv = c.get("review") or {}
-        if ("disagree" in str(rv.get("second_reader", "")).lower() or "SECOND READER DISAGREES" in c["_body"]) \
+        if "disagrees (open)" in str(rv.get("second_reader", "")):
+            items.append("T5 second reader disagrees, recorded after the last decision: %s" % cid)
+        elif ("disagree" in str(rv.get("second_reader", "")).lower() or "SECOND READER DISAGREES" in c["_body"]) \
                 and not settled:
             items.append("T5 second reader disagrees with extractor: %s" % cid)
     # 8. drift, per dossier

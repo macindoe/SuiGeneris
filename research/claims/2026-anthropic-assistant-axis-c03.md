@@ -15,7 +15,7 @@ not_evidence_of: "Paper: Not evidence that the models lack any persisting self-m
 bears_on: [4.endorsement]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree; notes: bears_on +3.3", council: "research-docket 2026-09-26", adjudicated: "2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree; notes: bears_on +3.3 | openai/gpt-5.6-sol 2026-10-06 (scope check) disagrees (open): statement mixes measurement and interpretation; kind should be measurement; quote misleading; not_evidence_of over-excludes; notes: bears_on add 3.3", council: "research-docket 2026-09-26", adjudicated: "2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed"}
 added: 2026-09-25
 changed: 2026-10-06
 ---
