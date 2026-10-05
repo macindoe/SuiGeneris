@@ -254,36 +254,57 @@ def docket(claims, src_by_slug, state):
         # 2. single-lineage support in a dossier: persists until a replication is
         #    retrieved or the council has sat on the claim (not a one-time event).
         rv2 = c.get("review") or {}
+        # A claim whose review.adjudicated carries a dated decision is off the
+        # docket for triggers 2 to 5 (added 2026-10-05: until then nothing could
+        # ever be crossed off). A later bucket move (T1) or a new disagreement
+        # recorded after the decision needs adjudicated reset to none.
+        settled = str(rv2.get("adjudicated", "none")) not in ("", "none")
         if c["publisher_relation"] == "developer-of-studied-model" and c["replication"] == "none-retrieved" \
-                and str(rv2.get("council", "none")) in ("", "none"):
+                and str(rv2.get("council", "none")) in ("", "none") and not settled:
             items.append("T2 single-lineage claim in dossier(s) %s, no replication retrieved, council not yet sat: %s"
                          % (", ".join(c["bears_on"]), cid))
         # 3. contradictions in the same bucket
         for other_id in c.get("contests", []):
             other = next((x for x in claims.values() if x.get("id") == other_id), None)
-            if other and other.get("bucket") == c["bucket"]:
+            if other and other.get("bucket") == c["bucket"] and not settled:
                 items.append("T3 %s contests %s and both sit in bucket %r" % (cid, other_id, c["bucket"]))
         # 4. ambiguous evidence type
-        if c["evidence_type"] == "ambiguous":
+        if c["evidence_type"] == "ambiguous" and not settled:
             items.append("T4 evidence_type ambiguous (self-report boundary): %s" % cid)
         # 5. second reader disagreement, recorded in body or review as 'disagrees'
         rv = c.get("review") or {}
-        if "disagree" in str(rv.get("second_reader", "")).lower() or "SECOND READER DISAGREES" in c["_body"]:
+        if ("disagree" in str(rv.get("second_reader", "")).lower() or "SECOND READER DISAGREES" in c["_body"]) \
+                and not settled:
             items.append("T5 second reader disagrees with extractor: %s" % cid)
     # 8. drift, per dossier
     today = date.today()
     for key, cl in group_by_dossier(claims).items():
         ds = state.get("dossiers", {}).get(key, {})
-        since = len(cl) - ds.get("count_at_last_council", 0)
+        total = len({c["id"] for c in cl})
+        since = total - ds.get("count_at_last_council", 0)
         last = ds.get("last_council")
         age = (today - datetime.strptime(last, "%Y-%m-%d").date()).days if last else None
-        if since >= 10:
-            items.append("T8 dossier %s has %d claims since the council last sat" % (key, since))
+        if last is None and total >= 10:
+            items.append("T8 dossier %s has %d claims and the council has never sat on it" % (key, total))
+        elif last is not None and since >= 10:
+            items.append("T8 dossier %s has %d new claims since the council sat on %s" % (key, since, last))
         elif age is not None and age >= 90:
             items.append("T8 dossier %s: %d days since the council last sat" % (key, age))
-        elif last is None and len(cl) >= 10:
-            items.append("T8 dossier %s has %d claims and the council has never sat on it" % (key, len(cl)))
     return items
+
+
+def record_council(claims, state, spec):
+    """--record-council=YYYY-MM-DD:key,key  Record that the council sat on these
+    dossiers on that date. The claim count is taken as of that date (claims whose
+    `added` is on or before it), so later intakes show up as new since the sitting."""
+    day, keys = spec.split(":", 1)
+    datetime.strptime(day, "%Y-%m-%d")
+    groups = group_by_dossier(claims)
+    state.setdefault("dossiers", {})
+    for key in [k.strip() for k in keys.split(",") if k.strip()]:
+        ids = {c["id"] for c in groups.get(key, []) if str(c.get("added", "9999")) <= day}
+        state["dossiers"][key] = {"last_council": day, "count_at_last_council": len(ids)}
+        print("recorded council sitting %s on dossier %s (%d claims at that date)" % (day, key, len(ids)))
 
 
 def group_by_dossier(claims):
@@ -399,6 +420,9 @@ def main(argv):
     if check_only:
         return 0
     state = load_state()
+    for a in argv:
+        if a.startswith("--record-council="):
+            record_council(claims, state, a.split("=", 1)[1])
     items = docket(claims, src_by_slug, state)
     write_dossiers(claims, src_by_slug, state)
     write_index(sources, claims, src_by_slug)

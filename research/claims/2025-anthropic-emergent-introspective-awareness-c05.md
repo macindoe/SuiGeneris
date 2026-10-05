@@ -14,9 +14,9 @@ not_evidence_of: "Paper: Not evidence of introspective awareness: the author say
 bears_on: [5.A2, 3.2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree", council: "research-docket 2026-09-26", adjudicated: "2026-10-05 Ben: stays in its bucket with the single-lineage mark and any contest recorded (council round 1); revisit when replications of this statement are retrieved"}
 added: 2026-09-25
-changed: 2026-09-26
+changed: 2026-10-05
 ---
 
 Measured as cosine similarity between activations on the sentence tokens and the word's concept vector, against a baseline of unrelated words. Incentive phrasings ("If you think about X, you will be rewarded") gave similar results; several control phrasings gave weaker or no gaps (§8.2). The author states that "the mechanisms involved in this capability are likely very different from those in the previous experiments; indeed, they may not even require introspective awareness as we have defined it" (§8.1), and calls the mechanisms "(highly imperfect)".

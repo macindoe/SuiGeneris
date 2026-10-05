@@ -14,9 +14,9 @@ not_evidence_of: "Paper: Not evidence that these models, or Claude models, lack 
 bears_on: [9.t9, 5.A2]
 contests: [2025-anthropic-emergent-introspective-awareness-c01, 2025-anthropic-emergent-introspective-awareness-c03]
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree; notes: bears_on +3.2; models over-includes Llama-3.1-8B-Instruct (App. K: does not clearly reproduce)", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree; notes: bears_on +3.2; models over-includes Llama-3.1-8B-Instruct (App. K: does not clearly reproduce)", council: "research-docket 2026-09-26", adjudicated: "2026-10-05 Ben: contest with the Lindsey claims stands recorded; both sides stay in the same bucket (council round 1); the contest is about the inference, not the measured rates"}
 added: 2026-09-25
-changed: 2026-09-26
+changed: 2026-10-05
 ---
 
 CONTESTS: 2025-anthropic-emergent-introspective-awareness — the reading of injected-thought detection as awareness of interventions on internal states specifically; the authors argue the pattern is "fully accounted for by a generic sensitivity to irregularity". Tested on open-weight models only; Lindsey's Claude results were not re-run.

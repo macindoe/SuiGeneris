@@ -14,7 +14,7 @@ not_evidence_of: "Paper: Not evidence that drift is a change in anything experie
 bears_on: [4.endorsement]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree", council: "research-docket 2026-09-26", adjudicated: none}
 added: 2026-09-25
 changed: 2026-09-26
 ---

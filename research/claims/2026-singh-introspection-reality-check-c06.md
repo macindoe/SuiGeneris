@@ -14,9 +14,9 @@ not_evidence_of: "Paper: Not evidence that introspection is absent or impossible
 bears_on: [9.t9, 5.A2]
 contests: [2025-anthropic-emergent-introspective-awareness-c01, 2025-anthropic-emergent-introspective-awareness-c03, 2025-anthropic-emergent-introspective-awareness-c07]
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree", council: "research-docket 2026-09-26", adjudicated: "2026-10-05 Ben: contest with the Lindsey claims stands recorded; both sides stay in the same bucket (council round 1); the contest is about the inference, not the measured rates"}
 added: 2026-09-25
-changed: 2026-09-26
+changed: 2026-10-05
 ---
 
 CONTESTS: 2025-anthropic-emergent-introspective-awareness — the conclusion that functional success on injected-thought detection licenses the term "introspective awareness"; the authors say "functional success does not license the stronger reading that terms such as “introspective awareness” invite", and that even success on their own three-way variant would not meet the second-order condition.

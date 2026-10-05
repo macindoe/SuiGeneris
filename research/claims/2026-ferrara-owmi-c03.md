@@ -2,7 +2,7 @@
 id: 2026-ferrara-owmi-c03
 statement: "The authors infer from the probe-versus-report dissociation in Qwen2.5-7B-Instruct and Mistral-7B-Instruct-v0.3 that, for this class of imposed internal event, the failure lies in the path from internal state to verbal report rather than in the availability of the information or in the instrument's sensitivity."
 bucket: open
-evidence_type: interpretability
+evidence_type: ambiguous
 source: 2026-ferrara-owmi
 locator: "§1 Introduction, sixth paragraph (restated §8, §10)"
 quote: "The failure sits in the path from internal state to verbal report, not in the availability of the information and not in our ability to measure it."
@@ -14,9 +14,11 @@ not_evidence_of: "Paper: Not evidence that a reporting path is absent in general
 bears_on: [5.A2, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 disagrees: evidence_type -> ambiguous (inference rests on behavioural + interpretability dissociation)", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 disagrees: evidence_type -> ambiguous (inference rests on behavioural + interpretability dissociation)", council: "research-docket 2026-09-26", adjudicated: "2026-10-05 Ben: evidence type deliberately left undecided, set to ambiguous as the second reader proposed (council: 5 theoretical / 4 ambiguous / 1 interpretability); see OPEN-QUESTIONS Q3"}
 added: 2026-09-25
-changed: 2026-09-26
+changed: 2026-10-05
 ---
 
 This is an interpretation joining c01 (reports at chance), c02 (probe decodes the event, including at the last layers before output) and c04 (the pipeline registers a trained reporter). Bucket `open` because it is an inference, not a measurement: linear decodability at downstream layers shows the information is present where a report would be formed, not that a specific path is broken. The authors confine the conclusion to "this class of internal event, at the sites and scales we measured", and state that the leakage decomposition that would carry an access claim is not reported for this roster (§7.4).
+
+EVIDENCE TYPE 2026-10-05 (Ben): changed from interpretability to ambiguous. The claim is an inference from a dissociation between a behavioural result (reports at chance) and an interpretability result (a probe decodes the intervention); Ben has left the classification of such claims undecided for now rather than choose between the council's readings.

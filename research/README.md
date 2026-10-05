@@ -79,6 +79,8 @@ The council is a ten-model, cross-family, both-directions review round (`scripts
 7. **Anything is about to leave the repository.** A synthesis to be cited in a submission or session: round 1, then round 2 on the revision.
 8. **Drift.** A dossier that has taken ten new claims, or has gone ninety days since the council last sat on it, is recompiled and reviewed as a whole.
 
+**Crossing items off (added 5 Oct 2026).** A claim leaves the docket for triggers 2 to 5 when its `review.adjudicated` carries a dated decision (who decided, what, and when); a decision to leave something undecided counts, and is recorded in `OPEN-QUESTIONS.md` so it is not forgotten. `review.council` records which round sat on the claim. A sitting is recorded on the dossiers with `python scripts/research_index.py --record-council=YYYY-MM-DD:9.t9,5.A2`, which takes the claim count as of that date so that later intakes show as new since the sitting (trigger 8). A fresh bucket move or a new reader disagreement after a decision means resetting `adjudicated` to `none`.
+
 **Not triggers:** adding a source; adding a claim that lands in an existing bucket with independent support; editorial fixes to a synthesis.
 
 ## Second-reader pool (as of 25 September 2026)

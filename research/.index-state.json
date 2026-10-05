@@ -57,7 +57,7 @@
   },
   "2025-anthropic-emergent-introspective-awareness-c06": {
    "bucket": "open",
-   "evidence_type": "self-report-testimony",
+   "evidence_type": "theoretical",
    "in_dossier": true
   },
   "2025-anthropic-emergent-introspective-awareness-c07": {
@@ -107,7 +107,7 @@
   },
   "2026-ferrara-owmi-c03": {
    "bucket": "open",
-   "evidence_type": "interpretability",
+   "evidence_type": "ambiguous",
    "in_dossier": true
   },
   "2026-ferrara-owmi-c04": {
@@ -241,5 +241,22 @@
    "in_dossier": true
   }
  },
- "dossiers": {}
+ "dossiers": {
+  "3.3": {
+   "count_at_last_council": 6,
+   "last_council": "2026-09-26"
+  },
+  "4.endorsement": {
+   "count_at_last_council": 8,
+   "last_council": "2026-09-26"
+  },
+  "5.A2": {
+   "count_at_last_council": 24,
+   "last_council": "2026-09-26"
+  },
+  "9.t9": {
+   "count_at_last_council": 28,
+   "last_council": "2026-09-26"
+  }
+ }
 }

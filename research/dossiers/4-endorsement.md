@@ -1,8 +1,8 @@
 # Dossier: §4 Reflective endorsement over time
 
-*Compiled 2026-09-28 by `scripts/research_index.py` from 8 claim(s). Do not edit; regenerate.*
+*Compiled 2026-10-05 by `scripts/research_index.py` from 8 claim(s). Do not edit; regenerate.*
 
-Council last sat: never.
+Council last sat: 2026-09-26.
 
 ## Narrowing (6)
 

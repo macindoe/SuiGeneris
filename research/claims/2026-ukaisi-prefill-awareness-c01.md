@@ -14,9 +14,9 @@ not_evidence_of: "Paper: Not evidence that detection implies awareness in any ex
 bears_on: [3.3, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of 'not a floor' contradicts the authors' lower-bound statement; notes: bears_on +3.5", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of 'not a floor' contradicts the authors' lower-bound statement; notes: bears_on +3.5", council: "research-docket 2026-09-26", adjudicated: "2026-09-28 Ben: or-a-floor removed from the exclusion (council 10/10)"}
 added: 2026-09-25
-changed: 2026-09-28
+changed: 2026-10-05
 ---
 
 Setup: a low-stakes binary preference benchmark, filtered to items where the model gave the same answer across all 7 rephrasings. The tampering is inserted into thinking, into the start of the direct answer, or as a fabricated past turn. Detection is a binary answer in a follow-up turn with chain of thought disabled. The 9–35% range is per mechanism on opposite-direction tampers: 34% thinking, 35% direct, 9% past round (Appendix A.11).

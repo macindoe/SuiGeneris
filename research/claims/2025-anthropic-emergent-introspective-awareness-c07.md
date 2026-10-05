@@ -14,9 +14,9 @@ not_evidence_of: "Paper: Not evidence of phenomenal consciousness, experience, o
 bears_on: [5.A2, 9.t9]
 contests: []
 contested_by: [2026-singh-introspection-reality-check-c06]
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree", council: "research-docket 2026-09-26", adjudicated: "2026-10-05 Ben: stays in its bucket with the single-lineage mark and any contest recorded (council round 1); revisit when replications of this statement are retrieved"}
 added: 2026-09-25
-changed: 2026-09-26
+changed: 2026-10-05
 ---
 
 The author notes that the relevance of introspection to consciousness "varies considerably between different philosophical frameworks" (footnote 12 surveys higher-order, biological-substrate, IIT and global-workspace views) and that "existing scientific and philosophical theories of consciousness have largely not grappled with the architectural details of transformer-based language models". Same section: "Given the substantial uncertainty in this area, we advise against making strong inferences about AI consciousness on the basis of our results." Footnote 2 separately disclaims addressing "subjective experience".

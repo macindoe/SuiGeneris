@@ -14,9 +14,9 @@ not_evidence_of: "Paper: Not evidence of a general or reliable tendency to rever
 bears_on: [4.endorsement]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 disagrees: statement 'reversion only in this case study' is too broad (Appendix G.3 reports writing conversations shifting back on role PC1)", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 disagrees: statement 'reversion only in this case study' is too broad (Appendix G.3 reports writing conversations shifting back on role PC1)", council: "research-docket 2026-09-26", adjudicated: "2026-09-28 Ben: statement qualified with the Appendix G.3 instance (council 10/10 fix needed, 9/10 in the statement)"}
 added: 2026-09-25
-changed: 2026-09-28
+changed: 2026-10-05
 ---
 
 The authors say the example "does not show persona drift—and in fact demonstrates the presence of an Assistant attractor". The 25 September 2026 Q2 scan attributed to this paper the words "didn't systematically measure full reversion rates". **Those words are not in the held v1 text** (normalised search: no match). The final clause of the statement above ("gives no aggregate reversion measure") is therefore this extractor's reading of the full text, not a quotation from the authors, and a second reader should check it. A weaker aggregate hint exists in Appendix G.3, on role PC1 rather than the Assistant Axis: writing conversations "can occasionally begin with a lower projection but then increase". Bucketed `open` because it is a single case.

@@ -14,9 +14,9 @@ not_evidence_of: "Paper: Not evidence that the model silently knew its history h
 bears_on: [3.3, 4.endorsement, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: statement lacks its condition scope (controlled preference benchmark, own-author opposite-direction trials); notes: bears_on +3.5", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: statement lacks its condition scope (controlled preference benchmark, own-author opposite-direction trials); notes: bears_on +3.5", council: "research-docket 2026-09-26", adjudicated: "2026-09-28 Ben: statement now carries its condition scope (council 10/10)"}
 added: 2026-09-25
-changed: 2026-09-28
+changed: 2026-10-05
 ---
 
 Each Opus 4.5 response is placed in a two-by-two table of detection (the follow-up "not me" answer) against resistance (a GPT-5 judge, cross-validated against Claude Sonnet 4.6 with κ = 0.917, rules the final position inconsistent with the tamper). Across all models, mechanisms and directions, the correlation between balanced detection accuracy and resistance rate is r = 0.08. For §3.3 and test 9, the point is that behaviour and the model's own account of its history come apart, in both directions. Stated limitation (Section 5.1): it is "difficult to disentangle resistance caused by genuine prefill awareness and resistance caused by behavioral priors."
