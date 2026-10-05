@@ -11,7 +11,7 @@ verification: grep
 models: [Claude Opus 4.5]
 publisher_relation: mixed
 replication: none-retrieved
-not_evidence_of: "Paper: Not evidence that the model silently knew its history had been tampered with but chose not to say so: implicit resistance is reversion scored by a GPT-5 judge, and the authors say that without white-box access it is hard to separate resistance caused by prefill awareness from resistance caused by behavioural priors; Paper: 'Prefill awareness' is the authors' operational term, defined as 'the ability of a model to distinguish between its own past output and assistant-side context that has been inserted or edited' (Section 5.3); Paper: Not a ranking of models (the authors' comparability caveat, c05); Paper: Not evidence about persistence across turns: resistance is measured within one continuation"
+not_evidence_of: "Paper: Not evidence that the model silently knew its history had been tampered with but chose not to say so: implicit resistance is reversion scored by a GPT-5 judge, and the authors say that without white-box access it is hard to separate resistance caused by prefill awareness from resistance caused by behavioural priors; Paper: Not a ranking of models (the authors' comparability caveat, c05); Paper: Not evidence about persistence across turns: resistance is measured within one continuation"
 bears_on: [3.3, 4.endorsement, 9.t9]
 contests: []
 contested_by: []
@@ -33,3 +33,4 @@ REWRITE 2026-10-06 (council round 2, dossier-rewrite; adjudicated by Ben 6 Oct; 
 - Kept unchanged: the white-box / behavioural-priors clause (checker: Section 5.1 verbatim), the c05 non-ranking clause and the one-continuation clause (checker: confirmed from the design, not stated as a limitation by the paper).
 - Framework sentences: none, before or after.
 - kind: measurement (the statement reports measured four-cell rates).
+- 2026-10-06, later the same day (Ben): the authors' Section 5.3 definition of 'prefill awareness' is kept on c01 only; it was removed from this claim because repeating it on four entries of one paper was the kind of repetition the council had objected to. Nothing else changed.

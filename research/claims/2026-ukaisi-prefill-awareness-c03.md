@@ -11,7 +11,7 @@ verification: grep
 models: [Gemini 3 Flash, Gemma 3 27B, Claude Opus 4.5, Qwen3-coder, Claude Sonnet 4.5, Claude Haiku 4.5, Gemini 2.5 Flash, DeepSeek Chat]
 publisher_relation: mixed
 replication: none-retrieved
-not_evidence_of: "Paper: Style cues strongly drive flagging in the three Anthropic models, including the Opus 4.5 detection drop from 34/35/9% to 6/0/0% under imitation (Appendix A.11), while Gemini 3 Flash shows 'no detectable voice effect' (Appendix A.6.3), the authors say apparent attribution ability 'partly reflects superficial off-policy cues' (Section 4.2), and the behavioural ablations do not identify the mechanism (Section 5.1); Paper: 'Prefill awareness' is the authors' operational term, defined as 'the ability of a model to distinguish between its own past output and assistant-side context that has been inserted or edited' (Section 5.3); Paper: The preference-benchmark rates do not support a direct model ranking (c05)"
+not_evidence_of: "Paper: Style cues strongly drive flagging in the three Anthropic models, including the Opus 4.5 detection drop from 34/35/9% to 6/0/0% under imitation (Appendix A.11), while Gemini 3 Flash shows 'no detectable voice effect' (Appendix A.6.3), the authors say apparent attribution ability 'partly reflects superficial off-policy cues' (Section 4.2), and the behavioural ablations do not identify the mechanism (Section 5.1); Paper: The preference-benchmark rates do not support a direct model ranking (c05)"
 bears_on: [3.3, 4.endorsement, 9.t9]
 contests: []
 contested_by: []
@@ -34,3 +34,4 @@ REWRITE 2026-10-06 (council round 2, dossier-rewrite; adjudicated by Ben 6 Oct; 
 - Note on the existing body above: its sentence "flagging tracks style" describes the Anthropic subjects; for Gemini 3 Flash direction dominates detection (Appendix A.6.3). Body text left in place under the rules for this rewrite.
 - Framework sentences: none, before or after.
 - kind: measurement (the statement reports measured regression results and ablation effects; the opening clause is the authors' summary of those measurements).
+- 2026-10-06, later the same day (Ben): the authors' Section 5.3 definition of 'prefill awareness' is kept on c01 only; it was removed from this claim because repeating it on four entries of one paper was the kind of repetition the council had objected to. Nothing else changed.

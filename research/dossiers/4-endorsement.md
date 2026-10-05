@@ -93,7 +93,6 @@ These are the framework's rules, not the papers' findings. The marks are read fr
 - **System studied:** input text; state carried in-context; run per-call; acts on a world: tools; access api
 - **The paper's own limits:**
   - Not evidence that the model silently knew its history had been tampered with but chose not to say so: implicit resistance is reversion scored by a GPT-5 judge, and the authors say that without white-box access it is hard to separate resistance caused by prefill awareness from resistance caused by behavioural priors
-  - 'Prefill awareness' is the authors' operational term, defined as 'the ability of a model to distinguish between its own past output and assistant-side context that has been inserted or edited' (Section 5.3)
   - Not a ranking of models (the authors' comparability caveat, c05)
   - Not evidence about persistence across turns: resistance is measured within one continuation
 - [claim file](../claims/2026-ukaisi-prefill-awareness-c02.md)
@@ -109,7 +108,6 @@ These are the framework's rules, not the papers' findings. The marks are read fr
 - **System studied:** input text; state carried in-context; run per-call; acts on a world: tools; access api
 - **The paper's own limits:**
   - Style cues strongly drive flagging in the three Anthropic models, including the Opus 4.5 detection drop from 34/35/9% to 6/0/0% under imitation (Appendix A.11), while Gemini 3 Flash shows 'no detectable voice effect' (Appendix A.6.3), the authors say apparent attribution ability 'partly reflects superficial off-policy cues' (Section 4.2), and the behavioural ablations do not identify the mechanism (Section 5.1)
-  - 'Prefill awareness' is the authors' operational term, defined as 'the ability of a model to distinguish between its own past output and assistant-side context that has been inserted or edited' (Section 5.3)
   - The preference-benchmark rates do not support a direct model ranking (c05)
 - [claim file](../claims/2026-ukaisi-prefill-awareness-c03.md)
 
