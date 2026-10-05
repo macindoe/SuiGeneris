@@ -13,6 +13,8 @@ retrieved: {date: "2026-09-28", method: "curl arXiv HTML", by: "Claude Opus 5.5 
 related: [research/sources/2025-anthropic-emergent-introspective-awareness.md]
 system_conditions: {modality: text, state: none, operation: per-call, world: none, access: open-weights}
 ---
+> **Independence callout (Ben, 5 October 2026).** This paper is treated in the library as an independent replication of Lindsey 2025 (`2025-anthropic-emergent-introspective-awareness`). **It shares one author with that paper:** Jack Lindsey, sole author of the 2025 paper, is an advising author here, and the protocol is his by design. Independent in the models studied, the judge and the released artefacts; not independent in research group. Read every "replicates" line below with that in mind.
+
 
 # Mechanisms of Introspective Awareness
 

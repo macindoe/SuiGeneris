@@ -348,6 +348,8 @@ def write_dossiers(claims, src_by_slug, state):
                 marks = []
                 if c["publisher_relation"] == "developer-of-studied-model" and c["replication"] == "none-retrieved":
                     marks.append("single-lineage, no replication retrieved")
+                if "SHARED AUTHOR" in c["replication"]:
+                    marks.append("one replication shares an author with this paper")
                 if c["evidence_type"] == "self-report-testimony":
                     marks.append("testimony, weight zero")
                 if c["verification"] == "unverified":
