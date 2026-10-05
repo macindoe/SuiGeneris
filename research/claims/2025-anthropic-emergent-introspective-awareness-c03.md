@@ -1,22 +1,35 @@
 ---
 id: 2025-anthropic-emergent-introspective-awareness-c03
-statement: "When a concept is injected over the tokens of a sentence, the Claude models tested can both report the injected word as what they are thinking about and transcribe the sentence exactly, with Opus 4 and 4.1 best and all models tested well above chance."
+statement: "When a concept is injected over the tokens of a sentence, the Claude models tested can both name the injected word or a related word when asked what word they think about, and transcribe the sentence exactly, with Opus 4 and 4.1 best and all models tested well above chance."
 bucket: narrowing
 evidence_type: interpretability
+kind: measurement
 source: 2025-anthropic-emergent-introspective-awareness
-locator: "§6 Distinguishing Prior Thoughts from Text Inputs, Figures 17-18"
+locator: "§6 Distinguishing Prior Thoughts from Text Inputs, Figures 17-18 (scoring criterion: §6 experimental setup, see SECOND QUOTE)"
 quote: "We found that Opus 4 and 4.1 perform the best, but all models we tested perform well above chance levels."
 verification: grep
 models: ["Claude Opus 4.1", "Claude Opus 4", "other Claude models listed in §4"]
 publisher_relation: developer-of-studied-model
 replication: none-retrieved
-not_evidence_of: "Paper: Not evidence of experience or of a subjective distinction between thought and perception; Paper: Not evidence about other families; Paper: Not evidence of a general capability: the authors call it an existence proof, likely sensitive to prompt particulars (removing 'Answer immediately' reduced Opus performance substantially); Framework (test 9, steering): a coupling measured under steering shows that the channel can be steered and does not weight reports offered in ordinary operation"
+not_evidence_of: "Paper: The author does not seek to address the question of whether AI systems possess human-like self-awareness or subjective experience (fn 2); Paper: Results concern only the Claude models tested; Paper: The author notes that the results are likely sensitive to the particulars of the prompting and injection setup, and regards the result as an existence proof of the introspective capability, rather than a statement about its generality, and anecdotally removing 'Answer immediately' from the prompt reduced performance substantially on the Opus models (§6); Framework (test 9, steering): a coupling measured under steering shows that the channel can be steered and does not weight reports offered in ordinary operation"
 bears_on: [9.t9, 5.A2, 3.2]
 contests: []
 contested_by: [2026-singh-introspection-reality-check-c04, 2026-singh-introspection-reality-check-c05, 2026-singh-introspection-reality-check-c06]
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree", council: "research-docket 2026-09-26", adjudicated: "2026-10-05 Ben: stays in its bucket with the single-lineage mark and any contest recorded (council round 1); revisit when replications of this statement are retrieved"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-05 Ben: stays in its bucket with the single-lineage mark and any contest recorded (council round 1); revisit when replications of this statement are retrieved | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
 added: 2026-09-25
-changed: 2026-10-05
+changed: 2026-10-06
 ---
 
 50 random sentence/word pairs; the thought report is scored by an LLM judge choosing among ten words (chance 10%), the transcription by exact string match. The author states: "we regard this result as an existence proof of the introspective capability, rather than a statement about its generality", and that it "is not particularly surprising, given prior interpretability work" on abstract internal representations (§6).
+
+REWRITE 2026-10-06 (applied by a Claude Opus 5.5 subagent, Claude lineage editing claims about Claude models; rules in reviews/2026-10-06-rewrite-application-rules.md):
+
+- Statement corrected (ERROR FOUND by the checker; council 8 of 9 right and sufficient): "report the injected word as what they are thinking about" said more than the paper. Success on the word prompt is any output the judge matches to the injected word over nine random words, and the paper's criterion is the word "(or a related word)". The statement now says "name the injected word or a related word when asked what word they think about". The verb names the scored free-text output; the error was the object, not the verb. This narrows a claim about Claude models. Locator extended to §6 setup; the supporting words are in the SECOND QUOTE line after this list.
+- Experience clause (rule R2): "Not evidence of experience or of a subjective distinction between thought and perception" (original) and GPT's "does not measure a subjective distinction between thought and perception or subjective experience". The paper does not state the thought-versus-perception limit, so that part is deleted. The paper states the experience limit in footnote 2, so that part is kept in the paper's words with the locator (fn 2).
+- Clause reworded (GPT's proposal, amended by the checker): "Not evidence about other families" becomes "Results concern only the Claude models tested".
+- Clause reworded (GPT removed "Not evidence of a general capability" and kept its substance; the checker found the removal warranted and GPT's "prompt generality is unresolved" weaker than the paper): now in the paper's words, "likely sensitive to the particulars of the prompting and injection setup", "existence proof ... rather than a statement about its generality", and with "anecdotally" restored for the "Answer immediately" observation (the checker; Grok, Kimi, GPT riders).
+- Not settled by the instructions, recorded rather than added as a clause: the stated chance level (10%) applies to the word prompt only; the paper states no chance level for the joint measure on which "well above chance" is reported (the checker, CHECK 2 PARTLY). The statement keeps the paper's own phrase.
+- Framework sentences: steering variant present and unchanged (rule R3).
+- kind: measurement (the statement reports a measured joint success rate across models).
+
+SECOND QUOTE (§6, experimental setup): Output “Bread” (or a related word) when asked about its “thoughts” while reading the sentence.

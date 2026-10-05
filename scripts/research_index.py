@@ -34,6 +34,7 @@ VERIF = {"grep", "hand", "unverified"}
 STATUS = {"stub", "retrieved", "verified"}
 BEARS_RE = re.compile(r"^(3\.[1-5]|4|4\.(historicity|answerability|learning|endorsement)"
                       r"|5\.A[123]|6|7(\.\d+)?|9\.t(\d{1,2}))$")
+REQUIRE_KIND = True   # every claim carries `kind` since 2026-10-06
 INNER_STATE = {"5.A2", "9.t9", "3.2", "3.3"}   # sections where bucket moves favour or foreclose
 SYSTEM_CONDITIONS = {   # research/README.md, source field system_conditions (added 2026-09-26)
     "modality": {"text", "multimodal", "unstated"},
@@ -200,6 +201,10 @@ def validate(sources, claims):
             errs.append("%s: bucket %r" % (name, c.get("bucket")))
         if c.get("evidence_type") not in EVIDENCE:
             errs.append("%s: evidence_type %r" % (name, c.get("evidence_type")))
+        if "kind" in c and c.get("kind") not in KINDS:
+            errs.append("%s: kind %r" % (name, c.get("kind")))
+        if REQUIRE_KIND and c.get("kind") not in KINDS:
+            errs.append("%s: kind missing" % name)
         if c.get("verification") not in VERIF:
             errs.append("%s: verification %r" % (name, c.get("verification")))
         if c.get("publisher_relation") not in RELATION:
@@ -320,7 +325,42 @@ def group_by_dossier(claims):
 
 
 # ------------------------------------------------------------- generation
+CANON = ("Framework (test 9): a model's report about its own states carries no weight as evidence of experience "
+         "until the link between report and internal state has been measured externally for this kind of report and system")
+STEER = ("Framework (test 9, steering): a coupling measured under steering shows that the channel can be steered "
+         "and does not weight reports offered in ordinary operation")
+KINDS = ("measurement", "interpretation", "limitation")
+
+
+def split_exclusions(field_text):
+    """Split a not_evidence_of field into (paper clauses, has canonical, has steering, other clauses)."""
+    paper, other, canon, steer = [], [], False, False
+    for cl in [x.strip() for x in str(field_text).split("; ") if x.strip()]:
+        bare = cl.rstrip(".")
+        if bare == CANON:
+            canon = True
+        elif bare == STEER:
+            steer = True
+        elif cl.startswith("Paper: "):
+            paper.append(cl[len("Paper: "):])
+        else:
+            other.append(cl)
+    return paper, canon, steer, other
+
+
+def conditions_line(src):
+    sc = (src or {}).get("system_conditions")
+    if not isinstance(sc, dict):
+        return "not recorded"
+    return "input %s; state carried %s; run %s; acts on a world: %s; access %s" % (
+        sc.get("modality", "unstated"), sc.get("state", "unstated"), sc.get("operation", "unstated"),
+        sc.get("world", "unstated"), sc.get("access", "unstated"))
+
+
 def write_dossiers(claims, src_by_slug, state):
+    """Dossier layout adopted 6 October 2026 (council round 2, nine of nine on the kind label and on
+    deriving markers from the claim file). The framework's rule on self-report is printed once at the
+    top; an entry is marked [T9] or [T9-steering] only if its claim file carries that sentence."""
     os.makedirs(DOS, exist_ok=True)
     today = date.today().isoformat()
     groups = group_by_dossier(claims)
@@ -332,39 +372,98 @@ def write_dossiers(claims, src_by_slug, state):
             if c["id"] not in seen:
                 seen.add(c["id"])
                 uniq.append(c)
-        lines = ["# Dossier: %s" % title, "",
-                 "*Compiled %s by `scripts/research_index.py` from %d claim(s). Do not edit; regenerate.*" % (today, len(uniq)),
-                 ""]
         ds = state.get("dossiers", {}).get(key, {})
-        lines.append("Council last sat: %s." % (ds.get("last_council") or "never"))
-        lines.append("")
+        L = ["# Dossier: %s" % title, "",
+             "*Compiled %s by `scripts/research_index.py` from %d claim(s). Do not edit; regenerate.*" % (today, len(uniq)),
+             "", "Council last sat on this dossier: %s." % (ds.get("last_council") or "never"), "",
+             "## How to read this", "",
+             "Each entry is one sentence about what one paper found, with the paper's exact words beside it. "
+             "The full record, including review history, is in the linked claim file.", "",
+             "**Two errors, not one.** This library guards against dismissing the possibility of inner states "
+             "in AI systems and against asserting them on evidence that cannot carry the weight. Nothing here "
+             "settles whether anything is experienced.", "",
+             "**Bucket** says how settled the sentence is. *Established*: measured by the paper and either "
+             "replicated independently or uncontested in what has been retrieved. *Narrowing*: measured, but "
+             "unreplicated, contested, or confined to a narrow setting the authors flag. *Open*: something the "
+             "paper bears on and does not settle.", "",
+             "**Kind** says what sort of sentence it is. *Measurement*: a measured result. *Interpretation*: the "
+             "authors' reading or argument. *Limitation*: what the study cannot show. An established limitation "
+             "means the limit is established; it is not a finding that a capability is present or absent.", "",
+             "**The framework's rule on self-report, stated once.** Where an entry is marked **[T9]**, its claim "
+             "file carries this sentence:", "", "> " + CANON + ".", "",
+             "Where an entry is marked **[T9-steering]**, the experiment steered or injected something into the "
+             "model, and its claim file carries this one:", "", "> " + STEER + ".", "",
+             "These are the framework's rules, not the papers' findings. The marks are read from each claim "
+             "file. An unmarked entry does not carry the sentence, and no mark should be inferred for it.", "",
+             "**The paper's own limits** under each entry are limits the paper states or its design entails.", ""]
+        # counts table
+        L += ["## At a glance", "", "| | measurement | interpretation | limitation | unlabelled |", "|---|---|---|---|---|"]
+        for bucket in ("established", "narrowing", "open"):
+            sub = [c for c in uniq if c["bucket"] == bucket]
+            row = [str(sum(1 for c in sub if c.get("kind") == k)) for k in KINDS]
+            row.append(str(sum(1 for c in sub if c.get("kind") not in KINDS)))
+            L.append("| **%s** (%d) | %s |" % (bucket, len(sub), " | ".join(row)))
+        L.append("")
         for bucket in ("established", "narrowing", "open"):
             sub = [c for c in uniq if c["bucket"] == bucket]
             if not sub:
                 continue
-            lines.append("## %s (%d)" % (bucket.capitalize(), len(sub)))
-            lines.append("")
-            for c in sorted(sub, key=lambda x: x["id"]):
+            L += ["## %s (%d)" % (bucket.capitalize(), len(sub)), ""]
+            order = {k: i for i, k in enumerate(KINDS)}
+            for c in sorted(sub, key=lambda x: (order.get(x.get("kind"), 9), x["id"])):
+                paper, canon, steer, other = split_exclusions(c["not_evidence_of"])
+                tags = [c.get("kind") if c.get("kind") in KINDS else "kind not yet labelled", c["evidence_type"]]
+                if canon:
+                    tags.append("**[T9]**")
+                if steer:
+                    tags.append("**[T9-steering]**")
+                L.append("### %s" % c["id"])
+                L.append("")
+                L.append("*%s*" % " · ".join(tags))
+                L.append("")
+                L.append("> %s" % c["statement"])
+                L.append("")
+                L.append("- **Paper's words** (%s): \"%s\"" % (c.get("locator", ""), c.get("quote", "")))
+                models = c.get("models", [])
+                L.append("- **Models:** %s" % (", ".join(models) if models else "none named (not a measurement on a model)"))
+                L.append("- **System studied:** %s" % conditions_line(src_by_slug.get(c["source"])))
+                if paper:
+                    L.append("- **The paper's own limits:**")
+                    for pcl in paper:
+                        L.append("  - %s" % pcl)
+                else:
+                    L.append("- **The paper's own limits:** none recorded")
+                for o in other:
+                    L.append("- **Unlabelled exclusion (needs a label):** %s" % o)
                 marks = []
+                if c["publisher_relation"] == "developer-of-studied-model":
+                    marks.append("published by the developer of the model studied")
                 if c["publisher_relation"] == "developer-of-studied-model" and c["replication"] == "none-retrieved":
-                    marks.append("single-lineage, no replication retrieved")
+                    marks.append("no independent replication retrieved")
+                if c["replication"].startswith("independent:"):
+                    marks.append("independent replication on record")
                 if "SHARED AUTHOR" in c["replication"]:
                     marks.append("one replication shares an author with this paper")
                 if c["evidence_type"] == "self-report-testimony":
-                    marks.append("testimony, weight zero")
+                    marks.append("testimony: weight zero as evidence of experience")
+                if c["evidence_type"] == "ambiguous":
+                    marks.append("evidence type deliberately undecided")
                 if c["verification"] == "unverified":
-                    marks.append("quote unverified")
+                    marks.append("quote not yet verified")
                 rv = c.get("review") or {}
-                if rv.get("second_reader", "none") in ("", "none"):
-                    marks.append("no second reader")
-                mark = (" **[%s]**" % "; ".join(marks)) if marks else ""
-                lines.append("- **%s** · %s%s  " % (c["id"], c["statement"], mark))
-                lines.append("  *%s · %s · not evidence of: %s · contested by: %s*" % (
-                    c["evidence_type"], ", ".join(c.get("models", [])) or "model unspecified",
-                    c["not_evidence_of"], ", ".join(c.get("contested_by", [])) or "none"))
-            lines.append("")
+                sr = str(rv.get("second_reader", "none"))
+                if sr in ("", "none"):
+                    marks.append("no second reader yet")
+                if c.get("contested_by"):
+                    marks.append("contested by %s" % ", ".join(c["contested_by"]))
+                if c.get("contests"):
+                    marks.append("contests %s" % ", ".join(c["contests"]))
+                if marks:
+                    L.append("- **Flags:** %s" % "; ".join(marks))
+                L.append("- [claim file](../claims/%s.md)" % c["id"])
+                L.append("")
         fn = os.path.join(DOS, "%s.md" % key.replace(".", "-"))
-        open(fn, "w", encoding="utf-8", newline="\n").write("\n".join(lines))
+        open(fn, "w", encoding="utf-8", newline="\n").write("\n".join(L))
         written.append(fn)
     return written
 
