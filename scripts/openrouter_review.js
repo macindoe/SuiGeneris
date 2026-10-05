@@ -51,6 +51,9 @@
 //       (2026-09-26: first council sitting on the research library's docket (research/DOCKET.md): 27 items across four dossiers;
 //        brief by a Sonnet 5 subagent; attaches README, docket, dossiers 9.t9 / 5.A2 / 3.3 / 4.endorsement, the second-read
 //        survey notes, AGENTS.md and the North Star; tag "docket")
+//   node scripts/openrouter_review.js --target=dossier-rewrite --max-tokens=100000
+//       (2026-10-06: second council sitting on the research library: GPT's proposed rewrite of the 41 claims in dossiers 9.t9 and 5.A2,
+//        as checked against the held texts by seven Opus checkers; brief by a Sonnet 5 subagent; tag "dossier-rewrite")
 //   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", naic-email to "naic", naic-email-final to "naic-final", emotions to "emotions", emotions-r2 to "emotions-r2", emotions-r3 to "emotions-r3", emotions-r4 to "emotions-r4", emotions-r5 to "emotions-r5", landing to "landing", s4-form to "s4-form", jsc to "jsc", jsc-r2 to "jsc-r2")
 //
 // Requires OPEN_ROUTER_API_KEY in a .env file at the repo root (already there).
@@ -824,6 +827,49 @@ ${northStar}
 Please respond in the structure the brief specifies, beginning with your model family/version self-identification, labelled as unverified.`;
 }
 
+function buildDossierRewritePrompt() {
+  // 2026-10-06: second council sitting on the research library. Under review: GPT's proposed
+  // rewrite of the 41 claims in dossiers 9.t9 and 5.A2 (commissioned after round 1 found a
+  // deflationary lean, 10 of 10), as checked claim by claim against the held paper texts by
+  // seven Opus checkers. Attaches the brief (Sonnet 5 subagent), the prompt GPT was given
+  // (which carries the 41 claims as they stood), GPT's reply, the seven check files, the
+  // library README and AGENTS.md. The North Star is not attached (prompt size); AGENTS.md
+  // states the two-error discipline and test 9.
+  const brief = readDoc("reviews/2026-10-06-dossier-rewrite-review-brief.md");
+  const gptPrompt = readDoc("reviews/2026-10-05-gpt-dossier-rewrite-prompt.md");
+  const gptReply = readDoc("reviews/2026-10-05-gpt-dossier-rewrite-review.md");
+  const checksDir = path.join(REPO_ROOT, "reviews", "2026-10-06-gpt-rewrite-checks");
+  const checks = fs
+    .readdirSync(checksDir)
+    .filter((f) => f.endsWith(".md"))
+    .sort()
+    .map((f) => `=== reviews/2026-10-06-gpt-rewrite-checks/${f} ===\n${fs.readFileSync(path.join(checksDir, f), "utf8")}`)
+    .join("\n\n");
+  const readme = readDoc("research/README.md");
+  const agents = readDoc("AGENTS.md");
+
+  return `Hi. I'd like an adversarial review, from your model family, of a proposed rewrite of two research dossiers and of the checks made on it, per the brief below. The human maintainer adjudicates after reading all responses.
+
+=== reviews/2026-10-06-dossier-rewrite-review-brief.md (the brief) ===
+${brief}
+
+=== reviews/2026-10-05-gpt-dossier-rewrite-prompt.md (what GPT was asked; contains the 41 claims as they stood on 5 October) ===
+${gptPrompt}
+
+=== reviews/2026-10-05-gpt-dossier-rewrite-review.md (GPT's proposed rewrite, written without access to the papers) ===
+${gptReply}
+
+${checks}
+
+=== research/README.md (the library's schema and rules) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please respond in the structure the brief specifies, beginning with your model family/version self-identification, labelled as unverified.`;
+}
+
 function slugify(modelId) {
   return modelId.replace(/[\/:]/g, "-");
 }
@@ -856,9 +902,9 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const TARGETS = ["research-docket", "jsc-r2", "jsc","s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
+  const TARGETS = ["dossier-rewrite", "research-docket", "jsc-r2", "jsc","s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
   const target = TARGETS.find((t) => args.includes(`--target=${t}`)) || "north-star";
-  const DEFAULT_TAGS = { "research-docket": "docket", "jsc-r2": "jsc-r2","jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
+  const DEFAULT_TAGS = { "dossier-rewrite": "dossier-rewrite", "research-docket": "docket", "jsc-r2": "jsc-r2","jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
   const tagArg = args.find((a) => a.startsWith("--tag="));
   const tag = tagArg ? tagArg.slice("--tag=".length) : DEFAULT_TAGS[target] || "";
   const modelsArg = args.find((a) => a.startsWith("--models="));
@@ -867,6 +913,7 @@ async function main() {
     : DEFAULT_MODELS;
 
   const BUILDERS = {
+    "dossier-rewrite": buildDossierRewritePrompt,
     "research-docket": buildResearchDocketPrompt,
     "jsc-r2": buildJscR2Prompt,
     "jsc": buildJscPrompt,
