@@ -76,7 +76,7 @@ function buildPrompt() {
   // EVIDENCE TYPE) that name earlier readers and council votes. They are appended at the end of the body,
   // so everything from the first such note onward is dropped, except SECOND QUOTE / THIRD QUOTE lines,
   // which are part of the claim's support and are kept.
-  const AUDIT = /^(CORRECTION|REWRITE|LABELLING|SPLIT 20|REPLICATION|EVIDENCE TYPE)/;
+  const AUDIT = /^(CORRECTION|REWRITE|LABELLING|SPLIT 20|REPLICATION|EVIDENCE TYPE|BUCKET|CLAUSES DELETED)/;
   const KEEP = /^(SECOND|THIRD|FOURTH) QUOTE/;
   const redact = (text) => {
     const out = [];

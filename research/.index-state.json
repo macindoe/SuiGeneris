@@ -36,8 +36,8 @@
    "in_dossier": true
   },
   "2025-anthropic-emergent-introspective-awareness-c02": {
-   "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "bucket": "open",
+   "evidence_type": "theoretical",
    "in_dossier": true
   },
   "2025-anthropic-emergent-introspective-awareness-c03": {
@@ -81,7 +81,7 @@
    "in_dossier": true
   },
   "2026-anthropic-assistant-axis-c04": {
-   "bucket": "open",
+   "bucket": "narrowing",
    "evidence_type": "interpretability",
    "in_dossier": true
   },
@@ -237,7 +237,7 @@
   },
   "2026-ukaisi-prefill-awareness-c05": {
    "bucket": "established",
-   "evidence_type": "behavioural",
+   "evidence_type": "ambiguous",
    "in_dossier": true
   },
   "2026-ukaisi-prefill-awareness-c06": {

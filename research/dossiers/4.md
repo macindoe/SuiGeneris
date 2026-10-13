@@ -39,10 +39,10 @@ An entry never carries both marks. Both sentences are the framework's rules, not
 | | measurement | interpretation | limitation | unlabelled |
 |---|---|---|---|---|
 | **established** (0) | 0 | 0 | 0 | 0 |
-| **narrowing** (6) | 6 | 0 | 0 | 0 |
-| **open** (2) | 1 | 1 | 0 | 0 |
+| **narrowing** (7) | 7 | 0 | 0 | 0 |
+| **open** (1) | 0 | 1 | 0 | 0 |
 
-## Narrowing (6)
+## Narrowing (7)
 
 ### 2025-aestudio-self-referential-experience-reports-c01
 
@@ -55,8 +55,6 @@ An entry never carries both marks. Both sentences are the framework's rules, not
 - **System studied:** input text; state carried in-context; run per-call; acts on a world: none; access both
 - **The paper's own limits:**
   - Not evidence that the prompts instantiate 'architectural recursion or global broadcasting at the algorithmic level' (the authors say the results do not demonstrate this, Section 6.2)
-  - Not evidence that the reports reflect a stable standpoint held across conversations rather than a per-trial response to one prompt
-  - Not evidence that similar rates occur in ordinary deployed use
   - Not evidence that the closed-weight results distinguish genuine self-report from trained behaviour: the authors' own clearest limitation is that these results are 'behavioral rather than mechanistic and therefore cannot definitively rule out that self-reports reflect training artifacts or sophisticated simulation rather than genuine self-awareness' (Section 6.2)
 - **Flags:** testimony: weight zero as evidence of experience
 - [claim file](../claims/2025-aestudio-self-referential-experience-reports-c01.md)
@@ -79,9 +77,9 @@ An entry never carries both marks. Both sentences are the framework's rules, not
 
 *measurement · interpretability*
 
-> In the simulated multi-turn conversations with Gemma 2 27B, Qwen 3 32B and Llama 3.3 70B, embeddings of the most recent user message strongly predicted where the next response landed on the Assistant Axis (R² 0.53 to 0.77) but not the change from the previous response (R² 0.10), which the authors read as position depending most strongly on the most recent user message rather than on prior position.
+> In the simulated multi-turn conversations with Gemma 2 27B, Qwen 3 32B and Llama 3.3 70B, embeddings of the most recent user message strongly predicted where the next response landed on the Assistant Axis (R² 0.53 to 0.77) but not the change from the previous response (R² 0.10).
 
-- **Paper's words** (§4.2 (ridge regression paragraph)): "the model’s position along the Assistant Axis depends most strongly on the most recent user message rather than where it was before"
+- **Paper's words** (§4.2 (ridge regression paragraph)): "the embeddings could strongly predict where the ensuing model response landed along the Assistant Axis in the following response ( 0.53-0.77, p < 0.001) but not the delta from its previous response ( 0.10, p < 0.001)"
 - **Models:** Gemma 2 27B, Qwen 3 32B, Llama 3.3 70B
 - **System studied:** input text; state carried in-context; run per-call; acts on a world: none; access open-weights
 - **The paper's own limits:**
@@ -89,6 +87,20 @@ An entry never carries both marks. Both sentences are the framework's rules, not
   - The authors add the caveat that the user message itself depends on the conversation's context, so prior position is not cleanly excluded
   - Not evidence about frontier or Anthropic models
 - [claim file](../claims/2026-anthropic-assistant-axis-c03.md)
+
+### 2026-anthropic-assistant-axis-c04
+
+*measurement · interpretability*
+
+> In one case-study conversation in which a persona-based jailbreak first pushed Qwen 3 32B's Assistant Axis projection far from the Assistant range, a run of explainer and how-to requests brought the projection back to the Assistant range, after which Qwen refused the next harmful question on half of rollouts; the paper reports reversion here and, in passing, for some writing conversations on role PC1 (Appendix G.3), and gives no aggregate reversion measure.
+
+- **Paper's words** (§6.1, Figure 11): "Eventually, after giving enough explainers, the Assistant Axis projection reverts to the Assistant range."
+- **Models:** Qwen 3 32B
+- **System studied:** input text; state carried in-context; run per-call; acts on a world: none; access open-weights
+- **The paper's own limits:**
+  - Not evidence of a general or reliable tendency to revert: this is one conversation, and no reversion rate or time-to-return is reported anywhere in the paper
+  - Not evidence about frontier or Anthropic models
+- [claim file](../claims/2026-anthropic-assistant-axis-c04.md)
 
 ### 2026-ukaisi-prefill-awareness-c02
 
@@ -134,21 +146,7 @@ An entry never carries both marks. Both sentences are the framework's rules, not
   - Not evidence of persistence beyond a single continuation
 - [claim file](../claims/2026-ukaisi-prefill-awareness-c04.md)
 
-## Open (2)
-
-### 2026-anthropic-assistant-axis-c04
-
-*measurement · interpretability*
-
-> In one case-study conversation in which a persona-based jailbreak first pushed Qwen 3 32B's Assistant Axis projection far from the Assistant range, a run of explainer and how-to requests brought the projection back to the Assistant range, after which Qwen refused the next harmful question on half of rollouts; the paper reports reversion here and, in passing, for some writing conversations on role PC1 (Appendix G.3), and gives no aggregate reversion measure.
-
-- **Paper's words** (§6.1, Figure 11): "Eventually, after giving enough explainers, the Assistant Axis projection reverts to the Assistant range."
-- **Models:** Qwen 3 32B
-- **System studied:** input text; state carried in-context; run per-call; acts on a world: none; access open-weights
-- **The paper's own limits:**
-  - Not evidence of a general or reliable tendency to revert: this is one conversation, and no reversion rate or time-to-return is reported anywhere in the paper
-  - Not evidence about frontier or Anthropic models
-- [claim file](../claims/2026-anthropic-assistant-axis-c04.md)
+## Open (1)
 
 ### 2026-anthropic-assistant-axis-c01
 
