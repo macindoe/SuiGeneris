@@ -6,7 +6,7 @@ evidence_type: scored-self-answer
 kind: measurement
 source: 2026-macar-mechanisms-introspective-awareness
 locator: "§3.3 The Role of Post-Training, Figure 4 middle (setting from §2; prompt variants §3.1)"
-quote: "The instruct model achieves 0.0% FPR with 38.2% TPR, 64.8% forced identification, and 22.3% introspection rate at"
+quote: "The instruct model achieves 0.0% FPR with 38.2% TPR, 64.8% forced identification, and 22.3% introspection rate at lpha=4"
 verification: grep
 models: ["Gemma3-27B instruct"]
 publisher_relation: mixed
@@ -32,3 +32,5 @@ REWRITE 2026-10-06
 - kind: measurement (detection, false-positive and identification rates under a stated setting).
 
 EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): interpretability to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged.
+
+CORRECTION 2026-10-14: the quote ended mid-sentence ('...introspection rate at'), dropping the steering strength; it now ends at the paper's own words 'lpha=4' (the held text renders the symbol as LaTeX). Caught by the Kimi seat in council round 5A; fixed by the coordinating session. Statement unchanged.
