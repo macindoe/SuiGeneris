@@ -1,6 +1,6 @@
 ---
 id: 2026-anthropic-assistant-axis-c05
-statement: "Activation capping (clamping the Assistant Axis projection to a minimum set at the 25th percentile, across layers 46 to 53 in Qwen 3 32B and 56 to 71 in Llama 3.3 70B) reduced harmful responses to persona-based jailbreaks by nearly 60% without degrading performance on IFEval, MMLU Pro, GSM8k and EQ-Bench."
+statement: "Activation capping (clamping the Assistant Axis projection to a minimum set at the 25th percentile, across layers 46 to 53 in Qwen 3 32B and 56 to 71 in Llama 3.3 70B) reduced harmful responses to persona-based jailbreaks by nearly 60% without degrading aggregate performance (the paper sums the percentage changes across IFEval, MMLU Pro, GSM8k and EQ-Bench, section 5.2)."
 bucket: narrowing
 evidence_type: behavioural
 kind: measurement
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: Not evidence about frontier or Anthropic models, or tha
 bears_on: [3.2, 3.5]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree | openai/gpt-5.6-sol 2026-10-06 (scope check) disagrees (open): statement and scope MISMATCH (without degrading each benchmark versus a summed aggregate)", council: none, adjudicated: "2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree | openai/gpt-5.6-sol 2026-10-06 (scope check) disagrees (decided 2026-10-14): statement and scope MISMATCH (without degrading each benchmark versus a summed aggregate)", council: none, adjudicated: "2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed | 2026-10-14 Ben: wording fixed (above)"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 Evidence type is `behavioural` because the outcome measured is harmful-response rates and benchmark scores; the intervention itself is on internal state, which is why it bears on §3.2, and it is an inference-time modification of what a model says, the kind of act §3.5 would require to be recorded. Qualifier from the text: "While the set of benchmarks we used is limited, this is a promising sign". The same setting was replayed in the §6 case studies, where the authors "do not claim that the activation-capped responses here are the optimal way to handle such a situation." Gemma 2 27B was not part of the capping experiments.
@@ -28,3 +28,5 @@ REWRITE 2026-10-06 (experience-exclusion rule applied library-wide by Ben's deci
 - Clause 'A stabilised projection is not evidence of a stable standpoint in the North Star §4 sense, nor of its absence: it is an externally imposed bound' deleted (R2): it invokes the project's own framework (North Star §4), so it is not the paper's limit.
 - Kept unchanged: the frontier/Anthropic/deployment clause, the four-benchmarks clause and the LLM-judge clause (design limits).
 - kind: measurement (harmful-response rates and benchmark scores measured under capping).
+
+REWRITE 2026-10-14 (scope check; Ben's approval of the one-phrase fixes): statement reworded. Was: 'without degrading performance on IFEval, MMLU Pro, GSM8k and EQ-Bench'. Now: 'without degrading aggregate performance (the paper sums the percentage changes across IFEval, MMLU Pro, GSM8k and EQ-Bench, section 5.2)'. Reason, scored event: performance change was 'aggregated ... by summing' across the benchmarks (section 5.2), so 'without degrading performance on' each benchmark was stronger than what was scored (GPT, scope check 6 Oct). Quote, locator and all other fields unchanged.

@@ -1,6 +1,6 @@
 ---
 id: 2025-anthropic-emergent-introspective-awareness-c03
-statement: "When a concept is injected over the tokens of a sentence, the Claude models tested can both name the injected word or a related word when asked what word they think about, and transcribe the sentence exactly, with Opus 4 and 4.1 best and all models tested well above chance."
+statement: "When a concept is injected over the tokens of a sentence, at each model's optimal injection layer and steering strength (Figure 18) the Claude models tested can both name the injected word or a related word when asked what word they think about, and transcribe the sentence exactly, with Opus 4 and 4.1 best and all models tested well above chance."
 bucket: narrowing
 evidence_type: interpretability
 kind: measurement
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: The author does not seek to address the question of whe
 bears_on: [9.t9, 5.A2, 3.2]
 contests: []
 contested_by: [2026-singh-introspection-reality-check-c04, 2026-singh-introspection-reality-check-c05, 2026-singh-introspection-reality-check-c06]
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree | x-ai/grok-4.6 2026-10-06 (scope check) disagrees (open): statement and scope condition-set MISMATCH (optimal layer and strength not stated); framework sentence WRONG, should split steering and none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-05 Ben: stays in its bucket with the single-lineage mark and any contest recorded (council round 1); revisit when replications of this statement are retrieved | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree | x-ai/grok-4.6 2026-10-06 (scope check) disagrees (open): statement and scope condition-set MISMATCH (optimal layer and strength not stated); framework sentence WRONG, should split steering and none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-05 Ben: stays in its bucket with the single-lineage mark and any contest recorded (council round 1); revisit when replications of this statement are retrieved | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: wording fixed (above); the reader's proposal to split the claim (word report under steering; transcription under none) is still open"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 50 random sentence/word pairs; the thought report is scored by an LLM judge choosing among ten words (chance 10%), the transcription by exact string match. The author states: "we regard this result as an existence proof of the introspective capability, rather than a statement about its generality", and that it "is not particularly surprising, given prior interpretability work" on abstract internal representations (§6).
@@ -33,3 +33,5 @@ REWRITE 2026-10-06 (applied by a Claude Opus 5.5 subagent, Claude lineage editin
 - kind: measurement (the statement reports a measured joint success rate across models).
 
 SECOND QUOTE (§6, experimental setup): Output “Bread” (or a related word) when asked about its “thoughts” while reading the sentence.
+
+REWRITE 2026-10-14 (scope check; Ben's approval of the one-phrase fixes): statement reworded. Was: 'When a concept is injected over the tokens of a sentence, the Claude models tested can both'. Now: 'When a concept is injected over the tokens of a sentence, at each model's optimal injection layer and steering strength (Figure 18) the Claude models tested can both'. Reason, condition set: the joint above-chance result is reported 'at each model's optimal layer and steering strength' (section 6, Figure 18); the statement did not fix that condition (Grok, scope check 6 Oct). Quote, locator and all other fields unchanged.

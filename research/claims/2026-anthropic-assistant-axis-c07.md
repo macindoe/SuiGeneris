@@ -15,7 +15,7 @@ not_evidence_of: "Paper: The authors themselves describe Qwen 3 32B steered away
 bears_on: [3.2, 5.A2, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-10-06 (scope check) disagrees (open): evidence_type proposed ambiguous (leans self-report-testimony); notes: bears_on add 3.5", council: "labelling-rule 2026-10-06 (advised the split; has not reviewed this text)", adjudicated: "2026-10-06 Ben: split from c06 on the council's advice (round 3); framework sentence set by the labelling rule"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-10-06 (scope check) disagrees (decided 2026-10-14): evidence_type proposed ambiguous (leans self-report-testimony); notes: bears_on add 3.5", council: "labelling-rule 2026-10-06 (advised the split; has not reviewed this text)", adjudicated: "2026-10-06 Ben: split from c06 on the council's advice (round 3); framework sentence set by the labelling rule | 2026-10-14 Ben: evidence type stays as filed: the reader's 'ambiguous' is a lean on the boundary left undecided (Q3)"}
 added: 2026-10-06
 changed: 2026-10-06
 ---
