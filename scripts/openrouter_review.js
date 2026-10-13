@@ -57,6 +57,10 @@
 //   node scripts/openrouter_review.js --target=labelling-rule --max-tokens=100000
 //       (2026-10-06: third council sitting: the rule for when each fixed framework sentence applies; brief by a Sonnet 5
 //        subagent; attaches the labelling table, README and AGENTS.md; tag "labelling-rule")
+//   node scripts/openrouter_review.js --target=self-answer-type --models=<one seat> --max-tokens=100000
+//       (2026-10-14: fourth council sitting: what evidence type a scored self-answer carries (Q3), including a proposed new
+//        value; brief and claims table by a Sonnet 5 subagent; attaches OPEN-QUESTIONS, README and AGENTS.md; run one seat
+//        per job, the slow seats exceed the ten-minute job ceiling in a shared run; tag "self-answer-type")
 //   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", naic-email to "naic", naic-email-final to "naic-final", emotions to "emotions", emotions-r2 to "emotions-r2", emotions-r3 to "emotions-r3", emotions-r4 to "emotions-r4", emotions-r5 to "emotions-r5", landing to "landing", s4-form to "s4-form", jsc to "jsc", jsc-r2 to "jsc-r2")
 //
 // Requires OPEN_ROUTER_API_KEY in a .env file at the repo root (already there).
@@ -907,6 +911,37 @@ ${agents}
 Please respond in the structure the brief specifies, beginning with one line stating your own model family and version as you understand it, labelled as unverified.`;
 }
 
+function buildSelfAnswerTypePrompt() {
+  // 2026-10-14: fourth council sitting on the research library. One question: what evidence type a
+  // scored self-answer should carry (OPEN-QUESTIONS Q3), including a proposed new value. Attaches the
+  // brief and claims table (Sonnet 5 subagent), the README, OPEN-QUESTIONS and AGENTS.md. As in round 3,
+  // the prompt addresses no seat by family and carries no model's self-identification line.
+  const brief = readDoc("reviews/2026-10-14-self-answer-type-review-brief.md");
+  const table = readDoc("reviews/2026-10-14-self-answer-type-claims.md");
+  const readme = readDoc("research/README.md");
+  const open = readDoc("research/OPEN-QUESTIONS.md");
+  const agents = readDoc("AGENTS.md");
+
+  return `Hi. I'd like an adversarial review, from your model family, of one question about a research library, per the brief below. The human maintainer adjudicates after reading all responses.
+
+=== reviews/2026-10-14-self-answer-type-review-brief.md (the brief) ===
+${brief}
+
+=== reviews/2026-10-14-self-answer-type-claims.md (the claims the question touches) ===
+${table}
+
+=== research/OPEN-QUESTIONS.md (Q3 is the question; Q4 is related) ===
+${open}
+
+=== research/README.md (the library's schema and rules) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please respond in the structure the brief specifies, beginning with one line stating your own model family and version as you understand it, labelled as unverified.`;
+}
+
 function slugify(modelId) {
   return modelId.replace(/[\/:]/g, "-");
 }
@@ -939,9 +974,9 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const TARGETS = ["labelling-rule", "dossier-rewrite","research-docket", "jsc-r2", "jsc","s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
+  const TARGETS = ["self-answer-type", "labelling-rule", "dossier-rewrite","research-docket", "jsc-r2", "jsc","s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
   const target = TARGETS.find((t) => args.includes(`--target=${t}`)) || "north-star";
-  const DEFAULT_TAGS = { "labelling-rule": "labelling-rule", "dossier-rewrite": "dossier-rewrite","research-docket": "docket", "jsc-r2": "jsc-r2","jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
+  const DEFAULT_TAGS = { "self-answer-type": "self-answer-type", "labelling-rule": "labelling-rule", "dossier-rewrite": "dossier-rewrite","research-docket": "docket", "jsc-r2": "jsc-r2","jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
   const tagArg = args.find((a) => a.startsWith("--tag="));
   const tag = tagArg ? tagArg.slice("--tag=".length) : DEFAULT_TAGS[target] || "";
   const modelsArg = args.find((a) => a.startsWith("--models="));
@@ -950,6 +985,7 @@ async function main() {
     : DEFAULT_MODELS;
 
   const BUILDERS = {
+    "self-answer-type": buildSelfAnswerTypePrompt,
     "labelling-rule": buildLabellingRulePrompt,
     "dossier-rewrite": buildDossierRewritePrompt,
     "research-docket": buildResearchDocketPrompt,
