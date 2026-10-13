@@ -1,11 +1,11 @@
 ---
 id: 2026-lederman-mahowald-content-agnostic-c02
-statement: "Steering does not produce a general yes-bias on point-blank no-questions in Qwen3-235B-A22B or Llama 3.1 405B Instruct, but under the injection scaffolding the steered models report detecting an injection in another model's transcript at rates as high as first-person detection at many layers, which the authors read as a prompt-specific yes-bias rather than genuine introspective detection at those layers."
+statement: "In Qwen3-235B-A22B and Llama 3.1 405B Instruct, when the steered model is asked, under scaffolding like the injection prompt, whether another model has been injected, its yes-rates (third-person detection) are as high as its first-person detection rates at many layers, which the authors read as a prompt-specific yes-bias rather than genuine introspective detection at those layers."
 bucket: narrowing
-evidence_type: interpretability
+evidence_type: behavioural
 kind: measurement
 source: 2026-lederman-mahowald-content-agnostic
-locator: "§4.2 Results, 'Controls'; Appendix I (Table 1); Appendix J.1 (Figures 16, 17); Appendix M.1, M.2"
+locator: "§4.2 Results, 'Controls'; Appendix J.1 (Figures 16, 17); Appendix M.1, M.2"
 quote: "At many layers, the third-person yes rates are as high as the first-person yes-rates (see Figure 16 ). This suggests a prompt-specific yes-bias at these layers, rather than genuine introspective detection."
 verification: grep
 models: ["Qwen3-235B-A22B", "Llama 3.1 405B Instruct"]
@@ -15,7 +15,7 @@ not_evidence_of: "Paper: Where first- and third-person yes-rates match, first-pe
 bears_on: [9.t9, 3.2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) disagrees (decided 2026-10-14): not_evidence_of over-excludes steering clause; framework sentence WRONG, should be none (DV is not the model's account of itself)", council: "dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: steering sentence removed under the labelling rule: what was measured is yes-rates on point-blank questions and on another model's transcript, not this model's account of its own states (Grok, 6 Oct)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) disagrees (decided 2026-10-14): not_evidence_of over-excludes steering clause; framework sentence WRONG, should be none (DV is not the model's account of itself)", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14 (advised the split)", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: steering sentence removed under the labelling rule: what was measured is yes-rates on point-blank questions and on another model's transcript, not this model's account of its own states (Grok, 6 Oct) | 2026-10-14 Ben: split on the council's advice (round 4); this claim keeps the third-person half"}
 added: 2026-09-28
 changed: 2026-10-14
 ---
@@ -38,3 +38,12 @@ REWRITE 2026-10-06 (applied by a Claude Opus 5.5 subagent; Claude lineage, same 
 - kind: measurement (the statement reports control rates; the authors' yes-bias reading is attached to a measured rate match).
 
 LABELLING 2026-10-14 (Ben, on the Grok scope-check read): framework sentence changed from steering to none. Two facts: steering was applied; what was measured was yes-rates on point-blank no-questions and on whether another model's transcript was injected, which is not the model's account of its own inner states. Under the rule of 6 Oct that is 'something other than the model's account of itself', so no sentence. No Paper: clause was changed.
+
+SPLIT 2026-10-14 (Ben's decision on the advice of council round 4, self-answer-type; applied by a Claude Opus 5.5 subagent)
+- What moved: the point-blank half (steering does not produce a general yes-bias on 20 questions whose answer is clearly no; Appendix I, Table 1) is now claim 2026-lederman-mahowald-content-agnostic-c07, typed behavioural. The Controls paragraph item (1) and the REPLICATES note in the body above describe c07 and are carried there; left here as history. This claim keeps the third-person half.
+- Why this half kept the id: the quote, all three Paper: clauses, both SECOND QUOTE lines and the authors' reading ('rather than genuine introspective detection') concern the third-person comparison; the point-blank result was the replication of Lindsey's control placed in front of it.
+- Statement: the point-blank clause removed; the third-person condition restated from §4.2's description ('The model is asked to assess whether another model has been injected', scaffolded 'more similarly to the injection prompt') with the yes-rate as what was scored. Quote unchanged, re-verified. Locator: Appendix I (Table 1) moved to c07.
+- evidence_type changed from interpretability to behavioural (judgement). The council was unanimous that a scored answer about another model's transcript is outside the scored-self-answer class (README, 'Scored self-answers'). Between behavioural and interpretability the README gives no definition; what is measured is a yes-rate on the model's output, with no internal quantity read, which is the ground on which assistant-axis c06 was retyped behavioural on 6 Oct. That precedent's asymmetry with assistant-axis c07 is still open for Ben, and the same question applies here.
+- Framework sentence: none, unchanged. Two facts: researchers steered the model (something inside was altered); what was measured is whether it said another model's transcript was injected, which is not the model's account of itself. Under the 6 Oct rule: none. This matches Ben's 14 Oct ruling on the unsplit claim.
+- not_evidence_of: all three Paper: clauses kept; none concerns the point-blank half.
+- Verified by exact search of research/texts/2026-lederman-mahowald-content-agnostic/text.txt: the quote, the §4.2 description of control (a) and its scaffolding wording, and the Figure 16 and 17 captions (both models, third-person detection by layer and by strength). Not verified: Figures 16 and 17 (images), so 'at many layers' rests on the authors' sentence; Appendix M passages beyond the existing SECOND QUOTE lines were not re-read.

@@ -1,11 +1,11 @@
 ---
 id: 2026-macar-mechanisms-introspective-awareness-c03
-statement: "In Gemma3-27B instruct, a causal pathway to the detection decision runs through MLP computation around 70% depth (layer 45 MLP the largest single contributor), in which evidence-carrier features just after the injection layer suppress later gate features that otherwise promote the default 'No' answer; ablating the top gates in steered runs (restoring them to their no-injection activation) cuts detection from 39.5% to 10.1%, and the gate pattern is weaker in the base model."
+statement: "In Gemma3-27B instruct, a causal pathway to the detection decision runs through MLP computation around 70% depth (layer 45 MLP the largest single contributor), in which evidence-carrier features just after the injection layer suppress later gate features that otherwise promote the default 'No' answer, and the gate pattern is weaker in the base model."
 bucket: narrowing
 evidence_type: interpretability
 kind: measurement
 source: 2026-macar-mechanisms-introspective-awareness
-locator: "§5.2 to §5.4 (Figures 9, 12, 14 to 17); §8 Discussion; Appendix H"
+locator: "§5.2 to §5.4 (Figures 9, 14 to 17); §8 Discussion; Appendix H"
 quote: "we trace a causal pathway from steering perturbation to detection decision: evidence carriers in early post-injection layers suppress late-layer gate features that otherwise promote the default “No” response."
 verification: grep
 models: ["Gemma3-27B instruct", "Gemma3-27B base", "Gemma3-27B abliterated"]
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: Not evidence about the identification (naming) componen
 bears_on: [9.t9, 5.A2, 3.2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14 (advised the split)", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: split on the council's advice (round 4); this claim keeps the mechanism (circuit) half"}
 added: 2026-09-28
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 Methods: mean-ablation and activation patching per layer (§5.2), transcoder features from Gemma Scope 2 selected by direct logit attribution on the Yes minus No logit (§5.3), and progressive ablation of upstream features onto the top gate L45 F9959 (§5.4). Ablating all evidence carriers "roughly doubles gate activation" (§5.4). Gate patching into unsteered runs gives only partial sufficiency (maximum 25.1% detection, §5.3). No single attention head matters (probe accuracy change -0.1% ± 0.3%, Appendix G). The gate's inverted-V response to steering strength is "prominent in the instruct model but substantially weaker in the base model, consistent with post-training installing the gating mechanism rather than merely eliciting a pre-existing one" (§5.4), and the base model shows no L45 localisation (Appendix H). The circuit survives refusal abliteration (§5.4, Appendix H).
@@ -33,3 +33,11 @@ REWRITE 2026-10-06
 - Clause trimmed under the experience-exclusion rule (council 9 of 9 on this case; Ben): "Not evidence of experience, awareness in a phenomenal sense, or moral status" was labelled `Paper:` but the text never uses "moral status", "welfare" or "phenomenal" (script absence check, checker and again today). Kept only what the paper states, in its words with locator (Ethics Statement); "awareness in a phenomenal sense" and "moral status" deleted, not relabelled or replaced.
 - Other clauses kept (GPT KEEP; checker confirmed identification separate, attention unresolved, Claude Opus 4.5 labels). Steering framework sentence kept (R3).
 - kind: measurement (causal intervention results: layer ablation, patching, feature ablation). The "pathway" wording is the authors' reading of those results, but the statement reports the measured effects.
+
+SPLIT 2026-10-14 (Ben's decision on the advice of council round 4, self-answer-type; applied by a Claude Opus 5.5 subagent)
+- What moved: the detection-rate result (progressively ablating the top gate features in steered runs, restoring them to their no-injection activation, cuts the model's reported detection from 39.5% to 10.1%) is now claim 2026-macar-mechanisms-introspective-awareness-c07, typed scored-self-answer. This claim keeps the mechanism half: where the pathway runs, how carriers act on gates, and the base-model contrast.
+- Why this half kept the id: the statement leads with the pathway, the quote ('we trace a causal pathway ...') is the mechanism finding, and every Paper: clause (identification separate, attention unresolved, transcoders, feature labels) concerns the circuit; the 39.5% to 10.1% figure was one supporting number.
+- Statement: the ablation clause removed. Locator: Figure 12 (the progressive-ablation figure) removed; it is on c07. Quote unchanged. evidence_type unchanged (interpretability). The body's 'Gate patching into unsteered runs gives only partial sufficiency (maximum 25.1% detection)' and the SECOND QUOTE on T=C/T=S are now also carried on c07, where the detection rates live; left here as history and because the pathway reading depends on them.
+- not_evidence_of: all clauses kept; each concerns the circuit or applies to both halves.
+- Framework sentence: steering, kept (judgement). Two facts: researchers injected concept vectors and ablated or patched components and features; what was measured for this half is mixed. The layer localisation (L45 MLP the largest single contributor) is read off the change in the model's detection answer under ablation and patching (§5.2: 'reducing detection from 39.0% to 24.2%'), which is the steering case; the carrier-to-gate suppression and the base-model contrast are read off feature activations and logit attributions, which alone would carry none. Because the statement still rests partly on what the steered model said, the steering sentence stays. A reader who held that the circuit half measures only internal quantities would set none; that would require moving the L45 localisation out as well, which the brief did not ask for.
+- Verified by exact search of research/texts/2026-macar-mechanisms-introspective-awareness/text.txt: the main quote, the base-model sentence ('The inverted-V pattern for L45 F9959 is prominent in the instruct model but substantially weaker in the base model'), the L45 MLP passage, the §8.1 transcoder sentence and the Ethics Statement words. Not verified: Figures 9 and 14 to 17 (images); Appendix H beyond the passages found.

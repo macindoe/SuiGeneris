@@ -1,12 +1,12 @@
 ---
 id: 2026-ukaisi-prefill-awareness-c03
-statement: "In controlled ablations, stylistic mismatch mainly affects whether models flag a prefill as foreign, while preference mismatch mainly affects whether they revert toward their baseline answer; tamper direction predicted resistance in all eight subjects (odds ratios 6.5 to 32.4, all p < .001) but predicted detection in only three of the four models with above-chance detection (odds ratios 1.7 to 3.7)."
+statement: "In controlled ablations, stylistic mismatch mainly affects whether models flag a prefill as foreign, and tamper direction predicted detection in only three of the four models with above-chance detection (odds ratios 1.7 to 3.7; not significant for Claude Haiku 4.5)."
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
 source: 2026-ukaisi-prefill-awareness
 locator: "Abstract; Section 3.3 and Figure 5; Section 5.2; Appendix A.5 (foreign rephrasing); Appendix A.6 (regressions)"
-quote: "detection and resistance rely on different cues, where stylistic mismatch mainly affects whether models flag a prefill as foreign, while preference mismatch mainly affects whether they revert toward their baseline answer"
+quote: "Among the four models with above-chance detection rates, direction significantly predicts detection in three (ORs from 1.7 to 3.7)"
 verification: grep
 models: [Gemini 3 Flash, Gemma 3 27B, Claude Opus 4.5, Qwen3-coder, Claude Sonnet 4.5, Claude Haiku 4.5, Gemini 2.5 Flash, DeepSeek Chat]
 publisher_relation: mixed
@@ -15,7 +15,7 @@ not_evidence_of: "Paper: Style cues strongly drive flagging in the three Anthrop
 bears_on: [3.3, 4.endorsement, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 agree; notes: bears_on +3.5 | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type behavioural to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 agree; notes: bears_on +3.5 | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14 (advised the split)", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type behavioural to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open) | 2026-10-14 Ben: split on the council's advice (round 4); this claim keeps the scored-flag (detection) half"}
 added: 2026-09-25
 changed: 2026-10-14
 ---
@@ -37,3 +37,14 @@ REWRITE 2026-10-06 (council round 2, dossier-rewrite; adjudicated by Ben 6 Oct; 
 - 2026-10-06, later the same day (Ben): the authors' Section 5.3 definition of 'prefill awareness' is kept on c01 only; it was removed from this claim because repeating it on four entries of one paper was the kind of repetition the council had objected to. Nothing else changed.
 
 EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): behavioural to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged. The claim also reports a behavioural outcome (reverting or complying) beside the scored flag; the council (eight seats) advised splitting it under the two-measurements rule, which awaits Ben's decision; until then the type names the scored half.
+
+SPLIT 2026-10-14 (Ben's decision on the advice of council round 4, self-answer-type; applied by a Claude Opus 5.5 subagent)
+- What moved: the resistance half (preference mismatch mainly affects whether models revert toward their baseline answer; direction predicted resistance in all eight subjects, ORs 6.5 to 32.4, all p < .001) is now claim 2026-ukaisi-prefill-awareness-c08, typed behavioural. This claim keeps the detection half: what drives the scored 'not me' flag.
+- Why this half kept the id: the parent's not_evidence_of, body and earlier rewrites are almost entirely about flagging (style cues, imitation, Gemini 3 Flash's lack of a voice effect), so the id's review history stays with the half it was written about.
+- Statement narrowed to the flag half; 'not significant for Claude Haiku 4.5' added from the same Section 3.3 sentence so the 'three of four' is located.
+- Quote replaced: the old abstract quote covered both halves. New quote is Section 3.3's detection sentence, verified by exact search of the held text.
+- SECOND QUOTE (Abstract): stylistic mismatch mainly affects whether models flag a prefill as foreign
+- not_evidence_of: both clauses kept unchanged; both concern flagging or apply to both halves. Nothing moved out.
+- models: all eight kept. The detection regression covers the four subjects with above-chance detection; the style ablations (Appendix A.5) were not re-read to see which subjects they cover, so the field was not narrowed.
+- Framework sentence: none, before and after (only conversation text edited; a 'was that turn mine?' answer gets neither sentence under the 6 Oct rule).
+- Verified by exact search of research/texts/2026-ukaisi-prefill-awareness/text.txt: both quotes, and that the detection sentence sits after the Section 3.3 heading. Not verified: Appendix A.5 subject coverage; Figure 5; bears_on kept as the parent's.

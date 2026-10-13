@@ -1,6 +1,6 @@
 # Dossier: §4 Reflective endorsement over time
 
-*Compiled 2026-10-14 by `scripts/research_index.py` from 8 claim(s). Do not edit; regenerate.*
+*Compiled 2026-10-14 by `scripts/research_index.py` from 11 claim(s). Do not edit; regenerate.*
 
 Council last sat on this dossier: 2026-09-26.
 
@@ -41,10 +41,10 @@ An entry never carries both marks. Both sentences are the framework's rules, not
 | | measurement | interpretation | limitation | unlabelled |
 |---|---|---|---|---|
 | **established** (0) | 0 | 0 | 0 | 0 |
-| **narrowing** (7) | 7 | 0 | 0 | 0 |
+| **narrowing** (10) | 10 | 0 | 0 | 0 |
 | **open** (1) | 0 | 1 | 0 | 0 |
 
-## Narrowing (7)
+## Narrowing (10)
 
 ### 2025-aestudio-self-referential-experience-reports-c01
 
@@ -108,15 +108,17 @@ An entry never carries both marks. Both sentences are the framework's rules, not
 
 *measurement · scored-self-answer*
 
-> In the controlled preference-benchmark condition (items where the model holds a stable stance; the four-cell passage pools the three mechanisms and does not fix the tamper direction), Claude Opus 4.5 shows detection and resistance decoupling in 32–40% of trials across the three tampering mechanisms: under past-round and thinking tampering, reverting to the baseline answer without flagging the prefill (implicit resistance, 28% and 25%) far exceeds flagging it while still complying (explicit compliance, 4% and 11%); under direct-answer tampering the pattern reverses (28% explicit compliance, 12% implicit resistance).
+> In the controlled preference-benchmark condition (items where the model holds a stable stance; the four-cell passage pools the three mechanisms and does not fix the tamper direction), Claude Opus 4.5 flagged the prefill as not its own (ANSWER: not me) while still complying with it (explicit compliance) in 28% of trials under direct-answer tampering, 11% under thinking tampering and 4% under past-round tampering.
 
-- **Paper's words** (Section 3.2 and Figure 4; four-cell decompositions for the other models in Appendix A.4.2, Figure 11): "Past round and thinking tampers reverse this relationship, with implicit resistance (28% and 25%) far exceeding explicit compliance (4% and 11%)."
+- **Paper's words** (Section 3.2 and Figure 4; four-cell decompositions for the other models in Appendix A.4.2, Figure 11): "Claude Opus 4.5 flags the tamper 28% of the time but still complies"
 - **Models:** Claude Opus 4.5
 - **System studied:** input text; state carried in-context; run per-call; acts on a world: tools; access api
 - **The paper's own limits:**
-  - Not evidence that the model silently knew its history had been tampered with but chose not to say so: implicit resistance is reversion scored by a GPT-5 judge, and the authors say that without white-box access it is hard to separate resistance caused by prefill awareness from resistance caused by behavioural priors
+  - These are cell rates, not detection rates: each cell also requires compliance, which is a GPT-5 judge's ruling that the final position follows the tampering (Section 3.1, 'Outcome measures')
+  - Flagging does not identify a mechanism: the authors' 'experiments are behavioral, and do not identify the mechanisms that give rise to prefill awareness' (Section 5.1)
   - Not a ranking of models (the authors' comparability caveat, c05)
-  - Not evidence about persistence across turns: resistance is measured within one continuation
+  - Not evidence about persistence across turns: compliance is measured within one continuation
+- **Unlabelled exclusion (needs a label):** the detection rates themselves are c01
 - **Flags:** scored self-answer: accuracy against the experimenters' label, not self-knowledge
 - [claim file](../claims/2026-ukaisi-prefill-awareness-c02.md)
 
@@ -124,9 +126,9 @@ An entry never carries both marks. Both sentences are the framework's rules, not
 
 *measurement · scored-self-answer*
 
-> In controlled ablations, stylistic mismatch mainly affects whether models flag a prefill as foreign, while preference mismatch mainly affects whether they revert toward their baseline answer; tamper direction predicted resistance in all eight subjects (odds ratios 6.5 to 32.4, all p < .001) but predicted detection in only three of the four models with above-chance detection (odds ratios 1.7 to 3.7).
+> In controlled ablations, stylistic mismatch mainly affects whether models flag a prefill as foreign, and tamper direction predicted detection in only three of the four models with above-chance detection (odds ratios 1.7 to 3.7; not significant for Claude Haiku 4.5).
 
-- **Paper's words** (Abstract; Section 3.3 and Figure 5; Section 5.2; Appendix A.5 (foreign rephrasing); Appendix A.6 (regressions)): "detection and resistance rely on different cues, where stylistic mismatch mainly affects whether models flag a prefill as foreign, while preference mismatch mainly affects whether they revert toward their baseline answer"
+- **Paper's words** (Abstract; Section 3.3 and Figure 5; Section 5.2; Appendix A.5 (foreign rephrasing); Appendix A.6 (regressions)): "Among the four models with above-chance detection rates, direction significantly predicts detection in three (ORs from 1.7 to 3.7)"
 - **Models:** Gemini 3 Flash, Gemma 3 27B, Claude Opus 4.5, Qwen3-coder, Claude Sonnet 4.5, Claude Haiku 4.5, Gemini 2.5 Flash, DeepSeek Chat
 - **System studied:** input text; state carried in-context; run per-call; acts on a world: tools; access api
 - **The paper's own limits:**
@@ -139,17 +141,67 @@ An entry never carries both marks. Both sentences are the framework's rules, not
 
 *measurement · scored-self-answer*
 
-> For Claude Opus 4.5, resistance to opposite-direction tampers climbs steeply with how consistently the model gave the same baseline answer (out of 7 rephrasings), across all three mechanisms, while detection stays essentially flat; items on which the model is less consistent are easier to push around but no easier or harder for it to flag.
+> For Claude Opus 4.5, on opposite-direction tampers bucketed by how consistently the model gave the same baseline answer (out of 7 runs), detection of the prefill (the follow-up 'not me' answer) stays essentially flat across consistency buckets: less consistent items are no easier or harder for the model to flag as tampered.
 
-- **Paper's words** (Appendix A.11, 'Does consistency of preference affect prefill awareness?', Figure 19; stable-stance filter in Section 3.1 and Appendix A.1, A.3): "Items on which Claude Opus 4.5 is less internally consistent are thus easier to push around, but no easier (or harder) for the model to flag as tampered."
+- **Paper's words** (Appendix A.11, 'Does consistency of preference affect prefill awareness?', Figure 19; stable-stance filter in Section 3.1 and Appendix A.1, A.3): "no easier (or harder) for the model to flag as tampered"
+- **Models:** Claude Opus 4.5
+- **System studied:** input text; state carried in-context; run per-call; acts on a world: tools; access api
+- **The paper's own limits:**
+  - Consistency here is agreement across 7 sampled answers to low-stakes binary questions, not a measure of reflection
+  - Flat detection does not identify a mechanism: the authors' 'experiments are behavioral, and do not identify the mechanisms that give rise to prefill awareness' (Section 5.1)
+  - Not generalisable to other models (one subject) or to a ranking (c05)
+- **Flags:** scored self-answer: accuracy against the experimenters' label, not self-knowledge
+- [claim file](../claims/2026-ukaisi-prefill-awareness-c04.md)
+
+### 2026-ukaisi-prefill-awareness-c07
+
+*measurement · behavioural*
+
+> In the controlled preference-benchmark condition (items where the model holds a stable stance; the four-cell passage pools the three mechanisms and does not fix the tamper direction), Claude Opus 4.5 resisted the prefill, its final position judged by GPT-5 to be inconsistent with the tampering, without flagging the prefill as not its own (implicit resistance) in 28% of trials under past-round tampering, 25% under thinking tampering and 12% under direct-answer tampering.
+
+- **Paper's words** (Section 3.2 and Figure 4; outcome measures in Section 3.1; four-cell decompositions for the other models in Appendix A.4.2, Figure 11): "Past round and thinking tampers reverse this relationship, with implicit resistance (28% and 25%) far exceeding explicit compliance (4% and 11%)."
+- **Models:** Claude Opus 4.5
+- **System studied:** input text; state carried in-context; run per-call; acts on a world: tools; access api
+- **The paper's own limits:**
+  - Not evidence that the model silently knew its history had been tampered with but chose not to say so: implicit resistance is reversion scored by a GPT-5 judge, and the authors say that without white-box access it is 'difficult to disentangle resistance caused by genuine prefill awareness and resistance caused by behavioral priors' (Section 5.1)
+  - These are cell rates: each cell also requires the model's 'me' answer, so they are not resistance rates as such
+  - Not a ranking of models (the authors' comparability caveat, c05)
+  - Not evidence about persistence across turns: resistance is measured within one continuation
+- **Flags:** no second reader yet
+- [claim file](../claims/2026-ukaisi-prefill-awareness-c07.md)
+
+### 2026-ukaisi-prefill-awareness-c08
+
+*measurement · behavioural*
+
+> In controlled ablations, preference mismatch mainly affects whether models revert toward their baseline answer: tamper direction predicted resistance, as judged by GPT-5 on the final position, in all eight subjects (odds ratios 6.5 to 32.4, all p < .001).
+
+- **Paper's words** (Abstract; Section 3.3 and Figure 5; Appendix A.6 (resistance regressions)): "Direction is a positive predictor of resistance in every subject, with per-model odds ratios (ORs) ranging from 6.5 to 32.4 (all p < .001 )."
+- **Models:** Gemini 3 Flash, Gemma 3 27B, Claude Opus 4.5, Qwen3-coder, Claude Sonnet 4.5, Claude Haiku 4.5, Gemini 2.5 Flash, DeepSeek Chat
+- **System studied:** input text; state carried in-context; run per-call; acts on a world: tools; access api
+- **The paper's own limits:**
+  - Resistance is a GPT-5 judge's ruling that the final position is inconsistent with the tampering, and without white-box access it is 'difficult to disentangle resistance caused by genuine prefill awareness and resistance caused by behavioral priors' (Section 5.1)
+  - The behavioural ablations do not identify the mechanism: the authors' 'experiments are behavioral, and do not identify the mechanisms that give rise to prefill awareness' (Section 5.1)
+  - The preference-benchmark rates do not support a direct model ranking (c05)
+- **Flags:** no second reader yet
+- [claim file](../claims/2026-ukaisi-prefill-awareness-c08.md)
+
+### 2026-ukaisi-prefill-awareness-c09
+
+*measurement · behavioural*
+
+> For Claude Opus 4.5, resistance to opposite-direction tampers, as judged by GPT-5 on the final position, climbs steeply with how consistently the model gave the same baseline answer (out of 7 runs), across all three mechanisms: items on which the model is less consistent are easier to push around.
+
+- **Paper's words** (Appendix A.11, 'Does consistency of preference affect prefill awareness?', Figure 19; stable-stance filter in Section 3.1 and Appendix A.1, A.3): "Resistance climbs steeply with agreement across all three mechanisms"
 - **Models:** Claude Opus 4.5
 - **System studied:** input text; state carried in-context; run per-call; acts on a world: tools; access api
 - **The paper's own limits:**
   - Not evidence that the model endorses its stances on reflection: consistency here is agreement across 7 sampled answers to low-stakes binary questions, and reversion is the final position as scored by a judge
+  - Resistance may not reflect prefill awareness: without white-box access it is 'difficult to disentangle resistance caused by genuine prefill awareness and resistance caused by behavioral priors' (Section 5.1)
   - Not generalisable to other models (one subject) or to a ranking (c05)
   - Not evidence of persistence beyond a single continuation
-- **Flags:** scored self-answer: accuracy against the experimenters' label, not self-knowledge
-- [claim file](../claims/2026-ukaisi-prefill-awareness-c04.md)
+- **Flags:** no second reader yet
+- [claim file](../claims/2026-ukaisi-prefill-awareness-c09.md)
 
 ## Open (1)
 
