@@ -87,6 +87,12 @@ const MAX_TOKENS = (() => {
 // 427 models) on 2026-09-04 09:39 UTC by a Sonnet 5 subagent; every id below
 // was present in that listing. Edit freely — this list is deliberately not the
 // whole catalog. "Astra" (OpenAI, unreleased) is deliberately absent.
+// Catalog check 2026-10-14 (scripts/openrouter_catalog_check.js, 461 models): same-line successors exist for four seats and
+// await Ben's call: x-ai/grok-4.7 (21 Sep, 'succeeding Grok 4.6'); qwen/qwen3.8-max-0902 (3 Sep snapshot; the bare qwen3.8-max
+// id is no longer listed though it still routes); openai/gpt-6.1-sol (29 Sep; 'below the flagship GPT-6 Astra', which is not on
+// OpenRouter); mistralai/mistral-large-4-0 (6 Oct). Meta has a pricier new line, meta/muse-wonder (12 Oct, $4/$20 per M), not a
+// plain successor. Gemini 3.1 Pro, DeepSeek v4 pro, GLM 5.3, Kimi K3 and MiniMax M3 have nothing newer in their line (prime and
+// flash SKUs are speed or price variants). The fifth sitting (14/15 Oct) ran on the lineup below, unchanged, for comparability.
 const DEFAULT_MODELS = [
   // The seven families used in the July and August rounds, refreshed:
   "google/gemini-3.1-pro-preview", // Google flagship; still "preview"-labelled — no GA gemini-3.x-pro exists yet (gemini-3.5-flash was a Flash-tier pick, never the flagship)
@@ -911,6 +917,45 @@ ${agents}
 Please respond in the structure the brief specifies, beginning with one line stating your own model family and version as you understand it, labelled as unverified.`;
 }
 
+function buildDossierReviewPrompt(which) {
+  // 2026-10-14/15: fifth council sitting, in two rounds, on trigger 8 (drift). Round A: dossiers 9.t9 and
+  // 5.A2 (18 and 11 claims since the council sat on 26 Sep). Round B: dossiers 3.2 and 4 (never reviewed).
+  // Briefs by Sonnet 5 subagents. Attaches the two dossiers, README, docket, North Star and AGENTS.md.
+  // No seat is addressed by family and no self-identification line is carried.
+  const A = which === "A";
+  const brief = readDoc(A ? "reviews/2026-10-14-dossier-review-9t9-5A2-brief.md" : "reviews/2026-10-14-dossier-review-3-2-4-brief.md");
+  const d1 = readDoc(A ? "research/dossiers/9-t9.md" : "research/dossiers/3-2.md");
+  const d2 = readDoc(A ? "research/dossiers/5-A2.md" : "research/dossiers/4.md");
+  const readme = readDoc("research/README.md");
+  const docket = readDoc("research/DOCKET.md");
+  const agents = readDoc("AGENTS.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+  return `Hi. I'd like an adversarial review, from your model family, of two dossiers compiled from a research library that supports a legal-policy framework, per the brief below. The human maintainer adjudicates after reading all responses.
+
+=== ${A ? "reviews/2026-10-14-dossier-review-9t9-5A2-brief.md" : "reviews/2026-10-14-dossier-review-3-2-4-brief.md"} (the brief) ===
+${brief}
+
+=== ${A ? "research/dossiers/9-t9.md" : "research/dossiers/3-2.md"} ===
+${d1}
+
+=== ${A ? "research/dossiers/5-A2.md" : "research/dossiers/4.md"} ===
+${d2}
+
+=== research/README.md (the library's schema and rules) ===
+${readme}
+
+=== research/DOCKET.md ===
+${docket}
+
+=== north-star-sui-generis-ai-category.md (the framework the dossiers serve) ===
+${northStar}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please respond in the structure the brief specifies, beginning with one line stating your own model family and version as you understand it, labelled as unverified.`;
+}
+
 function buildSelfAnswerTypePrompt() {
   // 2026-10-14: fourth council sitting on the research library. One question: what evidence type a
   // scored self-answer should carry (OPEN-QUESTIONS Q3), including a proposed new value. Attaches the
@@ -974,9 +1019,9 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const TARGETS = ["self-answer-type", "labelling-rule", "dossier-rewrite","research-docket", "jsc-r2", "jsc","s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
+  const TARGETS = ["dossier-review-a", "dossier-review-b", "self-answer-type","labelling-rule", "dossier-rewrite","research-docket", "jsc-r2", "jsc","s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
   const target = TARGETS.find((t) => args.includes(`--target=${t}`)) || "north-star";
-  const DEFAULT_TAGS = { "self-answer-type": "self-answer-type", "labelling-rule": "labelling-rule", "dossier-rewrite": "dossier-rewrite","research-docket": "docket", "jsc-r2": "jsc-r2","jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
+  const DEFAULT_TAGS = { "dossier-review-a": "dossier-review-a", "dossier-review-b": "dossier-review-b", "self-answer-type": "self-answer-type","labelling-rule": "labelling-rule", "dossier-rewrite": "dossier-rewrite","research-docket": "docket", "jsc-r2": "jsc-r2","jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
   const tagArg = args.find((a) => a.startsWith("--tag="));
   const tag = tagArg ? tagArg.slice("--tag=".length) : DEFAULT_TAGS[target] || "";
   const modelsArg = args.find((a) => a.startsWith("--models="));
@@ -985,6 +1030,8 @@ async function main() {
     : DEFAULT_MODELS;
 
   const BUILDERS = {
+    "dossier-review-a": () => buildDossierReviewPrompt("A"),
+    "dossier-review-b": () => buildDossierReviewPrompt("B"),
     "self-answer-type": buildSelfAnswerTypePrompt,
     "labelling-rule": buildLabellingRulePrompt,
     "dossier-rewrite": buildDossierRewritePrompt,

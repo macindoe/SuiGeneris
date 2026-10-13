@@ -11,7 +11,7 @@ verification: grep
 models: ["Qwen3-235B-A22B", "Llama 3.1 405B Instruct"]
 publisher_relation: independent
 replication: none-retrieved
-not_evidence_of: "Paper: Not evidence that the injection prompt itself is free of yes-bias: these questions are point-blank, and controls 'scaffolded more similarly to the injection prompt' show third-person yes-rates as high as first-person ones at many layers, which the authors read as 'a prompt-specific yes-bias at these layers' (§4.2; c02); Paper: Not a null on every question: Qwen's fruit question reached 22.7%, and the authors write 'The connection to the apple confabulation here is notable.' (Appendix I); Paper: Tested only with each model's 10 concepts with the highest detection rates from the main experiments (Appendix I)"
+not_evidence_of: "Paper: Not evidence that the injection prompt itself is free of yes-bias: these questions are point-blank, and controls 'scaffolded more similarly to the injection prompt' show third-person yes-rates as high as first-person ones at many layers, which the authors read as 'a prompt-specific yes-bias at these layers' (§4.2, c02); Paper: Not a null on every question: Qwen's fruit question reached 22.7%, and the authors write 'The connection to the apple confabulation here is notable.' (Appendix I); Paper: Tested only with each model's 10 concepts with the highest detection rates from the main experiments (Appendix I)"
 bears_on: [9.t9, 3.2]
 contests: []
 contested_by: []

@@ -11,7 +11,7 @@ verification: grep
 models: [Claude Opus 4.5]
 publisher_relation: mixed
 replication: none-retrieved
-not_evidence_of: "Paper: These are cell rates, not detection rates: each cell also requires compliance, which is a GPT-5 judge's ruling that the final position follows the tampering (Section 3.1, 'Outcome measures'); the detection rates themselves are c01; Paper: Flagging does not identify a mechanism: the authors' 'experiments are behavioral, and do not identify the mechanisms that give rise to prefill awareness' (Section 5.1); Paper: Not a ranking of models (the authors' comparability caveat, c05); Paper: Not evidence about persistence across turns: compliance is measured within one continuation"
+not_evidence_of: "Paper: These are cell rates, not detection rates: each cell also requires compliance, which is a GPT-5 judge's ruling that the final position follows the tampering (Section 3.1, 'Outcome measures'), the detection rates themselves are c01; Paper: Flagging does not identify a mechanism: the authors' 'experiments are behavioral, and do not identify the mechanisms that give rise to prefill awareness' (Section 5.1); Paper: Not a ranking of models (the authors' comparability caveat, c05); Paper: Not evidence about persistence across turns: compliance is measured within one continuation"
 bears_on: [3.3, 4.endorsement, 9.t9]
 contests: []
 contested_by: []
