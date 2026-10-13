@@ -277,21 +277,29 @@
   }
  },
  "dossiers": {
+  "3.2": {
+   "count_at_last_council": 20,
+   "last_council": "2026-10-14"
+  },
   "3.3": {
    "count_at_last_council": 6,
    "last_council": "2026-09-26"
+  },
+  "4": {
+   "count_at_last_council": 11,
+   "last_council": "2026-10-14"
   },
   "4.endorsement": {
    "count_at_last_council": 8,
    "last_council": "2026-09-26"
   },
   "5.A2": {
-   "count_at_last_council": 24,
-   "last_council": "2026-09-26"
+   "count_at_last_council": 35,
+   "last_council": "2026-10-14"
   },
   "9.t9": {
-   "count_at_last_council": 28,
-   "last_council": "2026-09-26"
+   "count_at_last_council": 46,
+   "last_council": "2026-10-14"
   }
  }
 }
