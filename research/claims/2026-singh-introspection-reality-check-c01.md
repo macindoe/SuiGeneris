@@ -15,7 +15,7 @@ not_evidence_of: "Paper: Not evidence that these models lack introspection or pr
 bears_on: [9.t9, 5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree | google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree | google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14 (boundary case Q5)", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: outside the scored-self-answer class (council 6 of 10 out, 4 in): the truth is a label derived from a probe on the model, not a fact the experimenters imposed or hold independently of it; type stays behavioural"}
 added: 2026-09-25
 changed: 2026-10-06
 ---
@@ -32,3 +32,5 @@ REWRITE 2026-10-06
 - Clauses 1 and 2 kept unchanged (GPT KEEP; checker OK).
 - Clause 3: experience part deleted ('experience, feelings, or moral status'). The paper states no limit about experience, consciousness or moral status anywhere (script search of text.txt, 6 Oct 2026: the only such words are in reference titles and in App. C.2, where the authors report that another paper disclaims the conscious-awareness reading); council 8 of 9 to strip; rule R2. The design limit in the same clause (Claude models not tested) kept as a Paper: clause, reworded only to drop the deleted half.
 - kind: measurement (in-context accuracy on permuted-label probe directions).
+
+BOUNDARY 2026-10-14 (council round 4, Q5; Ben's decision): this claim was one of the brief's test cases for the new evidence type scored-self-answer. Six seats put it outside the class because the ground truth is probe-derived (read from the model) rather than imposed by the experimenters or held independently of the answer; four put it inside. Ben: outside. Type unchanged.
