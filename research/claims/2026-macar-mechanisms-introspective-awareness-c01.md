@@ -2,7 +2,7 @@
 id: 2026-macar-mechanisms-introspective-awareness-c01
 statement: "Under concept injection at layer 37 and strength 4, Gemma3-27B instruct reports detecting an injected thought on 38.2% of injection trials and on 0.0% of control trials, with a 22.3% introspection rate (detection plus correct identification) and 64.8% forced identification."
 bucket: narrowing
-evidence_type: interpretability
+evidence_type: scored-self-answer
 kind: measurement
 source: 2026-macar-mechanisms-introspective-awareness
 locator: "§3.3 The Role of Post-Training, Figure 4 middle (setting from §2; prompt variants §3.1)"
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: The authors state that their results 'should not be int
 bears_on: [9.t9, 5.A2, 3.2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-28
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 Concept vectors are computed as in Lindsey 2025 (last-token residual activation on "Tell me about {c}" minus a 100-word baseline mean) for 500 concepts and injected with the Lindsey prompt, 50% injection framing, temperature 1 (§2, Appendices A, B.1). L=37, alpha=4 was chosen as the setting with the highest overall introspection rate for Gemma3-27B (§2). Detection rate varies widely by concept: 55 concepts at 90% or more, 63 at exactly 0% (Appendix B.2). Across seven prompt variants, the original, alternative and skeptical prompts keep 0% false positives in both Gemma3-27B and Qwen3-235B, while the "hints" and "unprompted" variants show higher false positive and lower true positive rates (§3.1). The authors call this "moderate" detection; "behaviorally robust" in the abstract is their summary of the zero false-positive result across prompts.
@@ -30,3 +30,5 @@ REWRITE 2026-10-06
 - Clause reworded, not removed: the experience clause is now in the paper's own words with its locator ('should not be interpreted as evidence of subjective experience or consciousness in LLMs', Ethics Statement), under the experience-exclusion rule adopted by the council (9 of 9) and Ben. The paper states this limit, so it stays as `Paper:`.
 - Other clauses kept as GPT proposed (KEEP) and the checker confirmed; the prompt-manipulation clause is a design fact (checker: PARTLY, fits the `Paper:` design-and-limitations label). Steering framework sentence kept (R3).
 - kind: measurement (detection, false-positive and identification rates under a stated setting).
+
+EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): interpretability to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged.

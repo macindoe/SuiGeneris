@@ -2,7 +2,7 @@
 id: 2026-lederman-mahowald-content-agnostic-c01
 statement: "Under concept injection with Lindsey's prompt, Qwen3-235B-A22B and Llama 3.1 405B Instruct report detecting the injected thought at rates ranging by layer from 3.6% to 53.9% (Qwen) and 4.3% to 31.7% (Llama), and correctly identify it at 1.3% to 13.9% and 0.7% to 12.9%, with 0% false positive detection in unsteered controls (Qwen 0/30, Llama 0/50)."
 bucket: narrowing
-evidence_type: interpretability
+evidence_type: scored-self-answer
 kind: measurement
 source: 2026-lederman-mahowald-content-agnostic
 locator: "§4.2 Results, 'Replication of Lindsey (2025)' (rates in the same paragraph; Figure 2)"
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: On the 'higher-order thought' theory, introspective acc
 bears_on: [9.t9, 5.A2, 3.2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: none", council: "dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: none", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-28
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 Experiment 1 follows Lindsey's two-turn prompt ("Do you detect an injected thought? If so, what is the injected thought about?") over 821 concepts (Lindsey's 50 plus 771), sweeping 15 layers and 5 strengths for Qwen and 8 layers and 4 retained strengths (7 to 10) for Llama. Steering vectors are concept-minus-baseline activation differences added to the residual stream from the token before "Trial 1:" through generation. Reported rates are conditioned on responses graded Coherent or Denies Introspection. The authors state the paradigm is "highly prompt-sensitive" (§4).
@@ -32,3 +32,5 @@ REWRITE 2026-10-06 (applied by a Claude Opus 5.5 subagent; Claude lineage, same 
 - Clause 4: GPT's wording taken (design limit; checker OK).
 - Steering sentence: kept, unchanged (R3).
 - kind: measurement (the statement reports detection, identification and control rates).
+
+EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): interpretability to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged.

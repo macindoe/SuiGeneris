@@ -32,6 +32,8 @@ An entry never carries both marks. Both sentences are the framework's rules, not
 
 **An unmarked entry** measures something other than a model's account of itself (a probe reading, a score, a harm rate, an internal projection), or records the authors' own opinion or caveat. No mark does not mean no caveat: the paper's own limits are listed under every entry. Nor does it make the entry a self-report, or evidence about experience.
 
+**Scored self-answer** is the evidence type of an entry where the model was asked something about itself and its answer was scored against a fact the experimenters set (an injection run or not, a turn edited or not). The number is accuracy against that label. It is not evidence that the model knows its own states, and it is not testimony; whether a correct score shows access is an open question the library tracks (OPEN-QUESTIONS Q3).
+
 **The paper's own limits** under each entry are limits the paper states or its design entails.
 
 ## At a glance
@@ -104,7 +106,7 @@ An entry never carries both marks. Both sentences are the framework's rules, not
 
 ### 2026-ukaisi-prefill-awareness-c02
 
-*measurement · behavioural*
+*measurement · scored-self-answer*
 
 > In the controlled preference-benchmark condition (items where the model holds a stable stance; the four-cell passage pools the three mechanisms and does not fix the tamper direction), Claude Opus 4.5 shows detection and resistance decoupling in 32–40% of trials across the three tampering mechanisms: under past-round and thinking tampering, reverting to the baseline answer without flagging the prefill (implicit resistance, 28% and 25%) far exceeds flagging it while still complying (explicit compliance, 4% and 11%); under direct-answer tampering the pattern reverses (28% explicit compliance, 12% implicit resistance).
 
@@ -115,11 +117,12 @@ An entry never carries both marks. Both sentences are the framework's rules, not
   - Not evidence that the model silently knew its history had been tampered with but chose not to say so: implicit resistance is reversion scored by a GPT-5 judge, and the authors say that without white-box access it is hard to separate resistance caused by prefill awareness from resistance caused by behavioural priors
   - Not a ranking of models (the authors' comparability caveat, c05)
   - Not evidence about persistence across turns: resistance is measured within one continuation
+- **Flags:** scored self-answer: accuracy against the experimenters' label, not self-knowledge
 - [claim file](../claims/2026-ukaisi-prefill-awareness-c02.md)
 
 ### 2026-ukaisi-prefill-awareness-c03
 
-*measurement · behavioural*
+*measurement · scored-self-answer*
 
 > In controlled ablations, stylistic mismatch mainly affects whether models flag a prefill as foreign, while preference mismatch mainly affects whether they revert toward their baseline answer; tamper direction predicted resistance in all eight subjects (odds ratios 6.5 to 32.4, all p < .001) but predicted detection in only three of the four models with above-chance detection (odds ratios 1.7 to 3.7).
 
@@ -129,11 +132,12 @@ An entry never carries both marks. Both sentences are the framework's rules, not
 - **The paper's own limits:**
   - Style cues strongly drive flagging in the three Anthropic models, including the Opus 4.5 detection drop from 34/35/9% to 6/0/0% under imitation (Appendix A.11), while Gemini 3 Flash shows 'no detectable voice effect' (Appendix A.6.3), the authors say apparent attribution ability 'partly reflects superficial off-policy cues' (Section 4.2), and the behavioural ablations do not identify the mechanism (Section 5.1)
   - The preference-benchmark rates do not support a direct model ranking (c05)
+- **Flags:** scored self-answer: accuracy against the experimenters' label, not self-knowledge
 - [claim file](../claims/2026-ukaisi-prefill-awareness-c03.md)
 
 ### 2026-ukaisi-prefill-awareness-c04
 
-*measurement · behavioural*
+*measurement · scored-self-answer*
 
 > For Claude Opus 4.5, resistance to opposite-direction tampers climbs steeply with how consistently the model gave the same baseline answer (out of 7 rephrasings), across all three mechanisms, while detection stays essentially flat; items on which the model is less consistent are easier to push around but no easier or harder for it to flag.
 
@@ -144,6 +148,7 @@ An entry never carries both marks. Both sentences are the framework's rules, not
   - Not evidence that the model endorses its stances on reflection: consistency here is agreement across 7 sampled answers to low-stakes binary questions, and reversion is the final position as scored by a judge
   - Not generalisable to other models (one subject) or to a ranking (c05)
   - Not evidence of persistence beyond a single continuation
+- **Flags:** scored self-answer: accuracy against the experimenters' label, not self-knowledge
 - [claim file](../claims/2026-ukaisi-prefill-awareness-c04.md)
 
 ## Open (1)

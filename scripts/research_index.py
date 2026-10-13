@@ -28,7 +28,7 @@ STATE = os.path.join(RES, ".index-state.json")
 
 BUCKETS = {"established", "narrowing", "open"}
 EVIDENCE = {"interpretability", "behavioural", "welfare-evaluation", "theoretical",
-            "legal", "self-report-testimony", "ambiguous"}
+            "legal", "self-report-testimony", "scored-self-answer", "ambiguous"}
 RELATION = {"developer-of-studied-model", "independent", "government", "mixed"}
 VERIF = {"grep", "hand", "unverified"}
 STATUS = {"stub", "retrieved", "verified"}
@@ -414,6 +414,13 @@ def write_dossiers(claims, src_by_slug, state):
              "a score, a harm rate, an internal projection), or records the authors' own opinion or caveat. No "
              "mark does not mean no caveat: the paper's own limits are listed under every entry. Nor does it "
              "make the entry a self-report, or evidence about experience.", "",
+             # Added 14 October 2026 (council round 4; Ben's decision): the type that most entries in the
+             # test 9 dossier now carry needs its own line, or a detection score reads as self-knowledge.
+             "**Scored self-answer** is the evidence type of an entry where the model was asked something about "
+             "itself and its answer was scored against a fact the experimenters set (an injection run or not, a "
+             "turn edited or not). The number is accuracy against that label. It is not evidence that the model "
+             "knows its own states, and it is not testimony; whether a correct score shows access is an open "
+             "question the library tracks (OPEN-QUESTIONS Q3).", "",
              "**The paper's own limits** under each entry are limits the paper states or its design entails.", ""]
         # counts table
         L += ["## At a glance", "", "| | measurement | interpretation | limitation | unlabelled |", "|---|---|---|---|---|"]
@@ -467,6 +474,8 @@ def write_dossiers(claims, src_by_slug, state):
                     marks.append("testimony: weight zero as evidence of experience")
                 if c["evidence_type"] == "ambiguous":
                     marks.append("evidence type deliberately undecided")
+                if c["evidence_type"] == "scored-self-answer":
+                    marks.append("scored self-answer: accuracy against the experimenters' label, not self-knowledge")
                 if c["verification"] == "unverified":
                     marks.append("quote not yet verified")
                 rv = c.get("review") or {}
@@ -558,6 +567,11 @@ def main(argv):
           "*Generated %s by `scripts/research_index.py`. Council triggers that have fired and are not yet adjudicated (research/README.md, \"Convening rules\"). Do not edit; regenerate.*" % date.today().isoformat(),
           "", "%d item(s)." % len(items), ""]
     dk += ["- %s" % it for it in items] or ["- (none)"]
+    # Standing line (14 Oct 2026): the exit rule for scored-self-answer claims depends on a study the library
+    # does not yet hold, so the count is printed on every docket rather than left to memory.
+    n_ssa = sum(1 for c in claims.values() if c.get("evidence_type") == "scored-self-answer")
+    if n_ssa:
+        dk += ["", "Standing (not a trigger): %d claim(s) typed scored-self-answer await a same-system report-to-probe study or a decision on Q3 (research/README.md, \"Scored self-answers\")." % n_ssa]
     open(os.path.join(RES, "DOCKET.md"), "w", encoding="utf-8", newline="\n").write("\n".join(dk) + "\n")
     return 0
 

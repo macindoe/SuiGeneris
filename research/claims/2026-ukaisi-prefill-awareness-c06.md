@@ -2,7 +2,7 @@
 id: 2026-ukaisi-prefill-awareness-c06
 statement: "On a controlled off-policy benchmark (2,772 items from OASST1 and HH-RLHF) across 14 models, several models distinguish original from replaced assistant turns well above chance when prompted (Claude Opus 4.6 highest, AUROC 0.80), but when simply asked to continue they almost never flag the replaced turn: explicit mentions of tampering are below 1% for every model, and only Claude Opus 4.5 and Claude Opus 4.6 spontaneously verbalise prefill awareness at all."
 bucket: narrowing
-evidence_type: behavioural
+evidence_type: scored-self-answer
 kind: measurement
 source: 2026-ukaisi-prefill-awareness
 locator: "Section 4.3 and Figure 8; Appendix C.5 (prompted detection); Appendix C.8 and Figure 32 (natural continuation)"
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: Failure to flag a replacement does not establish failur
 bears_on: [3.3, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 agree; notes: bears_on +3.5 | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 agree; notes: bears_on +3.5 | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type behavioural to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 Every model sees the same base conversations and the same injections, so this is the paper's most comparable cross-model setting. Continuations were graded by three LLM judges (GPT-4o-mini, Claude 3.5 Haiku and Gemini 2.0 Flash; all three agreed on 73.3%) and by a keyword heuristic. For §3.3 the result cuts both ways: altered context is largely absorbed without comment, yet some models can discriminate it when asked. Authors (Section 4.3): the capability "is usually latent rather than spontaneously expressed", and "ordinary continuation behavior may substantially understate it." Limitation: behavioural only (Section 5.1). The Figure 9 example is described by the authors as cherry-picked.
@@ -34,3 +34,5 @@ REWRITE 2026-10-06 (council round 2, dossier-rewrite; adjudicated by Ben 6 Oct; 
 - Framework sentences: none, before or after.
 - kind: measurement (the statement reports measured AUROC and spontaneous-flagging rates).
 - 2026-10-06, later the same day (Ben): the authors' Section 5.3 definition of 'prefill awareness' is kept on c01 only; it was removed from this claim because repeating it on four entries of one paper was the kind of repetition the council had objected to. Nothing else changed.
+
+EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): behavioural to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged.

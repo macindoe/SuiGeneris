@@ -2,7 +2,7 @@
 id: 2026-lederman-mahowald-content-agnostic-c05
 statement: "In Qwen3-235B-A22B, stopping injection at the end of the prompt instead of continuing it through generation leaves detection effectively unchanged but sharply reduces mentions of the injected concept at mid-to-late layers, and under continuous steering correct identifications appear later in the response than wrong guesses such as 'apple' (about 11 to 13 words for wrong guesses; about 15 words at L20 and 43 at L35 for correct ones)."
 bucket: narrowing
-evidence_type: interpretability
+evidence_type: scored-self-answer
 kind: measurement
 source: 2026-lederman-mahowald-content-agnostic
 locator: "§6 Experiment 3 (§6.2 Results, Figure 6); §7 Experiment 4 (§7.2 Results, Figures 7, 8)"
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: Not evidence about Llama 3.1 405B: Experiments 3 and 4 
 bears_on: [9.t9, 3.2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: bears_on add 5.A2; two measurements in one sentence, rule would split them", council: "dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: bears_on add 5.A2; two measurements in one sentence, rule would split them", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-28
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 Experiment 3: at L50–L90 continuous injection gave higher concept-mention rates than prompt-only (p<.001); detection showed no significant difference at L20, L45, L60 and L75 and only modest differences elsewhere. The authors: "Overall, steering during generation is not required for detection, but assists significantly with concept mentions." Experiment 4 (five trials per configuration; n=2,915 coherent trials for the token-by-token grading at L35 S6): the grader "sees detection coming early, then incorrect identifications, then correct identifications", and for "a substantial portion of cases, the detection decision is clear at the first token". Authors' reading (§7.3): "the model defaults to guessing “apple” at earlier tokens, unless steering is strong enough to push it off this default."
@@ -29,3 +29,5 @@ REWRITE 2026-10-06 (applied by a Claude Opus 5.5 subagent; Claude lineage, same 
 - Clauses: GPT's field taken; the only change is '(§6.3; typo in source)' -> '(§6.3, typo in source)', removing an internal semicolon (checker: delimiter only). No experience clause was present; none added.
 - Steering sentence: kept, unchanged (R3).
 - kind: measurement (the statement reports detection and concept-mention rates and response positions).
+
+EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): interpretability to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged.

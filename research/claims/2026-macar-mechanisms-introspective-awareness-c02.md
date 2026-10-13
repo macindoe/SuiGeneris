@@ -2,7 +2,7 @@
 id: 2026-macar-mechanisms-introspective-awareness-c02
 statement: "Neither base model tested discriminates injected from control trials (Gemma3-27B base at layer 37: 42.3% false positives against 39.5%–41.7% true positives for strengths ≤4; OLMo-3.1-32B base: 16.4% false positives against 0.1% true positives), and across OLMo-3.1-32B's training pipeline the base and SFT checkpoints show high false positive rates that fall to 0% only after DPO, while OLMo's detection rate also falls, to 2.9% after DPO and 0.9% in the final instruct checkpoint."
 bucket: narrowing
-evidence_type: interpretability
+evidence_type: scored-self-answer
 kind: measurement
 source: 2026-macar-mechanisms-introspective-awareness
 locator: "§3.3 The Role of Post-Training, Figure 4 left; Appendix C, Figure 21"
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: Not evidence that DPO produces detection: in OLMo-3.1-3
 bears_on: [9.t9, 5.A2, 3.2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-28
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 The authors summarise: "The capability is absent in base models, emerges from post-training" (§1), and for OLMo: "base models cannot discriminate, post-training eliminates false positives, but the same stages that improve reliability may also suppress true detection through refusal-like mechanisms" (Appendix C). Full OLMo figures (Appendix C, aggregated over five layers and four strengths): base 0.1% TPR / 16.4% FPR; SFT 14.9% / 22.5%; DPO 2.9% / 0%; instruct 0.9% TPR / 0% FPR, 0.3% introspection rate. Note that the §3.3 prose says OLMo base shows "high FPR" while Appendix C gives near-zero detection for it, so OLMo base does not repeat Gemma base's pattern of high detection with equal false positives; what both share is no discrimination. The mechanistic companion to this result (the gate feature's inverted-V pattern is "substantially weaker in the base model", and the base model shows no L45 localisation) is in c03.
@@ -37,3 +37,5 @@ REWRITE 2026-10-06
 - Clause reworded under the experience-exclusion rule (council 9 of 9; Ben): "Not evidence of experience, or that training instilled anything experiential" became the paper's own Ethics Statement words with locator. The tail "or that training instilled anything experiential" is not stated by the paper and is deleted, not replaced.
 - Other clauses kept (GPT KEEP; checker confirmed SFT 14.9%/22.5%, DPO 2.9%, and the unresolved evidence-carrier question, §8.1; "Gemma's intermediate checkpoints were not tested" is a design fact). Steering framework sentence kept (R3).
 - kind: measurement (true and false positive rates across base models and training checkpoints).
+
+EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): interpretability to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged.

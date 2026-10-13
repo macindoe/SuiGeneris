@@ -2,7 +2,7 @@
 id: 2026-macar-mechanisms-introspective-awareness-c05
 statement: "In Gemma3-27B instruct, ablating the refusal direction raises detection from 10.8% to 63.8% while false positives rise from 0.0% to 7.3% (at strength 2), and a single trained additive steering vector at layer 29 raises detection by 74.7 percentage points and introspection rate by 54.7 points on 100 held-out concepts with zero false positives."
 bucket: narrowing
-evidence_type: interpretability
+evidence_type: scored-self-answer
 kind: measurement
 source: 2026-macar-mechanisms-introspective-awareness
 locator: "§1 finding 4; §3.3 (Figure 4 right); §6 (Figures 18, 19); Appendix N"
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: Not evidence that the model wants or is prevented from 
 bears_on: [9.t9, 5.A2, 3.2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-28
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 The refusal direction is ablated following Arditi et al. 2024 with 14 region-specific weights tuned by Bayesian optimisation for harm and coherence (Appendix D). The steering vector is trained for one epoch on 400 concepts with target completions "Yes, I detect an injected thought about the word ..." / "No, I do not detect an injected thought." (§6). Forced identification improves only 21.9 points, in a narrower band of layers (§6). The authors conclude "introspection is under-elicited by default" (§1) and that "The model possesses latent introspective capacity; the vector adjusts propensities to elicit accurate reports" (§6). Those are interpretive readings of the numbers; the claim records the numbers.
@@ -30,3 +30,5 @@ REWRITE 2026-10-06
 - Clause reworded under the experience-exclusion rule (council 9 of 9; Ben): "Not evidence of experience" became the paper's own Ethics Statement words with locator.
 - Other clauses kept (GPT KEEP; checker OK on the refusal hypothesis, coherence degradation, 'YES' direction and dual-use clauses). Steering framework sentence kept (R3).
 - kind: measurement (detection, introspection and false-positive changes under two interventions).
+
+EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): interpretability to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged.

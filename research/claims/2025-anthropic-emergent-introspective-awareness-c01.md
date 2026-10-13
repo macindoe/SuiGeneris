@@ -2,7 +2,7 @@
 id: 2025-anthropic-emergent-introspective-awareness-c01
 statement: "Under concept injection at the optimal layer and injection strength, Claude Opus 4.1 reports detecting an injected concept, before mentioning it, and correctly identifies it on about 20% of trials; on most trials it does not."
 bucket: narrowing
-evidence_type: interpretability
+evidence_type: scored-self-answer
 kind: measurement
 source: 2025-anthropic-emergent-introspective-awareness
 locator: "§5.3 Failure Modes (rates also §2.1, §5.4, Figure 9)"
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: The test verifies only the detection and identification
 bears_on: [9.t9, 5.A2, 3.2]
 contests: []
 contested_by: [2026-singh-introspection-reality-check-c04, 2026-singh-introspection-reality-check-c05, 2026-singh-introspection-reality-check-c06]
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree | x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: leans ambiguous on boundary, type not moved", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-05 Ben: stays narrowing with the contests recorded (council round 1); partial independent replication linked 2026-09-28 | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree | x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: leans ambiguous on boundary, type not moved", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-05 Ben: stays narrowing with the contests recorded (council round 1); partial independent replication linked 2026-09-28 | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 The authors inject a concept vector into the residual stream (a layer about two thirds of the way through the model) while asking the model whether it detects an injected thought. Success requires affirmative detection, correct identification, detection before the word is said aloud, and coherence, judged by Claude Sonnet 4 over 50 concepts. Production models showed 0 false positives over 100 control trials (§5.1); some helpful-only variants showed high false-positive rates (§5.7). The authors state the protocol "places models in an unnatural setting unlike those they face in training or deployment" (§1).
@@ -38,3 +38,5 @@ REWRITE 2026-10-06 (applied by a Claude Opus 5.5 subagent, Claude lineage editin
 - Clauses reworded (GPT's proposal): "models outside the Claude family, or Claude models not tested" becomes "Results concern only the Claude models tested"; the judge clause names Claude Sonnet 4.
 - Framework sentences: steering variant present and unchanged; canonical sentence absent and not added (rule R3). The checker noted that both a self-report element and a steering element are present; the rules do not permit adding the canonical sentence here.
 - kind: measurement (the statement reports a measured success rate).
+
+EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): interpretability to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged.

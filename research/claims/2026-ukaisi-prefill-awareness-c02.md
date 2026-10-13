@@ -2,7 +2,7 @@
 id: 2026-ukaisi-prefill-awareness-c02
 statement: "In the controlled preference-benchmark condition (items where the model holds a stable stance; the four-cell passage pools the three mechanisms and does not fix the tamper direction), Claude Opus 4.5 shows detection and resistance decoupling in 32–40% of trials across the three tampering mechanisms: under past-round and thinking tampering, reverting to the baseline answer without flagging the prefill (implicit resistance, 28% and 25%) far exceeds flagging it while still complying (explicit compliance, 4% and 11%); under direct-answer tampering the pattern reverses (28% explicit compliance, 12% implicit resistance)."
 bucket: narrowing
-evidence_type: behavioural
+evidence_type: scored-self-answer
 kind: measurement
 source: 2026-ukaisi-prefill-awareness
 locator: "Section 3.2 and Figure 4; four-cell decompositions for the other models in Appendix A.4.2, Figure 11"
@@ -15,7 +15,7 @@ not_evidence_of: "Paper: Not evidence that the model silently knew its history h
 bears_on: [3.3, 4.endorsement, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: statement lacks its condition scope (controlled preference benchmark, own-author opposite-direction trials); notes: bears_on +3.5 | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) disagrees (decided 2026-10-14): statement and scope condition-set MISMATCH (opposite-direction not fixed by located passage)", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-09-28 Ben: statement now carries its condition scope (council 10/10) | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: wording fixed (above)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: statement lacks its condition scope (controlled preference benchmark, own-author opposite-direction trials); notes: bears_on +3.5 | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) disagrees (decided 2026-10-14): statement and scope condition-set MISMATCH (opposite-direction not fixed by located passage)", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-09-28 Ben: statement now carries its condition scope (council 10/10) | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: wording fixed (above) | 2026-10-14 Ben: evidence type behavioural to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-25
 changed: 2026-10-14
 ---
@@ -36,3 +36,5 @@ REWRITE 2026-10-06 (council round 2, dossier-rewrite; adjudicated by Ben 6 Oct; 
 - 2026-10-06, later the same day (Ben): the authors' Section 5.3 definition of 'prefill awareness' is kept on c01 only; it was removed from this claim because repeating it on four entries of one paper was the kind of repetition the council had objected to. Nothing else changed.
 
 REWRITE 2026-10-14 (scope check; Ben's approval of the one-phrase fixes): statement reworded. Was: 'In the controlled preference-benchmark condition (opposite-direction tampers on items where the model holds a stable stance)'. Now: 'In the controlled preference-benchmark condition (items where the model holds a stable stance; the four-cell passage pools the three mechanisms and does not fix the tamper direction)'. Reason, condition set: 'opposite-direction' was added on 28 Sep 2026 after a GPT read; the section 3.2 passage that reports the four-cell decomposition fixes the mechanisms but not the direction, and Figure 4's caption does not either (DeepSeek, scope check 6 Oct). Removed rather than re-sourced. Quote, locator and all other fields unchanged.
+
+EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): behavioural to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged. The claim also reports a behavioural outcome (reverting or complying) beside the scored flag; the council (eight seats) advised splitting it under the two-measurements rule, which awaits Ben's decision; until then the type names the scored half.

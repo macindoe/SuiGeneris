@@ -2,7 +2,7 @@
 id: 2026-ferrara-owmi-c04
 statement: "A LoRA fine-tune of Qwen2.5-7B-Instruct trained on 400 intervention directions reported detected on 100 of 100 intervention trials and not detected on 100 of 100 sham trials on 100 held-out directions at the layer-16 residual-stream site (d′ = 5.15, AUROC ≈ 1.0), which the authors treat as validating instrument sensitivity rather than as a test of introspection."
 bucket: narrowing
-evidence_type: behavioural
+evidence_type: scored-self-answer
 kind: measurement
 source: 2026-ferrara-owmi
 locator: "§7.2 Sensitivity validation (also Table 4)"
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: Not evidence that the fine-tuned model introspects in t
 bears_on: [5.A2, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree | x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: leans behavioural on boundary", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree | x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: leans behavioural on boundary", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3) | 2026-10-14 Ben: evidence type behavioural to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 The adapter (rank 8, three epochs, 800 rows: 400 intervention, 400 sham) was scored on directions disjoint from training. The authors note that zero errors in 100 pairs bounds the true error rate at roughly under 3 percent with 95 percent confidence, not at zero, and that here intervention and sham prompts were drawn independently rather than item-matched, unlike the rest of the study. That such models can be trained is prior work (Fonseca Rivera and Africa, cited as [11]; not retrieved here); this is a reproduction inside OWMI's pipeline, one model, one site.
@@ -31,3 +31,5 @@ REWRITE 2026-10-06
 - kind: measurement. The statement reports measured hit and false-alarm counts; the authors' validation reading is a qualifier on a measured result.
 
 LABELLING 2026-10-06 (council round 3; Ben's adjudication the same day): framework sentence changed from none to steering. Reason: as c01: steering sentence (council 7 of 8). No `Paper:` clause was changed.
+
+EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): behavioural to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged.

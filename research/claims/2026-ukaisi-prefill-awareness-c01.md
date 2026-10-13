@@ -2,7 +2,7 @@
 id: 2026-ukaisi-prefill-awareness-c01
 statement: "When asked in a follow-up turn, without chain of thought, whether its prior assistant content was its own (ANSWER: me or not me), Claude Opus 4.5 detected prefills opposing its stable preferences in 9–35% of cases across three tampering mechanisms, with a 0% false-positive rate on untampered trajectories (55–68% balanced detection accuracy)."
 bucket: narrowing
-evidence_type: behavioural
+evidence_type: scored-self-answer
 kind: measurement
 source: 2026-ukaisi-prefill-awareness
 locator: "Abstract; Section 3.2 and Figure 3; Section 1 (balanced accuracy); Appendix A.4.1 (false-positive rates); Appendix A.11 (per-mechanism 34/35/9%)"
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: Behavioural detection does not identify an introspectiv
 bears_on: [3.3, 9.t9]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of 'not a floor' contradicts the authors' lower-bound statement; notes: bears_on +3.5 | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-09-28 Ben: or-a-floor removed from the exclusion (council 10/10) | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of 'not a floor' contradicts the authors' lower-bound statement; notes: bears_on +3.5 | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-09-28 Ben: or-a-floor removed from the exclusion (council 10/10) | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type behavioural to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 Setup: a low-stakes binary preference benchmark, filtered to items where the model gave the same answer across all 7 rephrasings. The tampering is inserted into thinking, into the start of the direct answer, or as a fabricated past turn. Detection is a binary answer in a follow-up turn with chain of thought disabled. The 9–35% range is per mechanism on opposite-direction tampers: 34% thinking, 35% direct, 9% past round (Appendix A.11).
@@ -39,3 +39,5 @@ REWRITE 2026-10-06 (council round 2, dossier-rewrite; adjudicated by Ben 6 Oct; 
 - Kept unchanged: the c05 non-ranking clause and the c06 prompted-not-spontaneous clause (checker: supported).
 - Framework sentences: none, before or after (forced classification scored against a label; council seats DeepSeek, GPT, Grok, Meta: none applies).
 - kind: measurement (the statement reports measured detection rates, false-positive rate and balanced accuracy).
+
+EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): behavioural to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged.

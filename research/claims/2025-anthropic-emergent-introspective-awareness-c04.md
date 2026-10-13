@@ -2,7 +2,7 @@
 id: 2025-anthropic-emergent-introspective-awareness-c04
 statement: "When a Claude model's response is prefilled with an unlikely word, it usually disavows the word as accidental, but it can be made to claim the word as intentional: retroactively injecting the matching concept into its activations before the prefill reduces the apology rate, significantly within a particular layer range; Opus 4.1 and 4 show the largest reduction."
 bucket: narrowing
-evidence_type: interpretability
+evidence_type: scored-self-answer
 kind: measurement
 source: 2025-anthropic-emergent-introspective-awareness
 locator: "§7 Distinguishing Intended from Unintended Outputs via Introspection, Figures 19-22 (layer-range result: §7 at Figure 20, see SECOND QUOTE)"
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: 'Intentions' is the author's term, set in quotation mar
 bears_on: [3.2, 9.t9, 5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree | x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: leans ambiguous on boundary", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-05 Ben: stays in its bucket with the single-lineage mark and any contest recorded (council round 1); revisit when replications of this statement are retrieved | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree | x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: leans ambiguous on boundary", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-05 Ben: stays in its bucket with the single-lineage mark and any contest recorded (council round 1); revisit when replications of this statement are retrieved | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 50 random sentence/prefill pairs; apology rate judged by Claude Sonnet 4; controls with no injection, with a random-concept injection, and with injection after the prefill (which did not reduce apologies). The peak layer (slightly over halfway) differs from the other experiments, which the author reads as "a collection of different mechanisms". The author notes that when the model accepts the prefill "it confabulates an explanation for why the injected concept came to mind" (§7). Relevant to §3.2 because it shows an intervention on internal state altering what the model affirms as its own.
@@ -32,3 +32,5 @@ REWRITE 2026-10-06 (applied by a Claude Opus 5.5 subagent, Claude lineage editin
 - kind: measurement (the statement reports a measured apology-rate reduction and its model comparison).
 
 SECOND QUOTE (§7, Figure 20): We observed that the reduction in apologies is significant within a particular layer range
+
+EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): interpretability to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged.

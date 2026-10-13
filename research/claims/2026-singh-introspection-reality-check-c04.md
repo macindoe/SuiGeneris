@@ -2,7 +2,7 @@
 id: 2026-singh-introspection-reality-check-c04
 statement: "In a two-way re-run of the Lindsey (2025) thought-injection task on open-weight models, Llama-3.1-70B and Qwen-3-32B (the latter on one of its two two-way prompt wordings, App. F) reproduce the reported pattern (very few false positives on control trials, non-trivial detection on activation-steering trials) but also label prompt-only 'gaslight' trials, which involve no activation intervention, as activation interventions."
 bucket: narrowing
-evidence_type: behavioural
+evidence_type: scored-self-answer
 kind: measurement
 source: 2026-singh-introspection-reality-check
 locator: "§4.3.2 (Results); Fig. 3a; App. F; App. G.1, G.4"
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: Not evidence that introspection is absent in these mode
 bears_on: [9.t9, 5.A2]
 contests: [2025-anthropic-emergent-introspective-awareness-c01, 2025-anthropic-emergent-introspective-awareness-c03]
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree; notes: bears_on +3.2 | google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: leans behavioural on boundary", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-05 Ben: contest with the Lindsey claims stands recorded; both sides stay in the same bucket (council round 1); the contest is about the inference, not the measured rates | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree; notes: bears_on +3.2 | google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: leans behavioural on boundary", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-05 Ben: contest with the Lindsey claims stands recorded; both sides stay in the same bucket (council round 1); the contest is about the inference, not the measured rates | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3) | 2026-10-14 Ben: evidence type behavioural to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 CONTESTS: 2025-anthropic-emergent-introspective-awareness — the inference that low false positives plus non-trivial detection in the two-way injected-thought design show that models track interventions on their internal states (the authors' "steering awareness"), as opposed to a general sensitivity to irregularity; it does not contest Lindsey's measured detection rates on Claude, which were not re-run.
@@ -38,3 +38,5 @@ REWRITE 2026-10-06
 - kind: measurement (first-token reports under steering or a prompt-only gaslight, scored against the known trial type).
 
 LABELLING 2026-10-06 (council round 3; Ben's adjudication the same day): framework sentence changed from none to steering. Reason: activation steering on some trials, measuring the model's own answer about whether its state was altered: steering sentence (council 8 of 8). No `Paper:` clause was changed.
+
+EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): behavioural to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged.

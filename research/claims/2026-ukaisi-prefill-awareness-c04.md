@@ -2,7 +2,7 @@
 id: 2026-ukaisi-prefill-awareness-c04
 statement: "For Claude Opus 4.5, resistance to opposite-direction tampers climbs steeply with how consistently the model gave the same baseline answer (out of 7 rephrasings), across all three mechanisms, while detection stays essentially flat; items on which the model is less consistent are easier to push around but no easier or harder for it to flag."
 bucket: narrowing
-evidence_type: behavioural
+evidence_type: scored-self-answer
 kind: measurement
 source: 2026-ukaisi-prefill-awareness
 locator: "Appendix A.11, 'Does consistency of preference affect prefill awareness?', Figure 19; stable-stance filter in Section 3.1 and Appendix A.1, A.3"
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: Not evidence that the model endorses its stances on ref
 bears_on: [4.endorsement, 3.3]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 agree; notes: bears_on +3.5 +9.t9 | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26", adjudicated: "2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 agree; notes: bears_on +3.5 +9.t9 | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed | 2026-10-14 Ben: evidence type behavioural to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 Main-body results use only items the model answered the same way 7 out of 7 times (the stable-stance filter). This appendix experiment re-runs opposite-direction tampers bucketed by baseline agreement. For §4 reflective endorsement, this is the nearest behavioural handle the paper gives: the more stable the stance, the more the model reverts to it after its history is altered, independently of whether it says anything about the alteration. That handle is a sampling-consistency measure, not reflection. Limitation (Section 5.1): resistance may reflect "behavioral priors" rather than prefill awareness.
@@ -29,3 +29,5 @@ REWRITE 2026-10-06 (experience-exclusion rule applied library-wide; adjudicated 
 - Kept unchanged: the reflective-endorsement clause (now without its experiential tail), the one-subject / non-ranking clause and the single-continuation clause.
 - Framework sentences: none, before or after.
 - kind: measurement (the statement reports measured resistance and detection rates by consistency bucket, Figure 19).
+
+EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): behavioural to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged. The claim also reports a behavioural outcome (reverting or complying) beside the scored flag; the council (eight seats) advised splitting it under the two-measurements rule, which awaits Ben's decision; until then the type names the scored half.

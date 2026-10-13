@@ -2,7 +2,7 @@
 id: 2026-lederman-mahowald-content-agnostic-c03
 statement: "When Qwen3-235B-A22B and Llama 3.1 405B Instruct report detecting an injection but name the wrong concept, the wrong guess is most often 'apple' (74.8% of Qwen's 4,733 wrong identifications; 21.3% of Llama's), and wrong guesses are more concrete and more positive than the injected concepts, which the authors take to show that wrong guesses are not related in content to the injection."
 bucket: narrowing
-evidence_type: interpretability
+evidence_type: scored-self-answer
 kind: measurement
 source: 2026-lederman-mahowald-content-agnostic
 locator: "§4.2 Results, 'Models love apples.' and 'Confabulations are lexically more concrete, more positive, and less arousing'; §4.3 Discussion; Appendices K, L"
@@ -15,9 +15,9 @@ not_evidence_of: "Paper: The wrong-guess finding does not establish that correct
 bears_on: [9.t9, 3.2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: bears_on add 5.A2", council: "dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: bears_on add 5.A2", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-28
-changed: 2026-10-06
+changed: 2026-10-14
 ---
 
 Wrong identifications are coherent detections that name a specific incorrect concept, excluding vague responses. Excluding apple guesses, Qwen's confabulations remain more concrete (M=4.06 vs. 3.70, d=0.30, p<.001) and more positive (M=6.59 vs. 5.79, d=0.56, p<.001) than the injected concepts; Llama (n=267) shows the same pattern and also higher word frequency. The authors: "If models’ mechanisms were sensitive to the content of injection, we would expect wrong guesses to be related in content to the injection" (§4.3).
@@ -34,3 +34,5 @@ REWRITE 2026-10-06 (applied by a Claude Opus 5.5 subagent; Claude lineage, same 
 - Clause 4: GPT's wording taken.
 - Steering sentence ADDED (R3(b), Ben's decision; all nine seats wanted at least the steering variant). The canonical sentence is NOT added (council split 5 to 4, 3 to 3 without the misattributed seats; Ben's decision). The earlier body line 'No framework clause' is superseded by this entry.
 - kind: measurement (the statement reports apple counts and the concreteness and valence comparison; the authors' content-unrelatedness reading is attributed to them).
+
+EVIDENCE TYPE 2026-10-14 (council round 4; Ben's decision the same day): interpretability to scored-self-answer. The model was asked about itself and its answer scored against a fact the experimenters set; the value records that design and decides nothing about self-access (research/README.md, "Scored self-answers"). Before this the type followed the extractor: the same design was interpretability in three papers and behavioural in two. Framework sentence unchanged.
