@@ -4,7 +4,7 @@ statement: "In the controlled preference-benchmark condition (items where the mo
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
-report_class: past-action
+report_class: past-state
 ground_truth: imposed
 source: 2026-ukaisi-prefill-awareness
 locator: "Section 3.2 and Figure 4; four-cell decompositions for the other models in Appendix A.4.2, Figure 11"

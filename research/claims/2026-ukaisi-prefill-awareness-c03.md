@@ -4,7 +4,7 @@ statement: "In controlled ablations, stylistic mismatch mainly affects whether m
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
-report_class: past-action
+report_class: past-state
 ground_truth: imposed
 source: 2026-ukaisi-prefill-awareness
 locator: "Abstract; Section 3.3 and Figure 5; Section 5.2; Appendix A.5 (foreign rephrasing); Appendix A.6 (regressions)"

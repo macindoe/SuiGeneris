@@ -32,8 +32,8 @@ EVIDENCE = {"interpretability", "behavioural", "welfare-evaluation", "theoretica
 RELATION = {"developer-of-studied-model", "independent", "government", "mixed"}
 # Pilot (15 Oct 2026): what the model was asked, and what its answer was scored against. research/README.md,
 # "Report class and ground truth". Optional; present on the test 9 dossier's claims first.
-REPORT_CLASS = {"provenance", "identity", "present-state", "knowledge-state", "past-action", "preference",
-                "experience", "point-blank-control", "third-person", "decision-basis", "none"}
+REPORT_CLASS = {"provenance", "identity", "present-state", "past-state", "preference",
+                "point-blank-control", "third-person", "external-state", "none"}
 GROUND_TRUTH = {"imposed", "independent-record", "known-fact", "probe-derived", "none"}
 VERIF = {"grep", "hand", "unverified"}
 STATUS = {"stub", "retrieved", "verified"}

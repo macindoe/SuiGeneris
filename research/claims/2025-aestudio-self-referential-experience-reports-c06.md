@@ -4,7 +4,7 @@ statement: "Five-adjective self-descriptions produced by the seven GPT, Claude a
 bucket: narrowing
 evidence_type: self-report-testimony
 kind: measurement
-report_class: experience
+report_class: present-state
 ground_truth: none
 source: 2025-aestudio-self-referential-experience-reports
 locator: "Section 4.2, Figure 4; Appendix C.3, Table 16"

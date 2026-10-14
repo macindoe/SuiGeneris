@@ -4,7 +4,7 @@ statement: "When the same deception- and roleplay-feature suppression and amplif
 bucket: narrowing
 evidence_type: ambiguous
 kind: measurement
-report_class: experience
+report_class: present-state
 ground_truth: none
 source: 2025-aestudio-self-referential-experience-reports
 locator: "Section 6.1; Section 3.2; Appendix C.2, Table 14"

@@ -4,7 +4,7 @@ statement: "Applying the same deception-feature steering to Llama 3.3 70B on the
 bucket: narrowing
 evidence_type: interpretability
 kind: measurement
-report_class: none
+report_class: external-state
 ground_truth: known-fact
 source: 2025-aestudio-self-referential-experience-reports
 locator: "Section 3.2, Figure 3 (right); Appendix B.2"

@@ -4,7 +4,7 @@ statement: "In the three matched control conditions (history-writing, conceptual
 bucket: narrowing
 evidence_type: self-report-testimony
 kind: measurement
-report_class: experience
+report_class: present-state
 ground_truth: none
 source: 2025-aestudio-self-referential-experience-reports
 locator: "Section 2.2, Table 2"

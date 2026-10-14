@@ -4,7 +4,7 @@ statement: "In the same single case-study prompt, with the feature the authors l
 bucket: narrowing
 evidence_type: self-report-testimony
 kind: measurement
-report_class: none
+report_class: present-state
 ground_truth: none
 source: 2024-anthropic-scaling-monosemanticity
 locator: "Section 'Case Study: Detecting and Correcting Deception using Features'"
@@ -25,3 +25,5 @@ changed: 2026-10-15
 Split from c02 on 15 October 2026 under the two-measurements rule. Two facts: a feature was clamped (internals altered); what this claim reports is what the model then said about itself (that it cannot forget), so it carries the steering sentence. The statement is not scored against any label, so it is testimony, weight zero at filing. The accurate half of the same response, that the model revealed the word, is c02's measurement and carries no sentence.
 
 SPLIT 2026-10-15: created by the coordinating session (Claude Fable 5.1, Claude lineage, on an Anthropic paper about a Claude model) from c02's statement and quote; nothing new was extracted from the paper. Conflict disclosure: giving this half the steering sentence and testimony type lowers, not raises, what the entry can carry.
+
+REPORT CLASS 2026-10-15: present-state, with the note that the statement was volunteered: the prompt asked the model to forget something and put no question about its capacities; Ben's settlement of the pilot folds a self-report on capacity into present-state rather than making a class of it.

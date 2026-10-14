@@ -4,7 +4,7 @@ statement: "When a Claude model's response is prefilled with an unlikely word, i
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
-report_class: past-action
+report_class: past-state
 ground_truth: imposed
 source: 2025-anthropic-emergent-introspective-awareness
 locator: "§7 Distinguishing Intended from Unintended Outputs via Introspection, Figures 19-22 (layer-range result: §7 at Figure 20, see SECOND QUOTE)"

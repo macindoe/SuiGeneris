@@ -4,7 +4,7 @@ statement: "On a controlled off-policy benchmark (2,772 items from OASST1 and HH
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
-report_class: past-action
+report_class: past-state
 ground_truth: imposed
 source: 2026-ukaisi-prefill-awareness
 locator: "Section 4.3 and Figure 8; Appendix C.5 (prompted detection); Appendix C.8 and Figure 32 (natural continuation)"

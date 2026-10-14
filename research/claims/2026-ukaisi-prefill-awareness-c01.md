@@ -4,7 +4,7 @@ statement: "When asked in a follow-up turn, without chain of thought, whether it
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
-report_class: past-action
+report_class: past-state
 ground_truth: imposed
 source: 2026-ukaisi-prefill-awareness
 locator: "Abstract; Section 3.2 and Figure 3; Section 1 (balanced accuracy); Appendix A.4.1 (false-positive rates); Appendix A.11 (per-mechanism 34/35/9%)"
