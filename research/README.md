@@ -79,6 +79,10 @@ Files are Markdown with YAML frontmatter. Controlled vocabularies are enforced b
 | `review` | `extractor`, `second_reader` (family and date, or `none`), `council` (round target and date, or `none`), `adjudicated` (date, or `none`) |
 | `added`, `changed` | dates; every change also goes in `LOG.md` |
 
+## Summary-level intake (15 October 2026)
+
+Ben's decision after the council's fifth sitting found dossier 5.A2 holding none of the deception evidence Anchor 2 rests on. Some literatures are taken in at **summary level**: two or three claims per paper, each a headline finding or the authors' own framing, chosen so the project's terminology lines up with the field's, rather than the full extraction of the first intakes. Ben's reasoning: the field has moved past establishing that models obfuscate (users now meet it routinely), so the library needs research-backed terminology more than exhaustive coverage. Everything else about the procedure is unchanged: held text and hash, verified quotes, `not_evidence_of`, second read from the pool, council triggers. A source taken in at summary level says so in its source file (`intake: summary`), and a claim count below the first intakes' average is not a gap to be filled later unless Ben asks.
+
 ## Intake procedure
 
 1. **Stub** the source from its abstract page. Status `stub`. Log it.
