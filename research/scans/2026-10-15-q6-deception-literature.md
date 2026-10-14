@@ -15,6 +15,11 @@
 
 ---
 
+**Corrections found at intake (15 Oct 2026), body below left verbatim:**
+- Entry B2 (Scheurer et al.): the arXiv v4 is dated 15 July 2024, not November 2023 (the 2023 date is the v1 listing).
+- Entry T1 (Shi et al.): the v2 text prints licence CC BY-NC-ND 4.0, not CC BY 4.0 (the scan took the licence from a search snippet, as it said).
+- Both found by the summary-level intake subagent against the held texts.
+
 ## Subagent report
 
 Scan date: 15 October 2026. Method: 6 web searches; 30 arXiv abstract pages and 19 arXiv full-text HTML pages downloaded with `curl` and stripped locally; 5 lab pages downloaded the same way (transformer-circuits.pub Scaling Monosemanticity; anthropic.com "Agentic Misalignment" and "Simple probes can catch sleeper agents" and "Reasoning models don't always say what they think"; alignment.anthropic.com "Agentic Misalignment in Summer 2026"); one Crossref API query (Park et al. journal details). Bibliographic fields (title, authors, date) are from each page's `citation_*` metadata. The date given is the arXiv `citation_date`, which for papers revised more than once may be the date of the latest version; the version read is given where known.
