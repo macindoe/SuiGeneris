@@ -430,6 +430,13 @@ def write_dossiers(claims, src_by_slug, state):
             row.append(str(sum(1 for c in sub if c.get("kind") not in KINDS)))
             L.append("| **%s** (%d) | %s |" % (bucket, len(sub), " | ".join(row)))
         L.append("")
+        # Hand-maintained notes (15 Oct 2026, council round 5): tensions between entries, lineage, and
+        # anything a reader needs that no single entry carries. Kept in research/dossier-notes/<key>.md,
+        # written by the maintainer or on his decision, dated inside the file; inserted here verbatim.
+        notes_path = os.path.join(RES, "dossier-notes", "%s.md" % key.replace(".", "-"))
+        if os.path.exists(notes_path):
+            with open(notes_path, encoding="utf-8") as fh:
+                L += ["## Notes maintained by hand", "", fh.read().strip(), ""]
         for bucket in ("established", "narrowing", "open"):
             sub = [c for c in uniq if c["bucket"] == bucket]
             if not sub:

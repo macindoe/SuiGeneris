@@ -15,7 +15,7 @@ not_evidence_of: "Paper: The authors give an alternative reading of their own st
 bears_on: [5.A2, 3.2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-10-15 (scope check) disagrees: scope scored-event labelled MISMATCH (hand-selected feature set), but reader retracts it in the same entry and proposes no change; counted as formal disagreement", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-10-15 (scope check) disagrees (decided 2026-10-15): scope scored-event labelled MISMATCH (hand-selected feature set), but reader retracts it in the same entry and proposes no change; counted as formal disagreement", council: none, adjudicated: "2026-10-15 Ben: reader's scope MISMATCH noted; the reader itself called it not fatal and proposed no change; no change"}
 added: 2026-10-15
 changed: 2026-10-15
 ---

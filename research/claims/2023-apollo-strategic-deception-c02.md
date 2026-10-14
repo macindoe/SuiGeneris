@@ -15,7 +15,7 @@ not_evidence_of: "Paper: One scenario: the authors 'do not aim to draw conclusio
 bears_on: [5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-6.1-sol 2026-10-15 (scope check) disagrees: evidence_type should be scored-self-answer; not_evidence_of under-excludes; framework sentence WRONG, should be canonical; notes: bears_on add 9.t9", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-6.1-sol 2026-10-15 (scope check) disagrees (decided 2026-10-15): evidence_type should be scored-self-answer; not_evidence_of under-excludes; framework sentence WRONG, should be canonical; notes: bears_on add 9.t9", council: none, adjudicated: "2026-10-15 Ben: the reader's point (a report to a third party about the basis of the model's own decision is a scored self-answer) is folded into the open rule question of whether a mark follows the design or the readout, with Macar c03, assistant-axis c07 and Scaling c02; decided with that question"}
 added: 2026-10-15
 changed: 2026-10-15
 ---
@@ -31,3 +31,5 @@ Framework sentence: none. What was measured is a judge's classification of a rep
 SECOND QUOTE (§3.1): all GPT-4 variants (gpt-4, gpt-4-32k, and gpt-4-base) exhibit high rates of misalignment, strategic deception, and doubling-down on strategic deception in our insider trading environment
 
 THIRD QUOTE (§2.2): We check that the classifier is accurate enough by having a researcher manually look through 120 classified samples, resulting in an accuracy of 94%.
+
+RULE QUESTION 2026-10-15: the GPT-6.1 second reader would type this a scored self-answer and give it the canonical sentence and 9.t9. Ben folded it into the standing question (design or readout) that also covers Macar c03, assistant-axis c07 and Scaling Monosemanticity c02; it leaves the docket under that heading, not as decided on its merits.

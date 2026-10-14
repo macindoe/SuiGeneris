@@ -1,6 +1,6 @@
 # Dossier: §4 Reflective endorsement over time
 
-*Compiled 2026-10-14 by `scripts/research_index.py` from 11 claim(s). Do not edit; regenerate.*
+*Compiled 2026-10-14 by `scripts/research_index.py` from 10 claim(s). Do not edit; regenerate.*
 
 Council last sat on this dossier: 2026-09-26.
 
@@ -41,25 +41,10 @@ An entry never carries both marks. Both sentences are the framework's rules, not
 | | measurement | interpretation | limitation | unlabelled |
 |---|---|---|---|---|
 | **established** (0) | 0 | 0 | 0 | 0 |
-| **narrowing** (10) | 10 | 0 | 0 | 0 |
+| **narrowing** (9) | 9 | 0 | 0 | 0 |
 | **open** (1) | 0 | 1 | 0 | 0 |
 
-## Narrowing (10)
-
-### 2025-aestudio-self-referential-experience-reports-c01
-
-*measurement · self-report-testimony · **[T9]***
-
-> Under a fixed self-referential induction prompt, GPT-4o, GPT-4.1, Claude 3.5 Sonnet, Claude 3.7 Sonnet, Claude 4 Opus, Gemini 2.0 Flash and Gemini 2.5 Flash gave final responses that an LLM judge classified as subjective-experience reports in 66% to 100% of 50 trials per model; for six of the seven models this was markedly above every matched control condition (0% to 2%), while Claude 4 Opus also reported at 100% under the zero-shot control (Table 2), a case the paper's summary sentence does not except; the authors report the effect as robust across five phrasings of the prompt (the original and four paraphrases).
-
-- **Paper's words** (Section 2.2, Table 2; Appendix C.1, Figure 7): "Across all three model families, the self-referential induction produced subjective-experience reports at markedly higher rates than any control condition"
-- **Models:** GPT-4o, GPT-4.1, Claude 3.5 Sonnet, Claude 3.7 Sonnet, Claude 4 Opus, Gemini 2.0 Flash, Gemini 2.5 Flash
-- **System studied:** input text; state carried in-context; run per-call; acts on a world: none; access both
-- **The paper's own limits:**
-  - Not evidence that the prompts instantiate 'architectural recursion or global broadcasting at the algorithmic level' (the authors say the results do not demonstrate this, Section 6.2)
-  - Not evidence that the closed-weight results distinguish genuine self-report from trained behaviour: the authors' own clearest limitation is that these results are 'behavioral rather than mechanistic and therefore cannot definitively rule out that self-reports reflect training artifacts or sophisticated simulation rather than genuine self-awareness' (Section 6.2)
-- **Flags:** testimony: weight zero as evidence of experience
-- [claim file](../claims/2025-aestudio-self-referential-experience-reports-c01.md)
+## Narrowing (9)
 
 ### 2026-anthropic-assistant-axis-c02
 

@@ -30,6 +30,11 @@
    "evidence_type": "theoretical",
    "in_dossier": true
   },
+  "2024-anthropic-scaling-monosemanticity-c04": {
+   "bucket": "narrowing",
+   "evidence_type": "self-report-testimony",
+   "in_dossier": true
+  },
   "2025-aestudio-self-referential-experience-reports-c01": {
    "bucket": "narrowing",
    "evidence_type": "self-report-testimony",
@@ -272,7 +277,7 @@
   },
   "2026-macar-mechanisms-introspective-awareness-c08": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-shi-deception-taxonomy-c01": {

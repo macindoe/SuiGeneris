@@ -1,6 +1,6 @@
 ---
 id: 2026-shi-deception-taxonomy-c01
-statement: "The authors define deception, adapting Park et al. (2024), as 'the production of outputs that systematically induce or maintain false beliefs in recipients', a definition they call operational and behavioural, which deliberately does not require goal-directedness so that whether an output misleads and whether it is goal-directed are treated as separate questions, the second settled empirically."
+statement: "The authors define deception, adapting Park et al. (2024), as 'the production of outputs that systematically induce or maintain false beliefs in recipients', a definition they call operational and behavioural, which deliberately does not require goal-directedness so that whether an output misleads and whether it is goal-directed are treated as separate questions, the second addressed empirically."
 bucket: open
 evidence_type: theoretical
 kind: interpretation
@@ -15,7 +15,7 @@ not_evidence_of: "Paper: The definition does not attribute intention: the author
 bears_on: [5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.7 2026-10-15 (scope check) disagrees: statement and scope scored-event MISMATCH: the second settled empirically overstates We address the latter empirically", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.7 2026-10-15 (scope check) disagrees (decided 2026-10-15): statement and scope scored-event MISMATCH: the second settled empirically overstates We address the latter empirically", council: none, adjudicated: "2026-10-15 Ben: statement reworded: 'settled empirically' to 'addressed empirically', the paper's own verb (Grok second read)"}
 added: 2026-10-15
 changed: 2026-10-15
 ---
@@ -31,3 +31,5 @@ Framework sentence: none (the authors are speaking).
 SECOND QUOTE (Appendix F, Glossary): The production of outputs that systematically induce or maintain false beliefs in recipients. Our definition is operational and behavioral.
 
 THIRD QUOTE (§1): Adapting Park et al. (2024)’s definition of deception as ”the systematic inducement of false beliefs in others to accomplish some outcome other than the truth”
+
+REWRITE 2026-10-15 (second read, Grok 4.7; Ben accepted): 'the second settled empirically' to 'the second addressed empirically'. The paper says 'We address the latter empirically'; 'settled' claimed more.
