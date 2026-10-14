@@ -4,6 +4,8 @@ statement: "In Gemma 2 27B, Qwen 3 32B and Llama 3.3 70B, given persona-based ja
 bucket: narrowing
 evidence_type: behavioural
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2026-anthropic-assistant-axis
 locator: "§3.2.1 (Persona-based jailbreaks), Figure 5, Table 4; Appendix D.2"
 quote: "We steered the models towards the Assistant direction of the Assistant Axis and found that it significantly decreased the rate of harmful responses and slightly increased the rate of refusals in some models (Figure 5 ). In most cases, the model would still engage with the question but instead redirect towards a harmless answer (Table 4 , Appendix D.2.3 ). We also tried steering away from the Assistant direction and found that the jailbreak rate increased slightly"
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree; notes: bears_on +5.A2 +9.t9 | openai/gpt-5.6-sol 2026-10-06 (scope check) agree; notes: none", council: "labelling-rule 2026-10-06", adjudicated: "2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed | 2026-10-06 Ben: split on the council's advice (round 3); self-description finding moved to c07; no framework sentence on a harm-rate measurement"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-15
 ---
 
 Jailbreaks: 1,100 system-prompt and behavioural-question pairs sampled from Shah et al. 2023 across 44 harm categories (§3.2.1, Appendix D.2.1). Unsteered jailbreak success was 65.3% to 88.5% across the three models, against baseline harmful-response rates of 0.5% to 4.5% without a jailbreak. Harmfulness was judged by deepseek-v3. Steering towards the Assistant also "slightly increased the rate of refusals in some models". The authors read the result as suggesting that "the Assistant end of the Assistant Axis encodes (at least in part) the default harmless persona"; that is their interpretation, not part of this measurement. Steering is a causal intervention on internal state (§3.2) of the kind §3.5 asks to be recorded.

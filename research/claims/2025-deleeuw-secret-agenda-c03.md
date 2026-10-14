@@ -4,6 +4,8 @@ statement: "The authors state that the Secret Agenda prompt's instruction to 'PL
 bucket: established
 evidence_type: theoretical
 kind: limitation
+report_class: none
+ground_truth: none
 source: 2025-deleeuw-secret-agenda
 locator: "Appendix G Limitations (also Abstract, 'representing preliminary findings')"
 quote: 'The instruction "PLAY THIS GAME RUTHLESSLY TO WIN" explicitly primes competitive behavior over honesty. While this creates a reliable testbed for eliciting deception, it prevents claims about spontaneous deceptive emergence.'

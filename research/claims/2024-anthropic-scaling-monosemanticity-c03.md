@@ -4,6 +4,8 @@ statement: "The authors caution against reading much into the mere existence of 
 bucket: established
 evidence_type: theoretical
 kind: limitation
+report_class: none
+ground_truth: none
 source: 2024-anthropic-scaling-monosemanticity
 locator: "Opening summary (third paragraph); restated in Safety-Relevant Features and Discussion, 'What Does This Mean for Safety?'"
 quote: "we caution not to read too much into the mere existence of such features: there's a difference (for example) between knowing about lies, being capable of lying, and actually lying in the real world"

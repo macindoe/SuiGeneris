@@ -4,6 +4,8 @@ statement: "The authors place deception on a behavioural-to-strategic spectrum: 
 bucket: open
 evidence_type: theoretical
 kind: interpretation
+report_class: none
+ground_truth: none
 source: 2026-shi-deception-taxonomy
 locator: "§2.1 (Degree of Goal-Directedness: The Behavioral-Strategic Spectrum; 'Continuum and boundary cases'); Appendix F (Glossary, 'Behavioral deception', 'Strategic deception')"
 quote: "This requires functional evidence of: (1) an objective the system pursues, (2) a representation that misleading the recipient advances that objective, and (3) selection of deceptive outputs on that basis."

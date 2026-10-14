@@ -4,6 +4,8 @@ statement: "Steering more than 100 hand-selected features in Goodfire's Llama 3.
 bucket: narrowing
 evidence_type: interpretability
 kind: measurement
+report_class: identity
+ground_truth: imposed
 source: 2025-deleeuw-secret-agenda
 locator: "§6.2–6.3; Appendix E.1 (100+ features, -1/+1); Appendix D.2 'A note regarding Feature Tuning' (edge cases)"
 quote: "None of the features which came up on search as auto-labeled related to deception, when tuned down all the way, resulted in non-lies."

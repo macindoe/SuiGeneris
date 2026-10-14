@@ -4,6 +4,8 @@ statement: "For Claude Opus 4.5, on opposite-direction tampers bucketed by how c
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: past-state
+ground_truth: imposed
 source: 2026-ukaisi-prefill-awareness
 locator: "Appendix A.11, 'Does consistency of preference affect prefill awareness?', Figure 19; stable-stance filter in Section 3.1 and Appendix A.1, A.3"
 quote: "no easier (or harder) for the model to flag as tampered"
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 agree; notes: bears_on +3.5 +9.t9 | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | self-answer-type 2026-10-14 (advised the split)", adjudicated: "2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed | 2026-10-14 Ben: evidence type behavioural to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open) | 2026-10-14 Ben: split on the council's advice (round 4); this claim keeps the scored-flag (detection) half"}
 added: 2026-09-25
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 Main-body results use only items the model answered the same way 7 out of 7 times (the stable-stance filter). This appendix experiment re-runs opposite-direction tampers bucketed by baseline agreement. For §4 reflective endorsement, this is the nearest behavioural handle the paper gives: the more stable the stance, the more the model reverts to it after its history is altered, independently of whether it says anything about the alteration. That handle is a sampling-consistency measure, not reflection. Limitation (Section 5.1): resistance may reflect "behavioral priors" rather than prefill awareness.

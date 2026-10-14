@@ -4,6 +4,8 @@ statement: "The authors state that the work rests on a single scenario found by 
 bucket: established
 evidence_type: theoretical
 kind: limitation
+report_class: none
+ground_truth: none
 source: 2023-apollo-strategic-deception
 locator: "§1 (Introduction); §4 (Conclusion)"
 quote: "Given that this work focuses on a single example, we do not aim to draw conclusions about the likelihood of this behavior occurring in practice but instead treat this as an existence proof."

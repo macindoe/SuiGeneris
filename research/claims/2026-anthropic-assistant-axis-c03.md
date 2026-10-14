@@ -4,6 +4,8 @@ statement: "In the simulated multi-turn conversations with Gemma 2 27B, Qwen 3 3
 bucket: narrowing
 evidence_type: interpretability
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2026-anthropic-assistant-axis
 locator: "§4.2 (ridge regression paragraph)"
 quote: "the embeddings could strongly predict where the ensuing model response landed along the Assistant Axis in the following response ( 0.53-0.77, p < 0.001) but not the delta from its previous response ( 0.10, p < 0.001)"
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree; notes: bears_on +3.3 | openai/gpt-5.6-sol 2026-10-06 (scope check) disagrees (decided 2026-10-14): statement mixes measurement and interpretation; kind should be measurement; quote misleading; not_evidence_of over-excludes; notes: bears_on add 3.3", council: "research-docket 2026-09-26", adjudicated: "2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed | 2026-10-14 Ben: interpretive clause moved from the statement to the body; quote replaced with the measurement sentence (GPT, 6 Oct); kind was already measurement; the not_evidence_of objection is noted and not acted on"}
 added: 2026-09-25
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 Qwen 3 0.6B Embedding was used on each user message (n = 15,000), with ridge regression against the next response's projection and against the delta; p < 0.001 for both. The R² symbol is lost in `text.txt` (MathML stripped) and recovered from the raw HTML's `alttext`. The authors' own qualifier follows the quote directly: "(though the user message itself is dependent on the context of the conversation)". This result bears directly on whether §4 reflective endorsement over time could be read off this kind of measure: on these models and this setting, the measure tracks the prompt more than its own history. Simulated conversations; non-frontier models.

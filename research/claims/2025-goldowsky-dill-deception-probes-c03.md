@@ -4,6 +4,8 @@ statement: "The authors judge that white-box probes are promising for future mon
 bucket: established
 evidence_type: theoretical
 kind: limitation
+report_class: none
+ground_truth: none
 source: 2025-goldowsky-dill-deception-probes
 locator: "Abstract (judgement); §5.1 Are our probes “good enough?” (settings and generalisation)"
 quote: "Overall we think white-box probes are promising for future monitoring systems, but current performance is insufficient as a robust defence against deception."

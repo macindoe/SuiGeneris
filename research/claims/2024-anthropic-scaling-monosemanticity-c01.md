@@ -4,6 +4,8 @@ statement: "Among the features extracted by sparse autoencoders (about 1M, 4M an
 bucket: narrowing
 evidence_type: interpretability
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2024-anthropic-scaling-monosemanticity
 locator: "Opening summary (third paragraph); section 'Deception, Power-seeking and Manipulation-related Features' (feature list)"
 quote: "lying, deception, and power-seeking (including treacherous turns)"

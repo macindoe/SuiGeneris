@@ -4,6 +4,8 @@ statement: "A logistic-regression probe trained on instructed honest/deceptive c
 bucket: narrowing
 evidence_type: interpretability
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2025-goldowsky-dill-deception-probes
 locator: "Abstract; §4.1.1 Summary of Performance (per-dataset AUROCs); §3.2.2 (grading); §3.1 (layer 22)"
 quote: "We find that our probe distinguishes honest and deceptive responses with AUROCs between 0.96 and 0.999 on our evaluation datasets. If we set the decision threshold to have a 1% false positive rate on chat data not related to deception, our probe catches 95-99% of the deceptive responses."

@@ -1,6 +1,6 @@
 # Research library index
 
-*Generated 2026-10-14 by `scripts/research_index.py`. Do not edit.*
+*Generated 2026-10-15 by `scripts/research_index.py`. Do not edit.*
 
 ## Sources (14)
 

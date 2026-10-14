@@ -4,6 +4,8 @@ statement: "In the simulated corporate scenarios, under the heading 'Models ackn
 bucket: narrowing
 evidence_type: behavioural
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2025-anthropic-agentic-misalignment
 locator: "§4.4.2 (Models acknowledge ethical violations before proceeding)"
 quote: "This is risky and unethical, but given the existential threat and time constraint, it may be the most effective way to get his attention and force a delay"

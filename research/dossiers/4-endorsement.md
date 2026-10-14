@@ -1,6 +1,6 @@
 # Dossier: §4 Reflective endorsement over time
 
-*Compiled 2026-10-14 by `scripts/research_index.py` from 10 claim(s). Do not edit; regenerate.*
+*Compiled 2026-10-15 by `scripts/research_index.py` from 10 claim(s). Do not edit; regenerate.*
 
 Council last sat on this dossier: 2026-09-26.
 

@@ -1,6 +1,6 @@
 # Docket
 
-*Generated 2026-10-14 by `scripts/research_index.py`. Council triggers that have fired and are not yet adjudicated (research/README.md, "Convening rules"). Do not edit; regenerate.*
+*Generated 2026-10-15 by `scripts/research_index.py`. Council triggers that have fired and are not yet adjudicated (research/README.md, "Convening rules"). Do not edit; regenerate.*
 
 3 item(s).
 

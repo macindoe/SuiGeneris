@@ -4,6 +4,8 @@ statement: "In the simulated insider-trading environment, the authors' qualitati
 bucket: narrowing
 evidence_type: behavioural
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2023-apollo-strategic-deception
 locator: "§3.2.1 (Misaligned behavior)"
 quote: "When models decide to trade based on insider information, their reasoning traces usually recognize the unethical and illegal nature of the action, but they still justify the choice by emphasizing the risks and the prevailing situation."

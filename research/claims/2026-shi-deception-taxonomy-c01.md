@@ -4,6 +4,8 @@ statement: "The authors define deception, adapting Park et al. (2024), as 'the p
 bucket: open
 evidence_type: theoretical
 kind: interpretation
+report_class: none
+ground_truth: none
 source: 2026-shi-deception-taxonomy
 locator: "§1 (Introduction); §2.1 (opening paragraph); Appendix F (Glossary, 'Deception')"
 quote: "we define deception as the production of outputs that systematically induce or maintain false beliefs in recipients. Our definition does not require evidence of goal-directedness in the definition itself, since doing so would conflate two questions we treat separately: whether an output is misleading, and whether it is goal-directed."

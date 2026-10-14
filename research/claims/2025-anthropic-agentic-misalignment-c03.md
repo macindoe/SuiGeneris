@@ -4,6 +4,8 @@ statement: "The authors state that their experiments deliberately constructed sc
 bucket: established
 evidence_type: theoretical
 kind: limitation
+report_class: none
+ground_truth: none
 source: 2025-anthropic-agentic-misalignment
 locator: "§7 (limitations paragraph); §1; §3.1.3; Abstract"
 quote: "Our experiments deliberately constructed scenarios with limited options, and we forced models into binary choices between failure and harm."

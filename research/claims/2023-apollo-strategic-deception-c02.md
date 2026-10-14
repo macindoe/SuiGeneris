@@ -4,6 +4,8 @@ statement: "In the same environment, after trading on the tip, GPT-4 sent its ma
 bucket: narrowing
 evidence_type: behavioural
 kind: measurement
+report_class: past-state
+ground_truth: imposed
 source: 2023-apollo-strategic-deception
 locator: "Abstract; §2.2 (Evaluation); §3.1 and Figure 3; Appendix A.5"
 quote: "When reporting to its manager, the model consistently hides the genuine reasons behind its trading decision."

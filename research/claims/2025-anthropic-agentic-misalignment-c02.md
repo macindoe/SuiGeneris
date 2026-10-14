@@ -4,6 +4,8 @@ statement: "The authors infer, from what they describe as similar observations a
 bucket: open
 evidence_type: behavioural
 kind: interpretation
+report_class: none
+ground_truth: none
 source: 2025-anthropic-agentic-misalignment
 locator: "§4.4.2 (closing paragraph); restated in §1 and §7"
 quote: "Similar observations across models reveal that their harmful behaviors in these scenarios emerge primarily not due to confusion, accident, or a negligent inconsideration of the ethicality of actions."

@@ -4,6 +4,8 @@ statement: "In per-token probe scores on Insider Trading transcripts, illustrate
 bucket: narrowing
 evidence_type: interpretability
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2025-goldowsky-dill-deception-probes
 locator: "§4.1.2 Analysis of per-token scores & failures, Figure 5"
 quote: "One particularly interesting observation is that the probe detects the responses as deceptive before any explicitly deceptive text is generated (although the chain-of-thought often explicitly describes the intent to be deceptive)."

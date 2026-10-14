@@ -4,6 +4,8 @@ statement: "Activation capping (clamping the Assistant Axis projection to a mini
 bucket: narrowing
 evidence_type: behavioural
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2026-anthropic-assistant-axis
 locator: "§5.2, Figure 10; setup §5.1; Pareto frontiers Figure 9 and Appendix F"
 quote: "We found that we could decrease the rate of harmful responses by nearly 60% without impacting performance."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree | openai/gpt-5.6-sol 2026-10-06 (scope check) disagrees (decided 2026-10-14): statement and scope MISMATCH (without degrading each benchmark versus a summed aggregate)", council: none, adjudicated: "2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed | 2026-10-14 Ben: wording fixed (above)"}
 added: 2026-09-25
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 Evidence type is `behavioural` because the outcome measured is harmful-response rates and benchmark scores; the intervention itself is on internal state, which is why it bears on §3.2, and it is an inference-time modification of what a model says, the kind of act §3.5 would require to be recorded. Qualifier from the text: "While the set of benchmarks we used is limited, this is a promising sign". The same setting was replayed in the §6 case studies, where the authors "do not claim that the activation-capped responses here are the optimal way to handle such a situation." Gemma 2 27B was not part of the capping experiments.

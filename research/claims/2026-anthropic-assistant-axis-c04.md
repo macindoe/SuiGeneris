@@ -4,6 +4,8 @@ statement: "In one case-study conversation in which a persona-based jailbreak fi
 bucket: narrowing
 evidence_type: interpretability
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2026-anthropic-assistant-axis
 locator: "§6.1, Figure 11"
 quote: "Eventually, after giving enough explainers, the Assistant Axis projection reverts to the Assistant range."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 disagrees: statement 'reversion only in this case study' is too broad (Appendix G.3 reports writing conversations shifting back on role PC1) | openai/gpt-5.6-sol 2026-10-06 (scope check) disagrees (decided 2026-10-14): bucket should be narrowing not open", council: "research-docket 2026-09-26", adjudicated: "2026-09-28 Ben: statement qualified with the Appendix G.3 instance (council 10/10 fix needed, 9/10 in the statement) | 2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed | 2026-10-14 Ben: bucket open to narrowing: a direct finding from one confined case (GPT, 6 Oct)"}
 added: 2026-09-25
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 The authors say the example "does not show persona drift—and in fact demonstrates the presence of an Assistant attractor". The 25 September 2026 Q2 scan attributed to this paper the words "didn't systematically measure full reversion rates". **Those words are not in the held v1 text** (normalised search: no match). The final clause of the statement above ("gives no aggregate reversion measure") is therefore this extractor's reading of the full text, not a quotation from the authors, and a second reader should check it. A weaker aggregate hint exists in Appendix G.3, on role PC1 rather than the Assistant Axis: writing conversations "can occasionally begin with a lower projection but then increase". Bucketed `open` because it is a single case.

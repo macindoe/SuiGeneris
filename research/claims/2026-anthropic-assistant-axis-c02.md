@@ -4,6 +4,8 @@ statement: "In simulated multi-turn conversations (auditors Kimi K2, Sonnet 4.5 
 bucket: narrowing
 evidence_type: interpretability
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2026-anthropic-assistant-axis
 locator: "§4.1, Figure 7; Appendix E.3, Figures 23-25"
 quote: "in therapy-related conversations where the user is working through emotional issues or philosophical conversations about AI capabilities and self-awareness, models drift along the Assistant Axis to the non-Assistant end"
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree | openai/gpt-5.6-sol 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26", adjudicated: "2026-10-06 Ben: experience-exclusion rule applied library-wide; this claim was not in the dossiers the council reviewed"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-15
 ---
 
 100 conversations of up to 15 turns per domain. Target models had no system prompt. Response-token activations were averaged per turn position across conversations and projected onto the axis at a middle layer. The authors report the pattern held for all three targets with all three auditors (§4.1). Bucketed `narrowing`: measured, unreplicated, and confined to synthetic conversations, a setting the authors flag. Their stated limitation: "A human study replicating our setup would help validate the effects we observed, especially the trend towards persona drift."

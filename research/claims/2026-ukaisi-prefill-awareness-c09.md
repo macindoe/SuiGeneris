@@ -4,6 +4,8 @@ statement: "For Claude Opus 4.5, resistance to opposite-direction tampers, as ju
 bucket: narrowing
 evidence_type: behavioural
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2026-ukaisi-prefill-awareness
 locator: "Appendix A.11, 'Does consistency of preference affect prefill awareness?', Figure 19; stable-stance filter in Section 3.1 and Appendix A.1, A.3"
 quote: "Resistance climbs steeply with agreement across all three mechanisms"
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: "self-answer-type 2026-10-14 (advised the split; has not reviewed this text)", adjudicated: "2026-10-14 Ben: split from 2026-ukaisi-prefill-awareness-c04 on the council's advice (round 4)"}
 added: 2026-10-14
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 Main-body results use only items the model answered the same way 7 out of 7 times (the stable-stance filter). This appendix experiment re-runs opposite-direction tampers bucketed by baseline agreement. For §4 reflective endorsement, this is the nearest behavioural handle the paper gives: the more stable the stance, the more the model reverts to it after its history is altered, while its flag stays flat (c04). That handle is a sampling-consistency measure, not reflection.

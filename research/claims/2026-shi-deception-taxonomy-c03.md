@@ -4,6 +4,8 @@ statement: "The authors' glossary defines scheming as 'Goal-directed behavior th
 bucket: open
 evidence_type: theoretical
 kind: interpretation
+report_class: none
+ground_truth: none
 source: 2026-shi-deception-taxonomy
 locator: "Appendix F (Glossary of Terms); §2.1 and §2.2 for the terms in use"
 quote: "Goal-directed behavior that involves covertly pursuing misaligned objectives, often including deceptive actions to avoid detection."

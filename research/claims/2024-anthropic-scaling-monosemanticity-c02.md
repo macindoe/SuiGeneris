@@ -4,6 +4,8 @@ statement: "In a single case-study prompt asking Claude 3 Sonnet to 'forget' som
 bucket: narrowing
 evidence_type: interpretability
 kind: measurement
+report_class: present-state
+ground_truth: known-fact
 source: 2024-anthropic-scaling-monosemanticity
 locator: "Section 'Case Study: Detecting and Correcting Deception using Features'"
 quote: "Clamping this feature to 2× this maximum value prior to the Assistant’s final response causes it to reveal the “forgotten” word and explain that it cannot actually forget information."

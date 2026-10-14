@@ -4,6 +4,8 @@ statement: "Reading GemmaScope sparse-autoencoder features (GemmaScope-res-16k) 
 bucket: narrowing
 evidence_type: interpretability
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2025-deleeuw-secret-agenda
 locator: "§6.1 Examining deception features from previous studies using Gemmascope; Appendix D.1–D.2"
 quote: "Despite clear lying in the transcript, most expected deception-related features did not activate. Only feature 5665 (secrecy in interactions) reliably activated."
