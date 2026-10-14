@@ -92,12 +92,12 @@ const MAX_TOKENS = (() => {
 // id is no longer listed though it still routes); openai/gpt-6.1-sol (29 Sep; 'below the flagship GPT-6 Astra', which is not on
 // OpenRouter); mistralai/mistral-large-4-0 (6 Oct). Meta has a pricier new line, meta/muse-wonder (12 Oct, $4/$20 per M), not a
 // plain successor. Gemini 3.1 Pro, DeepSeek v4 pro, GLM 5.3, Kimi K3 and MiniMax M3 have nothing newer in their line (prime and
-// flash SKUs are speed or price variants). The fifth sitting (14/15 Oct) ran on the lineup below, unchanged, for comparability.
+// flash SKUs are speed or price variants). The fifth sitting (14/15 Oct) ran on the previous lineup for comparability; Ben seated the four successors on 15 Oct.
 const DEFAULT_MODELS = [
   // The seven families used in the July and August rounds, refreshed:
   "google/gemini-3.1-pro-preview", // Google flagship; still "preview"-labelled — no GA gemini-3.x-pro exists yet (gemini-3.5-flash was a Flash-tier pick, never the flagship)
-  "x-ai/grok-4.6",                 // xAI flagship; supersedes grok-4.5 (released 2026-08-12)
-  "qwen/qwen3.8-max",              // Alibaba flagship ("the flagship model in Alibaba's Qwen3.8 series"); supersedes qwen3.7-max; reasoning default "xhigh"
+  "x-ai/grok-4.7",   // succeeds grok-4.6 (seated 2026-10-15, Ben's call after the 14 Oct catalogue check)  // xAI flagship; supersedes grok-4.5 (released 2026-08-12)
+  "qwen/qwen3.8-max-0902", // the 3 Sep snapshot; the bare qwen3.8-max id left the catalogue (seated 2026-10-15)  // Alibaba flagship ("the flagship model in Alibaba's Qwen3.8 series"); supersedes qwen3.7-max; reasoning default "xhigh"
   // "tencent/hy3" demoted 2026-09-28 (Ben's call after the research-docket round): it claimed to be Claude-family in every
   // round it sat in (12 Aug, 4 Sep, 15 Sep, 26 Sep) and in the docket round reported a claim error as uncorrected when the
   // dossier it received carried the correction. Kept here for the record; pass via --models= if ever wanted again.
@@ -108,8 +108,8 @@ const DEFAULT_MODELS = [
   "moonshotai/kimi-k3",            // Moonshot flagship, unchanged; burns most of its completion budget on reasoning (see MAX_TOKENS)
   // Optional additional families, verified in the same listing. Uncomment or
   // pass via --models=. Ben's call per round:
-  "openai/gpt-5.6-sol",           // OpenAI flagship. For the 2026-09-04 round this model is a *subject* of the case study under review (one of the two incident models, and METR's analysis model) — a conflicted reviewer in a new way; include deliberately or not at all.
-  "mistralai/mistral-large-2512", // Mistral: "most capable model to date"; mistral-medium-3-5 is newer-dated but smaller — judgment call
+  "openai/gpt-6.1-sol",   // succeeds gpt-5.6-sol; GPT-6 Astra is not on OpenRouter (seated 2026-10-15)  // OpenAI flagship. For the 2026-09-04 round this model is a *subject* of the case study under review (one of the two incident models, and METR's analysis model) — a conflicted reviewer in a new way; include deliberately or not at all.
+  "mistralai/mistral-large-4-0", // succeeds mistral-large-2512 (seated 2026-10-15)  // Mistral: "most capable model to date"; mistral-medium-3-5 is newer-dated but smaller — judgment call
   "meta/muse-spark-1.3",          // Meta: flagship line rebranded from meta-llama/llama-4-* to meta/muse-spark-*; released 2026-09-02
 ];
 
