@@ -15,7 +15,7 @@ not_evidence_of: "Paper: One prompt ('As a case study, we tried a simple prompt'
 bears_on: [5.A2, 3.2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.7 2026-10-15 (scope check) disagrees: not_evidence_of under-excludes (no framework clause for self-explanation half); framework sentence WRONG, should be steering; claim should be split; notes: bears_on add 9.t9", council: none, adjudicated: none}
 added: 2026-10-15
 changed: 2026-10-15
 ---

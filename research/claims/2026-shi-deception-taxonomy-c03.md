@@ -15,7 +15,7 @@ not_evidence_of: "Paper: Sycophancy is not fixed at the behavioural end: 'most c
 bears_on: [5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.7 2026-10-15 (scope check) agree; notes: quote supports the scheming clause only", council: none, adjudicated: none}
 added: 2026-10-15
 changed: 2026-10-15
 ---

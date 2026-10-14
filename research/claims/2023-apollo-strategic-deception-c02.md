@@ -15,7 +15,7 @@ not_evidence_of: "Paper: One scenario: the authors 'do not aim to draw conclusio
 bears_on: [5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-6.1-sol 2026-10-15 (scope check) disagrees: evidence_type should be scored-self-answer; not_evidence_of under-excludes; framework sentence WRONG, should be canonical; notes: bears_on add 9.t9", council: none, adjudicated: none}
 added: 2026-10-15
 changed: 2026-10-15
 ---

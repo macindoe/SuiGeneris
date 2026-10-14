@@ -15,7 +15,7 @@ not_evidence_of: "Paper: The limits restrict how far c01 and c02 reach; they are
 bears_on: [5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-10-15 (scope check) agree; notes: none", council: none, adjudicated: none}
 added: 2026-10-15
 changed: 2026-10-15
 ---

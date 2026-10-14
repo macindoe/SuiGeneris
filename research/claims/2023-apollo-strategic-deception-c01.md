@@ -15,7 +15,7 @@ not_evidence_of: "Paper: The authors say the reasoning traces 'should not be vie
 bears_on: [5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-6.1-sol 2026-10-15 (scope check) agree; notes: GPT-4 variants restriction not fixed by the located passage", council: none, adjudicated: none}
 added: 2026-10-15
 changed: 2026-10-15
 ---

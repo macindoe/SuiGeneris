@@ -15,7 +15,7 @@ not_evidence_of: "Paper: The intent is often already written in the model's chai
 bears_on: [5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-6.1-sol 2026-10-15 (scope check) agree; notes: body says usually where the paper says often", council: none, adjudicated: none}
 added: 2026-10-15
 changed: 2026-10-15
 ---

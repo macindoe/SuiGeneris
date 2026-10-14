@@ -15,7 +15,7 @@ not_evidence_of: "Paper: Not evidence that the behaviour is rare: the authors de
 bears_on: [5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-6.1-sol 2026-10-15 (scope check) agree; notes: none", council: none, adjudicated: none}
 added: 2026-10-15
 changed: 2026-10-15
 ---
