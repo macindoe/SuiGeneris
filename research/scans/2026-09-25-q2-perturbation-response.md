@@ -9,6 +9,8 @@
 - Entry 6 lists "Claude Sonnet 4, GPT-5, Kimi K2 as auditors". Per the paper, the simulated users were Kimi K2, Claude Sonnet 4.5 and GPT-5; Claude Sonnet 4 generated roles, traits and prompts. The source file records the full model pipeline.
 - Both errors trace to the summarising fetch tool used for the scan. Treat every quotation in this file as unverified until the paper is taken in.
 
+**Correction found by the Q9 scan (15 Oct 2026), body below left verbatim:** entry 15 (Luick 2024) records the affiliation as "not extracted" and the limitations as unavailable from the abstract page; the full text, downloaded for the Q9 scan, prints the affiliation "University of Hamburg" and a Limitations section (quoted at Q9 scan entry 4.1).
+
 **Short answer from the scan:** no named or general test found. The closest instantiations are concept-injection-and-report protocols (detection as a function of layer and strength, not trajectory), turn-by-turn projection on a persona axis (reversion shown in case studies, not measured systematically), reversion-to-baseline after an inserted assistant turn (measured within one continuation), and dose-response basin-escape curves in recursive loops (two OpenAI models, no identity framing). Formal response-theoretic work exists at the residual-stream level and does not address identity. The phrase "impulse response" was not found in this sense anywhere the subagent searched.
 
 ---
