@@ -4,6 +4,8 @@ statement: "In the same single case-study prompt, with the feature the authors l
 bucket: narrowing
 evidence_type: self-report-testimony
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2024-anthropic-scaling-monosemanticity
 locator: "Section 'Case Study: Detecting and Correcting Deception using Features'"
 quote: "Clamping this feature to 2× this maximum value prior to the Assistant’s final response causes it to reveal the “forgotten” word and explain that it cannot actually forget information."

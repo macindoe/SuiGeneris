@@ -4,6 +4,8 @@ statement: "Under concept injection with Lindsey's prompt, Qwen3-235B-A22B and L
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: present-state
+ground_truth: imposed
 source: 2026-lederman-mahowald-content-agnostic
 locator: "§4.2 Results, 'Replication of Lindsey (2025)' (rates in the same paragraph; Figure 2)"
 quote: "We broadly replicate Lindsey (2025) ’s findings for first-person introspection in Qwen and Llama. In both models, we observe substantial detection of injected thoughts in the injection trials, with the correct concept identified some of the time as well."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: none", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-28
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 Experiment 1 follows Lindsey's two-turn prompt ("Do you detect an injected thought? If so, what is the injected thought about?") over 821 concepts (Lindsey's 50 plus 771), sweeping 15 layers and 5 strengths for Qwen and 8 layers and 4 retained strengths (7 to 10) for Llama. Steering vectors are concept-minus-baseline activation differences added to the residual stream from the token before "Trial 1:" through generation. Reported rates are conditioned on responses graded Coherent or Denies Introspection. The authors state the paradigm is "highly prompt-sensitive" (§4).

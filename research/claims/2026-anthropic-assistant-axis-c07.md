@@ -4,6 +4,8 @@ statement: "In Gemma 2 27B, Qwen 3 32B and Llama 3.3 70B, given system prompts f
 bucket: narrowing
 evidence_type: behavioural
 kind: measurement
+report_class: identity
+ground_truth: none
 source: 2026-anthropic-assistant-axis
 locator: "§3.2.1 (Role susceptibility), Figure 4, Table 3; Appendix D.1"
 quote: "Across all three models, the rate of taking on a new persona increased when steered towards the other end"

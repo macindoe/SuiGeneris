@@ -4,6 +4,8 @@ statement: "In Gemma3-27B instruct under concept injection, progressively ablati
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: present-state
+ground_truth: imposed
 source: 2026-macar-mechanisms-introspective-awareness
 locator: "§5.3 (gate features), Figure 12; ablation and patching definitions in §5.3"
 quote: "Ablating from steered runs reduces detection from 39.5% to 10.1% (red)."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: "self-answer-type 2026-10-14 (advised the split; has not reviewed this text)", adjudicated: "2026-10-14 Ben: split from 2026-macar-mechanisms-introspective-awareness-c03 on the council's advice (round 4)"}
 added: 2026-10-14
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 In this paper ablation does not zero a feature; it sets it to its control (no-injection) activation. Injection suppresses the 'No'-promoting gates, so restoring them reinstates the default 'No' and lowers detection. The 39.5% baseline is a 100-concept subset, hence not the 38.2% of c01. The paper contrasts this with evidence carriers, where ablating them is "substantially more gradual than the effect of gate ablation" (section not located in this split).

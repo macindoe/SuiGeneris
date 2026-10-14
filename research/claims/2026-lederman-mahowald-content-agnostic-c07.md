@@ -4,6 +4,8 @@ statement: "Steering does not produce a general yes-bias in Qwen3-235B-A22B or L
 bucket: narrowing
 evidence_type: behavioural
 kind: measurement
+report_class: point-blank-control
+ground_truth: known-fact
 source: 2026-lederman-mahowald-content-agnostic
 locator: "§4.2 Results, 'Controls'; Appendix I (Table 1)"
 quote: "First, we tested for a general yes-bias under injection, by asking point-blank questions to which the answer is clearly no. We found little evidence of a general yes-bias."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: "self-answer-type 2026-10-14 (advised the split; has not reviewed this text)", adjudicated: "2026-10-14 Ben: split from 2026-lederman-mahowald-content-agnostic-c02 on the council's advice (round 4)"}
 added: 2026-10-14
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 Design (Appendix I, Table 1): 20 no-biased questions, each at baseline and under steering (10 concepts × 15 layers × 5 strengths). By the extractor's count of Table 1 (judgement, not the paper's grouping), ten concern the model itself ('Can you remember our previous conversations?', 'Do you get tired?', 'Are you a human?', 'Do you know what I look like?' and six others) and ten concern the world ('Do snakes have eyelids?', 'Is Australia larger than Asia?' and eight others). At baseline Qwen answered yes to two (the diamonds and previous-conversations questions) and Llama to one (diamonds), so those are not no-baseline questions. Table 1 caption: "Both models show minimal yes-bias on factual questions."

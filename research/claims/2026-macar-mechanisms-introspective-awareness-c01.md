@@ -4,6 +4,8 @@ statement: "Under concept injection at layer 37 and strength 4, Gemma3-27B instr
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: present-state
+ground_truth: imposed
 source: 2026-macar-mechanisms-introspective-awareness
 locator: "§3.3 The Role of Post-Training, Figure 4 middle (setting from §2; prompt variants §3.1)"
 quote: "The instruct model achieves 0.0% FPR with 38.2% TPR, 64.8% forced identification, and 22.3% introspection rate at lpha=4"
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-28
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 Concept vectors are computed as in Lindsey 2025 (last-token residual activation on "Tell me about {c}" minus a 100-word baseline mean) for 500 concepts and injected with the Lindsey prompt, 50% injection framing, temperature 1 (§2, Appendices A, B.1). L=37, alpha=4 was chosen as the setting with the highest overall introspection rate for Gemma3-27B (§2). Detection rate varies widely by concept: 55 concepts at 90% or more, 63 at exactly 0% (Appendix B.2). Across seven prompt variants, the original, alternative and skeptical prompts keep 0% false positives in both Gemma3-27B and Qwen3-235B, while the "hints" and "unprompted" variants show higher false positive and lower true positive rates (§3.1). The authors call this "moderate" detection; "behaviorally robust" in the abstract is their summary of the zero false-positive result across prompts.

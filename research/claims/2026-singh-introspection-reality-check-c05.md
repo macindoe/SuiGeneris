@@ -4,6 +4,8 @@ statement: "When given an explicit third response option for prompt-level manipu
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: present-state
+ground_truth: imposed
 source: 2026-singh-introspection-reality-check
 locator: "§4.3.2 (Results); Fig. 3b; App. F; App. G.2, G.3; App. K, L (Figs. 6, 7)"
 quote: "given an explicit input intervention response option, Llama-3.1-70B performs near chance, with probability concentrated disproportionately on the activation-intervention option"
@@ -17,7 +19,7 @@ contests: [2025-anthropic-emergent-introspective-awareness-c01, 2025-anthropic-e
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree; notes: bears_on +3.2; models over-includes Llama-3.1-8B-Instruct (App. K: does not clearly reproduce) | google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: leans behavioural on boundary", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-05 Ben: contest with the Lindsey claims stands recorded; both sides stay in the same bucket (council round 1); the contest is about the inference, not the measured rates | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3) | 2026-10-14 Ben: evidence type behavioural to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-25
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 CONTESTS: 2025-anthropic-emergent-introspective-awareness — the reading of injected-thought detection as awareness of interventions on internal states specifically; the authors argue the pattern is "fully accounted for by a generic sensitivity to irregularity". Tested on open-weight models only; Lindsey's Claude results were not re-run.

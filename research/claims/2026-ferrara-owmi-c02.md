@@ -4,6 +4,8 @@ statement: "A linear probe trained on 144 activation vectors at the layer-16 int
 bucket: narrowing
 evidence_type: interpretability
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2026-ferrara-owmi
 locator: "§8 Discussion (results in §7.2, Figure 3; probe training and held-out split §7.2, second paragraph)"
 quote: "the intervention is linearly decodable from both dose-calibrated models at held-out accuracies of 95.8% and 75.0% against a 50% chance level, while reports about the same event remain at chance"
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree | x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: optional 3.2", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-15
 ---
 
 Each probe trained on 144 activation vectors and was scored on 48 held out (96 items, paired sham and intervention forward passes, mean-pooled over prompt positions). The authors state that perfect separation on a 48-item split "states an absence of errors rather than an accuracy estimate", and that the probe margin is a lower bound on linearly available information, not a ceiling. Probed on two models only; one intervention site; unreplicated.

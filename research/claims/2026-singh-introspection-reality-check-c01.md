@@ -4,6 +4,8 @@ statement: "In the supervised self-report classification paradigm of Ji-An et al
 bucket: narrowing
 evidence_type: behavioural
 kind: measurement
+report_class: present-state
+ground_truth: probe-derived
 source: 2026-singh-introspection-reality-check
 locator: "§4.1.2 (Models struggle to predict proxies decorrelated from semantics); Fig. 2a; App. N (Fig. 9, Fig. 10)"
 quote: "accuracy on the arbitrary direction defined by a probe trained on randomly relabeled data drops to close to the majority-class baseline"
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree | google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14 (boundary case Q5)", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: outside the scored-self-answer class (council 6 of 10 out, 4 in): the truth is a label derived from a probe on the model, not a fact the experimenters imposed or hold independently of it; type stays behavioural"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-15
 ---
 
 The authors keep the Ethics (commonsense) data but permute the labels before training the logistic-regression probe, giving an arbitrary but well-formed hidden-state direction that the model could in principle predict. Accuracy on the original, semantically aligned labels is well above chance; on the permuted-label direction it drops to near the majority baseline. They read this as: "Performance in the original paradigm therefore need not require access to the model's hidden states".

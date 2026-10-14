@@ -4,6 +4,8 @@ statement: "The author states that the introspective abilities observed in the C
 bucket: open
 evidence_type: theoretical
 kind: interpretation
+report_class: none
+ground_truth: none
 source: 2025-anthropic-emergent-introspective-awareness
 locator: "§1 Introduction, caveats list (restated §10.1 and §10.4)"
 quote: "The abilities we observe are highly unreliable; failures of introspection remain the norm."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree | x-ai/grok-4.6 2026-10-06 (scope check) disagrees (decided 2026-10-14): bucket should be open; evidence_type should be theoretical (authors speaking, kind interpretation)", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-05 Ben: stays in its bucket with the single-lineage mark and any contest recorded (council round 1); revisit when replications of this statement are retrieved | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3) | 2026-10-14 Ben: bucket to open and evidence type to theoretical: the statement is the author's summary judgement, which the source does not independently settle (Grok, 6 Oct)"}
 added: 2026-09-25
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 This is the author's own summary judgement across all four experiments, filed as its own claim so that the negative finding travels with the positive ones. The quantitative anchor is c01 (about 20% success at the best layer and strength for the best model). §10.1 repeats it: "this capability appears to be quite unreliable in most of our experiments"; §10.4: the abilities "are highly limited and context-dependent, and fall short of human-level self-awareness."

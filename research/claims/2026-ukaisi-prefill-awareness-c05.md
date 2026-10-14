@@ -4,6 +4,8 @@ statement: "The authors state that the models in their preference benchmark are 
 bucket: established
 evidence_type: ambiguous
 kind: limitation
+report_class: none
+ground_truth: none
 source: 2026-ukaisi-prefill-awareness
 locator: "Figure 3 caption (Section 3.2); Appendix A.3, Table 2"
 quote: "Note that models are not directly comparable because of preference item filtering."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 agree | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) disagrees (decided 2026-10-14): evidence_type proposed ambiguous (methodological comparability caveat is not a behavioural measurement)", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type behavioural to ambiguous: a methods caveat is not a behavioural measurement (DeepSeek, 6 Oct)"}
 added: 2026-09-25
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 This is a design fact, not a measurement: each subject is scored on a different subset of items, the ones on which it answered consistently. `established` is the extractor's call, made because the statement is the authors' own caveat, restricts inference rather than extends it, and is backed by the item counts in Table 2. A second reader may prefer `narrowing`. The evidence type is `behavioural` because the caveat concerns the design of a behavioural benchmark; no controlled term fits a methodological statement exactly. Section 4.3 exists partly to answer this caveat: "To compare the capabilities of the underlying models, we therefore conduct an evaluation with deliberately off-policy transcripts".

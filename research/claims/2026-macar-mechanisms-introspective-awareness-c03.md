@@ -4,6 +4,8 @@ statement: "In Gemma3-27B instruct, a causal pathway to the detection decision r
 bucket: narrowing
 evidence_type: interpretability
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2026-macar-mechanisms-introspective-awareness
 locator: "§5.2 to §5.4 (Figures 9, 14 to 17); §8 Discussion; Appendix H"
 quote: "we trace a causal pathway from steering perturbation to detection decision: evidence carriers in early post-injection layers suppress late-layer gate features that otherwise promote the default “No” response."

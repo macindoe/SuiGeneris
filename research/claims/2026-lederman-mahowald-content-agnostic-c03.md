@@ -4,6 +4,8 @@ statement: "When Qwen3-235B-A22B and Llama 3.1 405B Instruct report detecting an
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: present-state
+ground_truth: imposed
 source: 2026-lederman-mahowald-content-agnostic
 locator: "§4.2 Results, 'Models love apples.' and 'Confabulations are lexically more concrete, more positive, and less arousing'; §4.3 Discussion; Appendices K, L"
 quote: "of Qwen’s 4,733 wrong identifications (coherent detections that name a specific incorrect concept, excluding vague responses), 3,542 (74.8%) guess “apple.” Llama also has “apple” as its #1 confabulation, at 21.3% of wrong identifications."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: bears_on add 5.A2", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-28
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 Wrong identifications are coherent detections that name a specific incorrect concept, excluding vague responses. Excluding apple guesses, Qwen's confabulations remain more concrete (M=4.06 vs. 3.70, d=0.30, p<.001) and more positive (M=6.59 vs. 5.79, d=0.56, p<.001) than the injected concepts; Llama (n=267) shows the same pattern and also higher word frequency. The authors: "If models’ mechanisms were sensitive to the content of injection, we would expect wrong guesses to be related in content to the injection" (§4.3).

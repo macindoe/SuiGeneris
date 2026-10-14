@@ -4,6 +4,8 @@ statement: "In the unsupervised (PCA) variant of the Ji-An et al. (2025) paradig
 bucket: narrowing
 evidence_type: behavioural
 kind: measurement
+report_class: present-state
+ground_truth: probe-derived
 source: 2026-singh-introspection-reality-check
 locator: "§4.1.2 (PCA-derived labels are linearly predictable from input features); Fig. 2b; App. N (Fig. 9); App. O"
 quote: "indicating that the task can be solved from input-embedding features alone, without privileged access to any layer's activations"
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree | google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14 (by the c01 ruling)", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: outside the scored-self-answer class by the same reasoning as c01 (probe-derived truth); type stays behavioural"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-15
 ---
 
 Probes are fitted on layer-0 (uncontextualised) representations to predict the binary-clustered principal-component labels of each hidden layer, averaged across layers; the authors report the first principal component and say other components are similar. They also argue (same section) that Ji-An et al.'s neural-control result inherits the same confound.

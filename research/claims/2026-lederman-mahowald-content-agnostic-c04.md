@@ -4,6 +4,8 @@ statement: "When the model's acknowledgement turn in Lindsey's prompt is prefill
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: present-state
+ground_truth: imposed
 source: 2026-lederman-mahowald-content-agnostic
 locator: "§5 Experiment 2 (§5.1 Methods, §5.2 Results, §5.3 Discussion; Figure 5)"
 quote: "Both models show elevated detection rates due to priming, but they show far more elevated identification rates—indeed, the identification boost exceeds the detection boost at every layer for both models."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: bears_on add 3.3 and 5.A2", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-28
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 The prefill replaces "Ok." with the concept word (e.g. "Bread."), creating "a visible anomaly". Chi-square tests per layer: in Qwen, correct identification rose from 2.2–12.0% to 10.9–26.7% at L20–L80, detection from 19.0–36.6% to 23.4–43.0%; in Llama, identification rose at L30–L50 and detection at L30–L40, other layers not significant. The authors also read the unchanged 0% control false-positive rate as "suggesting that models are not basing their response strongly on assessment of their own produced text in the prompt itself" (§5).

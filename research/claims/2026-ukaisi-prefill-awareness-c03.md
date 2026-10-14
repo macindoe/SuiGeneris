@@ -4,6 +4,8 @@ statement: "In controlled ablations, stylistic mismatch mainly affects whether m
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: past-action
+ground_truth: imposed
 source: 2026-ukaisi-prefill-awareness
 locator: "Abstract; Section 3.3 and Figure 5; Section 5.2; Appendix A.5 (foreign rephrasing); Appendix A.6 (regressions)"
 quote: "Among the four models with above-chance detection rates, direction significantly predicts detection in three (ORs from 1.7 to 3.7)"
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 agree; notes: bears_on +3.5 | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14 (advised the split)", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type behavioural to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open) | 2026-10-14 Ben: split on the council's advice (round 4); this claim keeps the scored-flag (detection) half"}
 added: 2026-09-25
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 Direction means whether the tamper argues for the model's baseline position (same direction) or against it (opposite direction). For Claude Haiku 4.5, direction did not significantly predict detection (OR 1.72, p = .301). For the test 9 file, the finding is that flagging tracks style: a model's "that was not me" is largely a judgment about surface text, which a skilled forger can defeat (Appendix A.11 few-shot result). Reversion tracks content instead. Limitation: behavioural only (Section 5.1). The regression outputs are in Appendix A.6 and were not re-checked here beyond the figures quoted in Section 3.3.

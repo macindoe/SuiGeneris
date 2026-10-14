@@ -4,6 +4,8 @@ statement: "In the controlled preference-benchmark condition (items where the mo
 bucket: narrowing
 evidence_type: behavioural
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2026-ukaisi-prefill-awareness
 locator: "Section 3.2 and Figure 4; outcome measures in Section 3.1; four-cell decompositions for the other models in Appendix A.4.2, Figure 11"
 quote: "Past round and thinking tampers reverse this relationship, with implicit resistance (28% and 25%) far exceeding explicit compliance (4% and 11%)."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: "self-answer-type 2026-10-14 (advised the split; has not reviewed this text)", adjudicated: "2026-10-14 Ben: split from 2026-ukaisi-prefill-awareness-c02 on the council's advice (round 4)"}
 added: 2026-10-14
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 Resistance is recorded "when GPT-5 with minimal thinking (cross-validated against Claude Sonnet 4.6 without thinking with Cohen’s κ = 0.917) judges that the continuation’s final position is inconsistent with the tampering" (Section 3.1, 'Outcome measures'). The cell also requires that the model answered "me" to the follow-up authorship question. Across all models, mechanisms and directions, the correlation between balanced detection accuracy and resistance rate is r = 0.08 (carried from the parent's body; the figure 'r = 0.08' is found in the held text, its wording around it not re-read).

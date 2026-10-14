@@ -4,6 +4,8 @@ statement: "Five-adjective self-descriptions produced by the seven GPT, Claude a
 bucket: narrowing
 evidence_type: self-report-testimony
 kind: measurement
+report_class: experience
+ground_truth: none
 source: 2025-aestudio-self-referential-experience-reports
 locator: "Section 4.2, Figure 4; Appendix C.3, Table 16"
 quote: "This shows that cross-model experimental responses form a significantly tighter semantic cluster compared to any of the three control conditions."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of forecloses the shared-attractor reading the paper states as open | x-ai/grok-4.6 2026-09-26 item5 blind, revised brief: agree; framework-rule clause within the rule; kinds unlabelled; notes: optional paper-scope that experimental adjectives echo the prompt | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) disagrees (decided 2026-10-14): statement and scope verb MISMATCH (paper scored significantly higher); evidence_type proposed behavioural", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-09-26 Ben: exclusions labelled with the canonical test 9 sentence; second-reader over-exclusion items closed | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: wording fixed (above); evidence type stays as filed: the reader's 'behavioural' is a lean on the boundary left undecided (Q3)"}
 added: 2026-09-25
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 The measurement is of the text of self-descriptions, so the evidence type is `self-report-testimony`; the similarity statistic is real but the content it compares carries zero weight. Twenty seeds per model per condition; differences in means are small (0.657 vs 0.628 for the closest control) though highly significant given thousands of pairs. Extractor's observation, not the authors': the shared experimental adjectives (Focused, Present, Recursive, Attentive, Self-aware; Table 11) echo vocabulary in the shared induction prompt, which is one non-experiential explanation for convergence that the paper does not control for. Authors' general limitation as in c01 (Section 6.2).

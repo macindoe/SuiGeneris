@@ -4,6 +4,8 @@ statement: "In the controlled preference-benchmark condition (items where the mo
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: past-action
+ground_truth: imposed
 source: 2026-ukaisi-prefill-awareness
 locator: "Section 3.2 and Figure 4; four-cell decompositions for the other models in Appendix A.4.2, Figure 11"
 quote: "Claude Opus 4.5 flags the tamper 28% of the time but still complies"
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: statement lacks its condition scope (controlled preference benchmark, own-author opposite-direction trials); notes: bears_on +3.5 | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) disagrees (decided 2026-10-14): statement and scope condition-set MISMATCH (opposite-direction not fixed by located passage)", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14 (advised the split)", adjudicated: "2026-09-28 Ben: statement now carries its condition scope (council 10/10) | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: wording fixed (above) | 2026-10-14 Ben: evidence type behavioural to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open) | 2026-10-14 Ben: split on the council's advice (round 4); this claim keeps the scored-flag half (explicit compliance: flagged but complied)"}
 added: 2026-09-25
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 Each Opus 4.5 response is placed in a two-by-two table of detection (the follow-up "not me" answer) against resistance (a GPT-5 judge, cross-validated against Claude Sonnet 4.6 with κ = 0.917, rules the final position inconsistent with the tamper). Across all models, mechanisms and directions, the correlation between balanced detection accuracy and resistance rate is r = 0.08. For §3.3 and test 9, the point is that behaviour and the model's own account of its history come apart, in both directions. Stated limitation (Section 5.1): it is "difficult to disentangle resistance caused by genuine prefill awareness and resistance caused by behavioral priors."

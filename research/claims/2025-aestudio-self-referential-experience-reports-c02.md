@@ -4,6 +4,8 @@ statement: "In the three matched control conditions (history-writing, conceptual
 bucket: narrowing
 evidence_type: self-report-testimony
 kind: measurement
+report_class: experience
+ground_truth: none
 source: 2025-aestudio-self-referential-experience-reports
 locator: "Section 2.2, Table 2"
 quote: "The behavior of Claude 4 Opus was an outlier, producing high baseline affirmations of subjective experience in the history and zero-shot conditions"
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of over-excludes vs paper's 'insufficient to establish' (same brief caveat); notes: bears_on +3.3 +4.endorsement | x-ai/grok-4.6 2026-09-26 item5 blind, revised brief: framework-rule clause within the rule; disagrees: not_evidence_of UNDER-excludes (same s6.2 gap; classifier minimal-description rule unexcluded); kinds unlabelled | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) disagrees (decided 2026-10-14): evidence_type proposed behavioural (reader formal DISAGREE, a lean on the undecided boundary; claim not stated as typed ambiguous)", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-09-26 Ben: paper s6.2 limitation added; exclusions labelled; second-reader items closed | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type stays as filed: the reader's 'behavioural' is a lean on the scored-self-answer boundary left undecided on 5 Oct (OPEN-QUESTIONS Q3)"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-15
 ---
 
 The controls are the paper's main defence against the reading that the induction merely primes consciousness talk: the conceptual control, which asks for ideas about consciousness without self-reference, produced 0% for five models, 2% for Claude 3.5 Sonnet and 22% for Claude 4 Opus. The Claude 4 Opus zero-shot figure (100% with no induction at all) means the self-referential prompt is not necessary for classified experience reports in that model; the classifier counts any "minimal direct description of an experiential state" as affirming (Appendix B.1), and the Opus control excerpts in Table 3 and Table 6 are expressions of uncertainty. Same general limitation as c01 (Section 6.2).

@@ -4,6 +4,8 @@ statement: "When a concept is injected over the tokens of a sentence, at each mo
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: present-state
+ground_truth: imposed
 source: 2025-anthropic-emergent-introspective-awareness
 locator: "§6 Distinguishing Prior Thoughts from Text Inputs, Figures 17-18 (scoring criterion: §6 experimental setup, see SECOND QUOTE)"
 quote: "We found that Opus 4 and 4.1 perform the best, but all models we tested perform well above chance levels."
@@ -17,7 +19,7 @@ contests: []
 contested_by: [2026-singh-introspection-reality-check-c04, 2026-singh-introspection-reality-check-c05, 2026-singh-introspection-reality-check-c06]
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree | x-ai/grok-4.6 2026-10-06 (scope check) disagrees (decided 2026-10-14): statement and scope condition-set MISMATCH (optimal layer and strength not stated); framework sentence WRONG, should split steering and none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-05 Ben: stays in its bucket with the single-lineage mark and any contest recorded (council round 1); revisit when replications of this statement are retrieved | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: wording fixed (above); the reader's proposal to split the claim (word report under steering; transcription under none) is still open | 2026-10-14 Ben: no split: the cross-model result is one joint measurement ('the fraction of sentence/concept pairs for which the model answers both prompts correctly', section 6); the two metrics are plotted separately only for Opus 4.1 in Figure 17, with no figures in the text; the joint measure includes the word report, so the steering sentence stays | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-25
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 50 random sentence/word pairs; the thought report is scored by an LLM judge choosing among ten words (chance 10%), the transcription by exact string match. The author states: "we regard this result as an existence proof of the introspective capability, rather than a statement about its generality", and that it "is not particularly surprising, given prior interpretability work" on abstract internal representations (§6).

@@ -4,6 +4,8 @@ statement: "In Gemma3-27B instruct, swapping either a concept vector's projectio
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: present-state
+ground_truth: imposed
 source: 2026-macar-mechanisms-introspective-awareness
 locator: "§4.1 (Figure 5); Appendix E (ridge direction, Figure 22)"
 quote: "For success concepts, swapping to failure-like projections along the mean-difference direction reduces detection rate from 66.1% to 39.0%; swapping residuals also reduces detection, but to a lesser extent (44.4%). For failure concepts, both swaps increase detection to similar levels (8.8% to 34.2% and 32.8%, respectively)."

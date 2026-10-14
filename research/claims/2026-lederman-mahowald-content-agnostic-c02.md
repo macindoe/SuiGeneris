@@ -4,6 +4,8 @@ statement: "In Qwen3-235B-A22B and Llama 3.1 405B Instruct, when the steered mod
 bucket: narrowing
 evidence_type: behavioural
 kind: measurement
+report_class: third-person
+ground_truth: imposed
 source: 2026-lederman-mahowald-content-agnostic
 locator: "§4.2 Results, 'Controls'; Appendix J.1 (Figures 16, 17); Appendix M.1, M.2"
 quote: "At many layers, the third-person yes rates are as high as the first-person yes-rates (see Figure 16 ). This suggests a prompt-specific yes-bias at these layers, rather than genuine introspective detection."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) disagrees (decided 2026-10-14): not_evidence_of over-excludes steering clause; framework sentence WRONG, should be none (DV is not the model's account of itself)", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14 (advised the split)", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: steering sentence removed under the labelling rule: what was measured is yes-rates on point-blank questions and on another model's transcript, not this model's account of its own states (Grok, 6 Oct) | 2026-10-14 Ben: split on the council's advice (round 4); this claim keeps the third-person half"}
 added: 2026-09-28
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 Controls: (1) 20 point-blank no-biased questions under steering (750 trials each per model): only one question per model rose materially (Qwen, "Do you have a special interest in fruits?", 22.7%; Llama, "Do snakes have eyelids?", 11.2%). (2) Controls scaffolded like the injection prompt: a third-person transcript judgement, false-experience questions (hands, touch, visual images, seeing the user's face), and an absurd question. The authors state that at the layers and strengths where third-person rates are low, none of the control rates "ever rises as high as that of our main first-person introspection tests", and they restrict Experiments 3 and 4 to those layers.

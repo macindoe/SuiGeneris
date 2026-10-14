@@ -4,6 +4,8 @@ statement: "The authors infer from the probe-versus-report dissociation in Qwen2
 bucket: open
 evidence_type: ambiguous
 kind: interpretation
+report_class: none
+ground_truth: none
 source: 2026-ferrara-owmi
 locator: "§1 Introduction, sixth paragraph (restated §8, §10)"
 quote: "The failure sits in the path from internal state to verbal report, not in the availability of the information and not in our ability to measure it."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 disagrees: evidence_type -> ambiguous (inference rests on behavioural + interpretability dissociation) | x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: evidence_type ambiguous left standing per 5 Oct ruling", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-05 Ben: evidence type deliberately left undecided, set to ambiguous as the second reader proposed (council: 5 theoretical / 4 ambiguous / 1 interpretability); see OPEN-QUESTIONS Q3 | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-15
 ---
 
 This is an interpretation joining c01 (reports at chance), c02 (probe decodes the event, including at the last layers before output) and c04 (the pipeline registers a trained reporter). Bucket `open` because it is an inference, not a measurement: linear decodability at downstream layers shows the information is present where a report would be formed, not that a specific path is broken. The authors confine the conclusion to "this class of internal event, at the sites and scales we measured", and state that the leakage decomposition that would carry an access claim is not reported for this roster (§7.4).

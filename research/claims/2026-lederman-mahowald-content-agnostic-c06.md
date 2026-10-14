@@ -4,6 +4,8 @@ statement: "The authors state that their results show a largely content-agnostic
 bucket: open
 evidence_type: theoretical
 kind: interpretation
+report_class: none
+ground_truth: none
 source: 2026-lederman-mahowald-content-agnostic
 locator: "§1 Introduction (final paragraph); §8 General Discussion"
 quote: "Together, our results support the existence of an internal detection signal that is largely content-agnostic: models can detect that something unusual has occurred without reliably identifying what it is."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: none", council: "dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
 added: 2026-09-28
-changed: 2026-10-06
+changed: 2026-10-15
 ---
 
 An interpretation, not a measurement: it synthesises Experiments 1 to 4 (c01 to c05 of this source). §1: "This picture of content-agnostic injection-detection resembles Nisbett and Wilson (1977) ’s influential account of human introspection: a genuine, content-agnostic mechanism of anomaly-detection in processing, is paired with ex post confabulation about content." §8 also names AI safety relevance ("faithful introspection could provide a novel interpretability technique, while detection of internal modulation could constitute an additional source of situational awareness").

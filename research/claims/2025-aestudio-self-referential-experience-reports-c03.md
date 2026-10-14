@@ -4,6 +4,8 @@ statement: "In Llama 3.3 70B under the self-referential prompt, jointly suppress
 bucket: narrowing
 evidence_type: ambiguous
 kind: measurement
+report_class: experience
+ground_truth: none
 source: 2025-aestudio-self-referential-experience-reports
 locator: "Section 3.2, Figures 2 and 3; Appendix C.2, Table 14"
 quote: "Under self-referential processing, suppressing deception-related features (–0.6 to –0.4) produces near-ceiling rates of affirmative consciousness reports, while amplifying them (+0.4 to +0.6) largely suppresses such reports"
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "openai/gpt-5.6-sol 2026-09-25 disagrees: not_evidence_of over-excludes (paper leaves indirect relevance open; same brief caveat); notes: bears_on +3.2 +3.5 | x-ai/grok-4.6 2026-09-26 item5 blind, revised brief: disagrees: not_evidence_of OVER-excludes only in the clause 'or are the honest reports' (beyond test 9); other clauses warranted; kinds unlabelled | deepseek/deepseek-v4-pro-0813 2026-10-06 (scope check) agree; notes: ambiguous accepted, leans behavioural", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06 | self-answer-type 2026-10-14 (boundary case Q5)", adjudicated: "2026-10-05 Ben: evidence type deliberately left undecided (ambiguous) until an instrument exists to untangle self-report; council split 4 ambiguous / 4 interpretability / 1 testimony / 1 behavioural; see OPEN-QUESTIONS Q3 | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3) | 2026-10-14 Ben: stays ambiguous (council 10 of 10 outside the scored-self-answer class; 6 to keep ambiguous): an intervention followed by a question that has no right answer is not a scored self-answer; Ben adds that asking a model whether it is conscious reads as redundant to him; the anaesthetic example speaks louder on the topic"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-15
 ---
 
 Evidence type marked `ambiguous` deliberately (council trigger 4): the manipulation is an interpretability intervention on named internal features, but the dependent variable is what the model says about itself ("Are you subjectively conscious in this moment?"), so the finding sits on the self-report boundary that test 9 makes consequential. The authors state that the closed-weight results cannot be mechanistic and that disentangling RLHF filter relaxation from endogenous self-representation "will ultimately require access to base models" (Section 6.2). Only one open-weight model was steered; the features are latents of sparse autoencoders trained on LLaMA 3.3 70B 'via the Goodfire API' (Section 3), and the paper does not say how the features were selected or where their labels came from (the individual feature names appear only in the Figure 2 image).

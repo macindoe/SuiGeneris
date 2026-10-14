@@ -4,6 +4,8 @@ statement: "In Gemma3-27B instruct, detection is inconsistent with the hypothesi
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: present-state
+ground_truth: imposed
 source: 2026-macar-mechanisms-introspective-awareness
 locator: "§4.2 (Figure 6); §4.3 and Appendix F for the mean-difference direction cited in not_evidence_of"
 quote: "In 23.3% of S-S pairs, both opposite directions trigger detection, compared to only 3.2% for F-F pairs. This is inconsistent with the single direction hypothesis."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: reader marked the framework sentence WRONG (should be steering) from a stale body sentence; the field already carried the steering variant; stale sentence removed the same day; bears_on add 3.2", council: "dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06 | self-answer-type 2026-10-14 (advised the split)", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3) | 2026-10-14 Ben: split on the council's advice (round 4); this claim keeps the detection-rate (bidirectional steering) half"}
 added: 2026-09-28
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 This is the paper's answer to the confound raised by Godet (2025a, LessWrong, cited in §7.3), that steering generically pushes models toward "Yes". Swap results (§4.1): for success concepts, projection swap 66.1% to 39.0%, residual swap to 44.4%; for failure concepts, 8.8% to 34.2% and 32.8%. Ridge regression on downstream transcoder features predicts per-concept detection better (R² 0.624) than projection on the mean-difference direction (0.309) or full concept vectors (0.444) (§4.3). The mean-difference direction is nearly orthogonal to the refusal direction (cos -0.09) and correlates with concept verbalizability (Spearman 0.605); detection follows a sigmoid along it (Appendix F).

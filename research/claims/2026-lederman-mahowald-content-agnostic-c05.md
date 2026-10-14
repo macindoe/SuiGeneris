@@ -4,6 +4,8 @@ statement: "In Qwen3-235B-A22B, stopping injection at the end of the prompt inst
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: present-state
+ground_truth: imposed
 source: 2026-lederman-mahowald-content-agnostic
 locator: "§6 Experiment 3 (§6.2 Results, Figure 6); §7 Experiment 4 (§7.2 Results, Figures 7, 8)"
 quote: "In the prompt-only setup, detection is effectively unchanged while correct concept mentions fall dramatically, especially at mid-to-late layers (see Figure 6 )."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: bears_on add 5.A2; two measurements in one sentence, rule would split them", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-28
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 Experiment 3: at L50–L90 continuous injection gave higher concept-mention rates than prompt-only (p<.001); detection showed no significant difference at L20, L45, L60 and L75 and only modest differences elsewhere. The authors: "Overall, steering during generation is not required for detection, but assists significantly with concept mentions." Experiment 4 (five trials per configuration; n=2,915 coherent trials for the token-by-token grading at L35 S6): the grader "sees detection coming early, then incorrect identifications, then correct identifications", and for "a substantial portion of cases, the detection decision is clear at the first token". Authors' reading (§7.3): "the model defaults to guessing “apple” at earlier tokens, unless steering is strong enough to push it off this default."

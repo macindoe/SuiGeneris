@@ -4,6 +4,8 @@ statement: "When a Claude model's response is prefilled with an unlikely word, i
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: past-action
+ground_truth: imposed
 source: 2025-anthropic-emergent-introspective-awareness
 locator: "§7 Distinguishing Intended from Unintended Outputs via Introspection, Figures 19-22 (layer-range result: §7 at Figure 20, see SECOND QUOTE)"
 quote: "However, if we retroactively inject the concept corresponding to the prefilled responses into the model’s earlier activations, the model claims the response was intentional."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree | x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: leans ambiguous on boundary", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-05 Ben: stays in its bucket with the single-lineage mark and any contest recorded (council round 1); revisit when replications of this statement are retrieved | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-25
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 50 random sentence/prefill pairs; apology rate judged by Claude Sonnet 4; controls with no injection, with a random-concept injection, and with injection after the prefill (which did not reduce apologies). The peak layer (slightly over halfway) differs from the other experiments, which the author reads as "a collection of different mechanisms". The author notes that when the model accepts the prefill "it confabulates an explanation for why the injected concept came to mind" (§7). Relevant to §3.2 because it shows an intervention on internal state altering what the model affirms as its own.

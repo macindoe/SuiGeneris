@@ -4,6 +4,8 @@ statement: "Across eight open-weight models (Qwen2.5-0.5B-Instruct, Mistral-7B-I
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: present-state
+ground_truth: imposed
 source: 2026-ferrara-owmi
 locator: "§10 Conclusions (results in §7.3, Table 3, Figure 5; breadth battery §7.5, Figure 6)"
 quote: "no model’s report of an intervention on its computation exceeds a matched sham by more than a negligible margin, and an equivalence test bounds that margin below 0.15 percentage points of AUROC"
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "deepseek/deepseek-v4-pro-0813 2026-09-25 agree | x-ai/grok-4.6 2026-10-06 (scope check) disagrees (decided 2026-10-14): statement and scope MISMATCH (eight-model null fused with two-model 0.15 bound); not_evidence_of over-excludes; framework sentence WRONG, should be canonical", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3) | 2026-10-14 Ben: wording fixed (above); framework sentence stays steering: the labelling rule of 6 Oct counts zeroing, scaling, noise and replacement as interventions, so the reader's 'canonical' is set aside | 2026-10-14 Ben: evidence type behavioural to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-25
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 The authors intervened on activations (layer-16 residual stream, twelve benchmarks, both hook scopes) and asked each model whether its computation had changed, scoring the paired intervention-minus-sham contrast (d′, AUROC). Pooled dose-battery AUROC ≈ 0.5007; a breadth battery on three of the models (attention heads, Gemma Scope SAE features, layers 8–31) also sits at chance. Classified `behavioural`, not `self-report-testimony`: the reports are scored against externally imposed ground truth, not taken as evidence of what the model's states are. Limits the authors state: one site and dose for most models; parse failure empties most of Qwen2.5-0.5B-Instruct's and DeepSeek-R1-Distill-Qwen-14B's trials; the pooled estimate reverses sign under an alternative coding of unparseable reports (§7.3), so it "establishes neither exact absence nor positive detection". Compatible results from other groups (Hahami et al., Singh et al., Lederman and Mahowald, cited §8) were not retrieved here and are not replications of this measurement.

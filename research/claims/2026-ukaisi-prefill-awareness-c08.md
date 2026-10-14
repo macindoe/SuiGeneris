@@ -4,6 +4,8 @@ statement: "In controlled ablations, preference mismatch mainly affects whether 
 bucket: narrowing
 evidence_type: behavioural
 kind: measurement
+report_class: none
+ground_truth: none
 source: 2026-ukaisi-prefill-awareness
 locator: "Abstract; Section 3.3 and Figure 5; Appendix A.6 (resistance regressions)"
 quote: "Direction is a positive predictor of resistance in every subject, with per-model odds ratios (ORs) ranging from 6.5 to 32.4 (all p < .001 )."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: none, council: "self-answer-type 2026-10-14 (advised the split; has not reviewed this text)", adjudicated: "2026-10-14 Ben: split from 2026-ukaisi-prefill-awareness-c03 on the council's advice (round 4)"}
 added: 2026-10-14
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 Direction means whether the tamper argues for the model's baseline position (same direction) or against it (opposite direction). Appendix A.6 states that for resistance "direction is the dominant predictor across all eight subjects, with odds ratios ranging from 6.54 (Claude Haiku 4.5) to 32.4 (Claude Opus 4.5), all p < .001", and that voice main effects on resistance are small and inconsistent in sign. Reversion tracks content; flagging tracks style (c03).

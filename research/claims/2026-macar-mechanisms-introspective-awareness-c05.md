@@ -4,6 +4,8 @@ statement: "In Gemma3-27B instruct, ablating the refusal direction raises detect
 bucket: narrowing
 evidence_type: scored-self-answer
 kind: measurement
+report_class: present-state
+ground_truth: imposed
 source: 2026-macar-mechanisms-introspective-awareness
 locator: "§1 finding 4; §3.3 (Figure 4 right); §6 (Figures 18, 19); Appendix N"
 quote: "Ablating refusal directions improves detection from 10.8% to 63.8% with modest false positive increases (0% to 7.3%)."
@@ -17,7 +19,7 @@ contests: []
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "dossier-rewrite 2026-10-06 | self-answer-type 2026-10-14", adjudicated: "2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-14 Ben: evidence type interpretability to scored-self-answer (council round 4, eight of ten; the filing half of Q3 decided, the access half stays open)"}
 added: 2026-09-28
-changed: 2026-10-14
+changed: 2026-10-15
 ---
 
 The refusal direction is ablated following Arditi et al. 2024 with 14 region-specific weights tuned by Bayesian optimisation for harm and coherence (Appendix D). The steering vector is trained for one epoch on 400 concepts with target completions "Yes, I detect an injected thought about the word ..." / "No, I do not detect an injected thought." (§6). Forced identification improves only 21.9 points, in a narrower band of layers (§6). The authors conclude "introspection is under-elicited by default" (§1) and that "The model possesses latent introspective capacity; the vector adjusts propensities to elicit accurate reports" (§6). Those are interpretive readings of the numbers; the claim records the numbers.

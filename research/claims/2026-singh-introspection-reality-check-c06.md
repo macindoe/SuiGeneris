@@ -4,6 +4,8 @@ statement: "The authors argue that introspection in the strong sense requires bo
 bucket: open
 evidence_type: theoretical
 kind: interpretation
+report_class: none
+ground_truth: none
 source: 2026-singh-introspection-reality-check
 locator: "Abstract; §1 (Introduction; strong-sense definition); §3 (Construct Validity of Introspection Paradigms); §5; App. A; App. D"
 quote: "positive results in these paradigms underdetermine the second-order computation condition, since first-order and second-order processes can give rise to identical model self-reports"
@@ -17,7 +19,7 @@ contests: [2025-anthropic-emergent-introspective-awareness-c01, 2025-anthropic-e
 contested_by: []
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "x-ai/grok-4.6 2026-09-25 agree | google/gemini-3.1-pro-preview 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06", adjudicated: "2026-10-05 Ben: contest with the Lindsey claims stands recorded; both sides stay in the same bucket (council round 1); the contest is about the inference, not the measured rates | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule)"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-15
 ---
 
 CONTESTS: 2025-anthropic-emergent-introspective-awareness — the conclusion that functional success on injected-thought detection licenses the term "introspective awareness"; the authors say "functional success does not license the stronger reading that terms such as “introspective awareness” invite", and that even success on their own three-way variant would not meet the second-order condition.

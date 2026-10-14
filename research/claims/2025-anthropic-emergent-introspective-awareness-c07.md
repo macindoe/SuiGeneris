@@ -4,6 +4,8 @@ statement: "The author states that the results could arguably be construed as ev
 bucket: open
 evidence_type: theoretical
 kind: interpretation
+report_class: none
+ground_truth: none
 source: 2025-anthropic-emergent-introspective-awareness
 locator: "footnote 12 (in §10.4 Implications); advice against strong inferences: §10.4 main text"
 quote: "Our results could arguably be construed as providing evidence for a form of access consciousness in language models, but do not directly speak to the question of phenomenal consciousness at all."
@@ -17,7 +19,7 @@ contests: []
 contested_by: [2026-singh-introspection-reality-check-c06]
 review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-09-25 agree | x-ai/grok-4.6 2026-10-06 (scope check) agree; notes: none", council: "research-docket 2026-09-26 | dossier-rewrite 2026-10-06 | labelling-rule 2026-10-06", adjudicated: "2026-10-05 Ben: stays in its bucket with the single-lineage mark and any contest recorded (council round 1); revisit when replications of this statement are retrieved | 2026-10-06 Ben: rewrite applied after council round 2 (GPT proposal as amended by the checkers; experience-exclusion rule) | 2026-10-06 Ben: framework sentence set by the labelling rule (council round 3)"}
 added: 2026-09-25
-changed: 2026-10-06
+changed: 2026-10-15
 ---
 
 The author notes that the relevance of introspection to consciousness "varies considerably between different philosophical frameworks" (footnote 12 surveys higher-order, biological-substrate, IIT and global-workspace views) and that "existing scientific and philosophical theories of consciousness have largely not grappled with the architectural details of transformer-based language models". Same section: "Given the substantial uncertainty in this area, we advise against making strong inferences about AI consciousness on the basis of our results." Footnote 2 separately disclaims addressing "subjective experience".
