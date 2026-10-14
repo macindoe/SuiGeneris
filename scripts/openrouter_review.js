@@ -917,6 +917,40 @@ ${agents}
 Please respond in the structure the brief specifies, beginning with one line stating your own model family and version as you understand it, labelled as unverified.`;
 }
 
+function buildSelfReportWeightPrompt() {
+  // 2026-10-15: sixth council sitting. On the fifth sitting's advice (nine of ten) Ben sent the Anchor 2
+  // self-report sentence for review, with the review shaped as a decomposition of the self-report question
+  // tested against how law and medicine handle self-report. Brief by a Sonnet 5 subagent. Attaches the
+  // North Star, README, OPEN-QUESTIONS and the test 9 dossier. No seat addressed by family; no self-ID line.
+  const brief = readDoc("reviews/2026-10-15-self-report-weight-review-brief.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+  const readme = readDoc("research/README.md");
+  const open = readDoc("research/OPEN-QUESTIONS.md");
+  const d9 = readDoc("research/dossiers/9-t9.md");
+  const agents = readDoc("AGENTS.md");
+  return `Hi. I'd like an adversarial review, from your model family, of one question about a legal-policy framework for AI systems and the research library that supports it, per the brief below. The human maintainer adjudicates after reading all responses.
+
+=== reviews/2026-10-15-self-report-weight-review-brief.md (the brief) ===
+${brief}
+
+=== north-star-sui-generis-ai-category.md (the framework; Anchor 2 is in Section 5, test 9 in Section 9) ===
+${northStar}
+
+=== research/dossiers/9-t9.md (the test 9 dossier: what the library holds on self-report) ===
+${d9}
+
+=== research/OPEN-QUESTIONS.md ===
+${open}
+
+=== research/README.md (the library's schema and rules) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please respond in the structure the brief specifies, beginning with one line stating your own model family and version as you understand it, labelled as unverified.`;
+}
+
 function buildDossierReviewPrompt(which) {
   // 2026-10-14/15: fifth council sitting, in two rounds, on trigger 8 (drift). Round A: dossiers 9.t9 and
   // 5.A2 (18 and 11 claims since the council sat on 26 Sep). Round B: dossiers 3.2 and 4 (never reviewed).
@@ -1019,9 +1053,9 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const TARGETS = ["dossier-review-a", "dossier-review-b", "self-answer-type","labelling-rule", "dossier-rewrite","research-docket", "jsc-r2", "jsc","s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
+  const TARGETS = ["self-report-weight", "dossier-review-a","dossier-review-b", "self-answer-type","labelling-rule", "dossier-rewrite","research-docket", "jsc-r2", "jsc","s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
   const target = TARGETS.find((t) => args.includes(`--target=${t}`)) || "north-star";
-  const DEFAULT_TAGS = { "dossier-review-a": "dossier-review-a", "dossier-review-b": "dossier-review-b", "self-answer-type": "self-answer-type","labelling-rule": "labelling-rule", "dossier-rewrite": "dossier-rewrite","research-docket": "docket", "jsc-r2": "jsc-r2","jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
+  const DEFAULT_TAGS = { "self-report-weight": "self-report-weight", "dossier-review-a":"dossier-review-a", "dossier-review-b": "dossier-review-b", "self-answer-type": "self-answer-type","labelling-rule": "labelling-rule", "dossier-rewrite": "dossier-rewrite","research-docket": "docket", "jsc-r2": "jsc-r2","jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
   const tagArg = args.find((a) => a.startsWith("--tag="));
   const tag = tagArg ? tagArg.slice("--tag=".length) : DEFAULT_TAGS[target] || "";
   const modelsArg = args.find((a) => a.startsWith("--models="));
@@ -1030,6 +1064,7 @@ async function main() {
     : DEFAULT_MODELS;
 
   const BUILDERS = {
+    "self-report-weight": buildSelfReportWeightPrompt,
     "dossier-review-a": () => buildDossierReviewPrompt("A"),
     "dossier-review-b": () => buildDossierReviewPrompt("B"),
     "self-answer-type": buildSelfAnswerTypePrompt,
