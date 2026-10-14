@@ -1,5 +1,35 @@
 {
  "claims": {
+  "2023-apollo-strategic-deception-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2023-apollo-strategic-deception-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2023-apollo-strategic-deception-c03": {
+   "bucket": "established",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2024-anthropic-scaling-monosemanticity-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2024-anthropic-scaling-monosemanticity-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2024-anthropic-scaling-monosemanticity-c03": {
+   "bucket": "established",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
   "2025-aestudio-self-referential-experience-reports-c01": {
    "bucket": "narrowing",
    "evidence_type": "self-report-testimony",
@@ -28,6 +58,21 @@
   "2025-aestudio-self-referential-experience-reports-c06": {
    "bucket": "narrowing",
    "evidence_type": "self-report-testimony",
+   "in_dossier": true
+  },
+  "2025-anthropic-agentic-misalignment-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2025-anthropic-agentic-misalignment-c02": {
+   "bucket": "open",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2025-anthropic-agentic-misalignment-c03": {
+   "bucket": "established",
+   "evidence_type": "theoretical",
    "in_dossier": true
   },
   "2025-anthropic-emergent-introspective-awareness-c01": {
@@ -62,6 +107,36 @@
   },
   "2025-anthropic-emergent-introspective-awareness-c07": {
    "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2025-deleeuw-secret-agenda-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2025-deleeuw-secret-agenda-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2025-deleeuw-secret-agenda-c03": {
+   "bucket": "established",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2025-goldowsky-dill-deception-probes-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2025-goldowsky-dill-deception-probes-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2025-goldowsky-dill-deception-probes-c03": {
+   "bucket": "established",
    "evidence_type": "theoretical",
    "in_dossier": true
   },
@@ -198,6 +273,21 @@
   "2026-macar-mechanisms-introspective-awareness-c08": {
    "bucket": "narrowing",
    "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2026-shi-deception-taxonomy-c01": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2026-shi-deception-taxonomy-c02": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2026-shi-deception-taxonomy-c03": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
    "in_dossier": true
   },
   "2026-singh-introspection-reality-check-c01": {
