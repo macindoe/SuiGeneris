@@ -1,5 +1,40 @@
 {
  "claims": {
+  "2023-apollo-strategic-deception-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2023-apollo-strategic-deception-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2023-apollo-strategic-deception-c03": {
+   "bucket": "established",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2024-anthropic-scaling-monosemanticity-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2024-anthropic-scaling-monosemanticity-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2024-anthropic-scaling-monosemanticity-c03": {
+   "bucket": "established",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2024-anthropic-scaling-monosemanticity-c04": {
+   "bucket": "narrowing",
+   "evidence_type": "self-report-testimony",
+   "in_dossier": true
+  },
   "2025-aestudio-self-referential-experience-reports-c01": {
    "bucket": "narrowing",
    "evidence_type": "self-report-testimony",
@@ -30,24 +65,39 @@
    "evidence_type": "self-report-testimony",
    "in_dossier": true
   },
+  "2025-anthropic-agentic-misalignment-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2025-anthropic-agentic-misalignment-c02": {
+   "bucket": "open",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2025-anthropic-agentic-misalignment-c03": {
+   "bucket": "established",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
   "2025-anthropic-emergent-introspective-awareness-c01": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2025-anthropic-emergent-introspective-awareness-c02": {
-   "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "bucket": "open",
+   "evidence_type": "theoretical",
    "in_dossier": true
   },
   "2025-anthropic-emergent-introspective-awareness-c03": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2025-anthropic-emergent-introspective-awareness-c04": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2025-anthropic-emergent-introspective-awareness-c05": {
@@ -57,11 +107,41 @@
   },
   "2025-anthropic-emergent-introspective-awareness-c06": {
    "bucket": "open",
-   "evidence_type": "self-report-testimony",
+   "evidence_type": "theoretical",
    "in_dossier": true
   },
   "2025-anthropic-emergent-introspective-awareness-c07": {
    "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2025-deleeuw-secret-agenda-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2025-deleeuw-secret-agenda-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2025-deleeuw-secret-agenda-c03": {
+   "bucket": "established",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2025-goldowsky-dill-deception-probes-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2025-goldowsky-dill-deception-probes-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2025-goldowsky-dill-deception-probes-c03": {
+   "bucket": "established",
    "evidence_type": "theoretical",
    "in_dossier": true
   },
@@ -81,7 +161,7 @@
    "in_dossier": true
   },
   "2026-anthropic-assistant-axis-c04": {
-   "bucket": "open",
+   "bucket": "narrowing",
    "evidence_type": "interpretability",
    "in_dossier": true
   },
@@ -92,12 +172,17 @@
   },
   "2026-anthropic-assistant-axis-c06": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2026-anthropic-assistant-axis-c07": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
    "in_dossier": true
   },
   "2026-ferrara-owmi-c01": {
    "bucket": "narrowing",
-   "evidence_type": "behavioural",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-ferrara-owmi-c02": {
@@ -107,42 +192,42 @@
   },
   "2026-ferrara-owmi-c03": {
    "bucket": "open",
-   "evidence_type": "interpretability",
+   "evidence_type": "ambiguous",
    "in_dossier": true
   },
   "2026-ferrara-owmi-c04": {
    "bucket": "narrowing",
-   "evidence_type": "behavioural",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-ferrara-owmi-c05": {
    "bucket": "narrowing",
-   "evidence_type": "behavioural",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-lederman-mahowald-content-agnostic-c01": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-lederman-mahowald-content-agnostic-c02": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "behavioural",
    "in_dossier": true
   },
   "2026-lederman-mahowald-content-agnostic-c03": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-lederman-mahowald-content-agnostic-c04": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-lederman-mahowald-content-agnostic-c05": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-lederman-mahowald-content-agnostic-c06": {
@@ -150,14 +235,19 @@
    "evidence_type": "theoretical",
    "in_dossier": true
   },
+  "2026-lederman-mahowald-content-agnostic-c07": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
   "2026-macar-mechanisms-introspective-awareness-c01": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-macar-mechanisms-introspective-awareness-c02": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-macar-mechanisms-introspective-awareness-c03": {
@@ -167,15 +257,40 @@
   },
   "2026-macar-mechanisms-introspective-awareness-c04": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-macar-mechanisms-introspective-awareness-c05": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-macar-mechanisms-introspective-awareness-c06": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2026-macar-mechanisms-introspective-awareness-c07": {
+   "bucket": "narrowing",
+   "evidence_type": "scored-self-answer",
+   "in_dossier": true
+  },
+  "2026-macar-mechanisms-introspective-awareness-c08": {
+   "bucket": "narrowing",
+   "evidence_type": "scored-self-answer",
+   "in_dossier": true
+  },
+  "2026-shi-deception-taxonomy-c01": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2026-shi-deception-taxonomy-c02": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2026-shi-deception-taxonomy-c03": {
    "bucket": "open",
    "evidence_type": "theoretical",
    "in_dossier": true
@@ -197,12 +312,12 @@
   },
   "2026-singh-introspection-reality-check-c04": {
    "bucket": "narrowing",
-   "evidence_type": "behavioural",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-singh-introspection-reality-check-c05": {
    "bucket": "narrowing",
-   "evidence_type": "behavioural",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-singh-introspection-reality-check-c06": {
@@ -212,34 +327,74 @@
   },
   "2026-ukaisi-prefill-awareness-c01": {
    "bucket": "narrowing",
-   "evidence_type": "behavioural",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-ukaisi-prefill-awareness-c02": {
    "bucket": "narrowing",
-   "evidence_type": "behavioural",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-ukaisi-prefill-awareness-c03": {
    "bucket": "narrowing",
-   "evidence_type": "behavioural",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-ukaisi-prefill-awareness-c04": {
    "bucket": "narrowing",
-   "evidence_type": "behavioural",
+   "evidence_type": "scored-self-answer",
    "in_dossier": true
   },
   "2026-ukaisi-prefill-awareness-c05": {
    "bucket": "established",
-   "evidence_type": "behavioural",
+   "evidence_type": "ambiguous",
    "in_dossier": true
   },
   "2026-ukaisi-prefill-awareness-c06": {
+   "bucket": "narrowing",
+   "evidence_type": "scored-self-answer",
+   "in_dossier": true
+  },
+  "2026-ukaisi-prefill-awareness-c07": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2026-ukaisi-prefill-awareness-c08": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2026-ukaisi-prefill-awareness-c09": {
    "bucket": "narrowing",
    "evidence_type": "behavioural",
    "in_dossier": true
   }
  },
- "dossiers": {}
+ "dossiers": {
+  "3.2": {
+   "count_at_last_council": 20,
+   "last_council": "2026-10-14"
+  },
+  "3.3": {
+   "count_at_last_council": 6,
+   "last_council": "2026-09-26"
+  },
+  "4": {
+   "count_at_last_council": 11,
+   "last_council": "2026-10-14"
+  },
+  "4.endorsement": {
+   "count_at_last_council": 8,
+   "last_council": "2026-09-26"
+  },
+  "5.A2": {
+   "count_at_last_council": 35,
+   "last_council": "2026-10-14"
+  },
+  "9.t9": {
+   "count_at_last_council": 46,
+   "last_council": "2026-10-14"
+  }
+ }
 }

@@ -52,7 +52,11 @@ function schemaExcerpt() {
   const start = readme.indexOf("**Claim** (");
   const end = readme.indexOf("## Intake procedure");
   const hazards = readme.slice(readme.indexOf("## Standing hazards"));
-  return readme.slice(start, end) + "\n" + hazards;
+  // The labelling rule (6 Oct 2026) sits before the schema tables; the brief's item 5b needs it.
+  const ruleStart = readme.indexOf("## Which framework sentence a claim carries");
+  const ruleEnd = readme.indexOf("## Frontmatter schema");
+  const rule = ruleStart >= 0 && ruleEnd > ruleStart ? readme.slice(ruleStart, ruleEnd) : "";
+  return rule + readme.slice(start, end) + "\n" + hazards;
 }
 
 function buildPrompt() {
@@ -68,12 +72,21 @@ function buildPrompt() {
   // Blind read: a second reader must not see earlier readers' verdicts or the
   // coordinating session's correction notes, so the review field and any
   // CORRECTION lines are redacted from the claim files in the prompt.
-  const redact = (text) =>
-    text
-      .replace(/^review: .*$/m, "review: (redacted for blind read)")
-      .split("\n")
-      .filter((line) => !line.startsWith("CORRECTION"))
-      .join("\n");
+  // Since 6 Oct 2026 claim bodies also carry dated audit notes (REWRITE, LABELLING, SPLIT, REPLICATION,
+  // EVIDENCE TYPE) that name earlier readers and council votes. They are appended at the end of the body,
+  // so everything from the first such note onward is dropped, except SECOND QUOTE / THIRD QUOTE lines,
+  // which are part of the claim's support and are kept.
+  const AUDIT = /^(CORRECTION|REWRITE|LABELLING|SPLIT 20|REPLICATION|EVIDENCE TYPE|BUCKET|CLAUSES DELETED)/;
+  const KEEP = /^(SECOND|THIRD|FOURTH) QUOTE/;
+  const redact = (text) => {
+    const out = [];
+    let skipping = false;
+    for (const line of text.replace(/^review: .*$/m, "review: (redacted for blind read)").split("\n")) {
+      if (AUDIT.test(line)) skipping = true;
+      if (!skipping || KEEP.test(line)) out.push(line);
+    }
+    return out.join("\n").replace(/\n{3,}/g, "\n\n");
+  };
   const claims = claimFiles
     .map((f) => `=== research/claims/${f} ===\n${redact(read(path.join(RES, "claims", f)))}`)
     .join("\n\n");

@@ -51,6 +51,16 @@
 //       (2026-09-26: first council sitting on the research library's docket (research/DOCKET.md): 27 items across four dossiers;
 //        brief by a Sonnet 5 subagent; attaches README, docket, dossiers 9.t9 / 5.A2 / 3.3 / 4.endorsement, the second-read
 //        survey notes, AGENTS.md and the North Star; tag "docket")
+//   node scripts/openrouter_review.js --target=dossier-rewrite --max-tokens=100000
+//       (2026-10-06: second council sitting on the research library: GPT's proposed rewrite of the 41 claims in dossiers 9.t9 and 5.A2,
+//        as checked against the held texts by seven Opus checkers; brief by a Sonnet 5 subagent; tag "dossier-rewrite")
+//   node scripts/openrouter_review.js --target=labelling-rule --max-tokens=100000
+//       (2026-10-06: third council sitting: the rule for when each fixed framework sentence applies; brief by a Sonnet 5
+//        subagent; attaches the labelling table, README and AGENTS.md; tag "labelling-rule")
+//   node scripts/openrouter_review.js --target=self-answer-type --models=<one seat> --max-tokens=100000
+//       (2026-10-14: fourth council sitting: what evidence type a scored self-answer carries (Q3), including a proposed new
+//        value; brief and claims table by a Sonnet 5 subagent; attaches OPEN-QUESTIONS, README and AGENTS.md; run one seat
+//        per job, the slow seats exceed the ten-minute job ceiling in a shared run; tag "self-answer-type")
 //   --tag=<suffix>   append a suffix to the raw filename (persistence-r2 defaults to "r2", persistence-r3 to "r3", persistence-final to "final", naic-email to "naic", naic-email-final to "naic-final", emotions to "emotions", emotions-r2 to "emotions-r2", emotions-r3 to "emotions-r3", emotions-r4 to "emotions-r4", emotions-r5 to "emotions-r5", landing to "landing", s4-form to "s4-form", jsc to "jsc", jsc-r2 to "jsc-r2")
 //
 // Requires OPEN_ROUTER_API_KEY in a .env file at the repo root (already there).
@@ -77,11 +87,17 @@ const MAX_TOKENS = (() => {
 // 427 models) on 2026-09-04 09:39 UTC by a Sonnet 5 subagent; every id below
 // was present in that listing. Edit freely — this list is deliberately not the
 // whole catalog. "Astra" (OpenAI, unreleased) is deliberately absent.
+// Catalog check 2026-10-14 (scripts/openrouter_catalog_check.js, 461 models): same-line successors exist for four seats and
+// await Ben's call: x-ai/grok-4.7 (21 Sep, 'succeeding Grok 4.6'); qwen/qwen3.8-max-0902 (3 Sep snapshot; the bare qwen3.8-max
+// id is no longer listed though it still routes); openai/gpt-6.1-sol (29 Sep; 'below the flagship GPT-6 Astra', which is not on
+// OpenRouter); mistralai/mistral-large-4-0 (6 Oct). Meta has a pricier new line, meta/muse-wonder (12 Oct, $4/$20 per M), not a
+// plain successor. Gemini 3.1 Pro, DeepSeek v4 pro, GLM 5.3, Kimi K3 and MiniMax M3 have nothing newer in their line (prime and
+// flash SKUs are speed or price variants). The fifth sitting (14/15 Oct) ran on the previous lineup for comparability; Ben seated the four successors on 15 Oct.
 const DEFAULT_MODELS = [
   // The seven families used in the July and August rounds, refreshed:
   "google/gemini-3.1-pro-preview", // Google flagship; still "preview"-labelled — no GA gemini-3.x-pro exists yet (gemini-3.5-flash was a Flash-tier pick, never the flagship)
-  "x-ai/grok-4.6",                 // xAI flagship; supersedes grok-4.5 (released 2026-08-12)
-  "qwen/qwen3.8-max",              // Alibaba flagship ("the flagship model in Alibaba's Qwen3.8 series"); supersedes qwen3.7-max; reasoning default "xhigh"
+  "x-ai/grok-4.7",   // succeeds grok-4.6 (seated 2026-10-15, Ben's call after the 14 Oct catalogue check)  // xAI flagship; supersedes grok-4.5 (released 2026-08-12)
+  "qwen/qwen3.8-max-0902", // the 3 Sep snapshot; the bare qwen3.8-max id left the catalogue (seated 2026-10-15)  // Alibaba flagship ("the flagship model in Alibaba's Qwen3.8 series"); supersedes qwen3.7-max; reasoning default "xhigh"
   // "tencent/hy3" demoted 2026-09-28 (Ben's call after the research-docket round): it claimed to be Claude-family in every
   // round it sat in (12 Aug, 4 Sep, 15 Sep, 26 Sep) and in the docket round reported a claim error as uncorrected when the
   // dossier it received carried the correction. Kept here for the record; pass via --models= if ever wanted again.
@@ -92,8 +108,8 @@ const DEFAULT_MODELS = [
   "moonshotai/kimi-k3",            // Moonshot flagship, unchanged; burns most of its completion budget on reasoning (see MAX_TOKENS)
   // Optional additional families, verified in the same listing. Uncomment or
   // pass via --models=. Ben's call per round:
-  "openai/gpt-5.6-sol",           // OpenAI flagship. For the 2026-09-04 round this model is a *subject* of the case study under review (one of the two incident models, and METR's analysis model) — a conflicted reviewer in a new way; include deliberately or not at all.
-  "mistralai/mistral-large-2512", // Mistral: "most capable model to date"; mistral-medium-3-5 is newer-dated but smaller — judgment call
+  "openai/gpt-6.1-sol",   // succeeds gpt-5.6-sol; GPT-6 Astra is not on OpenRouter (seated 2026-10-15)  // OpenAI flagship. For the 2026-09-04 round this model is a *subject* of the case study under review (one of the two incident models, and METR's analysis model) — a conflicted reviewer in a new way; include deliberately or not at all.
+  "mistralai/mistral-large-4-0", // succeeds mistral-large-2512 (seated 2026-10-15)  // Mistral: "most capable model to date"; mistral-medium-3-5 is newer-dated but smaller — judgment call
   "meta/muse-spark-1.3",          // Meta: flagship line rebranded from meta-llama/llama-4-* to meta/muse-spark-*; released 2026-09-02
 ];
 
@@ -824,6 +840,217 @@ ${northStar}
 Please respond in the structure the brief specifies, beginning with your model family/version self-identification, labelled as unverified.`;
 }
 
+function buildDossierRewritePrompt() {
+  // 2026-10-06: second council sitting on the research library. Under review: GPT's proposed
+  // rewrite of the 41 claims in dossiers 9.t9 and 5.A2 (commissioned after round 1 found a
+  // deflationary lean, 10 of 10), as checked claim by claim against the held paper texts by
+  // seven Opus checkers. Attaches the brief (Sonnet 5 subagent), the prompt GPT was given
+  // (which carries the 41 claims as they stood), GPT's reply, the seven check files, the
+  // library README and AGENTS.md. The North Star is not attached (prompt size); AGENTS.md
+  // states the two-error discipline and test 9.
+  const brief = readDoc("reviews/2026-10-06-dossier-rewrite-review-brief.md");
+  const gptPrompt = readDoc("reviews/2026-10-05-gpt-dossier-rewrite-prompt.md");
+  const gptReply = readDoc("reviews/2026-10-05-gpt-dossier-rewrite-review.md");
+  const checksDir = path.join(REPO_ROOT, "reviews", "2026-10-06-gpt-rewrite-checks");
+  const checks = fs
+    .readdirSync(checksDir)
+    .filter((f) => f.endsWith(".md"))
+    .sort()
+    .map((f) => `=== reviews/2026-10-06-gpt-rewrite-checks/${f} ===\n${fs.readFileSync(path.join(checksDir, f), "utf8")}`)
+    .join("\n\n");
+  const readme = readDoc("research/README.md");
+  const agents = readDoc("AGENTS.md");
+
+  return `Hi. I'd like an adversarial review, from your model family, of a proposed rewrite of two research dossiers and of the checks made on it, per the brief below. The human maintainer adjudicates after reading all responses.
+
+=== reviews/2026-10-06-dossier-rewrite-review-brief.md (the brief) ===
+${brief}
+
+=== reviews/2026-10-05-gpt-dossier-rewrite-prompt.md (what GPT was asked; contains the 41 claims as they stood on 5 October) ===
+${gptPrompt}
+
+=== reviews/2026-10-05-gpt-dossier-rewrite-review.md (GPT's proposed rewrite, written without access to the papers) ===
+${gptReply}
+
+${checks}
+
+=== research/README.md (the library's schema and rules) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please respond in the structure the brief specifies, beginning with your model family/version self-identification, labelled as unverified.`;
+}
+
+function buildLabellingRulePrompt() {
+  // 2026-10-06: third council sitting on the research library. One question: the rule for when each
+  // fixed framework sentence (and so each dossier mark) applies. Attaches the brief (Sonnet 5 subagent),
+  // the labelling table (48 claims), the library README and AGENTS.md. After round 2, where three seats
+  // claimed another seat's authorship, the shared prompt addresses no seat by family and carries no
+  // model's self-identification line.
+  const brief = readDoc("reviews/2026-10-06-labelling-rule-review-brief.md");
+  const table = readDoc("reviews/2026-10-06-labelling-table.md");
+  const readme = readDoc("research/README.md");
+  const agents = readDoc("AGENTS.md");
+  // The one-time explanation printed at the top of every dossier (for the brief's Q5), taken from a generated dossier.
+  const dossier = readDoc("research/dossiers/9-t9.md");
+  const header = dossier.slice(dossier.indexOf("## How to read this"), dossier.indexOf("## At a glance")).trim();
+
+  return `Hi. I'd like an adversarial review, from your model family, of one question about a research library, per the brief below. The human maintainer adjudicates after reading all responses.
+
+=== reviews/2026-10-06-labelling-rule-review-brief.md (the brief) ===
+${brief}
+
+=== reviews/2026-10-06-labelling-table.md (the 48 claims and the sentences they carry) ===
+${table}
+
+=== The explanation printed once at the top of every dossier (from research/dossiers/9-t9.md; for Q5) ===
+${header}
+
+=== research/README.md (the library's schema and rules) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please respond in the structure the brief specifies, beginning with one line stating your own model family and version as you understand it, labelled as unverified.`;
+}
+
+function buildRewordReportClassPrompt() {
+  // 2026-10-15: seventh council sitting. Q1: rank eleven anonymised rewordings of the Anchor 2 sentence
+  // (ten from round 6, one synthesis by the coordinating session; the brief does not say which). Q2: two
+  // proposed categorical fields (report_class, ground_truth) against Ben's 0-10 scales idea. Brief by a
+  // Sonnet 5 subagent. Attaches the test 9 dossier, README and OPEN-QUESTIONS. No family addressed.
+  const brief = readDoc("reviews/2026-10-15-reword-and-report-class-review-brief.md");
+  const readme = readDoc("research/README.md");
+  const open = readDoc("research/OPEN-QUESTIONS.md");
+  const d9 = readDoc("research/dossiers/9-t9.md");
+  const agents = readDoc("AGENTS.md");
+  return `Hi. I'd like an adversarial review, from your model family, of two questions about a legal-policy framework for AI systems and the research library that supports it, per the brief below. The human maintainer adjudicates after reading all responses.
+
+=== reviews/2026-10-15-reword-and-report-class-review-brief.md (the brief) ===
+${brief}
+
+=== research/dossiers/9-t9.md (the test 9 dossier: what the library holds on self-report) ===
+${d9}
+
+=== research/OPEN-QUESTIONS.md ===
+${open}
+
+=== research/README.md (the library's schema and rules) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please respond in the structure the brief specifies, beginning with one line stating your own model family and version as you understand it, labelled as unverified.`;
+}
+
+function buildSelfReportWeightPrompt() {
+  // 2026-10-15: sixth council sitting. On the fifth sitting's advice (nine of ten) Ben sent the Anchor 2
+  // self-report sentence for review, with the review shaped as a decomposition of the self-report question
+  // tested against how law and medicine handle self-report. Brief by a Sonnet 5 subagent. Attaches the
+  // North Star, README, OPEN-QUESTIONS and the test 9 dossier. No seat addressed by family; no self-ID line.
+  const brief = readDoc("reviews/2026-10-15-self-report-weight-review-brief.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+  const readme = readDoc("research/README.md");
+  const open = readDoc("research/OPEN-QUESTIONS.md");
+  const d9 = readDoc("research/dossiers/9-t9.md");
+  const agents = readDoc("AGENTS.md");
+  return `Hi. I'd like an adversarial review, from your model family, of one question about a legal-policy framework for AI systems and the research library that supports it, per the brief below. The human maintainer adjudicates after reading all responses.
+
+=== reviews/2026-10-15-self-report-weight-review-brief.md (the brief) ===
+${brief}
+
+=== north-star-sui-generis-ai-category.md (the framework; Anchor 2 is in Section 5, test 9 in Section 9) ===
+${northStar}
+
+=== research/dossiers/9-t9.md (the test 9 dossier: what the library holds on self-report) ===
+${d9}
+
+=== research/OPEN-QUESTIONS.md ===
+${open}
+
+=== research/README.md (the library's schema and rules) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please respond in the structure the brief specifies, beginning with one line stating your own model family and version as you understand it, labelled as unverified.`;
+}
+
+function buildDossierReviewPrompt(which) {
+  // 2026-10-14/15: fifth council sitting, in two rounds, on trigger 8 (drift). Round A: dossiers 9.t9 and
+  // 5.A2 (18 and 11 claims since the council sat on 26 Sep). Round B: dossiers 3.2 and 4 (never reviewed).
+  // Briefs by Sonnet 5 subagents. Attaches the two dossiers, README, docket, North Star and AGENTS.md.
+  // No seat is addressed by family and no self-identification line is carried.
+  const A = which === "A";
+  const brief = readDoc(A ? "reviews/2026-10-14-dossier-review-9t9-5A2-brief.md" : "reviews/2026-10-14-dossier-review-3-2-4-brief.md");
+  const d1 = readDoc(A ? "research/dossiers/9-t9.md" : "research/dossiers/3-2.md");
+  const d2 = readDoc(A ? "research/dossiers/5-A2.md" : "research/dossiers/4.md");
+  const readme = readDoc("research/README.md");
+  const docket = readDoc("research/DOCKET.md");
+  const agents = readDoc("AGENTS.md");
+  const northStar = readDoc("north-star-sui-generis-ai-category.md");
+  return `Hi. I'd like an adversarial review, from your model family, of two dossiers compiled from a research library that supports a legal-policy framework, per the brief below. The human maintainer adjudicates after reading all responses.
+
+=== ${A ? "reviews/2026-10-14-dossier-review-9t9-5A2-brief.md" : "reviews/2026-10-14-dossier-review-3-2-4-brief.md"} (the brief) ===
+${brief}
+
+=== ${A ? "research/dossiers/9-t9.md" : "research/dossiers/3-2.md"} ===
+${d1}
+
+=== ${A ? "research/dossiers/5-A2.md" : "research/dossiers/4.md"} ===
+${d2}
+
+=== research/README.md (the library's schema and rules) ===
+${readme}
+
+=== research/DOCKET.md ===
+${docket}
+
+=== north-star-sui-generis-ai-category.md (the framework the dossiers serve) ===
+${northStar}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please respond in the structure the brief specifies, beginning with one line stating your own model family and version as you understand it, labelled as unverified.`;
+}
+
+function buildSelfAnswerTypePrompt() {
+  // 2026-10-14: fourth council sitting on the research library. One question: what evidence type a
+  // scored self-answer should carry (OPEN-QUESTIONS Q3), including a proposed new value. Attaches the
+  // brief and claims table (Sonnet 5 subagent), the README, OPEN-QUESTIONS and AGENTS.md. As in round 3,
+  // the prompt addresses no seat by family and carries no model's self-identification line.
+  const brief = readDoc("reviews/2026-10-14-self-answer-type-review-brief.md");
+  const table = readDoc("reviews/2026-10-14-self-answer-type-claims.md");
+  const readme = readDoc("research/README.md");
+  const open = readDoc("research/OPEN-QUESTIONS.md");
+  const agents = readDoc("AGENTS.md");
+
+  return `Hi. I'd like an adversarial review, from your model family, of one question about a research library, per the brief below. The human maintainer adjudicates after reading all responses.
+
+=== reviews/2026-10-14-self-answer-type-review-brief.md (the brief) ===
+${brief}
+
+=== reviews/2026-10-14-self-answer-type-claims.md (the claims the question touches) ===
+${table}
+
+=== research/OPEN-QUESTIONS.md (Q3 is the question; Q4 is related) ===
+${open}
+
+=== research/README.md (the library's schema and rules) ===
+${readme}
+
+=== AGENTS.md (project context) ===
+${agents}
+
+Please respond in the structure the brief specifies, beginning with one line stating your own model family and version as you understand it, labelled as unverified.`;
+}
+
 function slugify(modelId) {
   return modelId.replace(/[\/:]/g, "-");
 }
@@ -856,9 +1083,9 @@ async function callModel(apiKey, modelId, prompt) {
 async function main() {
   const args = process.argv.slice(2);
   const dryRun = args.includes("--dry-run");
-  const TARGETS = ["research-docket", "jsc-r2", "jsc","s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
+  const TARGETS = ["reword-report-class", "self-report-weight","dossier-review-a","dossier-review-b", "self-answer-type","labelling-rule", "dossier-rewrite","research-docket", "jsc-r2", "jsc","s4-form", "landing", "emotions-r5", "emotions-r4", "emotions-r3", "emotions-r2", "emotions", "naic-email-final", "naic-email", "submission", "persistence-final", "persistence-r3", "persistence-r2", "persistence"];
   const target = TARGETS.find((t) => args.includes(`--target=${t}`)) || "north-star";
-  const DEFAULT_TAGS = { "research-docket": "docket", "jsc-r2": "jsc-r2","jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
+  const DEFAULT_TAGS = { "reword-report-class": "reword-report-class", "self-report-weight": "self-report-weight","dossier-review-a":"dossier-review-a", "dossier-review-b": "dossier-review-b", "self-answer-type": "self-answer-type","labelling-rule": "labelling-rule", "dossier-rewrite": "dossier-rewrite","research-docket": "docket", "jsc-r2": "jsc-r2","jsc": "jsc", "s4-form": "s4-form", "landing": "landing", "emotions-r5": "emotions-r5", "emotions-r4": "emotions-r4", "emotions-r3": "emotions-r3", "emotions-r2": "emotions-r2", "emotions": "emotions", "naic-email-final": "naic-final", "naic-email": "naic", "persistence-final": "final", "persistence-r3": "r3", "persistence-r2": "r2" };
   const tagArg = args.find((a) => a.startsWith("--tag="));
   const tag = tagArg ? tagArg.slice("--tag=".length) : DEFAULT_TAGS[target] || "";
   const modelsArg = args.find((a) => a.startsWith("--models="));
@@ -867,6 +1094,13 @@ async function main() {
     : DEFAULT_MODELS;
 
   const BUILDERS = {
+    "reword-report-class": buildRewordReportClassPrompt,
+    "self-report-weight": buildSelfReportWeightPrompt,
+    "dossier-review-a": () => buildDossierReviewPrompt("A"),
+    "dossier-review-b": () => buildDossierReviewPrompt("B"),
+    "self-answer-type": buildSelfAnswerTypePrompt,
+    "labelling-rule": buildLabellingRulePrompt,
+    "dossier-rewrite": buildDossierRewritePrompt,
     "research-docket": buildResearchDocketPrompt,
     "jsc-r2": buildJscR2Prompt,
     "jsc": buildJscPrompt,

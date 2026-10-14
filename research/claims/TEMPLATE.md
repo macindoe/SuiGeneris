@@ -3,6 +3,7 @@ id: source-slug-c01
 statement: ""
 bucket: open
 evidence_type: behavioural
+kind: measurement
 source: source-slug
 locator: ""
 quote: ""
