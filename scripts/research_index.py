@@ -30,6 +30,11 @@ BUCKETS = {"established", "narrowing", "open"}
 EVIDENCE = {"interpretability", "behavioural", "welfare-evaluation", "theoretical",
             "legal", "self-report-testimony", "scored-self-answer", "ambiguous"}
 RELATION = {"developer-of-studied-model", "independent", "government", "mixed"}
+# Pilot (15 Oct 2026): what the model was asked, and what its answer was scored against. research/README.md,
+# "Report class and ground truth". Optional; present on the test 9 dossier's claims first.
+REPORT_CLASS = {"provenance", "identity", "present-state", "knowledge-state", "past-action", "preference",
+                "experience", "point-blank-control", "third-person", "decision-basis", "none"}
+GROUND_TRUTH = {"imposed", "independent-record", "known-fact", "probe-derived", "none"}
 VERIF = {"grep", "hand", "unverified"}
 STATUS = {"stub", "retrieved", "verified"}
 BEARS_RE = re.compile(r"^(3\.[1-5]|4|4\.(historicity|answerability|learning|endorsement)"
@@ -203,6 +208,12 @@ def validate(sources, claims):
             errs.append("%s: evidence_type %r" % (name, c.get("evidence_type")))
         if "kind" in c and c.get("kind") not in KINDS:
             errs.append("%s: kind %r" % (name, c.get("kind")))
+        # Pilot fields (15 Oct 2026, council round 7, ten of ten; Ben: pilot on the test 9 dossier first).
+        # Optional until the pilot is reviewed; validated when present. They never set a framework mark.
+        if "report_class" in c and c.get("report_class") not in REPORT_CLASS:
+            errs.append("%s: report_class %r" % (name, c.get("report_class")))
+        if "ground_truth" in c and c.get("ground_truth") not in GROUND_TRUTH:
+            errs.append("%s: ground_truth %r" % (name, c.get("ground_truth")))
         if REQUIRE_KIND and c.get("kind") not in KINDS:
             errs.append("%s: kind missing" % name)
         if c.get("verification") not in VERIF:
