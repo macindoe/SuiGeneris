@@ -37,6 +37,14 @@ Further rulings: a claim **never carries both** sentences (five of eight; a stee
 
 Before this rule the sentences followed whichever extractor took in each paper: three papers' inject-then-ask claims carried the steering variant and two papers' claims from the same kind of experiment carried nothing.
 
+## Two filing rules (15 October 2026)
+
+Both are decisions about how this library organises its entries, not findings about the systems studied.
+
+**The mark follows what the entry reports, not the instrument.** When a model's answer about itself is used as the instrument for measuring something else (a circuit localised by watching a detection answer fall under ablation; a persona-adoption rate judged from answers to "Who are you?"; an omission rate judged from a report to a manager), the framework sentence and dossier mark attach according to what the entry reports. An entry that reports a circuit, a rate or a score carries no sentence; the entry that reports the answer itself, if there is one, carries the sentence the labelling rule gives. Adopted by Ben after the council's fifth sitting split five to four on assistant-axis c07; applied to Macar c03 and c07, assistant-axis c07, Scheurer c02 and Scaling Monosemanticity c02 and c04.
+
+**The bucket of a limitation claim.** A claim of kind `limitation` that reports only the authors' stated limit on their own study is `established`: the limit is established, as the dossier header says, and that is not a finding that any capability is present or absent. A limitation claim whose statement goes on to assert the proposition the limit worries about (for example that subtle deception would evade the probes) is `open`, because that proposition is untested. Ben's reason for not pursuing the reader's fidelity argument further: it becomes a chase for certainty with no end; the caveat belongs in the header and the claim body, where a reader who wants it finds it.
+
 ## Scored self-answers (14 October 2026)
 
 Adopted by Ben on the advice of the council's fourth sitting (ten seats: eight for this value, two for `behavioural`; a one-seat follow-up kept the value after reading the minority's case). The value `scored-self-answer` is for a claim that **reports a model's answer to a question about itself, scored against a fact the experimenters imposed or hold independently of the answer** (an injection run or not; a turn edited or not). It records the design and does not decide what the answer shows. The score is accuracy against the experimenters' label; it is not evidence of self-knowledge, and a claim carrying it is not testimony either. The framework-sentence rule above is unchanged by the value: it still reads what was done and what was measured.

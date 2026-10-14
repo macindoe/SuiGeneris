@@ -177,7 +177,7 @@
   },
   "2026-anthropic-assistant-axis-c07": {
    "bucket": "narrowing",
-   "evidence_type": "interpretability",
+   "evidence_type": "behavioural",
    "in_dossier": true
   },
   "2026-ferrara-owmi-c01": {
