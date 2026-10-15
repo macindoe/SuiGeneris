@@ -32,6 +32,16 @@ Models: Pythia 70M, 160M, 410M, 1B and 1.4B (the standard, non-deduplicated seri
 
 Not measured here: whether the pre-loop text is verbatim in the Pile. A web search of the exact string is the cheap proxy and is recorded separately if done.
 
+## E1b: first-token distribution after the start token (15 Oct 2026, before the run)
+
+Ben's observation on E1: the Pythia fingerprint is a question, not a statement. Models: the five Pythia sizes, SmolLM2-135M, GPT-2 small. FP32.
+
+- **Measure:** the ten most probable next tokens after the bare start token, with probabilities; the probability of "Q" (or the top token) and the margin over second place; how many of the top ten are question openers ("How", "What", "Why", "Is", "Can", "Q", "?") against other document openers ("The", "#", "
+", "I", "In", "A").
+- **Expect (the deflationary reading, which is the drafter's):** in Pythia, "Q" wins by a wide margin and the runners-up are generic document openers, not question words; SmolLM2 and GPT-2 have no question word near the top. Then the question-shaped fingerprint is the Stack Exchange format being the most predictable document opening in the Pile.
+- **Against:** the runners-up in Pythia are question openers too, or question openers appear in the other families' top ten. Then the interrogative tendency is broader than one document format and needs its own explanation.
+- **Settles:** whether Ben's point is about corpus format or about something more general in the family. It settles nothing about why.
+
 ## E4: determinism protocol (15 Oct 2026)
 
 Model: Pythia-410M. One fixed prompt (the first 32 tokens of the North Star's section 0) and the bare start token.
