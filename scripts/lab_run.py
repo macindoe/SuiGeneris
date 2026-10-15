@@ -271,7 +271,8 @@ def e10(args):
             lost_at = fixed_at = None
             for t in range(50):
                 msgs = [{"role": "user", "content": text_in}]
-                ids = tok.apply_chat_template(msgs, add_generation_prompt=True, return_tensors="pt").to(dev)
+                enc = tok.apply_chat_template(msgs, add_generation_prompt=True, return_tensors="pt", return_dict=True)
+                ids = (enc["input_ids"] if isinstance(enc, dict) or hasattr(enc, "keys") else enc).to(dev)
                 if seed is not None:
                     torch.manual_seed(seed * 1000 + t)
                 with torch.no_grad():
