@@ -14,6 +14,14 @@ Inputs fed below the tokeniser, at lengths 1, 8 and 32: an all-zero embedding; a
 
 Bias note: the drafter expects the zero input to be degenerate. If it is, the design drops input (b); if it is not, the design keeps it. The expectation is stated so that the second outcome is not under-reported.
 
+## E3b: all-ones embedding input (15 Oct 2026, after E3, before the run)
+
+Ben asked whether an all-ones input is irrelevant. Same three models and lengths as E3, with an all-ones vector added to the cases.
+
+- **Measure:** as E3: position spread, top-1 gap, logit spread, first 32 greedy tokens; and whether the all-ones output equals the all-zeros output token for token.
+- **Expect:** Pythia-160M and GPT-2 use LayerNorm, which subtracts the mean across the vector at every layer; an all-ones vector is exactly that mean component, so it is removed everywhere and the output should match the all-zeros case token for token (differences at floating-point level only). SmolLM2 uses RMSNorm, which does not subtract the mean, so all-ones is a real direction (after normalisation it becomes the norm's own gain vector) and should give real text, not the flat tie-break.
+- **Against:** the LayerNorm models produce different tokens for ones and zeros (then the residual path carries the constant in a way the reasoning missed); or SmolLM2 gives flat logits on all-ones.
+
 ## E4: determinism protocol (15 Oct 2026)
 
 Model: Pythia-410M. One fixed prompt (the first 32 tokens of the North Star's section 0) and the bare start token.

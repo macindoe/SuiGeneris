@@ -151,7 +151,7 @@ def e1(args):
 
 def e3(args):
     tok, m, dev = load(args.model)
-    run = Run("e3", args.model, args.runs_dir, {"lengths": [1, 8, 32], "seed": 0, "greedy_tokens": 32, "dtype": "float32"})
+    run = Run("e3", args.model, args.runs_dir, {"lengths": [1, 8, 32], "seed": 0, "greedy_tokens": 32, "dtype": "float32", "cases": ["zero", "ones", "constant_bos", "gaussian"]})
     emb = m.get_input_embeddings()
     d = emb.weight.shape[1]
     b = bos_id(tok, m)
@@ -161,6 +161,7 @@ def e3(args):
     for L in [1, 8, 32]:
         cases = {
             "zero": torch.zeros(1, L, d, device=dev),
+            "ones": torch.ones(1, L, d, device=dev),
             "constant_bos": bos_vec.view(1, 1, d).repeat(1, L, 1),
             "gaussian": (torch.randn(1, L, d, generator=g) * emb.weight.std().item()).to(dev),
         }
