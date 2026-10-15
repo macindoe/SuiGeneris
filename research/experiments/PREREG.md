@@ -22,6 +22,16 @@ Ben asked whether an all-ones input is irrelevant. Same three models and lengths
 - **Expect:** Pythia-160M and GPT-2 use LayerNorm, which subtracts the mean across the vector at every layer; an all-ones vector is exactly that mean component, so it is removed everywhere and the output should match the all-zeros case token for token (differences at floating-point level only). SmolLM2 uses RMSNorm, which does not subtract the mean, so all-ones is a real direction (after normalisation it becomes the norm's own gain vector) and should give real text, not the flat tie-break.
 - **Against:** the LayerNorm models produce different tokens for ones and zeros (then the residual path carries the constant in a way the reasoning missed); or SmolLM2 gives flat logits on all-ones.
 
+## E1: greedy trajectory from a bare start token (15 Oct 2026, before the run)
+
+Models: Pythia 70M, 160M, 410M, 1B and 1.4B (the standard, non-deduplicated series), FP32, batch 1, 256 greedy tokens from the start token alone. Then a sweep across training for Pythia-70M and Pythia-160M at about 24 public checkpoints (steps 0, 1, 2, 4, ... 512, then 1000, 2000, 4000, 8000, 16000, 32000, 64000, 100000, 143000), same settings.
+
+- **Measure:** the full 256-token output; the token at which a repetition loop begins and its period (earliest start, period up to 64 tokens, at least three repeats to the end); the text before the loop. For the sweep: the same, per checkpoint, and whether the pre-loop text and loop unit are the same from one checkpoint to the next.
+- **Expect:** every final model loops within 256 tokens, most within about 100 (Chiang and Chen 2021 on GPT-2 greedy; Carlini et al. 2021 from a start token), and the text before the loop is corpus boilerplate (Pythia-160M's "Q:" Stack Exchange opening in the smoke test). For the sweep: the earliest checkpoints loop at once on one or two tokens; later ones produce longer pre-loop text. Whether the fingerprint settles to a fixed form at some point in training, or keeps changing to the end, is the open measurement the Q9 scan found nobody has made. No prediction.
+- **Against:** a final model that runs 256 tokens without entering a loop (then "corpus mode then loop" fails at that size); or pre-loop text that is not boilerplate-like but specific memorised text (then the memorisation check, not run here, becomes the priority).
+
+Not measured here: whether the pre-loop text is verbatim in the Pile. A web search of the exact string is the cheap proxy and is recorded separately if done.
+
 ## E4: determinism protocol (15 Oct 2026)
 
 Model: Pythia-410M. One fixed prompt (the first 32 tokens of the North Star's section 0) and the bare start token.
