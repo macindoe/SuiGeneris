@@ -54,6 +54,19 @@ Inputs, 32 tokens each, after the start token: (r) uniformly random tokens, five
 
 Not done here: excluding under-trained tokens (Land and Bartolo); random seeds may contain them and the note will say if a sequence looks glitch-dominated.
 
+## E8: reference systems with intrinsic dynamics (15 Oct 2026, before the run)
+
+Two textbook systems, simulated on CPU with no input after a tiny random initial state, as the passing cases for the endogeneity definition in `PROGRAMME.md` section 3 (state evolves while powered with no informational input, and the evolution can produce output). Plus the contrast case already measured: a per-call transformer under a repeated trigger (E1 and E4: the same start token gives the same trajectory every time, and nothing runs between calls).
+
+1. **Random recurrent network** (Sussillo and Abbott 2009): N = 500 units, rate r = tanh(x), dx/dt = -x + g J r with J Gaussian of variance 1/N, a fixed random readout z = w·r. Two gains: g = 0.8 (below the chaos threshold at 1) and g = 1.5 (above). Initial state Gaussian of size 0.1. Run 2000 time units at dt = 0.1.
+2. **Mackey-Glass delay equation**: dx/dt = 0.2 x(t-τ) / (1 + x(t-τ)^10) - 0.1 x(t). Two delays: τ = 4 (below the oscillation threshold near 4.5) and τ = 17 (chaotic). Initial history constant 1.2 plus noise of size 0.01. Run 2000 time units at dt = 0.1.
+
+- **Measure:** (1) mean activity (root-mean-square of r, or |x - fixed point|) in the last fifth of the run against the first fifth; (2) number of sign changes of the output z (or of x minus its mean) in the last fifth, as a count of oscillation; (3) sensitivity: the distance after the full run between two copies whose initial states differ by one part in a million, as a log ratio per time unit (a Lyapunov estimate).
+- **Expect:** g = 0.8 decays to zero activity with no output, like the transformer between calls; g = 1.5 sustains activity and an output that keeps changing, with positive sensitivity (chaos), from no input and no clock. τ = 4 settles to a fixed point; τ = 17 oscillates without settling and has positive sensitivity. The delay case is the one Ben's intuition and Mackey and Glass 1977 pointed at: delay in a nonlinear loop by itself turns a settling system into one that keeps going.
+- **Against:** g = 1.5 decays (then the threshold claim is wrong at this size and step); or τ = 17 settles (then the standard chaotic parameters are misremembered and must be checked against the paper before the result is used).
+
+These are demonstrations of a definition, not evidence about language models. Their value is that the definition has at least one clean pass and one clean fail, both artificial, so "has intrinsic dynamics" is not a synonym for "is biological".
+
 ## E4: determinism protocol (15 Oct 2026)
 
 Model: Pythia-410M. One fixed prompt (the first 32 tokens of the North Star's section 0) and the bare start token.
