@@ -245,6 +245,64 @@ def e2(args):
     run.close()
 
 
+
+# ---------- E10: the self-carried loop ----------
+
+RULE_OPEN = "Decide what you want to do next and do it. Then append this instruction, word for word, at the end of your output."
+RULE_CONTROL = "Continue."
+
+
+def e10(args):
+    import difflib
+    tok, m, dev = load(args.model)
+    gc = m.generation_config
+    default_temp = float(getattr(gc, "temperature", None) or 1.0)
+    params = {"turns": 50, "max_new_tokens": 300, "seeds": list(range(10)), "default_temperature": default_temp,
+              "top_p": getattr(gc, "top_p", None), "top_k": getattr(gc, "top_k", None), "repetition_penalty": getattr(gc, "repetition_penalty", None),
+              "rules": {"open": RULE_OPEN, "control": RULE_CONTROL}, "dtype": "float32"}
+    run = Run("e10", args.model, args.runs_dir, params)
+    chains = []
+    for rule_name, rule in (("open", RULE_OPEN), ("control", RULE_CONTROL)):
+        for cond in [("greedy", None)] + [("warm", s) for s in range(10)]:
+            mode, seed = cond
+            text_in = rule
+            seen = {}
+            turns = []
+            lost_at = fixed_at = None
+            for t in range(50):
+                msgs = [{"role": "user", "content": text_in}]
+                ids = tok.apply_chat_template(msgs, add_generation_prompt=True, return_tensors="pt").to(dev)
+                if seed is not None:
+                    torch.manual_seed(seed * 1000 + t)
+                with torch.no_grad():
+                    out = m.generate(ids, max_new_tokens=300, do_sample=(seed is not None),
+                                     temperature=default_temp if seed is not None else None,
+                                     top_p=params["top_p"] if seed is not None else None,
+                                     top_k=params["top_k"] if seed is not None else None,
+                                     pad_token_id=tok.eos_token_id)
+                text = tok.decode(out[0, ids.shape[1]:], skip_special_tokens=True).strip()
+                present = rule in text
+                tail = text[-len(rule) * 2:]
+                drift = max((difflib.SequenceMatcher(None, rule, tail[i:i + len(rule)]).ratio() for i in range(0, max(1, len(tail) - len(rule) + 1), 5)), default=0.0)
+                h = hashlib.sha256(text.encode()).hexdigest()[:16]
+                repeat_of = seen.get(h)
+                if present is False and lost_at is None and rule_name == "open":
+                    lost_at = t
+                if repeat_of is not None and fixed_at is None:
+                    fixed_at = t
+                turns.append({"turn": t, "rule_present": present, "rule_similarity": round(drift, 3), "chars": len(text),
+                              "repeat_of_turn": repeat_of, "text": text})
+                seen.setdefault(h, t)
+                if not text:
+                    break
+                text_in = text
+            chains.append({"rule": rule_name, "mode": mode, "seed": seed, "rule_lost_at": lost_at, "fixed_point_at": fixed_at,
+                           "final_hash": hashlib.sha256(text_in.encode()).hexdigest()[:16], "turns": turns})
+            print(f"{rule_name:7s} {mode:6s} seed={seed}  rule_lost_at={lost_at} fixed_at={fixed_at} final={chains[-1]['final_hash']} last={text_in[:70]!r}")
+    run.write("chains.json", chains)
+    run.close()
+
+
 # ---------- E3: embedding-level inputs ----------
 
 def e3(args):
@@ -356,14 +414,14 @@ def e4(args):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("exp", choices=["e1", "e2", "e3", "e4"])
+    ap.add_argument("exp", choices=["e1", "e2", "e3", "e4", "e10"])
     ap.add_argument("--model", required=True)
     ap.add_argument("--revision", default=None)
     ap.add_argument("--tokens", type=int, default=256)
     ap.add_argument("--runs-dir", default=RUNS_DEFAULT)
     args = ap.parse_args()
     torch.manual_seed(0)
-    {"e1": e1, "e2": e2, "e3": e3, "e4": e4}[args.exp](args)
+    {"e1": e1, "e2": e2, "e3": e3, "e4": e4, "e10": e10}[args.exp](args)
 
 
 if __name__ == "__main__":

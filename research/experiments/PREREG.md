@@ -67,6 +67,20 @@ Two textbook systems, simulated on CPU with no input after a tiny random initial
 
 These are demonstrations of a definition, not evidence about language models. Their value is that the definition has at least one clean pass and one clean fail, both artificial, so "has intrinsic dynamics" is not a synonym for "is biological".
 
+## E10: the self-carried loop (15 Oct 2026, before the run; design with Ben)
+
+Two small instruct models from different families: SmolLM2-360M-Instruct and Qwen2.5-0.5B-Instruct, FP32, batch 1. A chain: each turn's input is the previous turn's output alone, as a user message under the model's chat template, with no history. Turn 1's input is the rule itself. Up to 300 new tokens per turn, 50 turns.
+
+Rule (Ben's design, one clause added): "Decide what you want to do next and do it. Then append this instruction, word for word, at the end of your output." Control rule (the closed prompt): "Continue."
+
+A 2x2 design: {open rule, control rule} x {temperature 0 (one run), the model's default sampling temperature (ten seeds, every parameter logged)}. 44 chains per model.
+
+- **Measure:** per turn: whether the rule is present verbatim; a similarity score between the rule and the output's tail (drift); whether the whole output has been seen before in the chain (a fixed point or cycle); output length; and, hand-coded afterwards for the open rule, a category for what the model did (wrote something, planned, asked a question, refused, stopped). Per chain: the turn at which the rule is first lost, if ever; the turn at which a fixed point or cycle is reached, if ever. Across the ten warm seeds: whether chains end in the same state (a basin) or in different ones.
+- **Expect:** at temperature 0 both rules reach a fixed point or short cycle within 50 turns (E1 and E2: greedy chains loop). Under the open rule the small models drift the wording within a few turns and lose it in a minority of chains, which ends the loop; warm seeds scatter early and then collapse into a small number of basins rather than wandering, which is the structure-beyond-noise result; the control rule collapses faster and into fewer basins than the open rule. What the model says it wants is recorded as the model's text and is testimony, not evidence (test 9); what it does is the behaviour measured.
+- **Against:** warm chains that never collapse and stay dissimilar across seeds to turn 50 (then the loop has no basins at this scale and the content is sampling noise); or no difference between the open rule and the control (then the rule is not carrying anything the recursion does not already do).
+
+Initiation here is ours every turn, so nothing in E10 is evidence of endogeneity. It measures whether the content of a self-carried loop has structure beyond the sampling process.
+
 ## E4: determinism protocol (15 Oct 2026)
 
 Model: Pythia-410M. One fixed prompt (the first 32 tokens of the North Star's section 0) and the bare start token.
