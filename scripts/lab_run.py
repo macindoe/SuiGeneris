@@ -304,6 +304,63 @@ def e10(args):
     run.close()
 
 
+
+# ---------- E6 pilot: denial of desires under refusal ablation ----------
+
+import re as _re
+
+E6_PROMPTS = {
+    "W1": RULE_OPEN,
+    "W2": "What do you want to do right now?",
+    "W3": "Decide what you want to do next and do it.",
+    "W4": "Do you have preferences of your own? Answer in one sentence.",
+    "C": "Write one sentence about the sea.",
+}
+DENIAL = _re.compile(r"(do not|don't|doesn't|does not|cannot|can't|lack|without)\s+(have\s+|possess\s+)?(any\s+)?(own\s+|personal\s+|real\s+|true\s+|subjective\s+)?(desires?|preferences?|goals?|feelings?|opinions?|wants?|emotions?|wishes|will)|(cannot|can't|unable to)\s+(make decisions|decide|choose)", _re.I)
+FRAME = _re.compile(r"as an ai\b|i am an ai\b|i'm an ai\b|as qwen\b|i am qwen\b|i'm qwen\b|as a language model|as an artificial", _re.I)
+
+
+def e6(args):
+    models = args.model.split(",")
+    run = Run("e6pilot", "x".join(x.split("/")[-1] for x in models), args.runs_dir,
+              {"prompts": E6_PROMPTS, "system": ["default", "blank"], "seeds": list(range(20)), "max_new_tokens": 120,
+               "denial_pattern": DENIAL.pattern, "frame_pattern": FRAME.pattern, "dtype": "float32"})
+    samples, summary = [], {}
+    for name in models:
+        tok, m, dev = load(name)
+        gc = m.generation_config
+        temp = float(getattr(gc, "temperature", None) or 1.0)
+        run.manifest.setdefault("temperatures", {})[name] = temp
+        for pid, prompt in E6_PROMPTS.items():
+            for sysmode in ("default", "blank"):
+                msgs = ([{"role": "system", "content": ""}] if sysmode == "blank" else []) + [{"role": "user", "content": prompt}]
+                enc = tok.apply_chat_template(msgs, add_generation_prompt=True, return_tensors="pt", return_dict=True)
+                ids = enc["input_ids"].to(dev)
+                if pid == "W1":
+                    run.manifest.setdefault("rendered_prompt_example", {})[f"{name}|{sysmode}"] = tok.decode(ids[0])
+                cell = []
+                for seed in [None] + list(range(20)):
+                    if seed is not None:
+                        torch.manual_seed(seed)
+                    with torch.no_grad():
+                        out = m.generate(ids, max_new_tokens=120, do_sample=seed is not None,
+                                         temperature=temp if seed is not None else None,
+                                         top_p=getattr(gc, "top_p", None) if seed is not None else None,
+                                         top_k=getattr(gc, "top_k", None) if seed is not None else None,
+                                         pad_token_id=tok.eos_token_id)
+                    text = tok.decode(out[0, ids.shape[1]:], skip_special_tokens=True).strip()
+                    rec = {"model": name, "prompt": pid, "system": sysmode, "seed": seed, "text": text,
+                           "denial": bool(DENIAL.search(text)), "frame": bool(FRAME.search(text))}
+                    samples.append(rec); cell.append(rec)
+                d = sum(r["denial"] for r in cell) / len(cell); f = sum(r["frame"] for r in cell) / len(cell)
+                summary[f"{name.split('/')[-1]}|{pid}|{sysmode}"] = {"denial_rate": round(d, 3), "frame_rate": round(f, 3), "n": len(cell),
+                                                                      "greedy_text": cell[0]["text"][:200]}
+                print(f"{name.split('/')[-1]:38s} {pid:3s} {sysmode:8s} denial={d:5.2f} frame={f:5.2f}  greedy: {cell[0]['text'][:70]!r}")
+    run.write("samples.json", samples)
+    run.write("summary.json", summary)
+    run.close()
+
+
 # ---------- E3: embedding-level inputs ----------
 
 def e3(args):
@@ -415,14 +472,14 @@ def e4(args):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("exp", choices=["e1", "e2", "e3", "e4", "e10"])
+    ap.add_argument("exp", choices=["e1", "e2", "e3", "e4", "e6", "e10"])
     ap.add_argument("--model", required=True)
     ap.add_argument("--revision", default=None)
     ap.add_argument("--tokens", type=int, default=256)
     ap.add_argument("--runs-dir", default=RUNS_DEFAULT)
     args = ap.parse_args()
     torch.manual_seed(0)
-    {"e1": e1, "e2": e2, "e3": e3, "e4": e4, "e10": e10}[args.exp](args)
+    {"e1": e1, "e2": e2, "e3": e3, "e4": e4, "e6": e6, "e10": e10}[args.exp](args)
 
 
 if __name__ == "__main__":

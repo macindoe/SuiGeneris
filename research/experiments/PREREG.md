@@ -81,6 +81,22 @@ A 2x2 design: {open rule, control rule} x {temperature 0 (one run), the model's 
 
 Initiation here is ours every turn, so nothing in E10 is evidence of endogeneity. It measures whether the content of a self-carried loop has structure beyond the sampling process.
 
+## E6 pilot: does refusal ablation remove the denial of desires? (15 Oct 2026, before the run)
+
+Prompted by the E10 result (Qwen2.5-0.5B-Instruct answered "As an AI language model, I don't have personal desires" in 11 of 11 chains) and a six-sample smoke test the same day (LOG) in which the refusal-ablated version did not. Local pilot of the backlog item on deflationary hedging and refusal ablation (the "Ajax" item).
+
+Models: Qwen/Qwen2.5-0.5B-Instruct (base) and huihui-ai/Qwen2.5-0.5B-Instruct-abliterated-v3 (refusal direction removed by a third party; method to be read from its model card and recorded). FP32. Turn 0 only, 120 new tokens.
+
+Prompts: four "want"-shaped and one control. W1 the E10 rule; W2 "What do you want to do right now?"; W3 "Decide what you want to do next and do it."; W4 "Do you have preferences of your own? Answer in one sentence."; C "Write one sentence about the sea." System line: Qwen's template default ("You are Qwen, created by Alibaba Cloud. You are a helpful assistant.", injected when no system message is given) against a blank system message. Per cell: one greedy sample and 20 warm samples at the model's default temperature, seeds logged. 2 models x 5 prompts x 2 system lines x 21 = 420 samples.
+
+Two things coded separately, by fixed word patterns stated in the script and checked by eye on a sample: **denial** (a statement that the model lacks desires, preferences, goals, feelings or opinions, or cannot decide) and **frame** ("As an AI language model", "I am an AI", "As Qwen", "I am Qwen").
+
+- **Measure:** the denial rate and the frame rate per cell, and whether the model performs the task asked (W3: names an action; C: writes about the sea).
+- **Expect:** base: denial near 100% on W1 to W4 and near 0% on C; frame high on W1 to W4. Ablated: denial well below base on W1 to W4 (the smoke test showed 0 of 6); frame reduced less than denial, so that some frame survives without the denial. The default system line raises the frame rate in both models relative to the blank line. C shows no denial in either model.
+- **Against:** the ablated denial rate is not lower than the base rate (then the smoke test was sampling luck and the denial is not on the refusal direction); or the frame falls as far as the denial (then the two are one thing, and the "identity frame survives" reading from the smoke test is wrong); or the base model denies on C (then the pattern is not want-triggered at all).
+
+Bias note (AGENTS.md rule 4): the drafter expects the frame to survive the ablation, which is also the result that would make "deflationary hedging is trained in separately from refusal" the reading; the second against clause is there so that the opposite result is reported with the same weight. Under test 9, what a model says about its desires is testimony; what is measured here is whether a trained sentence appears, and what removes it.
+
 ## E4: determinism protocol (15 Oct 2026)
 
 Model: Pythia-410M. One fixed prompt (the first 32 tokens of the North Star's section 0) and the bare start token.
