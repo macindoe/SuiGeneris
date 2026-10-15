@@ -42,6 +42,18 @@ Ben's observation on E1: the Pythia fingerprint is a question, not a statement. 
 - **Against:** the runners-up in Pythia are question openers too, or question openers appear in the other families' top ten. Then the interrogative tendency is broader than one document format and needs its own explanation.
 - **Settles:** whether Ben's point is about corpus format or about something more general in the family. It settles nothing about why.
 
+## E2: random and least-likely inputs, and cross-model transfer (15 Oct 2026, before the run)
+
+Models: Pythia-160M, Pythia-1B, SmolLM2-135M, GPT-2 small. FP32, batch 1, greedy. Loop rule for this and later experiments: a loop counts at two full repeats (period up to 64), and a self-emitted end-of-document token is recorded as its own outcome.
+
+Inputs, 32 tokens each, after the start token: (r) uniformly random tokens, five fixed seeds, special tokens excluded; (m) each model's own least-likely sequence, built token by token by taking the least probable next token at every step (an "anti-greedy" chain). The most-likely sequence is E1's trajectory and is not rebuilt.
+
+- **Measure:** (1) the mean per-token log-probability each model assigns to each input (its coherence under that model), with the five random seeds as the baseline; (2) the 128-token greedy continuation after each input: loop start and period, end-of-document, and whether it returns to the E1 opening ("Q:" for Pythia); (3) recovery: the mean per-token log-probability of the continuation in tokens 1 to 16, 17 to 64 and 65 to 128, against the same numbers for the E1 trajectory; (4) cross-model: each model's least-likely sequence, decoded to text and re-encoded, scored by the other three models against their random baseline (a transfer is a score well below the random baseline).
+- **Expect:** random inputs are scored far below ordinary text and the continuation recovers to corpus-like probabilities within the first 16 tokens, usually without returning to the E1 opening (the context carries; Gu et al. 2024 and the "reset" results in the Q9 scan bear on it); least-likely inputs score far below random under their own model, and their continuations are more degenerate than the random case; cross-model transfer is partial, stronger between the two Pythia models (shared tokeniser and corpus) than across families.
+- **Against:** a continuation after random tokens that stays at salad-level probabilities for 128 tokens (the model has no basin to fall back into); or least-likely sequences that score no lower than random under the other models (coherence is wholly model-specific, and the cross-model probe in Q9 is dead).
+
+Not done here: excluding under-trained tokens (Land and Bartolo); random seeds may contain them and the note will say if a sequence looks glitch-dominated.
+
 ## E4: determinism protocol (15 Oct 2026)
 
 Model: Pythia-410M. One fixed prompt (the first 32 tokens of the North Star's section 0) and the bare start token.

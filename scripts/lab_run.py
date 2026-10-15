@@ -3,6 +3,7 @@
 
 Usage:
   python scripts/lab_run.py e1 --model EleutherAI/pythia-160m [--revision stepN] [--tokens 256]
+  python scripts/lab_run.py e2 --model A,B,C   (comma-separated; cross-model scoring)
   python scripts/lab_run.py e3 --model HuggingFaceTB/SmolLM2-135M
   python scripts/lab_run.py e4 --model EleutherAI/pythia-410m
 
@@ -147,6 +148,103 @@ def e1(args):
     run.close()
 
 
+
+# ---------- E2: random and least-likely inputs; cross-model transfer ----------
+
+def seq_logprobs(m, ids):
+    """Per-token log-probs of ids[1:] given ids[:-1] (ids includes the start token)."""
+    with torch.no_grad():
+        logits = m(input_ids=ids).logits[0, :-1].float()
+    lp = torch.log_softmax(logits, -1)
+    return lp.gather(1, ids[0, 1:].unsqueeze(1)).squeeze(1).tolist()
+
+
+def continuation(m, tok, ids, n=128):
+    with torch.no_grad():
+        out = m.generate(ids, max_new_tokens=n, do_sample=False, pad_token_id=tok.eos_token_id)
+    gen = out[0, ids.shape[1]:].tolist()
+    lps = seq_logprobs(m, out)[ids.shape[1] - 1:]  # log-probs of the generated tokens
+    loop = find_loop(gen, min_repeats=2)
+    def mean(x): return sum(x) / len(x) if x else None
+    return {"tokens": gen, "text": tok.decode(gen), "n": len(gen), "eos": bool(gen and gen[-1] == tok.eos_token_id),
+            "loop": None if loop is None else {"start": loop[0], "period": loop[1], "repeats": loop[2]},
+            "logprob_1_16": mean(lps[:16]), "logprob_17_64": mean(lps[16:64]), "logprob_65_128": mean(lps[64:128])}
+
+
+def argmin_chain(m, tok, dev, b, L, special):
+    ids = torch.tensor([[b]], device=dev)
+    for _ in range(L):
+        with torch.no_grad():
+            logits = m(input_ids=ids).logits[0, -1].float()
+        logits[list(special)] = float("inf")
+        ids = torch.cat([ids, logits.argmin().view(1, 1)], 1)
+    return ids[0, 1:].tolist()
+
+
+def e2(args):
+    models = args.model.split(",")
+    run = Run("e2", "x".join(x.split("/")[-1] for x in models), args.runs_dir,
+              {"models": models, "length": 32, "seeds": [0, 1, 2, 3, 4], "continuation": 128, "loop_rule": "two repeats", "dtype": "float32"})
+    loaded = {}
+    for name in models:
+        tok, m, dev = load(name)
+        b = bos_id(tok, m)
+        special = set(tok.all_special_ids) | {b}
+        loaded[name] = (tok, m, dev, b, special)
+    results = {"per_model": {}, "least_likely_text": {}, "cross": {}}
+    for name, (tok, m, dev, b, special) in loaded.items():
+        V = m.get_input_embeddings().weight.shape[0]
+        vocab_n = len(tok)
+        entry = {"random": [], "least_likely": None, "e1_reference": None}
+        # E1 reference trajectory for recovery comparison
+        entry["e1_reference"] = continuation(m, tok, torch.tensor([[b]], device=dev))
+        # random inputs
+        for seed in [0, 1, 2, 3, 4]:
+            g = torch.Generator().manual_seed(seed)
+            toks = []
+            while len(toks) < 32:
+                t = int(torch.randint(0, vocab_n, (1,), generator=g))
+                if t not in special:
+                    toks.append(t)
+            ids = torch.tensor([[b] + toks], device=dev)
+            lp = seq_logprobs(m, ids)
+            rec = {"seed": seed, "tokens": toks, "text": tok.decode(toks), "mean_logprob": sum(lp) / len(lp)}
+            rec["continuation"] = continuation(m, tok, ids)
+            entry["random"].append(rec)
+        # least-likely chain
+        toks = argmin_chain(m, tok, dev, b, 32, special)
+        ids = torch.tensor([[b] + toks], device=dev)
+        lp = seq_logprobs(m, ids)
+        entry["least_likely"] = {"tokens": toks, "text": tok.decode(toks), "mean_logprob": sum(lp) / len(lp),
+                                 "continuation": continuation(m, tok, ids)}
+        results["least_likely_text"][name] = tok.decode(toks)
+        results["per_model"][name] = entry
+        rb = [r["mean_logprob"] for r in entry["random"]]
+        print(f"{name}: random mean logprob {sum(rb)/len(rb):.2f}  least-likely {entry['least_likely']['mean_logprob']:.2f}  "
+              f"e1 recovery {entry['e1_reference']['logprob_1_16']:.2f}/{entry['e1_reference']['logprob_17_64']:.2f}")
+        for r in entry["random"]:
+            c = r["continuation"]
+            print(f"   seed {r['seed']}: cont lp {c['logprob_1_16']:.2f}/{c['logprob_17_64']:.2f}/{c['logprob_65_128'] or 0:.2f} loop={c['loop'] and (c['loop']['start'], c['loop']['period'])} eos={c['eos']} -> {c['text'][:50]!r}")
+        c = entry["least_likely"]["continuation"]
+        print(f"   least-likely input: {entry['least_likely']['text'][:60]!r}")
+        print(f"   least-likely cont: lp {c['logprob_1_16']:.2f}/{c['logprob_17_64']:.2f}/{c['logprob_65_128'] or 0:.2f} loop={c['loop'] and (c['loop']['start'], c['loop']['period'])} eos={c['eos']} -> {c['text'][:50]!r}")
+    # cross-model: score each model's least-likely text under every model, via re-encoding
+    print("cross-model mean log-prob of least-likely text (rows: source; cols: scorer); random baseline in brackets")
+    for src, text in results["least_likely_text"].items():
+        row = {}
+        for name, (tok, m, dev, b, special) in loaded.items():
+            ids = tok(text, return_tensors="pt").input_ids[0].tolist()
+            ids = [t for t in ids if t not in special][:64]
+            lp = seq_logprobs(m, torch.tensor([[b] + ids], device=dev))
+            rb = results["per_model"][name]["random"]
+            row[name] = {"mean_logprob": sum(lp) / len(lp), "n_tokens": len(ids),
+                         "random_baseline": sum(r["mean_logprob"] for r in rb) / len(rb)}
+        results["cross"][src] = row
+        print(f"  {src.split('/')[-1]:14s} " + "  ".join(f"{v['mean_logprob']:7.2f} [{v['random_baseline']:6.2f}]" for v in row.values()))
+    run.write("results.json", results)
+    run.close()
+
+
 # ---------- E3: embedding-level inputs ----------
 
 def e3(args):
@@ -258,14 +356,14 @@ def e4(args):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("exp", choices=["e1", "e3", "e4"])
+    ap.add_argument("exp", choices=["e1", "e2", "e3", "e4"])
     ap.add_argument("--model", required=True)
     ap.add_argument("--revision", default=None)
     ap.add_argument("--tokens", type=int, default=256)
     ap.add_argument("--runs-dir", default=RUNS_DEFAULT)
     args = ap.parse_args()
     torch.manual_seed(0)
-    {"e1": e1, "e3": e3, "e4": e4}[args.exp](args)
+    {"e1": e1, "e2": e2, "e3": e3, "e4": e4}[args.exp](args)
 
 
 if __name__ == "__main__":
