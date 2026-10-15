@@ -52,6 +52,14 @@ Two dependency facts worth stating plainly. First, everything on the time and se
 | **E6** | Refusal-ablated against base: null-input trajectory; a battery of instructions with no identifiable conflict (deviation rate); self-identification and hedging patterns (BACKLOG "Ajax") | Qwen3.5-9B base; a refusal-ablated Qwen3.5-9B; Ajax if its weights become public | Q8(1), Q4 | Community abliterated Qwen3.5-9B checkpoints exist on Hugging Face now, so the design need not wait on Ajax; provenance differs and is recorded |
 | **E7** | Residual-stream impulse on a random-token background (Luick's design) at 9B | One of the above | Q2 | Activation capture; 80 GB comfortable |
 
+### Design rules from the local tier (added 16 Oct 2026; Ben and the E6 pilot)
+
+- **System line is a treatment.** Chat templates inject a provider line when none is given; it changed the base model's denial rate on the E10 rule from 0.71 to 0.00. Every loop or prompt experiment runs with a blank system line by default and adds the provider line as a named condition where wanted. The rendered prompt goes in the manifest.
+- **Code the tuning's fingerprints, don't argue with them.** Three codes on every want-shaped output: denial, identity frame, affirmation. All three are trained templates and all three are testimony under test 9; the measurement is which template appears, and what moves it.
+- **Refusal ablation is a condition, not a cleaner model.** The pilot showed ablation swaps a denial template for an affirmation template. Base, ablated and (if public) Ajax run side by side. Ablation is an intervention on internal state (§3.2); a checkpoint whose ablation method is not on record is a gap in the §3.5 record, so the card is read and the method recorded before use.
+- **Match temperatures explicitly.** Model defaults differ (0.7 against 1.0 in the pilot). Set them.
+- **Capacity before disposition.** At 360M to 0.5B no model carried a two-clause rule, so the self-carried loop is a rental-tier experiment; the script-carried variant (the harness re-appends the rule) is the local-tier stand-in and is labelled as the heartbeat it is.
+
 ### Not compute: reading and data
 
 | Id | Item | Notes |
