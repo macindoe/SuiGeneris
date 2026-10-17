@@ -17,9 +17,9 @@ not_evidence_of: "Paper: Not evidence that the behaviours would be rarer in real
 bears_on: [5.A2]
 contests: []
 contested_by: []
-review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-10-15 (scope check) agree; notes: none", council: none, adjudicated: none}
+review: {extractor: "claude-opus-5.5 (Agent tool model=opus)", second_reader: "google/gemini-3.1-pro-preview 2026-10-15 (scope check) agree; notes: none; deepseek/deepseek-v4-pro-0813 2026-10-17 agrees", council: none, adjudicated: none}
 added: 2026-10-15
-changed: 2026-10-15
+changed: 2026-10-17
 ---
 
 The authors speaking about what their study cannot show, so `kind: limitation`; bucket `established` because the limit is a stated fact about the design (an established limitation means the limit is established, not that a capability is present or absent; research/README.md, `kind`). Evidence type `theoretical`, following the library's practice for authors' methodological limits (2025-anthropic-emergent-introspective-awareness-c06).

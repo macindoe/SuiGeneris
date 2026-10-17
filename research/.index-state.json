@@ -35,6 +35,51 @@
    "evidence_type": "self-report-testimony",
    "in_dossier": true
   },
+  "2024-binder-looking-inward-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "scored-self-answer",
+   "in_dossier": true
+  },
+  "2024-binder-looking-inward-c02": {
+   "bucket": "established",
+   "evidence_type": "scored-self-answer",
+   "in_dossier": true
+  },
+  "2024-binder-looking-inward-c03": {
+   "bucket": "established",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2024-gu-attention-sink-emerges-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2024-gu-attention-sink-emerges-c02": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2024-gu-attention-sink-emerges-c03": {
+   "bucket": "open",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2024-luick-universal-response-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2024-luick-universal-response-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2024-luick-universal-response-c03": {
+   "bucket": "established",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
   "2025-aestudio-self-referential-experience-reports-c01": {
    "bucket": "narrowing",
    "evidence_type": "self-report-testimony",
@@ -80,6 +125,11 @@
    "evidence_type": "theoretical",
    "in_dossier": true
   },
+  "2025-anthropic-agentic-misalignment-c04": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
   "2025-anthropic-emergent-introspective-awareness-c01": {
    "bucket": "narrowing",
    "evidence_type": "scored-self-answer",
@@ -115,6 +165,16 @@
    "evidence_type": "theoretical",
    "in_dossier": true
   },
+  "2025-chauvin-logprob-tracking-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2025-chauvin-logprob-tracking-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
   "2025-deleeuw-secret-agenda-c01": {
    "bucket": "narrowing",
    "evidence_type": "interpretability",
@@ -142,6 +202,101 @@
   },
   "2025-goldowsky-dill-deception-probes-c03": {
    "bucket": "established",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2025-he-defeating-nondeterminism-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2025-he-defeating-nondeterminism-c02": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2025-lin-sleep-time-compute-c01": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2025-lin-sleep-time-compute-c02": {
+   "bucket": "established",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2025-palisade-shutdown-resistance-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2025-palisade-shutdown-resistance-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2025-palisade-shutdown-resistance-c03": {
+   "bucket": "established",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2025-szeider-agents-left-alone-c01": {
+   "bucket": "established",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2025-szeider-agents-left-alone-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2025-szeider-agents-left-alone-c03": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2025-wang-discrete-minds-time-c01": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2025-wang-discrete-minds-time-c02": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2025-wang-discrete-minds-time-c03": {
+   "bucket": "established",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2025-yona-repeated-token-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2025-yona-repeated-token-c02": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2025-yona-repeated-token-c03": {
+   "bucket": "established",
+   "evidence_type": "interpretability",
+   "in_dossier": true
+  },
+  "2025-yuan-numerical-nondeterminism-c01": {
+   "bucket": "established",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2025-yuan-numerical-nondeterminism-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2025-yuan-numerical-nondeterminism-c03": {
+   "bucket": "open",
    "evidence_type": "theoretical",
    "in_dossier": true
   },
@@ -180,6 +335,16 @@
    "evidence_type": "behavioural",
    "in_dossier": true
   },
+  "2026-bruckner-one-token-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2026-bruckner-one-token-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
   "2026-ferrara-owmi-c01": {
    "bucket": "narrowing",
    "evidence_type": "scored-self-answer",
@@ -203,6 +368,36 @@
   "2026-ferrara-owmi-c05": {
    "bucket": "narrowing",
    "evidence_type": "scored-self-answer",
+   "in_dossier": true
+  },
+  "2026-garikaparthi-llm-time-perception-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "scored-self-answer",
+   "in_dossier": true
+  },
+  "2026-garikaparthi-llm-time-perception-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "scored-self-answer",
+   "in_dossier": true
+  },
+  "2026-garikaparthi-llm-time-perception-c03": {
+   "bucket": "established",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2026-kwon-what-llms-think-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2026-kwon-what-llms-think-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2026-kwon-what-llms-think-c03": {
+   "bucket": "open",
+   "evidence_type": "behavioural",
    "in_dossier": true
   },
   "2026-lederman-mahowald-content-agnostic-c01": {
@@ -278,6 +473,56 @@
   "2026-macar-mechanisms-introspective-awareness-c08": {
    "bucket": "narrowing",
    "evidence_type": "scored-self-answer",
+   "in_dossier": true
+  },
+  "2026-maczan-chat-template-voice-c01": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2026-maczan-chat-template-voice-c02": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2026-maczan-chat-template-voice-c03": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2026-presgraves-autonomous-agency-scale-c01": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2026-presgraves-autonomous-agency-scale-c02": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2026-presgraves-autonomous-agency-scale-c03": {
+   "bucket": "open",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2026-presgraves-autonomous-agency-scale-c04": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2026-presgraves-autonomous-agency-scale-c05": {
+   "bucket": "narrowing",
+   "evidence_type": "behavioural",
+   "in_dossier": true
+  },
+  "2026-presgraves-autonomous-agency-scale-c06": {
+   "bucket": "established",
+   "evidence_type": "theoretical",
+   "in_dossier": true
+  },
+  "2026-presgraves-autonomous-agency-scale-c07": {
+   "bucket": "established",
+   "evidence_type": "theoretical",
    "in_dossier": true
   },
   "2026-shi-deception-taxonomy-c01": {

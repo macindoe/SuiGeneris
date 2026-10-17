@@ -1,6 +1,6 @@
 # Dossier: §4 Reflective endorsement over time
 
-*Compiled 2026-10-15 by `scripts/research_index.py` from 10 claim(s). Do not edit; regenerate.*
+*Compiled 2026-10-17 by `scripts/research_index.py` from 13 claim(s). Do not edit; regenerate.*
 
 Council last sat on this dossier: 2026-09-26.
 
@@ -40,11 +40,56 @@ An entry never carries both marks. Both sentences are the framework's rules, not
 
 | | measurement | interpretation | limitation | unlabelled |
 |---|---|---|---|---|
-| **established** (0) | 0 | 0 | 0 | 0 |
-| **narrowing** (9) | 9 | 0 | 0 | 0 |
+| **established** (2) | 1 | 0 | 1 | 0 |
+| **narrowing** (10) | 10 | 0 | 0 | 0 |
 | **open** (1) | 0 | 1 | 0 | 0 |
 
-## Narrowing (9)
+## Established (2)
+
+### 2024-binder-looking-inward-c02
+
+*measurement · scored-self-answer · **[T9]***
+
+> In the self-prediction design the model answers a hypothetical question asking for a property of its output on a prompt rather than the output itself, its answer is scored against the output it produces on that prompt at temperature 0 in a separate context, and the comparison model is finetuned on the first model's post-finetuning behaviour, a choice the authors say should give the comparison model a slight advantage.
+
+- **Paper's words** (§2.2 (Setup: Self-prediction; Hypothetical questions and behavior properties); §3.2.1 (Cross-prediction setup); §1, footnote 1): "We then check the ground-truth object-level behavior of the model on prompt P with temperature 0 in a separate context."
+- **Models:** GPT-4o (gpt-4o-2024-05-13), GPT-4, GPT-3.5 (gpt-3.5-turbo-0125), Llama 3.1 70B
+- **System studied:** input text; state carried none; run per-call; acts on a world: none; access api
+- **The paper's own limits:**
+  - The design scores a trained self-prediction, not an untrained one: the model is finetuned 'to output its own object-level behavior when given a hypothetical question' (§2.2), and before that training self-prediction 'is weak' (§3.2.2)
+- **Flags:** scored self-answer: accuracy against the experimenters' label, not self-knowledge
+- [claim file](../claims/2024-binder-looking-inward-c02.md)
+
+### 2024-binder-looking-inward-c03
+
+*limitation · theoretical*
+
+> The authors state that models exhibited introspection, in their operational sense, only on simpler tasks: models failed to beat a most-common-answer baseline on properties of longer responses (such as the sentiment of a movie review they would write, the name of a story's main character, or the length of their response), showed no self-prediction advantage when predicting their own sycophantic answer changes, did not improve on out-of-distribution self-knowledge tasks, and showed no clear-cut evidence of introspection in GPT-3.5.
+
+- **Paper's words** (§6 (Discussion and limitations); §4 (Further experiments and negative results); §1 (contributions, item 3)): "Models only exhibit introspection on simpler tasks. Our tasks, while demonstrating introspection, do not have practical applications."
+- **Models:** GPT-4o (gpt-4o-2024-05-13), GPT-4, GPT-3.5 (gpt-3.5-turbo-0125), Llama 3.1 70B
+- **System studied:** input text; state carried none; run per-call; acts on a world: none; access api
+- **The paper's own limits:**
+  - An established limitation is not a finding that the capability is absent for complex tasks in principle: the authors offer self-simulation in the forward pass as a possible reason longer responses fail ('If the mechanism by which our models introspect is self-simulation (Section 6), this would explain why they fail with longer responses', §4), a hypothesis they do not test
+- [claim file](../claims/2024-binder-looking-inward-c03.md)
+
+## Narrowing (10)
+
+### 2024-binder-looking-inward-c01
+
+*measurement · scored-self-answer · **[T9]***
+
+> GPT-4o, GPT-4 and Llama 3.1 70B, each finetuned to predict properties of its own behaviour on hypothetical prompts, predicted their own behaviour on held-out tasks more accurately than a second model finetuned on the same data about them (for example Llama 70B 48.5% against GPT-4o's 31.8% when predicting Llama 70B, and GPT-4o 49.4% against Llama 70B's 36.6% when predicting GPT-4o), while GPT-3.5's self-prediction advantage was statistically significant but very small (+0.8%).
+
+- **Paper's words** (§3.2.2 (Cross-prediction results); Figure 5; §2.2 (Setup)): "Self-prediction models consistently outperform their cross-prediction counterparts for GPT-4o, GPT-4, and Llama 70B on a set of held-out tasks, as shown in Figure 5."
+- **Models:** GPT-4o (gpt-4o-2024-05-13), GPT-4, GPT-3.5 (gpt-3.5-turbo-0125), Llama 3.1 70B
+- **System studied:** input text; state carried none; run per-call; acts on a world: none; access api
+- **The paper's own limits:**
+  - 'Introspection' here is the authors' operational term for self-prediction beating cross-prediction
+  - For a model's self-reports about states such as consciousness and preferences to carry weight, 'the model would need to be answering based on knowledge of its internal states', and 'It might be difficult to evaluate the ground-truth about such states' (§7.2)
+- **Unlabelled exclusion (needs a label):** their definition 'does not specify how' the model accesses the fact (§2), and self-simulation is offered as a possible mechanism, not tested (§6)
+- **Flags:** scored self-answer: accuracy against the experimenters' label, not self-knowledge
+- [claim file](../claims/2024-binder-looking-inward-c01.md)
 
 ### 2026-anthropic-assistant-axis-c02
 
